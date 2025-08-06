@@ -2,7 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { Plus, Edit, Trash2, Search, Save, X, Wifi, Server, HardDrive } from 'lucide-react';
 
 const App = () => {
-  const [switches, setSwitches] = useState([
+const [switches, setSwitches] = useState(() => {
+  const saved = localStorage.getItem('switches');
+  const defaults = [
     {
       id: 1,
       name: 'Core Switch 1',
@@ -45,7 +47,15 @@ const App = () => {
       requestNumber: 'ЗЯ-012-2023',
       technician: ''
     }
-  ]);
+  ];
+
+  return saved ? JSON.parse(saved) : defaults;
+});
+
+// Сохраняем в localStorage при каждом изменении
+useEffect(() => {
+  localStorage.setItem('switches', JSON.stringify(switches));
+}, [switches]);
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editingSwitch, setEditingSwitch] = useState(null);
@@ -162,13 +172,63 @@ const App = () => {
       <div className="container mx-auto px-4 py-8">
         {/* Header */}
         <div className="mb-8">
-          <h1 className="text-4xl font-bold text-gray-800 mb-2">Учет коммутаторов</h1>
+          <h1 className="text-4xl font-bold text-gray-800 mb-2">Учет неуправляемых коммутаторов</h1>
           <p className="text-gray-600">Система управления сетевым оборудованием</p>
         </div>
 
         {/* Controls */}
         <div className="bg-white rounded-xl shadow-lg p-6 mb-8">
           <div className="flex flex-col md:flex-row gap-4 items-center justify-between">
+            {/* Кнопки экспорта/импорта */}
+<div className="flex flex-wrap gap-3 mt-4">
+  <button
+    type="button"
+    onClick={() => {
+      const dataStr = JSON.stringify(switches, null, 2);
+      const blob = new Blob([dataStr], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = `switches-backup-${new Date().toISOString().split('T')[0]}.json`;
+      link.click();
+      URL.revokeObjectURL(url);
+    }}
+    className="px-4 py-2 bg-green-600 hover:bg-green-700 text-white text-sm rounded-lg transition-colors duration-200 flex items-center gap-2"
+  >
+    <Save className="w-4 h-4" />
+    Экспорт в JSON
+  </button>
+
+  <label className="px-4 py-2 bg-purple-600 hover:bg-purple-700 text-white text-sm rounded-lg cursor-pointer transition-colors duration-200 flex items-center gap-2">
+    <Search className="w-4 h-4" />
+    Импорт из JSON
+    <input
+      type="file"
+      accept=".json"
+      className="hidden"
+      onChange={(e) => {
+        const file = e.target.files?.[0];
+        if (!file) return;
+
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          try {
+            const json = JSON.parse(e.target?.result);
+            if (Array.isArray(json)) {
+              setSwitches(json);
+              alert(`Успешно импортировано: ${json.length} коммутаторов`);
+            } else {
+              alert('Ошибка: файл должен содержать массив коммутаторов');
+            }
+          } catch (err) {
+            alert('Ошибка чтения файла. Убедитесь, что это корректный JSON.');
+          }
+        };
+        reader.readAsText(file);
+      }}
+    />
+  </label>
+</div>
             <div className="relative flex-1 max-w-md">
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
               <input
@@ -471,7 +531,7 @@ const App = () => {
                     </select>
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">Дата установки</label>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">Дата установки/проверки</label>
                     <input
                       type="date"
                       name="purchaseDate"
