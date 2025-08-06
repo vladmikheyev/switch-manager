@@ -1,25 +1,448 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from 'react';
+import { Plus, Edit, Trash2, Search, Save, X, Wifi, Server, HardDrive } from 'lucide-react';
 
-function App() {
+const App = () => {
+  const [switches, setSwitches] = useState([
+    {
+      id: 1,
+      name: 'Core Switch 1',
+      model: 'Cisco Catalyst 9500',
+      ip: '192.168.1.1',
+      location: 'Серверная A',
+      ports: 48,
+      status: 'active',
+      vendor: 'Cisco',
+      purchaseDate: '2023-01-15'
+    },
+    {
+      id: 2,
+      name: 'Access Switch 2',
+      model: 'Huawei S5720',
+      ip: '192.168.1.2',
+      location: 'Офис 2 этаж',
+      ports: 24,
+      status: 'active',
+      vendor: 'Huawei',
+      purchaseDate: '2023-03-22'
+    },
+    {
+      id: 3,
+      name: 'Edge Switch 3',
+      model: 'MikroTik CRS326',
+      ip: '192.168.1.3',
+      location: 'Конференц-зал',
+      ports: 26,
+      status: 'maintenance',
+      vendor: 'MikroTik',
+      purchaseDate: '2023-06-10'
+    }
+  ]);
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [editingSwitch, setEditingSwitch] = useState(null);
+  const [searchTerm, setSearchTerm] = useState('');
+  const [formData, setFormData] = useState({
+    name: '',
+    model: '',
+    ip: '',
+    location: '',
+    ports: '',
+    status: 'active',
+    vendor: '',
+    purchaseDate: ''
+  });
+
+  const statusColors = {
+    active: 'bg-green-100 text-green-800',
+    maintenance: 'bg-yellow-100 text-yellow-800',
+    offline: 'bg-red-100 text-red-800'
+  };
+
+  const statusLabels = {
+    active: 'Активен',
+    maintenance: 'На складе',
+    offline: 'Не в сети'
+  };
+
+  const vendorIcons = {
+    Dlink: Server,
+    Cisco: Server,
+    Huawei: HardDrive,
+    MikroTik: Wifi,
+    Other: Server
+  };
+
+  useEffect(() => {
+    if (editingSwitch) {
+      setFormData(editingSwitch);
+    } else {
+      setFormData({
+        name: '',
+        model: '',
+        ip: '',
+        location: '',
+        ports: '',
+        status: 'active',
+        vendor: '',
+        purchaseDate: ''
+      });
+    }
+  }, [editingSwitch]);
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (editingSwitch) {
+      setSwitches(prev => prev.map(s => s.id === editingSwitch.id ? { ...formData, id: editingSwitch.id, ports: parseInt(formData.ports) } : s));
+    } else {
+      const newSwitch = {
+        ...formData,
+        id: Date.now(),
+        ports: parseInt(formData.ports)
+      };
+      setSwitches(prev => [...prev, newSwitch]);
+    }
+    setIsModalOpen(false);
+    setEditingSwitch(null);
+  };
+
+  const handleEdit = (switchItem) => {
+    setEditingSwitch(switchItem);
+    setIsModalOpen(true);
+  };
+
+  const handleDelete = (id) => {
+    setSwitches(prev => prev.filter(s => s.id !== id));
+  };
+
+  const filteredSwitches = switches.filter(switchItem =>
+    switchItem.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    switchItem.model.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    switchItem.ip.includes(searchTerm) ||
+    switchItem.location.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
+  const VendorIcon = ({ vendor }) => {
+    const IconComponent = vendorIcons[vendor] || vendorIcons.Other;
+    return <IconComponent className="w-5 h-5" />;
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
+      <div className="container mx-auto px-4 py-8">
+        {/* Header */}
+        <div className="mb-8">
+          <h1 className="text-4xl font-bold text-gray-800 mb-2">Учет коммутаторов</h1>
+          <p className="text-gray-600">Система управления сетевым оборудованием</p>
+        </div>
+
+        {/* Controls */}
+        <div className="bg-white rounded-xl shadow-lg p-6 mb-8">
+          <div className="flex flex-col md:flex-row gap-4 items-center justify-between">
+            <div className="relative flex-1 max-w-md">
+              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+              <input
+                type="text"
+                placeholder="Поиск по названию, модели, IP или местоположению..."
+                className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+              />
+            </div>
+            <button
+              onClick={() => {
+                setEditingSwitch(null);
+                setIsModalOpen(true);
+              }}
+              className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg transition-colors duration-200 font-medium"
+            >
+              <Plus className="w-5 h-5" />
+              Добавить коммутатор
+            </button>
+          </div>
+        </div>
+
+        {/* Stats */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+          <div className="bg-white rounded-xl shadow-lg p-6">
+            <div className="flex items-center justify-between">
+              <div>
+                <p className="text-gray-600 text-sm">Всего коммутаторов</p>
+                <p className="text-3xl font-bold text-gray-800">{switches.length}</p>
+              </div>
+              <div className="bg-blue-100 p-3 rounded-lg">
+                <Server className="w-8 h-8 text-blue-600" />
+              </div>
+            </div>
+          </div>
+          <div className="bg-white rounded-xl shadow-lg p-6">
+            <div className="flex items-center justify-between">
+              <div>
+                <p className="text-gray-600 text-sm">Активные</p>
+                <p className="text-3xl font-bold text-green-600">
+                  {switches.filter(s => s.status === 'active').length}
+                </p>
+              </div>
+              <div className="bg-green-100 p-3 rounded-lg">
+                <Wifi className="w-8 h-8 text-green-600" />
+              </div>
+            </div>
+          </div>
+          <div className="bg-white rounded-xl shadow-lg p-6">
+            <div className="flex items-center justify-between">
+              <div>
+                <p className="text-gray-600 text-sm">На складе</p>
+                <p className="text-3xl font-bold text-yellow-600">
+                  {switches.filter(s => s.status === 'maintenance').length}
+                </p>
+              </div>
+              <div className="bg-yellow-100 p-3 rounded-lg">
+                <HardDrive className="w-8 h-8 text-yellow-600" />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Switches List */}
+        <div className="bg-white rounded-xl shadow-lg overflow-hidden">
+          <div className="overflow-x-auto">
+            <table className="w-full">
+              <thead className="bg-gray-50 border-b border-gray-200">
+                <tr>
+                  <th className="text-left py-4 px-6 font-semibold text-gray-700">Коммутатор</th>
+                  <th className="text-left py-4 px-6 font-semibold text-gray-700">Модель</th>
+                  <th className="text-left py-4 px-6 font-semibold text-gray-700">IP адрес</th>
+                  <th className="text-left py-4 px-6 font-semibold text-gray-700">Местоположение</th>
+                  <th className="text-left py-4 px-6 font-semibold text-gray-700">Порты</th>
+                  <th className="text-left py-4 px-6 font-semibold text-gray-700">Статус</th>
+                  <th className="text-left py-4 px-6 font-semibold text-gray-700">Производитель</th>
+                  <th className="text-left py-4 px-6 font-semibold text-gray-700">Действия</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-gray-200">
+                {filteredSwitches.map((switchItem) => (
+                  <tr key={switchItem.id} className="hover:bg-gray-50 transition-colors duration-150">
+                    <td className="py-4 px-6">
+                      <div className="flex items-center gap-3">
+                        <div className="bg-blue-100 p-2 rounded-lg">
+                          <VendorIcon vendor={switchItem.vendor} />
+                        </div>
+                        <div>
+                          <p className="font-medium text-gray-800">{switchItem.name}</p>
+                          <p className="text-sm text-gray-500">{switchItem.purchaseDate}</p>
+                        </div>
+                      </div>
+                    </td>
+                    <td className="py-4 px-6 text-gray-700">{switchItem.model}</td>
+                    <td className="py-4 px-6 text-gray-700 font-mono">{switchItem.ip}</td>
+                    <td className="py-4 px-6 text-gray-700">{switchItem.location}</td>
+                    <td className="py-4 px-6">
+                      <span className="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm font-medium">
+                        {switchItem.ports}
+                      </span>
+                    </td>
+                    <td className="py-4 px-6">
+                      <span className={`px-3 py-1 rounded-full text-sm font-medium ${statusColors[switchItem.status]}`}>
+                        {statusLabels[switchItem.status]}
+                      </span>
+                    </td>
+                    <td className="py-4 px-6">
+                      <span className="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm font-medium">
+                        {switchItem.vendor}
+                      </span>
+                    </td>
+                    <td className="py-4 px-6">
+                      <div className="flex items-center gap-2">
+                        <button
+                          onClick={() => handleEdit(switchItem)}
+                          className="p-2 text-blue-600 hover:bg-blue-100 rounded-lg transition-colors duration-200"
+                        >
+                          <Edit className="w-4 h-4" />
+                        </button>
+                        <button
+                          onClick={() => handleDelete(switchItem.id)}
+                          className="p-2 text-red-600 hover:bg-red-100 rounded-lg transition-colors duration-200"
+                        >
+                          <Trash2 className="w-4 h-4" />
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          
+          {filteredSwitches.length === 0 && (
+            <div className="text-center py-12">
+              <Server className="w-16 h-16 text-gray-300 mx-auto mb-4" />
+              <p className="text-gray-500 text-lg">Коммутаторы не найдены</p>
+              <p className="text-gray-400">Попробуйте изменить параметры поиска</p>
+            </div>
+          )}
+        </div>
+
+        {/* Modal */}
+        {isModalOpen && (
+          <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
+            <div className="bg-white rounded-xl shadow-2xl w-full max-w-2xl max-h-screen overflow-y-auto">
+              <div className="p-6 border-b border-gray-200">
+                <div className="flex items-center justify-between">
+                  <h2 className="text-2xl font-bold text-gray-800">
+                    {editingSwitch ? 'Редактировать коммутатор' : 'Добавить новый коммутатор'}
+                  </h2>
+                  <button
+                    onClick={() => {
+                      setIsModalOpen(false);
+                      setEditingSwitch(null);
+                    }}
+                    className="p-2 hover:bg-gray-100 rounded-lg transition-colors duration-200"
+                  >
+                    <X className="w-6 h-6 text-gray-500" />
+                  </button>
+                </div>
+              </div>
+              
+              <form onSubmit={handleSubmit} className="p-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">Название *</label>
+                    <input
+                      type="text"
+                      name="name"
+                      required
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                      value={formData.name}
+                      onChange={handleInputChange}
+                    />
+                  </div>
+                  
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">Модель *</label>
+                    <input
+                      type="text"
+                      name="model"
+                      required
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                      value={formData.model}
+                      onChange={handleInputChange}
+                    />
+                  </div>
+                  
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">IP адрес *</label>
+                    <input
+                      type="text"
+                      name="ip"
+                      required
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent font-mono"
+                      value={formData.ip}
+                      onChange={handleInputChange}
+                    />
+                  </div>
+                  
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">Количество портов *</label>
+                    <input
+                      type="number"
+                      name="ports"
+                      required
+                      min="1"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                      value={formData.ports}
+                      onChange={handleInputChange}
+                    />
+                  </div>
+                  
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">Местоположение *</label>
+                    <input
+                      type="text"
+                      name="location"
+                      required
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                      value={formData.location}
+                      onChange={handleInputChange}
+                    />
+                  </div>
+                  
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">Производитель *</label>
+                    <select
+                      name="vendor"
+                      required
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                      value={formData.vendor}
+                      onChange={handleInputChange}
+                    >
+                      <option value="">Выберите производителя</option>
+                      <option value="Dlink">Dlink</option>
+                      <option value="Cisco">Cisco</option>
+                      <option value="Huawei">Huawei</option>
+                      <option value="MikroTik">MikroTik</option>
+                      <option value="Other">Другой</option>
+                    </select>
+                  </div>
+                  
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">Статус</label>
+                    <select
+                      name="status"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                      value={formData.status}
+                      onChange={handleInputChange}
+                    >
+                      <option value="active">Активен</option>
+                      <option value="maintenance">На складе</option>
+                      <option value="offline">Не в сети</option>
+                    </select>
+                  </div>
+                  
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">Дата установки</label>
+                    <input
+                      type="date"
+                      name="purchaseDate"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                      value={formData.purchaseDate}
+                      onChange={handleInputChange}
+                    />
+                  </div>
+                </div>
+                
+                <div className="flex gap-4 mt-8">
+                  <button
+                    type="submit"
+                    className="flex-1 bg-blue-600 hover:bg-blue-700 text-white py-3 px-6 rounded-lg font-medium transition-colors duration-200 flex items-center justify-center gap-2"
+                  >
+                    <Save className="w-5 h-5" />
+                    {editingSwitch ? 'Сохранить изменения' : 'Добавить коммутатор'}
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setIsModalOpen(false);
+                      setEditingSwitch(null);
+                    }}
+                    className="px-6 py-3 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors duration-200"
+                  >
+                    Отмена
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        )}
+      </div>
     </div>
   );
-}
+};
 
 export default App;
