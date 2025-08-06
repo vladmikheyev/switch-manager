@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Plus, Edit, Trash2, Search, Save, X, Wifi, Server, HardDrive } from 'lucide-react';
+import * as XLSX from 'xlsx';
 
 const App = () => {
 const [switches, setSwitches] = useState(() => {
@@ -152,15 +153,20 @@ useEffect(() => {
     setSwitches((prev) => prev.filter((s) => s.id !== id));
   };
 
-  const filteredSwitches = switches.filter((switchItem) =>
-    switchItem.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    switchItem.model.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    switchItem.ip.includes(searchTerm) ||
-    switchItem.location.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    switchItem.serialNumber.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    switchItem.requestNumber.toLowerCase().includes(searchTerm.toLowerCase())
-    (switchItem.technician && switchItem.technician.toLowerCase().includes(searchTerm.toLowerCase()))
+const filteredSwitches = switches.filter((switchItem) => {
+  const { name, model, ip, location, serialNumber, requestNumber, technician } = switchItem;
+  const term = searchTerm.toLowerCase();
+
+  return (
+    name.toLowerCase().includes(term) ||
+    model.toLowerCase().includes(term) ||
+    ip.includes(searchTerm) ||
+    location.toLowerCase().includes(term) ||
+    (serialNumber && serialNumber.toString().toLowerCase().includes(term)) ||
+    (requestNumber && requestNumber.toString().toLowerCase().includes(term)) ||
+    (technician && technician.toString().toLowerCase().includes(term))
   );
+});
 
   const VendorIcon = ({ vendor }) => {
     const IconComponent = vendorIcons[vendor] || vendorIcons.Other;
@@ -229,6 +235,39 @@ useEffect(() => {
     />
   </label>
 </div>
+
+<button
+  type="button"
+  onClick={() => {
+    // Подготовка данных для Excel
+    const worksheetData = switches.map(s => ({
+      'Название': s.name,
+      'Модель': s.model,
+      'IP-адрес': s.ip,
+      'Местоположение': s.location,
+      'Порты': s.ports,
+      'Статус': { active: 'Активен', maintenance: 'На складе', offline: 'Не в сети' }[s.status],
+      'Производитель': s.vendor,
+      'Дата установки': s.purchaseDate,
+      'Серийный номер': s.serialNumber || '',
+      '№ заявки': s.requestNumber || '',
+      'Сотрудник СЦ': s.technician || ''
+    }));
+
+    // Создаём рабочую книгу и лист
+    const ws = XLSX.utils.json_to_sheet(worksheetData);
+    const wb = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, 'Коммутаторы');
+
+    // Выгружаем файл
+    XLSX.writeFile(wb, `Коммутаторы_${new Date().toISOString().slice(0,10)}.xlsx`);
+  }}
+  className="px-4 py-2 bg-green-600 hover:bg-green-700 text-white text-sm rounded-lg transition-colors duration-200 flex items-center gap-2"
+>
+  <Save className="w-4 h-4" />
+  Экспорт в Excel
+</button>
+
             <div className="relative flex-1 max-w-md">
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
               <input
