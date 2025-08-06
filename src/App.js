@@ -61,6 +61,7 @@ useEffect(() => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editingSwitch, setEditingSwitch] = useState(null);
   const [searchTerm, setSearchTerm] = useState('');
+  const [statusFilter, setStatusFilter] = useState('');
 
   const [formData, setFormData] = useState({
     name: '',
@@ -157,15 +158,20 @@ const filteredSwitches = switches.filter((switchItem) => {
   const { name, model, ip, location, serialNumber, requestNumber, technician } = switchItem;
   const term = searchTerm.toLowerCase();
 
-  return (
+  // Проверка поиска
+  const matchesSearch =
     name.toLowerCase().includes(term) ||
     model.toLowerCase().includes(term) ||
     ip.includes(searchTerm) ||
     location.toLowerCase().includes(term) ||
     (serialNumber && serialNumber.toString().toLowerCase().includes(term)) ||
     (requestNumber && requestNumber.toString().toLowerCase().includes(term)) ||
-    (technician && technician.toString().toLowerCase().includes(term))
-  );
+    (technician && technician.toString().toLowerCase().includes(term));
+
+  // Проверка фильтра по статусу
+  const matchesStatus = statusFilter === '' || switchItem.status === statusFilter;
+
+  return matchesSearch && matchesStatus;
 });
 
   const VendorIcon = ({ vendor }) => {
@@ -236,6 +242,44 @@ const filteredSwitches = switches.filter((switchItem) => {
   </label>
 </div>
 
+
+
+            <div className="relative flex-1 max-w-md">
+              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+              <input
+                type="text"
+                placeholder="Поиск по названию, модели, IP, серийному номеру, № заявки или сотруднику СЦ..."
+                className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+              />
+            </div>
+
+{/* Фильтр по статусу */}
+<div className="flex-1 max-w-xs">
+  <select
+    value={statusFilter}
+    onChange={(e) => setStatusFilter(e.target.value)}
+    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white"
+  >
+    <option value="">Все статусы</option>
+    <option value="active">Активен</option>
+    <option value="maintenance">На складе</option>
+    <option value="offline">Местонахождения неизвестно</option>
+  </select>
+</div>
+
+            <button
+              onClick={() => {
+                setEditingSwitch(null);
+                setIsModalOpen(true);
+              }}
+              className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg transition-colors duration-200 font-medium"
+            >
+              <Plus className="w-5 h-5" />
+              Добавить коммутатор
+            </button>
+
 <button
   type="button"
   onClick={() => {
@@ -246,7 +290,7 @@ const filteredSwitches = switches.filter((switchItem) => {
       'IP-адрес': s.ip,
       'Местоположение': s.location,
       'Порты': s.ports,
-      'Статус': { active: 'Активен', maintenance: 'На складе', offline: 'Не в сети' }[s.status],
+      'Статус': { active: 'Активен', maintenance: 'На складе', offline: 'Местонахождения неизвестно' }[s.status],
       'Производитель': s.vendor,
       'Дата установки': s.purchaseDate,
       'Серийный номер': s.serialNumber || '',
@@ -268,26 +312,6 @@ const filteredSwitches = switches.filter((switchItem) => {
   Экспорт в Excel
 </button>
 
-            <div className="relative flex-1 max-w-md">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
-              <input
-                type="text"
-                placeholder="Поиск по названию, модели, IP, серийному номеру, № заявки или сотруднику СЦ..."
-                className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-              />
-            </div>
-            <button
-              onClick={() => {
-                setEditingSwitch(null);
-                setIsModalOpen(true);
-              }}
-              className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg transition-colors duration-200 font-medium"
-            >
-              <Plus className="w-5 h-5" />
-              Добавить коммутатор
-            </button>
           </div>
         </div>
 
@@ -566,7 +590,7 @@ const filteredSwitches = switches.filter((switchItem) => {
                     >
                       <option value="active">Активен</option>
                       <option value="maintenance">На складе</option>
-                      <option value="offline">Не в сети</option>
+                      <option value="offline">Местонахождения неизвестно</option>
                     </select>
                   </div>
                   <div>
