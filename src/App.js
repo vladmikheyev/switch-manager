@@ -12,7 +12,10 @@ const App = () => {
       ports: 48,
       status: 'active',
       vendor: 'Cisco',
-      purchaseDate: '2023-01-15'
+      purchaseDate: '2023-01-15',
+      serialNumber: 'C9500-123456789',
+      requestNumber: 'ЗЯ-001-2023',
+      technician: 'Иванов А.А.'
     },
     {
       id: 2,
@@ -23,7 +26,10 @@ const App = () => {
       ports: 24,
       status: 'active',
       vendor: 'Huawei',
-      purchaseDate: '2023-03-22'
+      purchaseDate: '2023-03-22',
+      serialNumber: 'S5720-987654321',
+      requestNumber: 'ЗЯ-005-2023',
+      technician: 'Петров С.В.'
     },
     {
       id: 3,
@@ -34,13 +40,17 @@ const App = () => {
       ports: 26,
       status: 'maintenance',
       vendor: 'MikroTik',
-      purchaseDate: '2023-06-10'
+      purchaseDate: '2023-06-10',
+      serialNumber: 'CRS326-ABC123',
+      requestNumber: 'ЗЯ-012-2023',
+      technician: ''
     }
   ]);
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editingSwitch, setEditingSwitch] = useState(null);
   const [searchTerm, setSearchTerm] = useState('');
+
   const [formData, setFormData] = useState({
     name: '',
     model: '',
@@ -49,7 +59,10 @@ const App = () => {
     ports: '',
     status: 'active',
     vendor: '',
-    purchaseDate: ''
+    purchaseDate: '',
+    serialNumber: '',
+    requestNumber: '',
+    technician: ''
   });
 
   const statusColors = {
@@ -84,14 +97,17 @@ const App = () => {
         ports: '',
         status: 'active',
         vendor: '',
-        purchaseDate: ''
+        purchaseDate: '',
+        serialNumber: '',
+        requestNumber: '',
+        technician: ''
       });
     }
   }, [editingSwitch]);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
       [name]: value
     }));
@@ -99,16 +115,20 @@ const App = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    const updatedFormData = {
+      ...formData,
+      id: editingSwitch ? editingSwitch.id : Date.now(),
+      ports: parseInt(formData.ports) || 0
+    };
+
     if (editingSwitch) {
-      setSwitches(prev => prev.map(s => s.id === editingSwitch.id ? { ...formData, id: editingSwitch.id, ports: parseInt(formData.ports) } : s));
+      setSwitches((prev) =>
+        prev.map((s) => (s.id === editingSwitch.id ? updatedFormData : s))
+      );
     } else {
-      const newSwitch = {
-        ...formData,
-        id: Date.now(),
-        ports: parseInt(formData.ports)
-      };
-      setSwitches(prev => [...prev, newSwitch]);
+      setSwitches((prev) => [...prev, updatedFormData]);
     }
+
     setIsModalOpen(false);
     setEditingSwitch(null);
   };
@@ -119,14 +139,17 @@ const App = () => {
   };
 
   const handleDelete = (id) => {
-    setSwitches(prev => prev.filter(s => s.id !== id));
+    setSwitches((prev) => prev.filter((s) => s.id !== id));
   };
 
-  const filteredSwitches = switches.filter(switchItem =>
+  const filteredSwitches = switches.filter((switchItem) =>
     switchItem.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
     switchItem.model.toLowerCase().includes(searchTerm.toLowerCase()) ||
     switchItem.ip.includes(searchTerm) ||
-    switchItem.location.toLowerCase().includes(searchTerm.toLowerCase())
+    switchItem.location.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    switchItem.serialNumber.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    switchItem.requestNumber.toLowerCase().includes(searchTerm.toLowerCase())
+    (switchItem.technician && switchItem.technician.toLowerCase().includes(searchTerm.toLowerCase()))
   );
 
   const VendorIcon = ({ vendor }) => {
@@ -150,7 +173,7 @@ const App = () => {
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
               <input
                 type="text"
-                placeholder="Поиск по названию, модели, IP или местоположению..."
+                placeholder="Поиск по названию, модели, IP, серийному номеру, № заявки или сотруднику СЦ..."
                 className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
@@ -187,7 +210,7 @@ const App = () => {
               <div>
                 <p className="text-gray-600 text-sm">Активные</p>
                 <p className="text-3xl font-bold text-green-600">
-                  {switches.filter(s => s.status === 'active').length}
+                  {switches.filter((s) => s.status === 'active').length}
                 </p>
               </div>
               <div className="bg-green-100 p-3 rounded-lg">
@@ -200,7 +223,7 @@ const App = () => {
               <div>
                 <p className="text-gray-600 text-sm">На складе</p>
                 <p className="text-3xl font-bold text-yellow-600">
-                  {switches.filter(s => s.status === 'maintenance').length}
+                  {switches.filter((s) => s.status === 'maintenance').length}
                 </p>
               </div>
               <div className="bg-yellow-100 p-3 rounded-lg">
@@ -220,6 +243,9 @@ const App = () => {
                   <th className="text-left py-4 px-6 font-semibold text-gray-700">Модель</th>
                   <th className="text-left py-4 px-6 font-semibold text-gray-700">IP адрес</th>
                   <th className="text-left py-4 px-6 font-semibold text-gray-700">Местоположение</th>
+                  <th className="text-left py-4 px-6 font-semibold text-gray-700">Серийный №</th>
+                  <th className="text-left py-4 px-6 font-semibold text-gray-700">№ заявки</th>
+                  <th className="text-left py-4 px-6 font-semibold text-gray-700">Сотрудник СЦ</th>
                   <th className="text-left py-4 px-6 font-semibold text-gray-700">Порты</th>
                   <th className="text-left py-4 px-6 font-semibold text-gray-700">Статус</th>
                   <th className="text-left py-4 px-6 font-semibold text-gray-700">Производитель</th>
@@ -243,6 +269,21 @@ const App = () => {
                     <td className="py-4 px-6 text-gray-700">{switchItem.model}</td>
                     <td className="py-4 px-6 text-gray-700 font-mono">{switchItem.ip}</td>
                     <td className="py-4 px-6 text-gray-700">{switchItem.location}</td>
+                    <td className="py-4 px-6">
+                      <span className="bg-slate-100 text-slate-800 px-2 py-1 rounded text-sm font-mono">
+                        {switchItem.serialNumber}
+                      </span>
+                    </td>
+                    <td className="py-4 px-6">
+                      <span className="bg-indigo-100 text-indigo-800 px-2 py-1 rounded text-sm font-medium">
+                        {switchItem.requestNumber}
+                      </span>
+                    </td>
+                    <td className="py-4 px-6">
+                      <span className="bg-blue-50 text-blue-800 px-3 py-1 rounded text-sm font-medium">
+                        {switchItem.technician || '—'}
+                      </span>
+                    </td>
                     <td className="py-4 px-6">
                       <span className="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm font-medium">
                         {switchItem.ports}
@@ -279,7 +320,6 @@ const App = () => {
               </tbody>
             </table>
           </div>
-          
           {filteredSwitches.length === 0 && (
             <div className="text-center py-12">
               <Server className="w-16 h-16 text-gray-300 mx-auto mb-4" />
@@ -309,7 +349,6 @@ const App = () => {
                   </button>
                 </div>
               </div>
-              
               <form onSubmit={handleSubmit} className="p-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
@@ -323,7 +362,6 @@ const App = () => {
                       onChange={handleInputChange}
                     />
                   </div>
-                  
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">Модель *</label>
                     <input
@@ -335,7 +373,6 @@ const App = () => {
                       onChange={handleInputChange}
                     />
                   </div>
-                  
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">IP адрес *</label>
                     <input
@@ -347,7 +384,6 @@ const App = () => {
                       onChange={handleInputChange}
                     />
                   </div>
-                  
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">Количество портов *</label>
                     <input
@@ -360,7 +396,6 @@ const App = () => {
                       onChange={handleInputChange}
                     />
                   </div>
-                  
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">Местоположение *</label>
                     <input
@@ -372,7 +407,6 @@ const App = () => {
                       onChange={handleInputChange}
                     />
                   </div>
-                  
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">Производитель *</label>
                     <select
@@ -390,7 +424,39 @@ const App = () => {
                       <option value="Other">Другой</option>
                     </select>
                   </div>
-                  
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">Серийный номер *</label>
+                    <input
+                      type="text"
+                      name="serialNumber"
+                      required
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent font-mono"
+                      value={formData.serialNumber}
+                      onChange={handleInputChange}
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">№ заявки *</label>
+                    <input
+                      type="text"
+                      name="requestNumber"
+                      required
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                      value={formData.requestNumber}
+                      onChange={handleInputChange}
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">Сотрудник СЦ</label>
+                    <input
+                      type="text"
+                      name="technician"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                      value={formData.technician}
+                      onChange={handleInputChange}
+                      placeholder="Иванов А.А."
+                    />
+                  </div>
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">Статус</label>
                     <select
@@ -404,7 +470,6 @@ const App = () => {
                       <option value="offline">Не в сети</option>
                     </select>
                   </div>
-                  
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">Дата установки</label>
                     <input
@@ -416,7 +481,6 @@ const App = () => {
                     />
                   </div>
                 </div>
-                
                 <div className="flex gap-4 mt-8">
                   <button
                     type="submit"
