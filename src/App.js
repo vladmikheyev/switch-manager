@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { Plus, Edit, Trash2, Search, Save, X, Wifi, Server, HardDrive } from 'lucide-react';
+import { Plus, Edit, Trash2, Search, Save, X, Wifi, Server, HardDrive, Paperclip, Download } from 'lucide-react';
 import * as XLSX from 'xlsx';
 
 const App = () => {
-const [switches, setSwitches] = useState(() => {
-  const saved = localStorage.getItem('switches');
-  const defaults = [
-  {
+  const [switches, setSwitches] = useState(() => {
+    const saved = localStorage.getItem('switches');
+    const defaults = [
+      {
     "name": "DLINK (свитч)",
     "model": "DES-1008D",
     "ip": "неупр.",
@@ -246,14 +246,21 @@ const [switches, setSwitches] = useState(() => {
   }
 ];
 
-  return saved ? JSON.parse(saved) : defaults;
+const data = saved ? JSON.parse(saved) : defaults;
+
+  // Гарантируем, что у каждого коммутатора есть documents
+   return data.map(item => ({
+    ...item,
+    documents: item.documents || []
+  }));
 });
 
-// Сохраняем в localStorage при каждом изменении
-useEffect(() => {
-  localStorage.setItem('switches', JSON.stringify(switches));
-}, [switches]);
+  
 
+  // Сохраняем в localStorage при каждом изменении
+  useEffect(() => {
+    localStorage.setItem('switches', JSON.stringify(switches));
+  }, [switches]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editingSwitch, setEditingSwitch] = useState(null);
   const [searchTerm, setSearchTerm] = useState('');
@@ -270,7 +277,8 @@ useEffect(() => {
     purchaseDate: '',
     serialNumber: '',
     requestNumber: '',
-    technician: ''
+    technician: '',
+    documents: [] // <-- Новое поле
   });
 
   const statusColors = {
@@ -282,7 +290,7 @@ useEffect(() => {
   const statusLabels = {
     active: 'Активен',
     maintenance: 'На складе',
-    offline: 'Не в сети'
+    offline: 'Местонахождения неизвестно'
   };
 
   const vendorIcons = {
@@ -293,25 +301,74 @@ useEffect(() => {
     Other: Server
   };
 
+  // Сброс формы при открытии/закрытии модалки
   useEffect(() => {
-    if (editingSwitch) {
-      setFormData(editingSwitch);
-    } else {
-      setFormData({
-        name: '',
-        model: '',
-        ip: '',
-        location: '',
-        ports: '',
-        status: 'active',
-        vendor: '',
-        purchaseDate: '',
-        serialNumber: '',
-        requestNumber: '',
-        technician: ''
-      });
+  if (editingSwitch) {
+    setFormData({
+      ...editingSwitch,
+      documents: editingSwitch.documents || [] // ← гарантируем массив
+    });
+  } else {
+    setFormData({
+      name: '',
+      model: '',
+      ip: '',
+      location: '',
+      ports: '',
+      status: 'active',
+      vendor: '',
+      purchaseDate: '',
+      serialNumber: '',
+      requestNumber: '',
+      technician: '',
+      documents: [] // ← уже есть, но напоминаем
+    });
+  }
+}, [editingSwitch]);
+
+  // Конвертация файла в base64
+  const fileToBase64 = (file) => {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => resolve(reader.result);
+      reader.onerror = (error) => reject(error);
+    });
+  };
+
+  // Обработчик выбора файлов
+  const handleFileChange = async (e) => {
+    const files = Array.from(e.target.files);
+    const allowedTypes = ['image/jpeg', 'image/jpg', 'image/png', 'application/pdf'];
+
+    const validFiles = files.filter(file => allowedTypes.includes(file.type));
+    const invalidFiles = files.filter(file => !allowedTypes.includes(file.type));
+
+    if (invalidFiles.length > 0) {
+      alert(`Не поддерживаются: ${invalidFiles.map(f => f.name).join(', ')}`);
     }
-  }, [editingSwitch]);
+
+    if (validFiles.length > 0) {
+      const filePromises = validFiles.map(file => fileToBase64(file).then(base64 => ({
+        name: file.name,
+        type: file.type,
+        base64
+      })));
+      const base64Files = await Promise.all(filePromises);
+      setFormData(prev => ({
+        ...prev,
+        documents: [...(prev.documents || []), ...base64Files]
+      }));
+    }
+  };
+
+  // Удаление прикреплённого файла
+  const removeDocument = (index) => {
+    setFormData(prev => ({
+      ...prev,
+      documents: prev.documents.filter((_, i) => i !== index)
+    }));
+  };
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -327,6 +384,7 @@ useEffect(() => {
       ...formData,
       id: editingSwitch ? editingSwitch.id : Date.now(),
       ports: parseInt(formData.ports) || 0
+      
     };
 
     if (editingSwitch) {
@@ -350,25 +408,25 @@ useEffect(() => {
     setSwitches((prev) => prev.filter((s) => s.id !== id));
   };
 
-const filteredSwitches = switches.filter((switchItem) => {
-  const { name, model, ip, location, serialNumber, requestNumber, technician } = switchItem;
-  const term = searchTerm.toLowerCase();
+  const filteredSwitches = switches.filter((switchItem) => {
+    const { name, model, ip, location, serialNumber, requestNumber, technician } = switchItem;
+    const term = searchTerm.toLowerCase();
 
-  // Проверка поиска
-  const matchesSearch =
-    name.toLowerCase().includes(term) ||
-    model.toLowerCase().includes(term) ||
-    ip.includes(searchTerm) ||
-    location.toLowerCase().includes(term) ||
-    (serialNumber && serialNumber.toString().toLowerCase().includes(term)) ||
-    (requestNumber && requestNumber.toString().toLowerCase().includes(term)) ||
-    (technician && technician.toString().toLowerCase().includes(term));
+								  
+    const matchesSearch =
+      name.toLowerCase().includes(term) ||
+      model.toLowerCase().includes(term) ||
+      ip.includes(searchTerm) ||
+      location.toLowerCase().includes(term) ||
+      (serialNumber && serialNumber.toString().toLowerCase().includes(term)) ||
+      (requestNumber && requestNumber.toString().toLowerCase().includes(term)) ||
+      (technician && technician.toString().toLowerCase().includes(term));
 
-  // Проверка фильтра по статусу
-  const matchesStatus = statusFilter === '' || switchItem.status === statusFilter;
+														
+    const matchesStatus = statusFilter === '' || switchItem.status === statusFilter;
 
-  return matchesSearch && matchesStatus;
-});
+    return matchesSearch && matchesStatus;
+  });
 
   const VendorIcon = ({ vendor }) => {
     const IconComponent = vendorIcons[vendor] || vendorIcons.Other;
@@ -387,7 +445,7 @@ const filteredSwitches = switches.filter((switchItem) => {
         {/* Controls */}
         <div className="bg-white rounded-xl shadow-lg p-6 mb-8">
           <div className="flex flex-col md:flex-row gap-4 items-center justify-between">
-            {/* Кнопки экспорта/импорта */}
+{/* Кнопки экспорта/импорта */}
 <div className="flex flex-wrap gap-3 mt-4">
   <button
     type="button"
@@ -451,19 +509,19 @@ const filteredSwitches = switches.filter((switchItem) => {
               />
             </div>
 
-{/* Фильтр по статусу */}
-<div className="flex-1 max-w-xs">
-  <select
-    value={statusFilter}
-    onChange={(e) => setStatusFilter(e.target.value)}
-    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white"
-  >
-    <option value="">Все статусы</option>
-    <option value="active">Активен</option>
-    <option value="maintenance">На складе</option>
-    <option value="offline">Местонахождения неизвестно</option>
-  </select>
-</div>
+										
+            <div className="flex-1 max-w-xs">
+              <select
+                value={statusFilter}
+                onChange={(e) => setStatusFilter(e.target.value)}
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white"
+              >
+                <option value="">Все статусы</option>
+                <option value="active">Активен</option>
+                <option value="maintenance">На складе</option>
+                <option value="offline">Местонахождения неизвестно</option>
+              </select>
+            </div>
 
             <button
               onClick={() => {
@@ -476,6 +534,7 @@ const filteredSwitches = switches.filter((switchItem) => {
               Добавить коммутатор
             </button>
 
+															   
 <button
   type="button"
   onClick={() => {
@@ -520,6 +579,7 @@ const filteredSwitches = switches.filter((switchItem) => {
                 <p className="text-3xl font-bold text-gray-800">{switches.length}</p>
               </div>
               <div className="bg-blue-100 p-3 rounded-lg">
+								
                 <Server className="w-8 h-8 text-blue-600" />
               </div>
             </div>
@@ -568,6 +628,7 @@ const filteredSwitches = switches.filter((switchItem) => {
                   <th className="text-left py-4 px-6 font-semibold text-gray-700">Порты</th>
                   <th className="text-left py-4 px-6 font-semibold text-gray-700">Статус</th>
                   <th className="text-left py-4 px-6 font-semibold text-gray-700">Производитель</th>
+                  <th className="text-left py-4 px-6 font-semibold text-gray-700">Документы</th>
                   <th className="text-left py-4 px-6 font-semibold text-gray-700">Действия</th>
                 </tr>
               </thead>
@@ -619,6 +680,25 @@ const filteredSwitches = switches.filter((switchItem) => {
                       </span>
                     </td>
                     <td className="py-4 px-6">
+                      {switchItem.documents && switchItem.documents.length > 0 ? (
+                        <div className="flex flex-col gap-1">
+                          {switchItem.documents.map((doc, index) => (
+                            <a
+                              key={index}
+                              href={doc.base64}
+                              download={doc.name}
+                              className="flex items-center gap-1 text-blue-600 hover:underline text-sm"
+                            >
+                              <Download className="w-4 h-4" />
+                              {doc.name}
+                            </a>
+                          ))}
+                        </div>
+                      ) : (
+                        <span className="text-gray-400 text-sm">Нет</span>
+                      )}
+                    </td>
+                    <td className="py-4 px-6">
                       <div className="flex items-center gap-2">
                         <button
                           onClick={() => handleEdit(switchItem)}
@@ -651,7 +731,7 @@ const filteredSwitches = switches.filter((switchItem) => {
         {/* Modal */}
         {isModalOpen && (
           <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
-            <div className="bg-white rounded-xl shadow-2xl w-full max-w-2xl max-h-screen overflow-y-auto">
+            <div className="bg-white rounded-xl shadow-2xl w-full max-w-4xl max-h-screen overflow-y-auto">
               <div className="p-6 border-b border-gray-200">
                 <div className="flex items-center justify-between">
                   <h2 className="text-2xl font-bold text-gray-800">
@@ -798,6 +878,39 @@ const filteredSwitches = switches.filter((switchItem) => {
                       value={formData.purchaseDate}
                       onChange={handleInputChange}
                     />
+                  </div>
+                  {/* Новое поле: Документы */}
+                  <div className="md:col-span-2">
+                    <label className="block text-sm font-medium text-gray-700 mb-2">Документы</label>
+                    <input
+                      type="file"
+                      accept=".jpg,.jpeg,.png,.pdf"
+                      multiple
+                      onChange={handleFileChange}
+                      className="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-medium file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100"
+                    />
+                    {formData.documents && formData.documents.length > 0 && (
+                      <div className="mt-3 space-y-2">
+                        <p className="text-sm font-medium text-gray-700">Прикреплённые файлы:</p>
+                        <ul className="space-y-1">
+                          {formData.documents.map((doc, index) => (
+                            <li key={index} className="flex items-center justify-between bg-gray-50 p-2 rounded text-sm">
+                              <span className="flex items-center gap-2 text-blue-600">
+                                <Paperclip className="w-4 h-4" />
+                                {doc.name}
+                              </span>
+                              <button
+                                type="button"
+                                onClick={() => removeDocument(index)}
+                                className="text-red-500 hover:text-red-700"
+                              >
+                                Удалить
+                              </button>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
                   </div>
                 </div>
                 <div className="flex gap-4 mt-8">
