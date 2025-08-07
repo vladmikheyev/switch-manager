@@ -6,10 +6,9 @@ const App = () => {
   const [switches, setSwitches] = useState(() => {
     const saved = localStorage.getItem('switches');
     const defaults = [
-      {
+  {
     "name": "DLINK (свитч)",
     "model": "DES-1008D",
-    "ip": "неупр.",
     "location": "АБК ЦХП, каб. 219 (Харитонова О.М.)",
     "ports": 8,
     "status": "active",
@@ -18,12 +17,20 @@ const App = () => {
     "serialNumber": "QS42233001807",
     "requestNumber": "SR01385632",
     "technician": "Ковалев Д.С.",
-    "id": 1754469579089
+    "id": 1754469579089,
+    "documents": [
+      {
+        "name": "SR01385632.jpg",
+        "path": "/uploads/1754556355043-SR01385632.jpg",
+        "type": "image/jpeg",
+        "size": 673516,
+        "uploadDate": "2025-08-07T08:45:55.341Z"
+      }
+    ]
   },
   {
     "name": "DLINK (свитч)",
     "model": "DES-1008D",
-    "ip": "неупр.",
     "location": "АБК ЦХП, каб. 219 (инж.2к. БУОП Кондакова В.А.)",
     "ports": 8,
     "status": "active",
@@ -32,13 +39,21 @@ const App = () => {
     "serialNumber": "QS42233001802",
     "requestNumber": "SR01406657",
     "technician": "Ковалев Д.С.",
-    "id": 1754469773805
+    "id": 1754469773805,
+    "documents": [
+      {
+        "name": "SR01406657.jpg",
+        "path": "/uploads/1754556542873-SR01406657.jpg",
+        "type": "image/jpeg",
+        "size": 658962,
+        "uploadDate": "2025-08-07T08:49:03.196Z"
+      }
+    ]
   },
   {
     "name": "DLINK (свитч)",
     "model": "DGS-1005A",
-    "ip": "неупр.",
-    "location": "(инж. по экспл. зданий Шаламанов М.Ю))",
+    "location": "АБК МЦ-2, каб. 2-20 (инж. по экспл. зданий Шаломанов М.Ю)",
     "ports": 5,
     "status": "active",
     "vendor": "Dlink",
@@ -46,13 +61,21 @@ const App = () => {
     "serialNumber": "U8ED132045037",
     "requestNumber": "SR01416821",
     "technician": "Ковалев Д.С.",
-    "id": 1754470014089
+    "id": 1754470014089,
+    "documents": [
+      {
+        "name": "SR01416821.jpg",
+        "path": "/uploads/1754557678074-SR01416821.jpg",
+        "type": "image/jpeg",
+        "size": 715968,
+        "uploadDate": "2025-08-07T09:07:58.421Z"
+      }
+    ]
   },
   {
     "name": "DLINK (свитч)",
     "model": "DGS-1005A",
-    "ip": "неупр.",
-    "location": "(инж. ЦТК Лунева Анаст. Вад.)",
+    "location": "(инж. ЦТК Лунёва Анаст. Вад.)",
     "ports": 5,
     "status": "active",
     "vendor": "Dlink",
@@ -60,12 +83,20 @@ const App = () => {
     "serialNumber": "U8ED132045023",
     "requestNumber": "SR01431386",
     "technician": "Ковалев Д.С.",
-    "id": 1754470216653
+    "id": 1754470216653,
+    "documents": [
+      {
+        "name": "SR01431386.jpg",
+        "path": "/uploads/1754557788422-SR01431386.jpg",
+        "type": "image/jpeg",
+        "size": 656188,
+        "uploadDate": "2025-08-07T09:09:48.797Z"
+      }
+    ]
   },
   {
     "name": "DLINK (свитч)",
     "model": "DGS-1005A",
-    "ip": "неупр.",
     "location": "АБК ЦХП, каб. 219 (вед. эксп. Агринская С.А.)",
     "ports": 5,
     "status": "active",
@@ -74,12 +105,20 @@ const App = () => {
     "serialNumber": "U8ED132045031",
     "requestNumber": "SR01444319",
     "technician": "Ковалев Д.С.",
-    "id": 1754470451975
+    "id": 1754470451975,
+    "documents": [
+      {
+        "name": "SR01444319.jpg",
+        "path": "/uploads/1754557803763-SR01444319.jpg",
+        "type": "image/jpeg",
+        "size": 760384,
+        "uploadDate": "2025-08-07T09:10:04.113Z"
+      }
+    ]
   },
   {
     "name": "DLINK (свитч)",
     "model": "DES-1008D",
-    "ip": "неупр.",
     "location": "АБК ЦХП, каб. 227 (СЦ)",
     "ports": 8,
     "status": "active",
@@ -88,12 +127,12 @@ const App = () => {
     "serialNumber": "QS42233001806",
     "requestNumber": "для нужд СЦ",
     "technician": "Ковалев Д.С.",
-    "id": 1754471730741
+    "id": 1754471730741,
+    "documents": []
   },
   {
     "name": "DLINK (свитч)",
     "model": "DGS-1005A",
-    "ip": "неупр.",
     "location": "(спец. 2р ОЛиТ Афанасьева Н.М.) ",
     "ports": 5,
     "status": "active",
@@ -102,13 +141,21 @@ const App = () => {
     "serialNumber": "U8ED132045035",
     "requestNumber": "SR01459599",
     "technician": "Ситьков В.Р.",
-    "id": 1754474061216
+    "id": 1754474061216,
+    "documents": [
+      {
+        "name": "SR01459599.jpg",
+        "path": "/uploads/1754557844331-SR01459599.jpg",
+        "type": "image/jpeg",
+        "size": 718631,
+        "uploadDate": "2025-08-07T09:10:44.675Z"
+      }
+    ]
   },
   {
     "name": "DLINK (свитч)",
     "model": "DGS-1005A",
-    "ip": "неупр.",
-    "location": "(вед. инж. ОГЭ Красиков Е.А.) ",
+    "location": "АБК МЦ-2, каб. 2.21 (вед. инж. ОГЭ Красиков Е.А.) ",
     "ports": 5,
     "status": "active",
     "vendor": "Dlink",
@@ -116,13 +163,21 @@ const App = () => {
     "serialNumber": "U8ED132045040",
     "requestNumber": "SR01479156",
     "technician": "Михеев В.Г.",
-    "id": 1754474257901
+    "id": 1754474257901,
+    "documents": [
+      {
+        "name": "SR01479156.jpg",
+        "path": "/uploads/1754557862360-SR01479156.jpg",
+        "type": "image/jpeg",
+        "size": 758609,
+        "uploadDate": "2025-08-07T09:11:02.728Z"
+      }
+    ]
   },
   {
     "name": "DLINK (свитч)",
     "model": "DGS-1005A",
-    "ip": "неупр.",
-    "location": "АБК ТЭСЦ, 3 эт., акт. зал (Тимофеев Н.С.) ",
+    "location": "АБК ТЭСЦ, 3 эт., акт. зал (нач. смены Тимофеев Н.С.)",
     "ports": 5,
     "status": "active",
     "vendor": "Dlink",
@@ -130,13 +185,21 @@ const App = () => {
     "serialNumber": "U8ED132045027",
     "requestNumber": "SR01480283",
     "technician": "Михеев В.Г.",
-    "id": 1754474380761
+    "id": 1754474380761,
+    "documents": [
+      {
+        "name": "SR01480283.jpg",
+        "path": "/uploads/1754557922647-SR01480283.jpg",
+        "type": "image/jpeg",
+        "size": 774410,
+        "uploadDate": "2025-08-07T09:12:02.906Z"
+      }
+    ]
   },
   {
     "name": "DLINK (свитч)",
     "model": "DGS-1005A",
-    "ip": "неупр.",
-    "location": "АБК ТЭСЦ, 2 эт., каб. 2.12",
+    "location": "АБК ТЭСЦ, 2 эт., каб. 212 (нач. бюро Сазонов А.Н.)",
     "ports": 5,
     "status": "active",
     "vendor": "Dlink",
@@ -144,12 +207,20 @@ const App = () => {
     "serialNumber": "U8ED132045029",
     "requestNumber": "SR01420195",
     "technician": "Михеев В.Г.",
-    "id": 1754474543581
+    "id": 1754474543581,
+    "documents": [
+      {
+        "name": "SR01480283_2.jpg",
+        "path": "/uploads/1754558037828-SR01480283_2.jpg",
+        "type": "image/jpeg",
+        "size": 1328554,
+        "uploadDate": "2025-08-07T09:13:58.359Z"
+      }
+    ]
   },
   {
     "name": "DLINK (свитч)",
     "model": "DES-1008D",
-    "ip": "неупр.",
     "location": "АБК ТЭСЦ, 3 эт., акт. зал, шкаф СКС",
     "ports": 8,
     "status": "active",
@@ -158,12 +229,20 @@ const App = () => {
     "serialNumber": "QS9G24B002097",
     "requestNumber": "SR01480283",
     "technician": "Михеев В.Г.",
-    "id": 1754474705313
+    "id": 1754474705313,
+    "documents": [
+      {
+        "name": "SR01480283_2.jpg",
+        "path": "/uploads/1754558060125-SR01480283_2.jpg",
+        "type": "image/jpeg",
+        "size": 1328554,
+        "uploadDate": "2025-08-07T09:14:20.663Z"
+      }
+    ]
   },
   {
     "name": "DLINK (свитч)",
     "model": "DGS-1005A",
-    "ip": "неупр.",
     "location": "Склад (Калашникова Н.М.)",
     "ports": 5,
     "status": "active",
@@ -172,12 +251,20 @@ const App = () => {
     "serialNumber": "U8ED132045028",
     "requestNumber": "SR01487687",
     "technician": "Ковалев Д.С.",
-    "id": 1754474830155
+    "id": 1754474830155,
+    "documents": [
+      {
+        "name": "SR01487687.jpg",
+        "path": "/uploads/1754558080914-SR01487687.jpg",
+        "type": "image/jpeg",
+        "size": 641146,
+        "uploadDate": "2025-08-07T09:14:41.218Z"
+      }
+    ]
   },
   {
     "name": "DLINK (свитч)",
     "model": "DES-1008D",
-    "ip": "неупр.",
     "location": "АБК ЦХП, каб. 219 (секрет. руковод. Попова А.А.)",
     "ports": 8,
     "status": "active",
@@ -186,12 +273,20 @@ const App = () => {
     "serialNumber": "QS9G24B002100",
     "requestNumber": "SR01488538",
     "technician": "Ковалев Д.С.",
-    "id": 1754475223582
+    "id": 1754475223582,
+    "documents": [
+      {
+        "name": "SR01488538.jpg",
+        "path": "/uploads/1754558103466-SR01488538.jpg",
+        "type": "image/jpeg",
+        "size": 698828,
+        "uploadDate": "2025-08-07T09:15:03.791Z"
+      }
+    ]
   },
   {
     "name": "DLINK (свитч)",
     "model": "DES-1008D",
-    "ip": "неупр.",
     "location": "АБК ЦХП, каб. 227 (складирован)",
     "ports": 8,
     "status": "maintenance",
@@ -200,12 +295,12 @@ const App = () => {
     "serialNumber": "QS9G24B002096",
     "requestNumber": "---",
     "technician": "---",
-    "id": 1754475496037
+    "id": 1754475496037,
+    "documents": []
   },
   {
     "name": "DLINK (свитч)",
     "model": "DES-1008D",
-    "ip": "неупр.",
     "location": "АБК ЦХП, каб. 227 (складирован)",
     "ports": 8,
     "status": "maintenance",
@@ -214,12 +309,12 @@ const App = () => {
     "serialNumber": "QS42233001810",
     "requestNumber": "---",
     "technician": "---",
-    "id": 1754475581193
+    "id": 1754475581193,
+    "documents": []
   },
   {
     "name": "DLINK (свитч)",
     "model": "DES-1008D",
-    "ip": "неупр.",
     "location": "АБК ЦХП, каб. 227 (складирован)",
     "ports": 8,
     "status": "maintenance",
@@ -228,12 +323,12 @@ const App = () => {
     "serialNumber": "QS42233001801",
     "requestNumber": "---",
     "technician": "---",
-    "id": 1754475621892
+    "id": 1754475621892,
+    "documents": []
   },
   {
     "name": "DLINK (свитч)",
     "model": "DES-1008D",
-    "ip": "неупр.",
     "location": "АБК ЦХП, каб. 227 (складирован)",
     "ports": 8,
     "status": "maintenance",
@@ -242,7 +337,8 @@ const App = () => {
     "serialNumber": "QS42233001809",
     "requestNumber": "---",
     "technician": "---",
-    "id": 1754475654220
+    "id": 1754475654220,
+    "documents": []
   }
 ];
 
@@ -269,7 +365,6 @@ const data = saved ? JSON.parse(saved) : defaults;
   const [formData, setFormData] = useState({
     name: '',
     model: '',
-    ip: '',
     location: '',
     ports: '',
     status: 'active',
@@ -312,7 +407,6 @@ const data = saved ? JSON.parse(saved) : defaults;
     setFormData({
       name: '',
       model: '',
-      ip: '',
       location: '',
       ports: '',
       status: 'active',
@@ -406,14 +500,13 @@ const data = saved ? JSON.parse(saved) : defaults;
   };
 
   const filteredSwitches = switches.filter((switchItem) => {
-    const { name, model, ip, location, serialNumber, requestNumber, technician } = switchItem;
+    const { name, model, location, serialNumber, requestNumber, technician } = switchItem;
     const term = searchTerm.toLowerCase();
 
 								  
     const matchesSearch =
       name.toLowerCase().includes(term) ||
       model.toLowerCase().includes(term) ||
-      ip.includes(searchTerm) ||
       location.toLowerCase().includes(term) ||
       (serialNumber && serialNumber.toString().toLowerCase().includes(term)) ||
       (requestNumber && requestNumber.toString().toLowerCase().includes(term)) ||
@@ -499,7 +592,7 @@ const data = saved ? JSON.parse(saved) : defaults;
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
               <input
                 type="text"
-                placeholder="Поиск по названию, модели, IP, серийному номеру, № заявки или сотруднику СЦ..."
+                placeholder="Поиск по названию, модели, серийному номеру, № заявки или сотруднику СЦ..."
                 className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
@@ -539,7 +632,6 @@ const data = saved ? JSON.parse(saved) : defaults;
     const worksheetData = switches.map(s => ({
       'Название': s.name,
       'Модель': s.model,
-      'IP-адрес': s.ip,
       'Местоположение': s.location,
       'Порты': s.ports,
       'Статус': { active: 'Активен', maintenance: 'На складе', offline: 'Местонахождения неизвестно' }[s.status],
@@ -617,7 +709,6 @@ const data = saved ? JSON.parse(saved) : defaults;
                 <tr>
                   <th className="text-left py-4 px-6 font-semibold text-gray-700">Коммутатор</th>
                   <th className="text-left py-4 px-6 font-semibold text-gray-700">Модель</th>
-                  <th className="text-left py-4 px-6 font-semibold text-gray-700">IP адрес</th>
                   <th className="text-left py-4 px-6 font-semibold text-gray-700">Местоположение</th>
                   <th className="text-left py-4 px-6 font-semibold text-gray-700">Серийный №</th>
                   <th className="text-left py-4 px-6 font-semibold text-gray-700">№ заявки</th>
@@ -644,7 +735,6 @@ const data = saved ? JSON.parse(saved) : defaults;
                       </div>
                     </td>
                     <td className="py-4 px-6 text-gray-700">{switchItem.model}</td>
-                    <td className="py-4 px-6 text-gray-700 font-mono">{switchItem.ip}</td>
                     <td className="py-4 px-6 text-gray-700">{switchItem.location}</td>
                     <td className="py-4 px-6">
                       <span className="bg-slate-100 text-slate-800 px-2 py-1 rounded text-sm font-mono">
@@ -771,17 +861,7 @@ const data = saved ? JSON.parse(saved) : defaults;
                       onChange={handleInputChange}
                     />
                   </div>
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">IP адрес *</label>
-                    <input
-                      type="text"
-                      name="ip"
-                      required
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent font-mono"
-                      value={formData.ip}
-                      onChange={handleInputChange}
-                    />
-                  </div>
+
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">Количество портов *</label>
                     <input
