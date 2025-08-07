@@ -326,41 +326,38 @@ const data = saved ? JSON.parse(saved) : defaults;
   }
 }, [editingSwitch]);
 
-  // Конвертация файла в base64
-  const fileToBase64 = (file) => {
-    return new Promise((resolve, reject) => {
-      const reader = new FileReader();
-      reader.readAsDataURL(file);
-      reader.onload = () => resolve(reader.result);
-      reader.onerror = (error) => reject(error);
-    });
-  };
 
   // Обработчик выбора файлов
   const handleFileChange = async (e) => {
-    const files = Array.from(e.target.files);
-    const allowedTypes = ['image/jpeg', 'image/jpg', 'image/png', 'application/pdf'];
+  const file = e.target.files[0];
+  if (!file) return;
 
-    const validFiles = files.filter(file => allowedTypes.includes(file.type));
-    const invalidFiles = files.filter(file => !allowedTypes.includes(file.type));
+  const allowedTypes = ['image/jpeg', 'image/jpg', 'image/png', 'application/pdf'];
+  if (!allowedTypes.includes(file.type)) {
+    alert('Неподдерживаемый формат файла');
+    return;
+  }
 
-    if (invalidFiles.length > 0) {
-      alert(`Не поддерживаются: ${invalidFiles.map(f => f.name).join(', ')}`);
+  const formData = new FormData();
+  formData.append('file', file);
+
+  try {
+    const response = await fetch(`http://localhost:5000/api/upload/${editingSwitch.id}`, {
+  method: 'POST',
+  body: formData
+});
+
+    const result = await response.json();
+    if (response.ok) {
+      setEditingSwitch(result); // обновляем текущий объект
+      setSwitches(prev => prev.map(s => s.id === result.id ? result : s));
+    } else {
+      alert('Ошибка загрузки: ' + result.error);
     }
-
-    if (validFiles.length > 0) {
-      const filePromises = validFiles.map(file => fileToBase64(file).then(base64 => ({
-        name: file.name,
-        type: file.type,
-        base64
-      })));
-      const base64Files = await Promise.all(filePromises);
-      setFormData(prev => ({
-        ...prev,
-        documents: [...(prev.documents || []), ...base64Files]
-      }));
-    }
-  };
+  } catch (err) {
+    alert('Не удалось подключиться к серверу');
+  }
+};
 
   // Удаление прикреплённого файла
   const removeDocument = (index) => {
@@ -546,7 +543,7 @@ const data = saved ? JSON.parse(saved) : defaults;
       'Местоположение': s.location,
       'Порты': s.ports,
       'Статус': { active: 'Активен', maintenance: 'На складе', offline: 'Местонахождения неизвестно' }[s.status],
-      'Производитель': s.vendor,
+      'Вендор': s.vendor,
       'Дата установки': s.purchaseDate,
       'Серийный номер': s.serialNumber || '',
       '№ заявки': s.requestNumber || '',
@@ -627,7 +624,7 @@ const data = saved ? JSON.parse(saved) : defaults;
                   <th className="text-left py-4 px-6 font-semibold text-gray-700">Сотрудник СЦ</th>
                   <th className="text-left py-4 px-6 font-semibold text-gray-700">Порты</th>
                   <th className="text-left py-4 px-6 font-semibold text-gray-700">Статус</th>
-                  <th className="text-left py-4 px-6 font-semibold text-gray-700">Производитель</th>
+                  <th className="text-left py-4 px-6 font-semibold text-gray-700">Вендор</th>
                   <th className="text-left py-4 px-6 font-semibold text-gray-700">Документы</th>
                   <th className="text-left py-4 px-6 font-semibold text-gray-700">Действия</th>
                 </tr>
@@ -685,8 +682,10 @@ const data = saved ? JSON.parse(saved) : defaults;
                           {switchItem.documents.map((doc, index) => (
                             <a
                               key={index}
-                              href={doc.base64}
+                              href={`http://localhost:5000${doc.path}`}
                               download={doc.name}
+                              target="_blank"
+                              rel="noopener noreferrer"
                               className="flex items-center gap-1 text-blue-600 hover:underline text-sm"
                             >
                               <Download className="w-4 h-4" />
@@ -807,7 +806,7 @@ const data = saved ? JSON.parse(saved) : defaults;
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">Производитель *</label>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">Вендор *</label>
                     <select
                       name="vendor"
                       required
@@ -897,7 +896,9 @@ const data = saved ? JSON.parse(saved) : defaults;
                             <li key={index} className="flex items-center justify-between bg-gray-50 p-2 rounded text-sm">
                               <span className="flex items-center gap-2 text-blue-600">
                                 <Paperclip className="w-4 h-4" />
-                                {doc.name}
+                                <a href={`http://localhost:5000${doc.path}`} download target="_blank">
+                                    {doc.name}
+                                </a>
                               </span>
                               <button
                                 type="button"
