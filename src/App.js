@@ -436,7 +436,7 @@ const data = saved ? JSON.parse(saved) : defaults;
   formData.append('file', file);
 
   try {
-    const response = await fetch(`http://localhost:5000/api/upload/${editingSwitch.id}`, {
+    const response = await fetch(`http://10.182.62.50:5000/api/upload/${editingSwitch.id}`, {
   method: 'POST',
   body: formData
 });
@@ -772,7 +772,7 @@ const data = saved ? JSON.parse(saved) : defaults;
                           {switchItem.documents.map((doc, index) => (
                             <a
                               key={index}
-                              href={`http://localhost:5000${doc.path}`}
+                              href={`http://10.182.62.50:5000${doc.path}`}
                               download={doc.name}
                               target="_blank"
                               rel="noopener noreferrer"
@@ -976,7 +976,7 @@ const data = saved ? JSON.parse(saved) : defaults;
                             <li key={index} className="flex items-center justify-between bg-gray-50 p-2 rounded text-sm">
                               <span className="flex items-center gap-2 text-blue-600">
                                 <Paperclip className="w-4 h-4" />
-                                <a href={`http://localhost:5000${doc.path}`} download target="_blank">
+                                <a href={`http://10.182.62.50:5000${doc.path}`} download target="_blank">
                                     {doc.name}
                                 </a>
                               </span>
