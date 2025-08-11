@@ -9,6 +9,7 @@ const App = () => {
   {
     "name": "DLINK (свитч)",
     "model": "DES-1008D",
+    "ip": "неупр.",
     "location": "АБК ЦХП, каб. 219 (Харитонова О.М.)",
     "ports": 8,
     "status": "active",
@@ -31,6 +32,7 @@ const App = () => {
   {
     "name": "DLINK (свитч)",
     "model": "DES-1008D",
+    "ip": "неупр.",
     "location": "АБК ЦХП, каб. 219 (инж.2к. БУОП Кондакова В.А.)",
     "ports": 8,
     "status": "active",
@@ -53,6 +55,7 @@ const App = () => {
   {
     "name": "DLINK (свитч)",
     "model": "DGS-1005A",
+    "ip": "неупр.",
     "location": "АБК МЦ-2, каб. 2-20 (инж. по экспл. зданий Шаломанов М.Ю)",
     "ports": 5,
     "status": "active",
@@ -75,6 +78,7 @@ const App = () => {
   {
     "name": "DLINK (свитч)",
     "model": "DGS-1005A",
+    "ip": "неупр.",
     "location": "(инж. ЦТК Лунёва Анаст. Вад.)",
     "ports": 5,
     "status": "active",
@@ -97,6 +101,7 @@ const App = () => {
   {
     "name": "DLINK (свитч)",
     "model": "DGS-1005A",
+    "ip": "неупр.",
     "location": "АБК ЦХП, каб. 219 (вед. эксп. Агринская С.А.)",
     "ports": 5,
     "status": "active",
@@ -119,6 +124,7 @@ const App = () => {
   {
     "name": "DLINK (свитч)",
     "model": "DES-1008D",
+    "ip": "неупр.",
     "location": "АБК ЦХП, каб. 227 (СЦ)",
     "ports": 8,
     "status": "active",
@@ -133,6 +139,7 @@ const App = () => {
   {
     "name": "DLINK (свитч)",
     "model": "DGS-1005A",
+    "ip": "неупр.",
     "location": "(спец. 2р ОЛиТ Афанасьева Н.М.) ",
     "ports": 5,
     "status": "active",
@@ -155,6 +162,7 @@ const App = () => {
   {
     "name": "DLINK (свитч)",
     "model": "DGS-1005A",
+    "ip": "неупр.",
     "location": "АБК МЦ-2, каб. 2.21 (вед. инж. ОГЭ Красиков Е.А.) ",
     "ports": 5,
     "status": "active",
@@ -177,6 +185,7 @@ const App = () => {
   {
     "name": "DLINK (свитч)",
     "model": "DGS-1005A",
+    "ip": "неупр.",
     "location": "АБК ТЭСЦ, 3 эт., акт. зал (нач. смены Тимофеев Н.С.)",
     "ports": 5,
     "status": "active",
@@ -199,6 +208,7 @@ const App = () => {
   {
     "name": "DLINK (свитч)",
     "model": "DGS-1005A",
+    "ip": "неупр.",
     "location": "АБК ТЭСЦ, 2 эт., каб. 212 (нач. бюро Сазонов А.Н.)",
     "ports": 5,
     "status": "active",
@@ -221,6 +231,7 @@ const App = () => {
   {
     "name": "DLINK (свитч)",
     "model": "DES-1008D",
+    "ip": "неупр.",
     "location": "АБК ТЭСЦ, 3 эт., акт. зал, шкаф СКС",
     "ports": 8,
     "status": "active",
@@ -243,6 +254,7 @@ const App = () => {
   {
     "name": "DLINK (свитч)",
     "model": "DGS-1005A",
+    "ip": "неупр.",
     "location": "Склад (Калашникова Н.М.)",
     "ports": 5,
     "status": "active",
@@ -265,6 +277,7 @@ const App = () => {
   {
     "name": "DLINK (свитч)",
     "model": "DES-1008D",
+    "ip": "неупр.",
     "location": "АБК ЦХП, каб. 219 (секрет. руковод. Попова А.А.)",
     "ports": 8,
     "status": "active",
@@ -287,6 +300,7 @@ const App = () => {
   {
     "name": "DLINK (свитч)",
     "model": "DES-1008D",
+    "ip": "неупр.",
     "location": "АБК ЦХП, каб. 227 (складирован)",
     "ports": 8,
     "status": "maintenance",
@@ -301,6 +315,7 @@ const App = () => {
   {
     "name": "DLINK (свитч)",
     "model": "DES-1008D",
+    "ip": "неупр.",
     "location": "АБК ЦХП, каб. 227 (складирован)",
     "ports": 8,
     "status": "maintenance",
@@ -315,6 +330,7 @@ const App = () => {
   {
     "name": "DLINK (свитч)",
     "model": "DES-1008D",
+    "ip": "неупр.",
     "location": "АБК ЦХП, каб. 227 (складирован)",
     "ports": 8,
     "status": "maintenance",
@@ -329,6 +345,7 @@ const App = () => {
   {
     "name": "DLINK (свитч)",
     "model": "DES-1008D",
+    "ip": "неупр.",
     "location": "АБК ЦХП, каб. 227 (складирован)",
     "ports": 8,
     "status": "maintenance",
@@ -339,6 +356,202 @@ const App = () => {
     "technician": "---",
     "id": 1754475654220,
     "documents": []
+  },
+  {
+    "name": "DLINK (свитч)",
+    "model": "DGS-1005D",
+    "location": "Склад (Калашникова Н.М.)",
+    "ports": 5,
+    "status": "maintenance",
+    "vendor": "Dlink",
+    "purchaseDate": "2025-08-08",
+    "serialNumber": "QS9F255001321",
+    "requestNumber": "---",
+    "technician": "Калашникова Н.М.",
+    "documents": [],
+    "id": 1754638844360
+  },
+  {
+    "name": "DLINK (свитч)",
+    "model": "DGS-1005D",
+    "location": "Склад (Калашникова Н.М.)",
+    "ports": 5,
+    "status": "maintenance",
+    "vendor": "Dlink",
+    "purchaseDate": "2025-08-08",
+    "serialNumber": "QS9F255001322",
+    "requestNumber": "---",
+    "technician": "Калашникова Н.М.",
+    "documents": [],
+    "id": 1754638900841
+  },
+  {
+    "name": "DLINK (свитч)",
+    "model": "DGS-1005D",
+    "location": "Склад (Калашникова Н.М.)",
+    "ports": 5,
+    "status": "maintenance",
+    "vendor": "Dlink",
+    "purchaseDate": "2025-08-08",
+    "serialNumber": "QS9F255001323",
+    "requestNumber": "---",
+    "technician": "Калашникова Н.М.",
+    "documents": [],
+    "id": 1754638910690
+  },
+  {
+    "name": "DLINK (свитч)",
+    "model": "DGS-1005D",
+    "location": "Склад (Калашникова Н.М.)",
+    "ports": 5,
+    "status": "maintenance",
+    "vendor": "Dlink",
+    "purchaseDate": "2025-08-08",
+    "serialNumber": "QS9F255001324",
+    "requestNumber": "---",
+    "technician": "Калашникова Н.М.",
+    "documents": [],
+    "id": 1754638917866
+  },
+  {
+    "name": "DLINK (свитч)",
+    "model": "DGS-1005D",
+    "location": "Склад (Калашникова Н.М.)",
+    "ports": 5,
+    "status": "maintenance",
+    "vendor": "Dlink",
+    "purchaseDate": "2025-08-08",
+    "serialNumber": "QS9F255001325",
+    "requestNumber": "---",
+    "technician": "Калашникова Н.М.",
+    "documents": [],
+    "id": 1754638924457
+  },
+  {
+    "name": "DLINK (свитч)",
+    "model": "DGS-1005D",
+    "location": "Склад (Калашникова Н.М.)",
+    "ports": 5,
+    "status": "maintenance",
+    "vendor": "Dlink",
+    "purchaseDate": "2025-08-08",
+    "serialNumber": "QS9F255001326",
+    "requestNumber": "---",
+    "technician": "Калашникова Н.М.",
+    "documents": [],
+    "id": 1754638931386
+  },
+  {
+    "name": "DLINK (свитч)",
+    "model": "DGS-1005D",
+    "location": "Склад (Калашникова Н.М.)",
+    "ports": 5,
+    "status": "maintenance",
+    "vendor": "Dlink",
+    "purchaseDate": "2025-08-08",
+    "serialNumber": "QS9F255001327",
+    "requestNumber": "---",
+    "technician": "Калашникова Н.М.",
+    "documents": [],
+    "id": 1754638938169
+  },
+  {
+    "name": "DLINK (свитч)",
+    "model": "DGS-1005D",
+    "location": "Склад (Калашникова Н.М.)",
+    "ports": 5,
+    "status": "maintenance",
+    "vendor": "Dlink",
+    "purchaseDate": "2025-08-08",
+    "serialNumber": "QS9F255001328",
+    "requestNumber": "---",
+    "technician": "Калашникова Н.М.",
+    "documents": [],
+    "id": 1754638944649
+  },
+  {
+    "name": "DLINK (свитч)",
+    "model": "DGS-1005D",
+    "location": "Склад (Калашникова Н.М.)",
+    "ports": 5,
+    "status": "maintenance",
+    "vendor": "Dlink",
+    "purchaseDate": "2025-08-08",
+    "serialNumber": "QS9F255001329",
+    "requestNumber": "---",
+    "technician": "Калашникова Н.М.",
+    "documents": [],
+    "id": 1754638955836
+  },
+  {
+    "name": "DLINK (свитч)",
+    "model": "DGS-1005D",
+    "location": "Склад (Калашникова Н.М.)",
+    "ports": 5,
+    "status": "maintenance",
+    "vendor": "Dlink",
+    "purchaseDate": "2025-08-08",
+    "serialNumber": "QS9F255001330",
+    "requestNumber": "---",
+    "technician": "Калашникова Н.М.",
+    "documents": [],
+    "id": 1754638963132
+  },
+  {
+    "name": "DLINK (свитч)",
+    "model": "DGS-1005A",
+    "location": "АБК ЦХП, каб. 227 (складирован)",
+    "ports": 5,
+    "status": "maintenance",
+    "vendor": "Dlink",
+    "purchaseDate": "2025-08-08",
+    "serialNumber": "UF01124021337",
+    "requestNumber": "---",
+    "technician": "---",
+    "documents": [],
+    "id": 1754656056687
+  },
+  {
+    "name": "DLINK (свитч)",
+    "model": "DGS-1005A",
+    "location": "неизвестно",
+    "ports": 5,
+    "status": "offline",
+    "vendor": "Dlink",
+    "purchaseDate": "2025-08-08",
+    "serialNumber": "UF01124012962",
+    "requestNumber": "---",
+    "technician": "---",
+    "documents": [],
+    "id": 1754656212097
+  },
+  {
+    "name": "DLINK (свитч)",
+    "model": "DGS-1005A",
+    "location": "неизвестно",
+    "ports": 5,
+    "status": "offline",
+    "vendor": "Dlink",
+    "purchaseDate": "2025-08-08",
+    "serialNumber": "UF01124012965",
+    "requestNumber": "---",
+    "technician": "---",
+    "documents": [],
+    "id": 1754656231409
+  },
+  {
+    "name": "DLINK (свитч)",
+    "model": "DGS-1005A",
+    "location": "АБК ЦХП, каб. 208 (Мешков О.С.)",
+    "ports": 5,
+    "status": "active",
+    "vendor": "Dlink",
+    "purchaseDate": "2025-08-08",
+    "serialNumber": "UF01124012967",
+    "requestNumber": "---",
+    "technician": "Мешков О.С.",
+    "documents": [],
+    "id": 1754889714705
   }
 ];
 
@@ -385,7 +598,7 @@ const data = saved ? JSON.parse(saved) : defaults;
   const statusLabels = {
     active: 'Активен',
     maintenance: 'На складе',
-    offline: 'Местонахождения неизвестно'
+    offline: 'Место установки неизвестно'
   };
 
   const vendorIcons = {
@@ -609,7 +822,7 @@ const data = saved ? JSON.parse(saved) : defaults;
                 <option value="">Все статусы</option>
                 <option value="active">Активен</option>
                 <option value="maintenance">На складе</option>
-                <option value="offline">Местонахождения неизвестно</option>
+                <option value="offline">Место установки неизвестно</option>
               </select>
             </div>
 
@@ -632,9 +845,9 @@ const data = saved ? JSON.parse(saved) : defaults;
     const worksheetData = switches.map(s => ({
       'Название': s.name,
       'Модель': s.model,
-      'Местоположение': s.location,
+      'Место установки': s.location,
       'Порты': s.ports,
-      'Статус': { active: 'Активен', maintenance: 'На складе', offline: 'Местонахождения неизвестно' }[s.status],
+      'Статус': { active: 'Активен', maintenance: 'На складе', offline: 'Место установки неизвестно' }[s.status],
       'Вендор': s.vendor,
       'Дата установки': s.purchaseDate,
       'Серийный номер': s.serialNumber || '',
@@ -709,7 +922,7 @@ const data = saved ? JSON.parse(saved) : defaults;
                 <tr>
                   <th className="text-left py-4 px-6 font-semibold text-gray-700">Коммутатор</th>
                   <th className="text-left py-4 px-6 font-semibold text-gray-700">Модель</th>
-                  <th className="text-left py-4 px-6 font-semibold text-gray-700">Местоположение</th>
+                  <th className="text-left py-4 px-6 font-semibold text-gray-700">Место установки</th>
                   <th className="text-left py-4 px-6 font-semibold text-gray-700">Серийный №</th>
                   <th className="text-left py-4 px-6 font-semibold text-gray-700">№ заявки</th>
                   <th className="text-left py-4 px-6 font-semibold text-gray-700">Сотрудник СЦ</th>
@@ -875,7 +1088,7 @@ const data = saved ? JSON.parse(saved) : defaults;
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">Местоположение *</label>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">Место установки *</label>
                     <input
                       type="text"
                       name="location"
@@ -945,7 +1158,7 @@ const data = saved ? JSON.parse(saved) : defaults;
                     >
                       <option value="active">Активен</option>
                       <option value="maintenance">На складе</option>
-                      <option value="offline">Местонахождения неизвестно</option>
+                      <option value="offline">Место установки неизвестно</option>
                     </select>
                   </div>
                   <div>
