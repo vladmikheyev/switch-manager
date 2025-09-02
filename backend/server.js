@@ -9,10 +9,17 @@ const app = express();
 const PORT = 5000;
 
 // Включите CORS
-app.use(cors({
-  origin: 'http://localhost:3004', // разрешить только ваш фронтенд
-  credentials: true
-}));
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', 'http://10.182.62.50:8080');
+  res.header('Access-Control-Allow-Credentials', 'true');
+  res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+  if (req.method === 'OPTIONS') {
+    res.sendStatus(200);
+  } else {
+    next();
+  }
+});
 
 // Парсинг JSON
 app.use(express.json());
@@ -44,6 +51,10 @@ app.get('/api/switches', (req, res) => {
 
 // Загрузить файл и обновить коммутатор
 app.post('/api/upload/:id', upload.single('file'), (req, res) => {
+  console.log('✅ Получен POST /api/upload/', req.params.id); // ← внутри функции
+  console.log('📄 Загружаемый файл:', req.file); // ← полезно для отладки
+  console.log('🧾 ID коммутатора:', req.params.id);
+
   const { id } = req.params;
   const file = req.file;
 
@@ -68,8 +79,15 @@ app.post('/api/upload/:id', upload.single('file'), (req, res) => {
       uploadDate: new Date().toISOString()
     });
 
-    fs.writeFile(dataPath, JSON.stringify(switches, null, 2), () => {
-      res.json(switchItem);
+        fs.writeFile(dataPath, JSON.stringify(switches, null, 2), (err) => {
+      if (err) {
+        return res.status(500).json({ error: 'Не удалось сохранить данные' });
+      }
+
+      // Перечитываем обновлённый коммутатор
+      console.log('✅ Файл успешно добавлен к коммутатору:', switchItem);
+      const updatedSwitch = switches.find(s => s.id == id);
+      res.json(updatedSwitch);
     });
   });
 });
@@ -100,7 +118,8 @@ app.delete('/api/document/:id/:filename', (req, res) => {
 // Статические файлы (для доступа к /uploads)
 app.use('/uploads', express.static(uploadDir));
 
-app.listen(PORT, () => {
-  console.log(`Сервер запущен на http://localhost:${PORT}`);
+app.listen(PORT, '0.0.0.0', () => {
+  console.log(`Сервер запущен на http://0.0.0.0:${PORT}`);
+  
 });
 

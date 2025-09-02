@@ -500,15 +500,23 @@ const App = () => {
   {
     "name": "DLINK (свитч)",
     "model": "DGS-1005A",
-    "location": "АБК ЦХП, каб. 227 (складирован)",
+    "location": "АБК ТЭСЦ, 3 эт., акт. зал ",
     "ports": 5,
-    "status": "maintenance",
+    "status": "active",
     "vendor": "Dlink",
-    "purchaseDate": "2025-08-08",
+    "purchaseDate": "2025-08-12",
     "serialNumber": "UF01124021337",
     "requestNumber": "---",
-    "technician": "---",
-    "documents": [],
+    "technician": "Ситьков В.Р.",
+    "documents": [
+      {
+        "name": "SR____.jpg",
+        "path": "/uploads/1754992517756-SR____.jpg",
+        "type": "image/jpeg",
+        "size": 932358,
+        "uploadDate": "2025-08-12T09:55:18.131Z"
+      }
+    ],
     "id": 1754656056687
   },
   {
@@ -649,21 +657,20 @@ const data = saved ? JSON.parse(saved) : defaults;
   formData.append('file', file);
 
   try {
-    const response = await fetch(`http://10.182.62.50:5000/api/upload/${editingSwitch.id}`, {
+const response = await fetch(`http://10.182.62.50:5000/api/upload/${editingSwitch.id}`, {
   method: 'POST',
   body: formData
 });
 
-    const result = await response.json();
-    if (response.ok) {
-      setEditingSwitch(result); // обновляем текущий объект
-      setSwitches(prev => prev.map(s => s.id === result.id ? result : s));
-    } else {
-      alert('Ошибка загрузки: ' + result.error);
-    }
-  } catch (err) {
-    alert('Не удалось подключиться к серверу');
-  }
+const result = await response.json();
+console.log('Ответ сервера:', result); // ← смотрим в консоль F12
+
+if (response.ok) {
+  setEditingSwitch(result);
+  setSwitches(prev => prev.map(s => s.id === result.id ? result : s));
+} else {
+  alert('Ошибка загрузки: ' + result.error);
+}
 };
 
   // Удаление прикреплённого файла

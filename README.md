@@ -1,6 +1,6 @@
 # в терминале переходим в директорию /switch-manager и выполняем `npm start`
 
-Запускается frontend React App [http://localhost:3004](http://localhost:3004)] [http://127.0.0.1:3004](http://127.0.0.1:3004)]
+Запускается frontend React App [http://localhost:3000](http://localhost:3000)] [http://127.0.0.1:3000](http://127.0.0.1:3000)]
 
 # в терминале переходим в директорию /switch-manager/backend и выполняем `npm start`
 
@@ -19,7 +19,7 @@ In the project directory, you can run:
 ### `npm start`
 
 Runs the app in the development mode.\
-Open [http://localhost:3004](http://localhost:3004) to view it in your browser.
+Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
 The page will reload when you make changes.\
 You may also see any lint errors in the console.
