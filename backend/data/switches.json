@@ -294,36 +294,22 @@
     "name": "DLINK (свитч)",
     "model": "DES-1008D",
     "ip": "неупр.",
-    "location": "АБК ЦХП, каб. 227 (складирован)",
+    "location": "АБК ЦХП, каб. 208 (Выходцева Л.Н.)",
     "ports": 8,
-    "status": "maintenance",
+    "status": "active",
     "vendor": "Dlink",
-    "purchaseDate": "2025-08-06",
+    "purchaseDate": "2025-09-01",
     "serialNumber": "QS9G24B002096",
-    "requestNumber": "---",
-    "technician": "---",
+    "requestNumber": "SR01542073",
+    "technician": "Ковалев Д.С.",
     "id": 1754475496037,
     "documents": [
       {
         "name": "SR01542073.pdf",
-        "path": "/uploads/1756792513474-SR01542073.pdf",
+        "path": "/uploads/1756816941501-SR01542073.pdf",
         "type": "application/pdf",
         "size": 643133,
-        "uploadDate": "2025-09-02T05:55:13.532Z"
-      },
-      {
-        "name": "QS42233001810.jpg",
-        "path": "/uploads/1756794811420-QS42233001810.jpg",
-        "type": "image/jpeg",
-        "size": 1003960,
-        "uploadDate": "2025-09-02T06:33:31.442Z"
-      },
-      {
-        "name": "SR01542073.pdf",
-        "path": "/uploads/1756803068714-SR01542073.pdf",
-        "type": "application/pdf",
-        "size": 643133,
-        "uploadDate": "2025-09-02T08:51:11.304Z"
+        "uploadDate": "2025-09-02T12:42:21.516Z"
       }
     ]
   },
@@ -331,134 +317,22 @@
     "name": "DLINK (свитч)",
     "model": "DES-1008D",
     "ip": "неупр.",
-    "location": "АБК ЦХП, каб. 227 (складирован)",
+    "location": "Бухгалтерия, пр-т Металлургов, 6, каб. 330 (Вильчинская Т.А.)",
     "ports": 8,
-    "status": "maintenance",
+    "status": "active",
     "vendor": "Dlink",
-    "purchaseDate": "2025-08-06",
+    "purchaseDate": "2025-08-29",
     "serialNumber": "QS42233001810",
-    "requestNumber": "---",
-    "technician": "---",
+    "requestNumber": "SR01540619",
+    "technician": "Михеев В.Г.",
     "id": 1754475581193,
     "documents": [
       {
-        "name": "QS42233001810.jpg",
-        "path": "/uploads/1756470772468-QS42233001810.jpg",
+        "name": "SR01540619.jpg",
+        "path": "/uploads/1756817203446-SR01540619.jpg",
         "type": "image/jpeg",
         "size": 1003960,
-        "uploadDate": "2025-08-29T12:32:52.482Z"
-      },
-      {
-        "name": "QS42233001810.jpg",
-        "path": "/uploads/1756470794337-QS42233001810.jpg",
-        "type": "image/jpeg",
-        "size": 1003960,
-        "uploadDate": "2025-08-29T12:33:14.359Z"
-      },
-      {
-        "name": "QS42233001810.jpg",
-        "path": "/uploads/1756470844436-QS42233001810.jpg",
-        "type": "image/jpeg",
-        "size": 1003960,
-        "uploadDate": "2025-08-29T12:34:04.450Z"
-      },
-      {
-        "name": "QS42233001810.jpg",
-        "path": "/uploads/1756789486399-QS42233001810.jpg",
-        "type": "image/jpeg",
-        "size": 1003960,
-        "uploadDate": "2025-09-02T05:04:46.416Z"
-      },
-      {
-        "name": "QS42233001810.jpg",
-        "path": "/uploads/1756789543122-QS42233001810.jpg",
-        "type": "image/jpeg",
-        "size": 1003960,
-        "uploadDate": "2025-09-02T05:05:43.141Z"
-      },
-      {
-        "name": "QS42233001810.jpg",
-        "path": "/uploads/1756792091168-QS42233001810.jpg",
-        "type": "image/jpeg",
-        "size": 1003960,
-        "uploadDate": "2025-09-02T05:48:11.186Z"
-      },
-      {
-        "name": "QS42233001810.jpg",
-        "path": "/uploads/1756792169409-QS42233001810.jpg",
-        "type": "image/jpeg",
-        "size": 1003960,
-        "uploadDate": "2025-09-02T05:49:29.426Z"
-      },
-      {
-        "name": "QS42233001810.jpg",
-        "path": "/uploads/1756793429985-QS42233001810.jpg",
-        "type": "image/jpeg",
-        "size": 1003960,
-        "uploadDate": "2025-09-02T06:10:30.001Z"
-      },
-      {
-        "name": "QS42233001810.jpg",
-        "path": "/uploads/1756793476803-QS42233001810.jpg",
-        "type": "image/jpeg",
-        "size": 1003960,
-        "uploadDate": "2025-09-02T06:11:16.822Z"
-      },
-      {
-        "name": "QS42233001810.jpg",
-        "path": "/uploads/1756794356961-QS42233001810.jpg",
-        "type": "image/jpeg",
-        "size": 1003960,
-        "uploadDate": "2025-09-02T06:25:56.972Z"
-      },
-      {
-        "name": "QS42233001810.jpg",
-        "path": "/uploads/1756794418004-QS42233001810.jpg",
-        "type": "image/jpeg",
-        "size": 1003960,
-        "uploadDate": "2025-09-02T06:26:58.022Z"
-      },
-      {
-        "name": "QS42233001810.jpg",
-        "path": "/uploads/1756794475755-QS42233001810.jpg",
-        "type": "image/jpeg",
-        "size": 1003960,
-        "uploadDate": "2025-09-02T06:27:55.775Z"
-      },
-      {
-        "name": "QS42233001810.jpg",
-        "path": "/uploads/1756796078771-QS42233001810.jpg",
-        "type": "image/jpeg",
-        "size": 1003960,
-        "uploadDate": "2025-09-02T06:54:38.786Z"
-      },
-      {
-        "name": "QS42233001810.jpg",
-        "path": "/uploads/1756796278241-QS42233001810.jpg",
-        "type": "image/jpeg",
-        "size": 1003960,
-        "uploadDate": "2025-09-02T06:57:58.261Z"
-      },
-      {
-        "name": "QS42233001810.jpg",
-        "path": "/uploads/1756800882439-QS42233001810.jpg",
-        "type": "image/jpeg",
-        "size": 1003960,
-        "uploadDate": "2025-09-02T08:14:42.484Z"
-      },
-      {
-        "name": "QS42233001810.jpg",
-        "path": "/uploads/1756800939770-QS42233001810.jpg",
-        "type": "image/jpeg",
-        "size": 1003960,
-        "uploadDate": "2025-09-02T08:15:39.795Z"
-      },
-      {
-        "name": "QS42233001810.jpg",
-        "path": "/uploads/1756801283286-QS42233001810.jpg",
-        "type": "image/jpeg",
-        "size": 1003960,
-        "uploadDate": "2025-09-02T08:21:23.305Z"
+        "uploadDate": "2025-09-02T12:46:43.468Z"
       }
     ]
   },
@@ -466,16 +340,24 @@
     "name": "DLINK (свитч)",
     "model": "DES-1008D",
     "ip": "неупр.",
-    "location": "АБК ЦХП, каб. 227 (складирован)",
+    "location": "(АБК МЦ-2, Постельная О.А.)",
     "ports": 8,
-    "status": "maintenance",
+    "status": "active",
     "vendor": "Dlink",
     "purchaseDate": "2025-08-06",
     "serialNumber": "QS42233001801",
-    "requestNumber": "---",
-    "technician": "---",
+    "requestNumber": "SR01552464",
+    "technician": "Ковалев Д.С.",
     "id": 1754475621892,
-    "documents": []
+    "documents": [
+      {
+        "name": "SR01552464.pdf",
+        "path": "/uploads/1758110234338-SR01552464.pdf",
+        "type": "application/pdf",
+        "size": 687617,
+        "uploadDate": "2025-09-17T11:57:14.616Z"
+      }
+    ]
   },
   {
     "name": "DLINK (свитч)",
@@ -665,15 +547,7 @@
     "serialNumber": "UF01124012962",
     "requestNumber": "---",
     "technician": "---",
-    "documents": [
-      {
-        "name": "SR01385632min.jpg",
-        "path": "/uploads/1755069876728-SR01385632min.jpg",
-        "type": "image/jpeg",
-        "size": 213464,
-        "uploadDate": "2025-08-13T07:24:36.939Z"
-      }
-    ],
+    "documents": [],
     "id": 1754656212097
   },
   {
@@ -693,7 +567,7 @@
   {
     "name": "DLINK (свитч)",
     "model": "DGS-1005A",
-    "location": "АБК ЦХП, каб. 208 (Мешков О.С.)",
+    "location": "АБК ЦХП, каб. 209 (Мешков О.С.)",
     "ports": 5,
     "status": "active",
     "vendor": "Dlink",
@@ -703,5 +577,279 @@
     "technician": "Мешков О.С.",
     "documents": [],
     "id": 1754889714705
+  },
+  {
+    "name": "LiteWave",
+    "model": "LS1005G",
+    "location": "АБК ЦХП, каб. 227 (складирован)",
+    "ports": 5,
+    "status": "maintenance",
+    "vendor": "Other",
+    "purchaseDate": "2025-09-16",
+    "serialNumber": "2239268021487",
+    "requestNumber": "---",
+    "technician": "Михеев В.Г.",
+    "documents": [],
+    "id": 1757941713980
+  },
+  {
+    "name": "LiteWave",
+    "model": "LS1005G",
+    "location": "БЦ \"ИДЕЯ\", каб. 8",
+    "ports": 5,
+    "status": "active",
+    "vendor": "Other",
+    "purchaseDate": "2023-01-01",
+    "serialNumber": "неизвестен",
+    "requestNumber": "---",
+    "technician": "Михеев В.Г.",
+    "documents": [],
+    "id": 1757941897153
+  },
+  {
+    "name": "DLINK (свитч)",
+    "model": "DGS-1005A",
+    "location": "ЗУ ВТЗ, 3 этаж, каб. 306 (Харитонова Т.В.)",
+    "ports": 5,
+    "status": "active",
+    "vendor": "Dlink",
+    "purchaseDate": "2025-09-16",
+    "serialNumber": "UF01124012961",
+    "requestNumber": "SR01567250",
+    "technician": "Михеев В.Г.",
+    "documents": [
+      {
+        "name": "2025-09-17_001.jpg",
+        "path": "/uploads/1758087362364-2025-09-17_001.jpg",
+        "type": "image/jpeg",
+        "size": 1022400,
+        "uploadDate": "2025-09-17T05:36:02.381Z"
+      }
+    ],
+    "id": 1758029919106
+  },
+  {
+    "name": "LiteWave",
+    "model": "LS1005G",
+    "location": "Подстанция \"Прокат\", 2 этаж, кабинет с АРМ",
+    "ports": 5,
+    "status": "active",
+    "vendor": "Other",
+    "purchaseDate": "2025-10-02",
+    "serialNumber": "224С3Р0001550",
+    "requestNumber": "---",
+    "technician": "Михеев В.Г.",
+    "documents": [],
+    "id": 1759490221534
+  },
+  {
+    "name": "DLINK (свитч)",
+    "model": "DGS-1005A",
+    "location": "Склад (Калашникова Н.М.)",
+    "ports": 5,
+    "status": "maintenance",
+    "vendor": "Dlink",
+    "purchaseDate": "2025-10-09",
+    "serialNumber": "U8ED132028231",
+    "requestNumber": "---",
+    "technician": "Калашникова Н.М.",
+    "documents": [],
+    "id": 1760014677801
+  },
+  {
+    "name": "DLINK (свитч)",
+    "model": "DGS-1005A",
+    "location": "Склад (Калашникова Н.М.)",
+    "ports": 5,
+    "status": "maintenance",
+    "vendor": "Dlink",
+    "purchaseDate": "2025-10-09",
+    "serialNumber": "U8ED132028237",
+    "requestNumber": "---",
+    "technician": "Калашникова Н.М.",
+    "documents": [],
+    "id": 1760014712129
+  },
+  {
+    "name": "DLINK (свитч)",
+    "model": "DGS-1005A",
+    "location": "Склад (Калашникова Н.М.)",
+    "ports": 5,
+    "status": "maintenance",
+    "vendor": "Dlink",
+    "purchaseDate": "2025-10-09",
+    "serialNumber": "U8ED132028238",
+    "requestNumber": "---",
+    "technician": "Калашникова Н.М.",
+    "documents": [],
+    "id": 1760014729169
+  },
+  {
+    "name": "DLINK (свитч)",
+    "model": "DGS-1005A",
+    "location": "Склад (Калашникова Н.М.)",
+    "ports": 5,
+    "status": "maintenance",
+    "vendor": "Dlink",
+    "purchaseDate": "2025-10-09",
+    "serialNumber": "U8ED132028233",
+    "requestNumber": "---",
+    "technician": "Калашникова Н.М.",
+    "documents": [],
+    "id": 1760014748841
+  },
+  {
+    "name": "DLINK (свитч)",
+    "model": "DGS-1005A",
+    "location": "Склад (Калашникова Н.М.)",
+    "ports": 5,
+    "status": "maintenance",
+    "vendor": "Dlink",
+    "purchaseDate": "2025-10-09",
+    "serialNumber": "U8ED132028240",
+    "requestNumber": "---",
+    "technician": "Калашникова Н.М.",
+    "documents": [],
+    "id": 1760014768250
+  },
+  {
+    "name": "DLINK (свитч)",
+    "model": "DGS-1005A",
+    "location": "Склад (Калашникова Н.М.)",
+    "ports": 5,
+    "status": "maintenance",
+    "vendor": "Dlink",
+    "purchaseDate": "2025-10-09",
+    "serialNumber": "U8ED132028235",
+    "requestNumber": "---",
+    "technician": "Калашникова Н.М.",
+    "documents": [],
+    "id": 1760014811106
+  },
+  {
+    "name": "DLINK (свитч)",
+    "model": "DGS-1005A",
+    "location": "Склад (Калашникова Н.М.)",
+    "ports": 5,
+    "status": "maintenance",
+    "vendor": "Dlink",
+    "purchaseDate": "2025-10-09",
+    "serialNumber": "U8ED132028232",
+    "requestNumber": "---",
+    "technician": "Калашникова Н.М.",
+    "documents": [],
+    "id": 1760014831275
+  },
+  {
+    "name": "DLINK (свитч)",
+    "model": "DGS-1005A",
+    "location": "Склад (Калашникова Н.М.)",
+    "ports": 5,
+    "status": "maintenance",
+    "vendor": "Dlink",
+    "purchaseDate": "2025-10-09",
+    "serialNumber": "U8ED132028236",
+    "requestNumber": "---",
+    "technician": "Калашникова Н.М.",
+    "documents": [],
+    "id": 1760014849395
+  },
+  {
+    "name": "DLINK (свитч)",
+    "model": "DGS-1005A",
+    "location": "Склад (Калашникова Н.М.)",
+    "ports": 5,
+    "status": "maintenance",
+    "vendor": "Dlink",
+    "purchaseDate": "2025-10-09",
+    "serialNumber": "U8ED132028234",
+    "requestNumber": "---",
+    "technician": "Калашникова Н.М.",
+    "documents": [],
+    "id": 1760014866651
+  },
+  {
+    "name": "DLINK (свитч)",
+    "model": "DGS-1005A",
+    "location": "Склад (Калашникова Н.М.)",
+    "ports": 5,
+    "status": "maintenance",
+    "vendor": "Dlink",
+    "purchaseDate": "2025-10-09",
+    "serialNumber": "U8ED132028239",
+    "requestNumber": "---",
+    "technician": "Калашникова Н.М.",
+    "documents": [],
+    "id": 1760014887980
+  },
+  {
+    "name": "DLINK (свитч)",
+    "model": "DGS-1008D",
+    "location": "Склад (Калашникова Н.М.)",
+    "ports": 8,
+    "status": "maintenance",
+    "vendor": "Dlink",
+    "purchaseDate": "2025-10-09",
+    "serialNumber": "QS9G256000548",
+    "requestNumber": "---",
+    "technician": "Калашникова Н.М.",
+    "documents": [],
+    "id": 1760014981268
+  },
+  {
+    "name": "DLINK (свитч)",
+    "model": "DGS-1008D",
+    "location": "Склад (Калашникова Н.М.)",
+    "ports": 8,
+    "status": "maintenance",
+    "vendor": "Dlink",
+    "purchaseDate": "2025-10-09",
+    "serialNumber": "QS9G256000545",
+    "requestNumber": "---",
+    "technician": "Калашникова Н.М.",
+    "documents": [],
+    "id": 1760015020261
+  },
+  {
+    "name": "DLINK (свитч)",
+    "model": "DGS-1008D",
+    "location": "Склад (Калашникова Н.М.)",
+    "ports": 8,
+    "status": "maintenance",
+    "vendor": "Dlink",
+    "purchaseDate": "2025-10-09",
+    "serialNumber": "QS9G256000550",
+    "requestNumber": "---",
+    "technician": "Калашникова Н.М.",
+    "documents": [],
+    "id": 1760015046157
+  },
+  {
+    "name": "DLINK (свитч)",
+    "model": "DGS-1008D",
+    "location": "Склад (Калашникова Н.М.)",
+    "ports": 8,
+    "status": "maintenance",
+    "vendor": "Dlink",
+    "purchaseDate": "2025-10-09",
+    "serialNumber": "QS9G256000544",
+    "requestNumber": "---",
+    "technician": "Калашникова Н.М.",
+    "documents": [],
+    "id": 1760015075422
+  },
+  {
+    "name": "DLINK (свитч)",
+    "model": "DGS-1008D",
+    "location": "Склад (Калашникова Н.М.)",
+    "ports": 8,
+    "status": "maintenance",
+    "vendor": "Dlink",
+    "purchaseDate": "2025-10-09",
+    "serialNumber": "QS9G256000549",
+    "requestNumber": "---",
+    "technician": "Калашникова Н.М.",
+    "documents": [],
+    "id": 1760015099262
   }
 ]
