@@ -469,7 +469,15 @@
     "serialNumber": "QS9F255001327",
     "requestNumber": "---",
     "technician": "Калашникова Н.М.",
-    "documents": [],
+    "documents": [
+      {
+        "name": "SR01694756.png",
+        "path": "/uploads/1765179977628-SR01694756.png",
+        "type": "image/png",
+        "size": 1530252,
+        "uploadDate": "2025-12-08T07:46:19.960Z"
+      }
+    ],
     "id": 1754638938169
   },
   {
@@ -589,7 +597,15 @@
     "serialNumber": "2239268021487",
     "requestNumber": "---",
     "technician": "Михеев В.Г.",
-    "documents": [],
+    "documents": [
+      {
+        "name": "SR01621553.jpg",
+        "path": "/uploads/1761047488796-SR01621553.jpg",
+        "type": "image/jpeg",
+        "size": 491078,
+        "uploadDate": "2025-10-21T11:51:29.044Z"
+      }
+    ],
     "id": 1757941713980
   },
   {
@@ -681,7 +697,15 @@
     "serialNumber": "U8ED132028238",
     "requestNumber": "---",
     "technician": "Калашникова Н.М.",
-    "documents": [],
+    "documents": [
+      {
+        "name": "SR01608753.pdf",
+        "path": "/uploads/1760515795418-SR01608753.pdf",
+        "type": "application/pdf",
+        "size": 759186,
+        "uploadDate": "2025-10-15T08:09:55.676Z"
+      }
+    ],
     "id": 1760014729169
   },
   {
@@ -779,7 +803,15 @@
     "serialNumber": "U8ED132028239",
     "requestNumber": "---",
     "technician": "Калашникова Н.М.",
-    "documents": [],
+    "documents": [
+      {
+        "name": "SR01656491.jpg",
+        "path": "/uploads/1763701815764-SR01656491.jpg",
+        "type": "image/jpeg",
+        "size": 856940,
+        "uploadDate": "2025-11-21T05:10:16.210Z"
+      }
+    ],
     "id": 1760014887980
   },
   {
@@ -807,7 +839,15 @@
     "serialNumber": "QS9G256000545",
     "requestNumber": "---",
     "technician": "Калашникова Н.М.",
-    "documents": [],
+    "documents": [
+      {
+        "name": "SR01671035.jpg",
+        "path": "/uploads/1764223325447-SR01671035.jpg",
+        "type": "image/jpeg",
+        "size": 818901,
+        "uploadDate": "2025-11-27T06:02:05.745Z"
+      }
+    ],
     "id": 1760015020261
   },
   {
