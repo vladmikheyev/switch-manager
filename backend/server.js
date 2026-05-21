@@ -15,8 +15,10 @@ const PORT = process.env.PORT || 5000;
 // Middleware
 app.use(helmet({ contentSecurityPolicy: false }));
 app.use(cors({
-  origin: process.env.CORS_ORIGIN?.split(',') || ['http://localhost:3000', 'http://10.182.63.130:3000'],
-  credentials: true
+  origin: true, // ✅ Разрешаем запросы с любых источников (только для dev)
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization']
 }));
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true }));
@@ -50,8 +52,9 @@ app.use(notFoundHandler);
 app.use(errorHandler);
 
 // ✅ Запуск
-const server = app.listen(PORT, () => {
+const server = app.listen(PORT, '0.0.0.0', () => {
   console.log(`\n🚀 Backend запущен!`);
   console.log(`📍 http://localhost:${PORT}`);
-  console.log(`🔗 API: http://localhost:${PORT}/api/health\n`);
+  console.log(`🔗 API: http://localhost:${PORT}/api/health`);
+  console.log(`🌐 Network: http://10.182.63.130:${PORT}\n`);
 });

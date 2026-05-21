@@ -1,19 +1,16 @@
 // backend/controllers/switchController.js
-const Switch = require('../models/Switch');
-const { db } = require('../config/database');
-const path = require('path');
-const fs = require('fs');
+const Switch = require("../models/Switch");
 
 // GET /api/switches - Получить список коммутаторов
 exports.getSwitches = async (req, res, next) => {
   try {
     const { status, search, limit } = req.query;
     const switches = Switch.getAll({ status, search, limit });
-    
+
     res.json({
       success: true,
       data: switches,
-      count: switches.length
+      count: switches.length,
     });
   } catch (error) {
     next(error);
@@ -24,20 +21,14 @@ exports.getSwitches = async (req, res, next) => {
 exports.getSwitch = async (req, res, next) => {
   try {
     const switchItem = Switch.getById(req.params.id);
-    
-    if (!switchItem) {
-      return res.status(404).json({ error: 'Коммутатор не найден' });
-    }
 
-    // Получаем документы для этого коммутатора
-    const documents = db.prepare(`
-      SELECT id, filename, original_name, mimetype, size, uploaded_at 
-      FROM documents WHERE switch_id = ?
-    `).all(req.params.id);
+    if (!switchItem) {
+      return res.status(404).json({ error: "Коммутатор не найден" });
+    }
 
     res.json({
       success: true,
-      data: { ...switchItem, documents }
+      data: switchItem,
     });
   } catch (error) {
     next(error);
@@ -48,11 +39,11 @@ exports.getSwitch = async (req, res, next) => {
 exports.createSwitch = async (req, res, next) => {
   try {
     const newSwitch = Switch.create(req.body);
-    
+
     res.status(201).json({
       success: true,
-      message: 'Коммутатор успешно создан',
-      data: newSwitch
+      message: "Коммутатор успешно создан",
+      data: newSwitch,
     });
   } catch (error) {
     next(error);
@@ -64,15 +55,15 @@ exports.updateSwitch = async (req, res, next) => {
   try {
     const existing = Switch.getById(req.params.id);
     if (!existing) {
-      return res.status(404).json({ error: 'Коммутатор не найден' });
+      return res.status(404).json({ error: "Коммутатор не найден" });
     }
 
     const updated = Switch.update(req.params.id, req.body);
-    
+
     res.json({
       success: true,
-      message: 'Коммутатор успешно обновлён',
-      data: updated
+      message: "Коммутатор успешно обновлён",
+      data: updated,
     });
   } catch (error) {
     next(error);
@@ -82,32 +73,20 @@ exports.updateSwitch = async (req, res, next) => {
 // DELETE /api/switches/:id - Удалить коммутатор
 exports.deleteSwitch = async (req, res, next) => {
   try {
-    const existing = Switch.getById(req.params.id);
-    if (!existing) {
-      return res.status(404).json({ error: 'Коммутатор не найден' });
-    }
+    const switchId = req.params.id;
+    console.log(`🗑️  Запрос на удаление коммутатора ID: ${switchId}`);
 
-    // Удаляем связанные документы
-    const documents = db.prepare(
-      'SELECT filename FROM documents WHERE switch_id = ?'
-    ).all(req.params.id);
-
-    documents.forEach(doc => {
-      const filePath = path.join(process.env.UPLOAD_PATH || './uploads', doc.filename);
-      if (fs.existsSync(filePath)) {
-        fs.unlinkSync(filePath);
-      }
-    });
-
-    // Удаляем записи из БД
-    db.prepare('DELETE FROM documents WHERE switch_id = ?').run(req.params.id);
-    Switch.delete(req.params.id);
+    const result = Switch.delete(switchId);
 
     res.json({
       success: true,
-      message: 'Коммутатор успешно удалён'
+      message: result.deleted
+        ? "Коммутатор успешно удалён"
+        : "Коммутатор не найден (уже удалён?)",
+      deleted: result.deleted,
     });
   } catch (error) {
+    console.error("❌ Ошибка при удалении:", error);
     next(error);
   }
 };
@@ -122,52 +101,68 @@ exports.getStats = async (req, res, next) => {
   }
 };
 
+// GET /api/switches/search - Поиск коммутаторов
+exports.searchSwitches = async (req, res, next) => {
+  try {
+    const { q, page = 1, limit = 20 } = req.query;
+
+    if (!q || q.length < 2) {
+      return res
+        .status(400)
+        .json({ error: "Поисковый запрос должен содержать минимум 2 символа" });
+    }
+
+    const result = Switch.search(q, parseInt(page), parseInt(limit));
+
+    res.json({
+      success: true,
+      ...result,
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
 // POST /api/upload/:switchId - Загрузить файл
 exports.uploadFile = async (req, res, next) => {
   try {
     const switchId = req.params.switchId;
-    
-    // Проверяем существование коммутатора
-    const switchItem = Switch.getById(switchId);
-    if (!switchItem) {
-      // Удаляем загруженный файл если коммутатор не найден
-      if (req.file) {
-        fs.unlinkSync(req.file.path);
-      }
-      return res.status(404).json({ error: 'Коммутатор не найден' });
+
+    if (!req.file) {
+      return res.status(400).json({ error: "Файл не выбран" });
     }
 
-    // Сохраняем информацию о файле в БД
-    const result = db.prepare(`
-      INSERT INTO documents (switch_id, filename, original_name, mimetype, size)
-      VALUES (?, ?, ?, ?, ?)
-    `).run(
-      switchId,
-      req.file.filename,
-      req.file.originalname,
-      req.file.mimetype,
-      req.file.size
-    );
+    const switchItem = Switch.getById(switchId);
+    if (!switchItem) {
+      // Удаляем файл если коммутатор не найден
+      const fs = require("fs");
+      const path = require("path");
+      const filePath = path.join(process.cwd(), "uploads", req.file.filename);
+      if (fs.existsSync(filePath)) fs.unlinkSync(filePath);
+      return res.status(404).json({ error: "Коммутатор не найден" });
+    }
 
-    const document = db.prepare('SELECT * FROM documents WHERE id = ?').get(result.lastInsertRowid);
+    const document = await Switch.addDocument(switchId, {
+      filename: req.file.filename,
+      originalname: req.file.originalname,
+      mimetype: req.file.mimetype,
+      size: req.file.size,
+    });
 
     res.status(201).json({
       success: true,
-      message: 'Файл успешно загружен',
+      message: "Файл успешно загружен",
       document: {
         id: document.id,
-        name: document.original_name,
+        name: document.originalName,
         filename: document.filename,
         mimetype: document.mimetype,
         size: document.size,
-        uploadedAt: document.uploaded_at
-      }
+        uploadedAt: document.uploadedAt,
+      },
     });
   } catch (error) {
-    // Удаляем файл при ошибке
-    if (req.file?.path && fs.existsSync(req.file.path)) {
-      fs.unlinkSync(req.file.path);
-    }
+    console.error("❌ Ошибка загрузки файла:", error);
     next(error);
   }
 };
@@ -177,49 +172,24 @@ exports.deleteDocument = async (req, res, next) => {
   try {
     const { switchId, filename } = req.params;
 
-    // Проверяем существование документа
-    const doc = db.prepare(
-      'SELECT * FROM documents WHERE switch_id = ? AND filename = ?'
-    ).get(switchId, filename);
+    const result = await Switch.deleteDocument(switchId, filename);
 
-    if (!doc) {
-      return res.status(404).json({ error: 'Документ не найден' });
+    // Удаляем файл с диска если он был удалён из БД
+    if (result) {
+      const fs = require("fs");
+      const path = require("path");
+      const filePath = path.join(process.cwd(), "uploads", filename);
+      if (fs.existsSync(filePath)) {
+        fs.unlinkSync(filePath);
+      }
     }
-
-    // Удаляем файл с диска
-    const filePath = path.join(process.env.UPLOAD_PATH || './uploads', filename);
-    if (fs.existsSync(filePath)) {
-      fs.unlinkSync(filePath);
-    }
-
-    // Удаляем запись из БД
-    db.prepare('DELETE FROM documents WHERE id = ?').run(doc.id);
 
     res.json({
       success: true,
-      message: 'Документ успешно удалён'
+      message: "Документ успешно удалён",
     });
   } catch (error) {
-    next(error);
-  }
-};
-
-// GET /api/switches/search - Поиск коммутаторов
-exports.searchSwitches = async (req, res, next) => {
-  try {
-    const { q, page = 1, limit = 20 } = req.query;
-    
-    if (!q || q.length < 2) {
-      return res.status(400).json({ error: 'Поисковый запрос должен содержать минимум 2 символа' });
-    }
-
-    const result = Switch.search(q, parseInt(page), parseInt(limit));
-    
-    res.json({
-      success: true,
-      ...result
-    });
-  } catch (error) {
+    console.error("❌ Ошибка удаления документа:", error);
     next(error);
   }
 };

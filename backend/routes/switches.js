@@ -11,28 +11,29 @@ const switchSchema = {
     name: Joi.string().min(2).max(100).required(),
     model: Joi.string().min(2).max(100).required(),
     location: Joi.string().min(2).max(200).required(),
-    serialNumber: Joi.string().max(100).optional(),
-    requestNumber: Joi.string().max(50).optional(),
-    technician: Joi.string().max(100).optional(),
     ports: Joi.number().integer().min(1).max(48).required(),
     status: Joi.string().valid('active', 'maintenance', 'offline', 'archived').default('active'),
-    vendor: Joi.string().max(100).optional(),
-    purchaseDate: Joi.string().isoDate().optional(),
-    comment: Joi.string().max(500).optional()
-  }),
+    serialNumber: Joi.string().max(100).allow('', null).optional(),
+    requestNumber: Joi.string().max(50).allow('', null).optional(),
+    technician: Joi.string().max(100).allow('', null).optional(),
+    vendor: Joi.string().max(100).allow('', null).optional(),
+    purchaseDate: Joi.string().isoDate().allow('', null).optional(),
+    comment: Joi.string().max(500).allow('', null).optional()
+  }).unknown(true), // ✅ Игнорируем лишние поля от фронтенда
+
   update: Joi.object({
     name: Joi.string().min(2).max(100).optional(),
     model: Joi.string().min(2).max(100).optional(),
     location: Joi.string().min(2).max(200).optional(),
-    serialNumber: Joi.string().max(100).optional(),
-    requestNumber: Joi.string().max(50).optional(),
-    technician: Joi.string().max(100).optional(),
     ports: Joi.number().integer().min(1).max(48).optional(),
     status: Joi.string().valid('active', 'maintenance', 'offline', 'archived').optional(),
-    vendor: Joi.string().max(100).optional(),
-    purchaseDate: Joi.string().isoDate().optional(),
-    comment: Joi.string().max(500).optional()
-  })
+    serialNumber: Joi.string().max(100).allow('', null).optional(),
+    requestNumber: Joi.string().max(50).allow('', null).optional(),
+    technician: Joi.string().max(100).allow('', null).optional(),
+    vendor: Joi.string().max(100).allow('', null).optional(),
+    purchaseDate: Joi.string().isoDate().allow('', null).optional(),
+    comment: Joi.string().max(500).allow('', null).optional()
+  }).unknown(true)
 };
 
 // Middleware валидации

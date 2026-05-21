@@ -6,9 +6,10 @@ import { API_CONFIG, ERROR_MESSAGES, FILE_UPLOAD_CONFIG } from '../utils/constan
  */
 class ApiClient {
   constructor() {
-    this.baseURL = API_CONFIG.BASE_URL;
-    this.timeout = API_CONFIG.TIMEOUT;
-    this.retries = API_CONFIG.RETRIES;
+    this.baseURL = import.meta.env?.VITE_API_URL || 'http://localhost:5000';
+    console.log('🔗 Backend URL:', this.baseURL);
+    this.timeout = 30000;
+    this.retries = 1;
     this.token = null;
   }
 
