@@ -55,7 +55,7 @@ export const SwitchTable = ({
 
   return (
     <div className="overflow-x-auto">
-      <table className="w-full min-w-[1200px]">
+      <table className="w-full min-w-[1700px] table-fixed">
         
         {/* Заголовок таблицы */}
         <thead>

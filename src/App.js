@@ -147,7 +147,7 @@ function App() {
       />
 
       {/* Основной контент */}
-      <main className="max-w-7xl mx-auto p-4 sm:p-6 lg:p-8 space-y-6">
+      <main className="max-w-[95vw] w-full mx-auto px-4 py-6 space-y-6">
         
         {/* Статистика */}
         <Stats switches={switches} />

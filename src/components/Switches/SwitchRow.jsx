@@ -50,60 +50,56 @@ export const SwitchRow = ({
     <tr className="hover:bg-gray-50 transition-colors border-b border-gray-100 last:border-0">
       
       {/* Название */}
-      <td className="px-4 py-3">
+      <td className="px-4 py-3 whitespace-nowrap">
         <div className="font-medium text-gray-900">{name || '—'}</div>
         <div className="text-xs text-gray-500">{formatDate(purchaseDate)}</div>
       </td>
 
       {/* Модель */}
-      <td className="px-4 py-3 text-gray-700">{model || '—'}</td>
+      <td className="px-4 py-3 text-gray-700 whitespace-nowrap">{model || '—'}</td>
 
       {/* Место установки */}
-      <td className="px-4 py-3 text-gray-700 max-w-[150px] truncate" title={location}>
+      <td className="px-4 py-3 text-gray-700 whitespace-normal break-words" title={location}>
         {location || '—'}
       </td>
 
       {/* Серийный номер */}
-      <td className="px-4 py-3 text-gray-700 font-mono text-sm">
+      <td className="px-4 py-3 text-gray-700 font-mono text-sm whitespace-nowrap">
         {serialNumber || '—'}
       </td>
 
       {/* № заявки */}
-      <td className="px-4 py-3 text-gray-700">
+      <td className="px-4 py-3 text-gray-700 whitespace-normal break-words">
         {requestNumber || '—'}
       </td>
 
       {/* Сотрудник */}
-      <td className="px-4 py-3 text-gray-700">
+      <td className="px-4 py-3 text-gray-700 whitespace-nowrap">
         {technician || '—'}
       </td>
 
       {/* Порты */}
-      <td className="px-4 py-3 text-center">
+      <td className="px-4 py-3 text-center whitespace-nowrap">
         <span className="inline-block px-2 py-1 bg-gray-100 rounded text-sm font-medium text-gray-700">
           {ports || 0}
         </span>
       </td>
 
       {/* Статус */}
-      <td className="px-4 py-3">
+      <td className="px-4 py-3 whitespace-nowrap">
         <StatusBadge status={status} size="sm" />
       </td>
 
       {/* Вендор */}
-      <td className="px-4 py-3 text-gray-700">{vendor || '—'}</td>
+      <td className="px-4 py-3 text-gray-700 whitespace-nowrap">{vendor || '—'}</td>
 
       {/* Документы */}
-      <td className="px-4 py-3">
-        <DocumentList 
-          documents={documents}
-          onDownload={onDownload}
-          onDelete={onDeleteDocument}
-        />
+      <td className="px-4 py-3 whitespace-nowrap">
+        <DocumentList documents={documents} />
       </td>
 
       {/* Действия */}
-      <td className="px-4 py-3">
+      <td className="px-4 py-3 whitespace-nowrap">
         <div className="flex items-center gap-1">
           {onView && (
             <button

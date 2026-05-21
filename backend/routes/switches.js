@@ -1,4 +1,5 @@
 // backend/routes/switches.js
+const path = require('path');
 const express = require('express');
 const router = express.Router();
 const Joi = require('joi'); // ✅ Правильный импорт
@@ -66,6 +67,6 @@ router.post('/upload/:switchId', upload.single('file'), switchController.uploadF
 router.delete('/document/:switchId/:filename', switchController.deleteDocument);
 
 // Статика для загруженных файлов
-router.use('/uploads', express.static('uploads'));
+router.use('/uploads', express.static(path.join(__dirname, '../uploads')));
 
 module.exports = router;
