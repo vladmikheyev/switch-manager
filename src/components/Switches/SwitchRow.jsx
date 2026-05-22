@@ -33,7 +33,7 @@ export const SwitchRow = ({
     status,
     vendor,
     purchaseDate,
-    comment,  // ✅ Добавили comment
+    comment, // ✅ Добавили comment
     documents,
   } = switchItem;
 
@@ -73,22 +73,14 @@ export const SwitchRow = ({
         {serialNumber || "—"}
       </td>
 
-      {/* № заявки */}
+            {/* № заявки — с обрезкой и многоточием */}
       <td className="px-4 py-3">
         {requestNumber ? (
-          <div className="flex flex-wrap gap-1.5">
-            {String(requestNumber)
-              .split(",")
-              .map((req, index) => req.trim())
-              .filter((req) => req !== "")
-              .map((req, index) => (
-                <span
-                  key={index}
-                  className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-purple-50 text-purple-700 border border-purple-100 whitespace-nowrap"
-                >
-                  {req}
-                </span>
-              ))}
+          <div 
+            className="text-sm text-gray-700 max-w-[200px] truncate cursor-help"
+            title={requestNumber}
+          >
+            {requestNumber}
           </div>
         ) : (
           <span className="text-gray-400 text-xs">—</span>
@@ -115,9 +107,9 @@ export const SwitchRow = ({
       {/* ✅ Комментарий (было: Вендор) */}
       <td className="px-4 py-3">
         {comment ? (
-          <div 
+          <div
             className="text-gray-700 text-sm max-w-[200px] truncate cursor-help"
-            title={comment}  // Показываем полный текст при наведении
+            title={comment} // Показываем полный текст при наведении
           >
             {comment}
           </div>
