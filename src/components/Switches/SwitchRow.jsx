@@ -1,7 +1,7 @@
 // src/components/Switches/SwitchRow.jsx
-import { Edit, Trash2, Eye } from 'lucide-react';
-import { StatusBadge } from './StatusBadge';
-import { DocumentList } from './DocumentList';
+import { Edit, Trash2, Eye } from "lucide-react";
+import { StatusBadge } from "./StatusBadge";
+import { DocumentList } from "./DocumentList";
 
 /**
  * Компонент строки таблицы коммутаторов
@@ -13,13 +13,13 @@ import { DocumentList } from './DocumentList';
  * @param {Function} props.onDownload - Обработчик скачивания документа
  * @param {Function} props.onDeleteDocument - Обработчик удаления документа
  */
-export const SwitchRow = ({ 
-  switchItem, 
-  onEdit, 
-  onDelete, 
+export const SwitchRow = ({
+  switchItem,
+  onEdit,
+  onDelete,
   onView,
   onDownload,
-  onDeleteDocument 
+  onDeleteDocument,
 }) => {
   const {
     id,
@@ -33,49 +33,71 @@ export const SwitchRow = ({
     status,
     vendor,
     purchaseDate,
-    documents
+    comment,  // ✅ Добавили comment
+    documents,
   } = switchItem;
 
   // Форматирование даты
   const formatDate = (dateStr) => {
-    if (!dateStr) return '—';
-    return new Date(dateStr).toLocaleDateString('ru-RU', {
-      day: '2-digit',
-      month: '2-digit',
-      year: 'numeric'
+    if (!dateStr) return "—";
+    return new Date(dateStr).toLocaleDateString("ru-RU", {
+      day: "2-digit",
+      month: "2-digit",
+      year: "numeric",
     });
   };
 
   return (
     <tr className="hover:bg-gray-50 transition-colors border-b border-gray-100 last:border-0">
-      
       {/* Название */}
       <td className="px-4 py-3 whitespace-nowrap">
-        <div className="font-medium text-gray-900">{name || '—'}</div>
+        <div className="font-medium text-gray-900">{name || "—"}</div>
         <div className="text-xs text-gray-500">{formatDate(purchaseDate)}</div>
       </td>
 
       {/* Модель */}
-      <td className="px-4 py-3 text-gray-700 whitespace-nowrap">{model || '—'}</td>
+      <td className="px-4 py-3 text-gray-700 whitespace-nowrap">
+        {model || "—"}
+      </td>
 
       {/* Место установки */}
-      <td className="px-4 py-3 text-gray-700 whitespace-normal break-words" title={location}>
-        {location || '—'}
+      <td
+        className="px-4 py-3 text-gray-700 whitespace-normal break-words"
+        title={location}
+      >
+        {location || "—"}
       </td>
 
       {/* Серийный номер */}
       <td className="px-4 py-3 text-gray-700 font-mono text-sm whitespace-nowrap">
-        {serialNumber || '—'}
+        {serialNumber || "—"}
       </td>
 
       {/* № заявки */}
-      <td className="px-4 py-3 text-gray-700 whitespace-normal break-words">
-        {requestNumber || '—'}
+      <td className="px-4 py-3">
+        {requestNumber ? (
+          <div className="flex flex-wrap gap-1.5">
+            {String(requestNumber)
+              .split(",")
+              .map((req, index) => req.trim())
+              .filter((req) => req !== "")
+              .map((req, index) => (
+                <span
+                  key={index}
+                  className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-purple-50 text-purple-700 border border-purple-100 whitespace-nowrap"
+                >
+                  {req}
+                </span>
+              ))}
+          </div>
+        ) : (
+          <span className="text-gray-400 text-xs">—</span>
+        )}
       </td>
 
       {/* Сотрудник */}
       <td className="px-4 py-3 text-gray-700 whitespace-nowrap">
-        {technician || '—'}
+        {technician || "—"}
       </td>
 
       {/* Порты */}
@@ -90,8 +112,19 @@ export const SwitchRow = ({
         <StatusBadge status={status} size="sm" />
       </td>
 
-      {/* Вендор */}
-      <td className="px-4 py-3 text-gray-700 whitespace-nowrap">{vendor || '—'}</td>
+      {/* ✅ Комментарий (было: Вендор) */}
+      <td className="px-4 py-3">
+        {comment ? (
+          <div 
+            className="text-gray-700 text-sm max-w-[200px] truncate cursor-help"
+            title={comment}  // Показываем полный текст при наведении
+          >
+            {comment}
+          </div>
+        ) : (
+          <span className="text-gray-400 text-xs">—</span>
+        )}
+      </td>
 
       {/* Документы */}
       <td className="px-4 py-3 whitespace-nowrap">
@@ -130,7 +163,6 @@ export const SwitchRow = ({
           )}
         </div>
       </td>
-
     </tr>
   );
 };

@@ -1,33 +1,69 @@
 // src/components/Modal/SwitchForm.jsx
-import { useState } from 'react';
-import { FileUpload } from './FileUpload';
+import { useState } from "react";
+import { FileUpload } from "./FileUpload";
+
+// ✅ ИСПРАВЛЕНИЕ: InputField вынесен НАРУЖУ, чтобы React не пересоздавал его при каждом рендере
+// Теперь он принимает value, onChange и error как пропсы
+const InputField = ({
+  label,
+  name,
+  type = "text",
+  required = false,
+  placeholder = "",
+  className = "",
+  value,
+  onChange,
+  error,
+}) => (
+  <div className={`space-y-1 ${className}`}>
+    <label htmlFor={name} className="block text-sm font-medium text-gray-700">
+      {label} {required && <span className="text-red-500">*</span>}
+    </label>
+    <input
+      type={type}
+      id={name}
+      name={name}
+      value={value ?? ""} // ✅ Защита от undefined/null
+      onChange={onChange}
+      placeholder={placeholder}
+      data-error={!!error}
+      className={`w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all text-sm
+        ${error ? "border-red-300 bg-red-50 focus:ring-red-500" : "border-gray-300 bg-white"}`}
+    />
+    {error && (
+      <p className="text-xs text-red-500" role="alert">
+        {error}
+      </p>
+    )}
+  </div>
+);
 
 /**
  * Начальное состояние формы
  */
 const INITIAL_FORM = {
-  name: '',
-  model: '',
-  location: '',
-  ports: '',
-  status: 'active',
-  vendor: '',
-  purchaseDate: '',
-  serialNumber: '',
-  requestNumber: '',
-  technician: '',
-  comment: '',
-  documents: []
+  name: "",
+  model: "",
+  location: "",
+  ports: "",
+  status: "active",
+  vendor: "",
+  purchaseDate: "",
+  serialNumber: "",
+  requestNumber: "",
+  technician: "",
+  comment: "",
+  documents: [],
 };
 
 /**
  * Опции статусов для select
  */
 const STATUS_OPTIONS = [
-  { value: 'active', label: 'Активен' },
-  { value: 'maintenance', label: 'На складе' },
-  { value: 'offline', label: 'Неизвестно' },
-  { value: 'archived', label: 'В архиве' }
+  { value: "active", label: "Активен" },
+  { value: "maintenance", label: "На складе" },
+  { value: "offline", label: "Неизвестно" },
+  { value: "archived", label: "В архиве" },
 ];
 
 /**
@@ -37,18 +73,14 @@ const STATUS_OPTIONS = [
  * @param {Function} props.onSubmit - Обработчик отправки формы
  * @param {Function} props.onCancel - Обработчик отмены
  */
-export const SwitchForm = ({ 
-  initialData = null, 
-  onSubmit, 
-  onCancel 
-}) => {
+export const SwitchForm = ({ initialData = null, onSubmit, onCancel }) => {
   // Инициализация формы
   const [formData, setFormData] = useState(() => {
     if (initialData) {
       return {
         ...INITIAL_FORM,
         ...initialData,
-        ports: initialData.ports?.toString() || ''
+        ports: initialData.ports?.toString() || "",
       };
     }
     return { ...INITIAL_FORM };
@@ -63,41 +95,42 @@ export const SwitchForm = ({
   // Обработчик изменения полей
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
-    
+    setFormData((prev) => ({ ...prev, [name]: value }));
+
     // Очистка ошибки при изменении поля
     if (errors[name]) {
-      setErrors(prev => ({ ...prev, [name]: null }));
+      setErrors((prev) => ({ ...prev, [name]: null }));
     }
   };
 
   // Обработчик загрузки файла
   const handleFileUploadSuccess = (doc) => {
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
-      documents: [...prev.documents, doc]
+      documents: [...prev.documents, doc],
     }));
   };
 
   // Обработчик удаления файла
   const handleFileDelete = (docIndex) => {
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
-      documents: prev.documents.filter((_, index) => index !== docIndex)
+      documents: prev.documents.filter((_, index) => index !== docIndex),
     }));
   };
 
   // Валидация формы
   const validate = () => {
     const newErrors = {};
-    
-    if (!formData.name?.trim()) newErrors.name = 'Название обязательно';
-    if (!formData.model?.trim()) newErrors.model = 'Модель обязательна';
-    if (!formData.location?.trim()) newErrors.location = 'Место установки обязательно';
+
+    if (!formData.name?.trim()) newErrors.name = "Название обязательно";
+    if (!formData.model?.trim()) newErrors.model = "Модель обязательна";
+    if (!formData.location?.trim())
+      newErrors.location = "Место установки обязательно";
     if (!formData.ports || isNaN(formData.ports) || formData.ports <= 0) {
-      newErrors.ports = 'Укажите корректное количество портов';
+      newErrors.ports = "Укажите корректное количество портов";
     }
-    
+
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
@@ -105,11 +138,11 @@ export const SwitchForm = ({
   // Обработчик отправки
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+
     if (!validate()) {
       // Прокрутка к первой ошибке
       const firstError = document.querySelector('[data-error="true"]');
-      firstError?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      firstError?.scrollIntoView({ behavior: "smooth", block: "center" });
       return;
     }
 
@@ -120,7 +153,7 @@ export const SwitchForm = ({
       const submitData = {
         ...formData,
         ports: parseInt(formData.ports) || 0,
-        updatedAt: new Date().toISOString()
+        updatedAt: new Date().toISOString(),
       };
 
       // Если это новый коммутатор, добавляем createdAt
@@ -131,60 +164,63 @@ export const SwitchForm = ({
 
       await onSubmit(submitData);
     } catch (error) {
-      console.error('Ошибка при сохранении:', error);
-      alert('Не удалось сохранить данные. Попробуйте ещё раз.');
+      console.error("Ошибка при сохранении:", error);
+      alert("Не удалось сохранить данные. Попробуйте ещё раз.");
     } finally {
       setIsSubmitting(false);
     }
   };
 
-  // Компонент поля ввода (переиспользуемый)
-  const InputField = ({ 
-    label, 
-    name, 
-    type = 'text', 
-    required = false, 
-    placeholder = '',
-    className = ''
-  }) => (
-    <div className={`space-y-1 ${className}`}>
-      <label htmlFor={name} className="block text-sm font-medium text-gray-700">
-        {label} {required && <span className="text-red-500">*</span>}
-      </label>
-      <input
-        type={type}
-        id={name}
-        name={name}
-        value={formData[name]}
-        onChange={handleChange}
-        placeholder={placeholder}
-        data-error={!!errors[name]}
-        className={`w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all text-sm
-          ${errors[name] 
-            ? 'border-red-300 bg-red-50 focus:ring-red-500' 
-            : 'border-gray-300 bg-white'
-          }`}
-      />
-      {errors[name] && (
-        <p className="text-xs text-red-500" role="alert">{errors[name]}</p>
-      )}
-    </div>
-  );
-
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
-      
       {/* Секция 1: Основная информация */}
       <div>
         <h3 className="text-sm font-semibold text-gray-900 mb-3 pb-2 border-b">
           Основная информация
         </h3>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          <InputField label="Название" name="name" required className="lg:col-span-2" />
-          <InputField label="Модель" name="model" required />
-          <InputField label="Вендор" name="vendor" placeholder="Cisco, TP-Link, etc." />
-          <InputField label="Порты" name="ports" type="number" required />
-          <InputField label="Серийный номер" name="serialNumber" className="lg:col-span-2" />
+          <InputField
+            label="Название"
+            name="name"
+            required
+            className="lg:col-span-2"
+            value={formData.name}
+            onChange={handleChange}
+            error={errors.name}
+          />
+          <InputField
+            label="Модель"
+            name="model"
+            required
+            value={formData.model}
+            onChange={handleChange}
+            error={errors.model}
+          />
+          <InputField
+            label="Вендор"
+            name="vendor"
+            placeholder="Cisco, TP-Link, etc."
+            value={formData.vendor}
+            onChange={handleChange}
+            error={errors.vendor}
+          />
+          <InputField
+            label="Порты"
+            name="ports"
+            type="number"
+            required
+            value={formData.ports}
+            onChange={handleChange}
+            error={errors.ports}
+          />
+          <InputField
+            label="Серийный номер"
+            name="serialNumber"
+            className="lg:col-span-2"
+            value={formData.serialNumber}
+            onChange={handleChange}
+            error={errors.serialNumber}
+          />
         </div>
       </div>
 
@@ -194,10 +230,21 @@ export const SwitchForm = ({
           Размещение и статус
         </h3>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          <InputField label="Место установки" name="location" required className="lg:col-span-2" />
-          
+          <InputField
+            label="Место установки"
+            name="location"
+            required
+            className="lg:col-span-2"
+            value={formData.location}
+            onChange={handleChange}
+            error={errors.location}
+          />
+
           <div className="space-y-1">
-            <label htmlFor="status" className="block text-sm font-medium text-gray-700">
+            <label
+              htmlFor="status"
+              className="block text-sm font-medium text-gray-700"
+            >
               Статус <span className="text-red-500">*</span>
             </label>
             <select
@@ -207,9 +254,9 @@ export const SwitchForm = ({
               onChange={handleChange}
               data-error={!!errors.status}
               className={`w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all text-sm bg-white
-                ${errors.status ? 'border-red-300' : 'border-gray-300'}`}
+                ${errors.status ? "border-red-300" : "border-gray-300"}`}
             >
-              {STATUS_OPTIONS.map(option => (
+              {STATUS_OPTIONS.map((option) => (
                 <option key={option.value} value={option.value}>
                   {option.label}
                 </option>
@@ -217,9 +264,64 @@ export const SwitchForm = ({
             </select>
           </div>
 
-          <InputField label="Дата покупки" name="purchaseDate" type="date" />
-          <InputField label="№ заявки" name="requestNumber" placeholder="Заявка №..." />
-          <InputField label="Сотрудник" name="technician" placeholder="Ответственный" />
+          <div className="space-y-1">
+            <label
+              htmlFor="purchaseDate"
+              className="block text-sm font-medium text-gray-700"
+            >
+              Дата установки/проверки
+            </label>
+            <input
+              type="date"
+              id="purchaseDate"
+              name="purchaseDate"
+              value={
+                formData.purchaseDate ? formData.purchaseDate.split("T")[0] : ""
+              }
+              onChange={handleChange}
+              className={`w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all text-sm bg-white
+          ${errors.purchaseDate ? "border-red-300" : "border-gray-300"}`}
+            />
+            {errors.purchaseDate && (
+              <p className="text-xs text-red-500" role="alert">
+                {errors.purchaseDate}
+              </p>
+            )}
+          </div>
+          <div className="space-y-1">
+            <label
+              htmlFor="requestNumber"
+              className="block text-sm font-medium text-gray-700"
+            >
+              № заявки
+            </label>
+            <input
+              type="text"
+              id="requestNumber"
+              name="requestNumber"
+              value={formData.requestNumber || ""}
+              onChange={handleChange}
+              placeholder="SR0123, SR0456..."
+              className={`w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all text-sm bg-white
+      ${errors.requestNumber ? "border-red-300" : "border-gray-300"}`}
+            />
+            <p className="text-xs text-gray-400">
+              💡 Можно указать не больше 4-х номеров через запятую (без пробела)
+            </p>
+            {errors.requestNumber && (
+              <p className="text-xs text-red-500" role="alert">
+                {errors.requestNumber}
+              </p>
+            )}
+          </div>
+          <InputField
+            label="Сотрудник"
+            name="technician"
+            placeholder="Ответственный"
+            value={formData.technician}
+            onChange={handleChange}
+            error={errors.technician}
+          />
         </div>
       </div>
 
@@ -229,7 +331,10 @@ export const SwitchForm = ({
           Дополнительная информация
         </h3>
         <div className="space-y-1">
-          <label htmlFor="comment" className="block text-sm font-medium text-gray-700">
+          <label
+            htmlFor="comment"
+            className="block text-sm font-medium text-gray-700"
+          >
             Комментарий
           </label>
           <textarea
@@ -249,7 +354,7 @@ export const SwitchForm = ({
         <h3 className="text-sm font-semibold text-gray-900 mb-3 pb-2 border-b">
           Документы
         </h3>
-        <FileUpload 
+        <FileUpload
           documents={formData.documents}
           switchId={initialData?.id}
           onUploadSuccess={handleFileUploadSuccess}
@@ -277,12 +382,13 @@ export const SwitchForm = ({
               <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
               Сохранение...
             </>
+          ) : initialData ? (
+            "Сохранить изменения"
           ) : (
-            initialData ? 'Сохранить изменения' : 'Добавить коммутатор'
+            "Добавить коммутатор"
           )}
         </button>
       </div>
-
     </form>
   );
 };
