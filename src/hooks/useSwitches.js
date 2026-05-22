@@ -1,34 +1,12 @@
 // src/hooks/useSwitches.js
-import { api } from "../services/api";
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback } from 'react';
+import { api } from '../services/api';
 
 /**
- * Ключ для localStorage
+ * Ключ для резервного копирования в localStorage
+ * (используется только как фоллбэк при недоступности сервера)
  */
-const STORAGE_KEY = "switch-manager-data";
-
-/**
- * Данные по умолчанию для первого запуска
- */
-const DEFAULT_SWITCHES = [
-  {
-    id: 1,
-    name: "Switch-Office-01",
-    model: "TP-Link TL-SG1008D",
-    location: "Офис, этаж 2, кабинет 205",
-    serialNumber: "TPL2024001234",
-    requestNumber: "Заявка №123",
-    technician: "Иванов И.И.",
-    ports: 8,
-    status: "active",
-    vendor: "TP-Link",
-    purchaseDate: "2024-01-15",
-    comment: "",
-    documents: [],
-    createdAt: new Date().toISOString(),
-    updatedAt: new Date().toISOString(),
-  },
-];
+const BACKUP_KEY = 'switch-manager-backup';
 
 /**
  * Кастомный хук для управления данными коммутаторов
@@ -37,42 +15,77 @@ const DEFAULT_SWITCHES = [
 export const useSwitches = () => {
   // Состояние списка коммутаторов
   const [switches, setSwitches] = useState([]);
-
+  
   // Состояние загрузки
   const [isLoading, setIsLoading] = useState(true);
-
+  
   // Состояние ошибки
   const [error, setError] = useState(null);
 
-  // Загрузка данных из localStorage при монтировании
+  // ============================================
+  // ИНИЦИАЛИЗАЦИЯ: Загрузка данных при монтировании
+  // ============================================
   useEffect(() => {
-    try {
-      const savedData = localStorage.getItem(STORAGE_KEY);
-      if (savedData) {
-        setSwitches(JSON.parse(savedData));
-      } else {
-        setSwitches(DEFAULT_SWITCHES);
+    const fetchFromServer = async () => {
+      try {
+        // ✅ Сервер — главный источник истины
+        const response = await api.getSwitches();
+        
+        // Извлекаем данные из обёртки ответа { success: true, data: [...] }
+        const serverData = response?.data || response;
+        
+        if (Array.isArray(serverData)) {
+          console.log(`📡 Загружено ${serverData.length} коммутаторов с сервера`);
+          setSwitches(serverData);
+          
+          // Сохраняем в localStorage как резервную копию (не как основной источник!)
+          localStorage.setItem(BACKUP_KEY, JSON.stringify(serverData));
+          setError(null);
+        }
+      } catch (err) {
+        console.warn('⚠️ Не удалось загрузить данные с сервера:', err.message);
+        
+        // Фоллбэк: пробуем загрузить из резервной копии в localStorage
+        try {
+          const backup = localStorage.getItem(BACKUP_KEY);
+          if (backup) {
+            const localData = JSON.parse(backup);
+            console.log(`💾 Загружено ${localData.length} коммутаторов из резервной копии`);
+            setSwitches(localData);
+            setError('Сервер недоступен. Показаны локальные данные.');
+          } else {
+            setError('Не удалось подключиться к серверу и нет локальной копии.');
+            setSwitches([]);
+          }
+        } catch {
+          setError('Ошибка чтения локальных данных.');
+          setSwitches([]);
+        }
+      } finally {
+        setIsLoading(false);
       }
-    } catch (err) {
-      console.error("Ошибка загрузки данных из localStorage:", err);
-      setError("Не удалось загрузить данные");
-      setSwitches(DEFAULT_SWITCHES);
-    } finally {
-      setIsLoading(false);
-    }
+    };
+
+    fetchFromServer();
   }, []);
 
-  // Сохранение данных в localStorage при изменении
+  // ============================================
+  // СИНХРОНИЗАЦИЯ: Сохранение резервной копии при изменении данных
+  // ============================================
   useEffect(() => {
-    if (!isLoading) {
+    // Сохраняем в localStorage только если данные не пустые и не загружаются
+    if (!isLoading && switches.length > 0) {
       try {
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(switches));
+        localStorage.setItem(BACKUP_KEY, JSON.stringify(switches));
       } catch (err) {
-        console.error("Ошибка сохранения данных в localStorage:", err);
-        setError("Не удалось сохранить данные");
+        console.warn('⚠️ Не удалось сохранить резервную копию:', err);
       }
     }
   }, [switches, isLoading]);
+
+  // ============================================
+  // CRUD ОПЕРАЦИИ
+  // ============================================
 
   /**
    * Добавление нового коммутатора
@@ -82,110 +95,109 @@ export const useSwitches = () => {
   const addSwitch = useCallback(async (switchData) => {
     try {
       const response = await api.createSwitch(switchData);
-      // ✅ Извлекаем данные из обёртки ответа API
-      const newSwitch = response.data || response;
-      setSwitches((prev) => [...prev, newSwitch]);
+      // ✅ Извлекаем данные из обёртки ответа
+      const newSwitch = response?.data || response;
+      
+      // Добавляем в локальное состояние
+      setSwitches(prev => [...prev, newSwitch]);
+      setError(null);
       return newSwitch;
     } catch (err) {
-      console.error("❌ Ошибка сохранения на сервере:", err);
-      setError("Не удалось сохранить коммутатор");
+      console.error('❌ Ошибка добавления коммутатора:', err);
+      
+      // Показываем понятную ошибку пользователю
+      const errorMsg = err?.response?.data?.error || 
+                      err?.response?.data?.details?.join(', ') || 
+                      err?.message || 
+                      'Не удалось сохранить коммутатор';
+      setError(errorMsg);
       throw err;
     }
   }, []);
 
   /**
    * Обновление данных коммутатора
-   * @param {number} id - ID коммутатора
+   * @param {number|string} id - ID коммутатора
    * @param {Object} updatedData - Новые данные
    * @returns {Object} Обновлённый коммутатор
    */
   const updateSwitch = useCallback(async (id, updatedData) => {
     try {
       const response = await api.updateSwitch(id, updatedData);
-      const updated = response.data || response;
-      setSwitches((prev) =>
-        prev.map((s) => (s.id === id ? { ...s, ...updated } : s)),
-      );
+      const updated = response?.data || response;
+      
+      // Обновляем в локальном состоянии
+      setSwitches(prev => prev.map(s => 
+        String(s.id) === String(id) ? { ...s, ...updated } : s
+      ));
+      setError(null);
       return updated;
     } catch (err) {
-      console.error("❌ Ошибка обновления:", err);
-      setError("Не удалось обновить коммутатор");
+      console.error('❌ Ошибка обновления коммутатора:', err);
+      
+      const errorMsg = err?.response?.data?.error || 
+                      err?.response?.data?.details?.join(', ') || 
+                      err?.message || 
+                      'Не удалось обновить коммутатор';
+      setError(errorMsg);
       throw err;
     }
   }, []);
 
   /**
    * Удаление коммутатора
-   * @param {number} id - ID коммутатора
+   * @param {number|string} id - ID коммутатора
    * @returns {boolean} Успешность удаления
    */
-
   const deleteSwitch = useCallback(async (id) => {
     try {
-      // ✅ Просто вызываем API, ответ нам не нужен для логики
       await api.deleteSwitch(id);
-
-      // Обновляем локальное состояние
-      setSwitches((prev) => prev.filter((s) => String(s.id) !== String(id)));
-
+      
+      // ✅ Используем строковое сравнение для надёжности
+      setSwitches(prev => prev.filter(s => String(s.id) !== String(id)));
+      setError(null);
       return true;
     } catch (err) {
-      console.error("❌ Ошибка удаления:", err);
-
-      // Если сервер вернул 404, удаляем из UI локально
+      console.error('❌ Ошибка удаления коммутатора:', err);
+      
+      // Если сервер вернул 404 (коммутатор уже удалён), удаляем из UI локально
       if (err?.response?.status === 404) {
-        setSwitches((prev) => prev.filter((s) => String(s.id) !== String(id)));
+        console.warn('⚠️ Коммутатор не найден на сервере, удаляем из UI локально');
+        setSwitches(prev => prev.filter(s => String(s.id) !== String(id)));
         return true;
       }
-
-      setError("Не удалось удалить коммутатор");
+      
+      const errorMsg = err?.response?.data?.error || 
+                      err?.message || 
+                      'Не удалось удалить коммутатор';
+      setError(errorMsg);
       throw err;
     }
   }, []);
 
+  // ============================================
+  // ВСПОМОГАТЕЛЬНЫЕ МЕТОДЫ
+  // ============================================
+
   /**
-   * Получение коммутатора по ID
-   * @param {number} id - ID коммутатора
+   * Получение коммутатора по ID (локально)
+   * @param {number|string} id - ID коммутатора
    * @returns {Object|null} Найденный коммутатор или null
    */
-  const getSwitchById = useCallback(
-    (id) => {
-      return switches.find((s) => s.id === id) || null;
-    },
-    [switches],
-  );
+  const getSwitchById = useCallback((id) => {
+    return switches.find(s => String(s.id) === String(id)) || null;
+  }, [switches]);
 
   /**
-   * Импорт данных из внешнего источника
+   * Импорт данных (замена текущих)
    * @param {Array} data - Массив коммутаторов для импорта
-   * @param {boolean} merge - Объединить с существующими (true) или заменить (false)
-   * @returns {number} Количество импортированных коммутаторов
    */
-  const importSwitches = useCallback((data, merge = true) => {
-    try {
-      if (!Array.isArray(data)) {
-        throw new Error("Данные должны быть массивом");
-      }
-
-      setSwitches((prev) => {
-        if (merge) {
-          // Объединение с существующими (избегаем дубликатов по ID)
-          const existingIds = new Set(prev.map((s) => s.id));
-          const newSwitches = data.filter((s) => !existingIds.has(s.id));
-          return [...prev, ...newSwitches];
-        } else {
-          // Полная замена
-          return data;
-        }
-      });
-
-      setError(null);
-      return data.length;
-    } catch (err) {
-      console.error("Ошибка импорта данных:", err);
-      setError("Не удалось импортировать данные");
-      throw err;
+  const importSwitches = useCallback((data) => {
+    if (!Array.isArray(data)) {
+      throw new Error('Данные для импорта должны быть массивом');
     }
+    setSwitches(data);
+    setError(null);
   }, []);
 
   /**
@@ -193,107 +205,80 @@ export const useSwitches = () => {
    * @returns {string} JSON строка с данными
    */
   const exportSwitches = useCallback(() => {
-    try {
-      return JSON.stringify(switches, null, 2);
-    } catch (err) {
-      console.error("Ошибка экспорта данных:", err);
-      setError("Не удалось экспортировать данные");
-      throw err;
-    }
+    return JSON.stringify(switches, null, 2);
   }, [switches]);
 
   /**
-   * Очистка всех данных
-   * @param {boolean} confirm - Требовать подтверждение
-   * @returns {boolean} Успешность очистки
-   */
-  const clearAll = useCallback((confirm = true) => {
-    if (
-      confirm &&
-      !window.confirm(
-        "Вы уверены, что хотите удалить все коммутаторы? Это действие нельзя отменить.",
-      )
-    ) {
-      return false;
-    }
-
-    try {
-      setSwitches([]);
-      localStorage.removeItem(STORAGE_KEY);
-      setError(null);
-      return true;
-    } catch (err) {
-      console.error("Ошибка очистки данных:", err);
-      setError("Не удалось очистить данные");
-      throw err;
-    }
-  }, []);
-
-  /**
-   * Поиск коммутаторов по запросу
+   * Поиск коммутаторов по запросу (локально)
    * @param {string} searchTerm - Поисковый запрос
-   * @returns {Array} Отфильтрованный массив коммутаторов
+   * @returns {Array} Отфильтрованный массив
    */
-  const searchSwitches = useCallback(
-    (searchTerm) => {
-      if (!searchTerm?.trim()) {
-        return switches;
-      }
-
-      const term = searchTerm.toLowerCase().trim();
-      return switches.filter((s) => {
-        const searchableFields = [
-          s.name,
-          s.model,
-          s.location,
-          s.serialNumber,
-          s.requestNumber,
-          s.technician,
-          s.vendor,
-          s.status,
-        ];
-        return searchableFields.some((field) =>
-          field?.toLowerCase().includes(term),
-        );
-      });
-    },
-    [switches],
-  );
+  const searchSwitches = useCallback((searchTerm) => {
+    if (!searchTerm?.trim()) {
+      return switches;
+    }
+    const term = searchTerm.toLowerCase().trim();
+    return switches.filter(s => {
+      const fields = [
+        s.name, s.model, s.location, s.serialNumber, 
+        s.requestNumber, s.technician, s.vendor, s.status
+      ];
+      return fields.some(field => field?.toLowerCase()?.includes(term));
+    });
+  }, [switches]);
 
   /**
-   * Фильтрация коммутаторов по статусу
+   * Фильтрация по статусу (локально)
    * @param {string} status - Статус для фильтрации
-   * @returns {Array} Отфильтрованный массив коммутаторов
+   * @returns {Array} Отфильтрованный массив
    */
-  const filterByStatus = useCallback(
-    (status) => {
-      if (!status) {
-        return switches;
-      }
-      return switches.filter((s) => s.status === status);
-    },
-    [switches],
-  );
+  const filterByStatus = useCallback((status) => {
+    if (!status) return switches;
+    return switches.filter(s => s.status === status);
+  }, [switches]);
 
   /**
-   * Получение статистики по коммутаторам
+   * Получение статистики (локально)
    * @returns {Object} Объект со статистикой
    */
   const getStats = useCallback(() => {
     return {
       total: switches.length,
-      active: switches.filter((s) => s.status === "active").length,
-      maintenance: switches.filter((s) => s.status === "maintenance").length,
-      offline: switches.filter((s) => s.status === "offline" || !s.status)
-        .length,
-      archived: switches.filter((s) => s.status === "archived").length,
-      totalPorts: switches.reduce(
-        (sum, s) => sum + (parseInt(s.ports) || 0),
-        0,
-      ),
-      withDocuments: switches.filter((s) => s.documents?.length > 0).length,
+      active: switches.filter(s => s.status === 'active').length,
+      maintenance: switches.filter(s => s.status === 'maintenance').length,
+      offline: switches.filter(s => s.status === 'offline').length,
+      archived: switches.filter(s => s.status === 'archived').length,
+      totalPorts: switches.reduce((sum, s) => sum + (parseInt(s.ports) || 0), 0),
+      withDocuments: switches.filter(s => s.documents?.length > 0).length
     };
   }, [switches]);
+
+  /**
+   * Принудительная синхронизация с сервером
+   * @returns {Promise<boolean>} Успешность обновления
+   */
+  const syncWithServer = useCallback(async () => {
+    try {
+      setIsLoading(true);
+      const response = await api.getSwitches();
+      const serverData = response?.data || response;
+      
+      if (Array.isArray(serverData)) {
+        setSwitches(serverData);
+        localStorage.setItem(BACKUP_KEY, JSON.stringify(serverData));
+        setError(null);
+        console.log('✅ Данные синхронизированы с сервером');
+        return true;
+      }
+      return false;
+    } catch (err) {
+      console.error('❌ Ошибка синхронизации:', err);
+      setError('Не удалось синхронизировать с сервером');
+      return false;
+    } finally {
+      setIsLoading(false);
+    }
+  }, []);
 
   /**
    * Сброс ошибки
@@ -302,32 +287,37 @@ export const useSwitches = () => {
     setError(null);
   }, []);
 
+  // ============================================
+  // ПУБЛИЧНЫЙ ИНТЕРФЕЙС ХУКА
+  // ============================================
   return {
-    // Данные
+    // Данные и состояние
     switches,
     isLoading,
     error,
-
+    
     // CRUD операции
     addSwitch,
     updateSwitch,
     deleteSwitch,
     getSwitchById,
-
+    
     // Импорт/Экспорт
     importSwitches,
     exportSwitches,
-    clearAll,
-
+    
     // Поиск и фильтрация
     searchSwitches,
     filterByStatus,
-
+    
     // Статистика
     getStats,
-
+    
+    // Синхронизация
+    syncWithServer,
+    
     // Управление ошибками
-    resetError,
+    resetError
   };
 };
 
