@@ -58,28 +58,18 @@
       "id": 1754470014089,
       "name": "DLINK (свитч)",
       "model": "DGS-1005A",
-      "location": "АБК МЦ-2, каб. 2-20 (инж. по экспл. зданий Шаломанов М.Ю)",
+      "location": "АБК ТЭСЦ, 3 эт., акт. зал, ОПА, вед.спец. Ставров К.А.",
       "serialNumber": "U8ED132045037",
-      "requestNumber": "SR01416821",
-      "technician": "Ковалев Д.С.",
+      "requestNumber": "Служеб.запис. №П-4-12-01-2206 от 18.02.2026",
+      "technician": "Михеев В.Г.",
       "ports": 5,
       "status": "active",
       "vendor": "Dlink",
-      "purchaseDate": "2025-06-17",
+      "purchaseDate": "2025-06-17T00:00:00.000Z",
       "comment": null,
       "createdAt": "2026-05-22T05:20:39.570Z",
-      "updatedAt": "2026-05-22T05:20:39.570Z",
-      "documents": [
-        {
-          "id": 1779427239770,
-          "switchId": 1754470014089,
-          "filename": "1754557678074-SR01416821.jpg",
-          "originalName": "SR01416821.jpg",
-          "mimetype": "image/jpeg",
-          "size": 715968,
-          "uploadedAt": "2025-08-07T09:07:58.421Z"
-        }
-      ]
+      "updatedAt": "2026-05-22T06:25:28.563Z",
+      "documents": []
     },
     {
       "id": 1754470216653,
@@ -146,10 +136,10 @@
       "ports": 8,
       "status": "active",
       "vendor": "Dlink",
-      "purchaseDate": "2025-06-01",
+      "purchaseDate": "2025-06-01T00:00:00.000Z",
       "comment": null,
       "createdAt": "2026-05-22T05:20:39.571Z",
-      "updatedAt": "2026-05-22T05:20:39.571Z",
+      "updatedAt": "2026-05-22T07:06:53.964Z",
       "documents": []
     },
     {
@@ -749,5 +739,15 @@
       ]
     }
   ],
-  "documents": []
+  "documents": [
+    {
+      "id": 1779433526338,
+      "switchId": "1754471730741",
+      "filename": "a111eaf1-cab9-4b38-a024-657291a7ab1c.jpg",
+      "originalName": "SR01477073.jpg",
+      "mimetype": "image/jpeg",
+      "size": 625324,
+      "uploadedAt": "2026-05-22T07:05:26.338Z"
+    }
+  ]
 }

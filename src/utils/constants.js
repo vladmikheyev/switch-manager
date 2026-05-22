@@ -274,14 +274,18 @@ export const COLOR_THEMES = {
  * Настройки API
  */
 export const API_CONFIG = {
-  BASE_URL: import.meta.env?.VITE_API_URL || 'http://10.182.62.50:5000',
+  BASE_URL: import.meta.env?.VITE_API_URL || 'http://localhost:5000',
   TIMEOUT: 30000,
   RETRIES: 3,
   ENDPOINTS: {
     SWITCHES: '/api/switches',
-    UPLOAD: '/api/upload',
-    DOCUMENT: '/api/document',
-    HEALTH: '/api/health'
+    // ✅ ИСПРАВЛЕНО: Полный путь внутри префикса /api/switches
+    UPLOAD: '/api/switches/upload',
+    DOCUMENT: '/api/switches/document',
+    
+    HEALTH: '/api/health',
+    SEARCH: '/api/switches/search',
+    STATS: '/api/switches/stats'
   }
 };
 
