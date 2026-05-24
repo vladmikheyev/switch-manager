@@ -173,7 +173,7 @@
       "model": "DGS-1005A",
       "location": "АБК ЭСПЦ, каб. 3.10 (Нач.участка Курмангулов Александр Викторович)",
       "serialNumber": "U8ED132045035",
-      "requestNumber": "SR018663128,SR018663151,SR018663153,SR018663162",
+      "requestNumber": "SR018663128, SR018663151, SR018663153, SR018663162",
       "technician": "Ситьков В.Р.",
       "ports": 5,
       "status": "active",
@@ -445,10 +445,10 @@
       "ports": 8,
       "status": "maintenance",
       "vendor": "Dlink",
-      "purchaseDate": "2025-08-06",
+      "purchaseDate": "2025-08-06T00:00:00.000Z",
       "comment": null,
       "createdAt": "2026-05-22T05:20:39.571Z",
-      "updatedAt": "2026-05-22T05:20:39.571Z",
+      "updatedAt": "2026-05-24T21:10:21.361Z",
       "documents": []
     },
     {
@@ -842,6 +842,42 @@
       "mimetype": "image/jpeg",
       "size": 641146,
       "uploadedAt": "2026-05-22T10:01:01.086Z"
+    },
+    {
+      "id": 1779656435739,
+      "switchId": "1754475654220",
+      "filename": "3605584b-4ada-47f7-942a-110daa2d6d2c.jpg",
+      "originalName": "2025-12-30-ÐÐºÑ-Ð±-Ð½.jpg",
+      "mimetype": "image/jpeg",
+      "size": 939717,
+      "uploadedAt": "2026-05-24T21:00:35.739Z"
+    },
+    {
+      "id": 1779656548150,
+      "switchId": "1754475654220",
+      "filename": "4af5a273-5beb-4fea-82b2-082cbec812b8.jpg",
+      "originalName": "2025-12-30-ÐÐºÑ-Ð±-Ð½.jpg",
+      "mimetype": "image/jpeg",
+      "size": 939717,
+      "uploadedAt": "2026-05-24T21:02:28.150Z"
+    },
+    {
+      "id": 1779656698576,
+      "switchId": "1754475654220",
+      "filename": "8853ee40-ef31-494a-bc6a-44eef36de694.pdf",
+      "originalName": "ÐÐ·Ð²ÐµÑÐµÐ½Ð¸Ðµ Ð¾ ÑÐ¾ÑÑÐ¾ÑÐ½Ð¸Ð¸ Ð¸Ð½Ð´Ð¸Ð²Ð¸Ð´ÑÐ°Ð»ÑÐ½Ð¾Ð³Ð¾ Ð»Ð¸ÑÐµÐ²Ð¾Ð³Ð¾ ÑÑÐµÑÐ° Ð·Ð°ÑÑÑÐ°ÑÐ¾Ð²Ð°Ð½Ð½Ð¾Ð³Ð¾ Ð»Ð¸ÑÐ° 07331598365.pdf",
+      "mimetype": "application/pdf",
+      "size": 55878,
+      "uploadedAt": "2026-05-24T21:04:58.576Z"
+    },
+    {
+      "id": 1779656834054,
+      "switchId": "1754475654220",
+      "filename": "747955dd-40ce-49d7-bb13-ff6d486d0d02.png",
+      "originalName": "Ð Ð¸ÑÑÐ½Ð¾Ðº1.png",
+      "mimetype": "image/png",
+      "size": 250151,
+      "uploadedAt": "2026-05-24T21:07:14.054Z"
     }
   ]
 }

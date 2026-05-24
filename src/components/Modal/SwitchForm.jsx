@@ -306,7 +306,7 @@ export const SwitchForm = ({ initialData = null, onSubmit, onCancel }) => {
       ${errors.requestNumber ? "border-red-300" : "border-gray-300"}`}
             />
             <p className="text-xs text-gray-400">
-              💡 Можно указать не больше 4-х номеров через запятую (без пробела)
+              💡 Укажите номера заявок через запятую
             </p>
             {errors.requestNumber && (
               <p className="text-xs text-red-500" role="alert">
