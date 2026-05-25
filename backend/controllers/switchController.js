@@ -124,45 +124,50 @@ exports.searchSwitches = async (req, res, next) => {
 };
 
 // POST /api/upload/:switchId - Загрузить файл
+// backend/controllers/switchController.js (в методе uploadFile)
+
 exports.uploadFile = async (req, res, next) => {
   try {
     const switchId = req.params.switchId;
-
+    
     if (!req.file) {
-      return res.status(400).json({ error: "Файл не выбран" });
+      return res.status(400).json({ error: 'Файл не выбран' });
     }
 
     const switchItem = Switch.getById(switchId);
     if (!switchItem) {
-      // Удаляем файл если коммутатор не найден
-      const fs = require("fs");
-      const path = require("path");
-      const filePath = path.join(process.cwd(), "uploads", req.file.filename);
+      const fs = require('fs');
+      const filePath = path.join(process.cwd(), 'uploads', req.file.filename);
       if (fs.existsSync(filePath)) fs.unlinkSync(filePath);
-      return res.status(404).json({ error: "Коммутатор не найден" });
+      return res.status(404).json({ error: 'Коммутатор не найден' });
     }
 
+    // ✅ Сохраняем originalname как есть (UTF-8)
     const document = await Switch.addDocument(switchId, {
-      filename: req.file.filename,
-      originalname: req.file.originalname,
+      filename: req.file.filename,           // uuid.jpg на диске
+      originalname: req.file.originalname,   // ✅ Оригинальное имя с кириллицей
       mimetype: req.file.mimetype,
-      size: req.file.size,
+      size: req.file.size
     });
 
     res.status(201).json({
       success: true,
-      message: "Файл успешно загружен",
+      message: 'Файл успешно загружен',
       document: {
         id: document.id,
-        name: document.originalName,
-        filename: document.filename,
+        name: document.originalName,    // ✅ Отправляем оригинальное имя
+        filename: document.filename,    // Имя на диске
         mimetype: document.mimetype,
         size: document.size,
-        uploadedAt: document.uploadedAt,
-      },
+        uploadedAt: document.uploadedAt
+      }
     });
   } catch (error) {
-    console.error("❌ Ошибка загрузки файла:", error);
+    console.error('❌ Ошибка загрузки файла:', error);
+    if (req.file?.path) {
+      const fs = require('fs');
+      if (fs.existsSync(req.file.path)) fs.unlinkSync(req.file.path);
+    }
     next(error);
   }
 };

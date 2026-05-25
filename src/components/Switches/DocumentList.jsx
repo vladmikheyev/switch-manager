@@ -18,12 +18,13 @@ export const DocumentList = ({ documents = [] }) => {
   return (
     <div className="flex flex-wrap gap-1.5">
       {documents.map((doc, index) => {
+        // ✅ Берём originalName (оригинальное имя с кириллицей)
         const fileName = doc.originalName || doc.name || 'Файл';
         const fileKey = doc.filename || doc.name;
         const FileIcon = getFileIcon(fileKey);
         
-        // ✅ Безопасная ссылка на файл
-        const fileUrl = `${API_URL}/api/switches/uploads/${fileKey}?name=${encodeURIComponent(fileName)}`;
+        // ✅ Ссылка на файл: имя передаём как параметр для заголовка Content-Disposition
+        const fileUrl = `${API_URL}/api/switches/uploads/${fileKey}`;
 
         return (
           <a
@@ -31,13 +32,13 @@ export const DocumentList = ({ documents = [] }) => {
             href={fileUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 px-2 py-1 bg-gray-50 hover:bg-blue-50 text-gray-600 hover:text-blue-700 rounded border border-gray-200 hover:border-blue-300 transition-colors text-xs cursor-pointer no-underline"
-            title={`Открыть: ${fileName}`}
-            // ✅ Атрибут download с корректным именем
-            download={fileName}
+            className="inline-flex items-center gap-1.5 px-2 py-1 bg-gray-50 hover:bg-blue-50 text-gray-600 hover:text-blue-700 rounded border border-gray-200 hover:border-blue-300 transition-colors text-xs cursor-pointer no-underline max-w-[200px]"
+            title={fileName}  // ✅ Нативная подсказка с полным именем
+            download={fileName}  // ✅ Имя файла при скачивании
           >
-            <FileIcon className="w-3.5 h-3.5 flex-shrink-0" />
-            <span className="max-w-[120px] truncate">{fileName}</span>
+            <FileIcon className="w-3.5 h-3.5 flex-shrink-0" aria-hidden="true" />
+            {/* ✅ Обрезаем длинное имя, но показываем полностью в title */}
+            <span className="truncate">{fileName}</span>
           </a>
         );
       })}
