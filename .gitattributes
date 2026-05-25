@@ -1,0 +1,17 @@
+# Принудительная кодировка UTF-8 для всех текстовых файлов
+* text=auto eol=lf
+
+# Явное указание кодировки для файлов с кириллицей
+*.md text eol=lf
+*.js text eol=lf
+*.jsx text eol=lf
+*.json text eol=lf
+*.txt text eol=lf
+
+# Бинарные файлы (изображения, документы) — без конвертации
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.pdf binary
+*.doc binary
+*.docx binary
