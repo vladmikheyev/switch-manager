@@ -19,7 +19,7 @@ export const exportToJSON = (data, filename = 'export', spaces = 2) => {
 };
 
 /**
- * Экспорт данных в CSV формат (Excel)
+ * Экспорт данных в формат, совместимый с Excel (HTML-таблица с .xls расширением)
  * @param {Array} data - Массив объектов для экспорта
  * @param {string} filename - Имя файла (без расширения)
  * @param {Array} columns - Массив колонок для экспорта (опционально)
@@ -53,18 +53,11 @@ export const exportToCSV = (data, filename = 'export', columns = null) => {
       updatedAt: 'Обновлён'
     };
 
-    // Формирование CSV контента
-    const csvRows = [];
-    
-    // Заголовок
-    csvRows.push(headers.map(h => `"${headerMap[h] || h}"`).join(','));
-    
-    // Данные
-    for (const row of data) {
-      const values = headers.map(header => {
+    // Формируем данные для таблицы
+    const rows = data.map(row => {
+      return headers.map(header => {
         let value = row[header];
         
-        // Обработка специальных значений
         if (value === null || value === undefined) {
           value = '';
         } else if (header === 'status') {
@@ -73,26 +66,72 @@ export const exportToCSV = (data, filename = 'export', columns = null) => {
           value = Array.isArray(value) ? value.length : 0;
         } else if (header === 'createdAt' || header === 'updatedAt') {
           value = value ? new Date(value).toLocaleDateString('ru-RU') : '';
-        } else if (typeof value === 'string') {
-          // Экранирование кавычек в строках
-          value = value.replace(/"/g, '""');
         }
         
-        return `"${value}"`;
+        // Экранирование для HTML
+        return String(value)
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;');
       });
-      
-      csvRows.push(values.join(','));
-    }
+    });
 
-    // Создаём BOM для корректного отображения кириллицы в Excel
-    const BOM = '\uFEFF';
-    const csvContent = BOM + csvRows.join('\n');
+    // ✅ HTML-шаблон для Excel с явным указанием кодировки
+    const htmlTable = `
+      <html xmlns:o="urn:schemas-microsoft-com:office:office" 
+            xmlns:x="urn:schemas-microsoft-com:office:excel" 
+            xmlns="http://www.w3.org/TR/REC-html40">
+        <head>
+          <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+          <!--[if gte mso 9]><xml>
+            <x:ExcelWorkbook>
+              <x:ExcelWorksheets>
+                <x:ExcelWorksheet>
+                  <x:Name>Коммутаторы</x:Name>
+                  <x:WorksheetOptions>
+                    <x:DisplayGridlines/>
+                    <x:ProtectContents>false</x:ProtectContents>
+                  </x:WorksheetOptions>
+                </x:ExcelWorksheet>
+              </x:ExcelWorksheets>
+            </x:ExcelWorkbook>
+          </xml><![endif]-->
+          <style>
+            table { border-collapse: collapse; }
+            th, td { border: 1px solid #ccc; padding: 4px 8px; text-align: left; }
+            th { background: #f0f0f0; font-weight: bold; }
+          </style>
+        </head>
+        <body>
+          <table>
+            <thead>
+              <tr>${headers.map(h => `<th>${headerMap[h] || h}</th>`).join('')}</tr>
+            </thead>
+            <tbody>
+              ${rows.map(row => `<tr>${row.map(cell => `<td>${cell}</td>`).join('')}</tr>`).join('')}
+            </tbody>
+          </table>
+        </body>
+      </html>
+    `;
+
+    // ✅ BOM + кодирование через TextEncoder
+    const BOM = new Uint8Array([0xEF, 0xBB, 0xBF]);
+    const encoder = new TextEncoder();
+    const bytes = encoder.encode(htmlTable);
     
-    const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
-    downloadFile(blob, `${filename}-${getDateString()}.csv`);
+    // ✅ MIME-тип для Excel + расширение .xls
+    const blob = new Blob([BOM, bytes], { 
+      type: 'application/vnd.ms-excel;charset=utf-8' 
+    });
+    
+    // ✅ Скачиваем как .xls (Excel откроет это корректно)
+    downloadFile(blob, `${filename}-${getDateString()}.xls`);
+    
   } catch (error) {
-    console.error('Ошибка экспорта в CSV:', error);
-    throw new Error('Не удалось экспортировать данные в CSV');
+    console.error('Ошибка экспорта в Excel:', error);
+    throw new Error('Не удалось экспортировать данные');
   }
 };
 
