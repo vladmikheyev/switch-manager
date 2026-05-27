@@ -1,0 +1,30 @@
+
+> switch-manager-backend@1.0.0 dev
+> nodemon server.js
+
+[33m[nodemon] 3.1.14[39m
+[33m[nodemon] to restart at any time, enter `rs`[39m
+[33m[nodemon] watching path(s): *.*[39m
+[33m[nodemon] watching extensions: js,mjs,cjs,json[39m
+[32m[nodemon] starting `node server.js`[39m
+✅ JSON Database ready at: C:\Users\vg.mikheev\Documents\Swmanager\switch-manager\backend\data\switches.json
+
+🚀 Backend запущен!
+📍 http://localhost:5000
+🔗 API: http://localhost:5000/api/health
+🌐 Network: http://10.182.63.130:5000
+
+[2026-05-27T12:31:23.299Z] GET /api/health
+[2026-05-27T12:34:30.372Z] GET /api/health
+[2026-05-27T12:37:35.974Z] GET /api/switches
+[31m[nodemon] app crashed - waiting for file changes before starting...[39m
+[32m[nodemon] restarting child process[39m
+[32m[nodemon] starting `node server.js`[39m
+✅ JSON Database ready at: C:\Users\vg.mikheev\Documents\Swmanager\switch-manager\backend\data\switches.json
+
+🚀 Backend запущен!
+📍 http://localhost:5000
+🔗 API: http://localhost:5000/api/health
+🌐 Network: http://10.182.63.130:5000
+
+^C^C
