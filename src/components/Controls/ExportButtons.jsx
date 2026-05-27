@@ -1,6 +1,11 @@
 // src/components/Controls/ExportButtons.jsx
-import { Download, Upload, FileJson, FileSpreadsheet } from 'lucide-react';
-import { useRef, useState } from 'react';
+import {
+  exportToCSV,
+  exportToJSON,
+  exportToXLSX,
+} from "../../utils/exportHelpers";
+import { Download, Upload, FileJson, FileSpreadsheet } from "lucide-react";
+import { useRef, useState } from "react";
 
 /**
  * Компонент кнопок экспорта и импорта данных
@@ -9,10 +14,10 @@ import { useRef, useState } from 'react';
  * @param {Function} props.onImport - Обработчик импорта (принимает данные)
  * @param {string} props.fileName - Имя файла для экспорта
  */
-export const ExportButtons = ({ 
-  onExport, 
-  onImport, 
-  fileName = 'switches-export' 
+export const ExportButtons = ({
+  onExport,
+  onImport,
+  fileName = "switches-export",
 }) => {
   const fileInputRef = useRef(null);
   const [isImporting, setIsImporting] = useState(false);
@@ -21,67 +26,33 @@ export const ExportButtons = ({
   const handleExportJSON = () => {
     try {
       const data = onExport();
-      const blob = new Blob([data], { type: 'application/json' });
+      const blob = new Blob([data], { type: "application/json" });
       const url = URL.createObjectURL(blob);
-      const link = document.createElement('a');
+      const link = document.createElement("a");
       link.href = url;
-      link.download = `${fileName}-${new Date().toISOString().split('T')[0]}.json`;
+      link.download = `${fileName}-${new Date().toISOString().split("T")[0]}.json`;
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
       URL.revokeObjectURL(url);
     } catch (error) {
-      console.error('Ошибка экспорта JSON:', error);
-      alert('Не удалось экспортировать данные');
+      console.error("Ошибка экспорта JSON:", error);
+      alert("Не удалось экспортировать данные");
     }
   };
 
-  // Экспорт в Excel (CSV формат для простоты)
+  // ✅ Экспорт в настоящий Excel (.xlsx) с корректной кириллицей
   const handleExportExcel = () => {
     try {
       const data = onExport();
       const switches = JSON.parse(data);
-      
-      // Заголовки CSV
-      const headers = [
-        'ID', 'Название', 'Модель', 'Место установки', 
-        'Серийный номер', 'Порты', 'Статус', 'Вендор', 
-        'Дата покупки', '№ заявки', 'Сотрудник'
-      ];
 
-      // Данные CSV
-      const rows = switches.map(s => [
-        s.id,
-        `"${s.name || ''}"`,
-        `"${s.model || ''}"`,
-        `"${s.location || ''}"`,
-        `"${s.serialNumber || ''}"`,
-        s.ports || 0,
-        s.status || 'active',
-        `"${s.vendor || ''}"`,
-        `"${s.purchaseDate || ''}"`,
-        `"${s.requestNumber || ''}"`,
-        `"${s.technician || ''}"`
-      ]);
-
-      // Создаём CSV контент
-      const csvContent = [
-        headers.join(','),
-        ...rows.map(row => row.join(','))
-      ].join('\n');
-
-      const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
-      const url = URL.createObjectURL(blob);
-      const link = document.createElement('a');
-      link.href = url;
-      link.download = `${fileName}-${new Date().toISOString().split('T')[0]}.csv`;
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-      URL.revokeObjectURL(url);
+      // ✅ Используем готовую функцию из exportHelpers.js
+      // Она создаёт настоящий .xlsx файл через библиотеку 'xlsx'
+      exportToXLSX(switches, fileName || "export", "Коммутаторы");
     } catch (error) {
-      console.error('Ошибка экспорта Excel:', error);
-      alert('Не удалось экспортировать данные');
+      console.error("Ошибка экспорта Excel:", error);
+      alert("Не удалось экспортировать данные");
     }
   };
 
@@ -105,14 +76,14 @@ export const ExportButtons = ({
           onImport(data);
           alert(`Успешно импортировано ${data.length} коммутаторов`);
         } else {
-          alert('Неверный формат файла. Ожидается массив данных.');
+          alert("Неверный формат файла. Ожидается массив данных.");
         }
       } catch (error) {
-        console.error('Ошибка импорта:', error);
-        alert('Ошибка чтения файла. Убедитесь, что это valid JSON.');
+        console.error("Ошибка импорта:", error);
+        alert("Ошибка чтения файла. Убедитесь, что это valid JSON.");
       } finally {
         setIsImporting(false);
-        e.target.value = ''; // Сброс input
+        e.target.value = ""; // Сброс input
       }
     };
     reader.readAsText(file);
@@ -120,7 +91,6 @@ export const ExportButtons = ({
 
   return (
     <div className="flex gap-2">
-      
       {/* Скрытый input для импорта */}
       <input
         ref={fileInputRef}
@@ -156,16 +126,15 @@ export const ExportButtons = ({
         <span className="hidden sm:inline">JSON</span>
       </button>
 
-      {/* Кнопка экспорта Excel/CSV */}
+      {/* Кнопка экспорта Excel/XLSX */}
       <button
         onClick={handleExportExcel}
         className="flex items-center gap-2 px-3 py-2 text-sm text-white bg-green-600 rounded-lg hover:bg-green-700 transition-colors"
-        title="Экспорт в Excel (CSV)"
+        title="Экспорт в Excel (XLSX)"
       >
         <FileSpreadsheet className="w-4 h-4" aria-hidden="true" />
         <span className="hidden sm:inline">Excel</span>
       </button>
-
     </div>
   );
 };
