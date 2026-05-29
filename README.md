@@ -1,54 +1,72 @@
 # 🔄 Switch Manager
 
-> **Система учёта и управления неуправляемыми сетевыми коммутаторами**
+**Система учёта и управления сетевыми коммутаторами**
 
-![React](https://img.shields.io/badge/React-18.2.0-blue?logo=react)
-![Node.js](https://img.shields.io/badge/Node.js-22.x-green?logo=node.js)
-![Express](https://img.shields.io/badge/Express-4.18-black?logo=express)
-![Tailwind](https://img.shields.io/badge/Tailwind-3.4-38b2ac?logo=tailwindcss)
-![License](https://img.shields.io/badge/license-MIT-yellow)
+[![React](https://img.shields.io/badge/React-18-blue?logo=react)](https://react.dev)
+[![Node.js](https://img.shields.io/badge/Node.js-20-green?logo=node.js)](https://nodejs.org)
+[![Express](https://img.shields.io/badge/Express-4-gray?logo=express)](https://expressjs.com)
+[![Nginx](https://img.shields.io/badge/Nginx-1.29-blue?logo=nginx)](https://nginx.org)
 
 ---
 
-## 📋 О проекте
+## 📋 Описание
 
-**Switch Manager** — это веб-приложение для учёта сетевых коммутаторов в организации. Позволяет вести базу оборудования, отслеживать местоположение, статус, прикреплять документы и формировать отчёты.
+**Switch Manager** — это веб-приложение для инвентаризации, мониторинга и управления сетевыми коммутаторами в организации. Позволяет вести учёт оборудования, привязывать документы, отслеживать историю изменений и экспортировать данные в удобные форматы.
 
 ### ✨ Основные возможности
 
 | Функция | Описание |
 |---------|----------|
-| 🗄️ **Учёт коммутаторов** | Добавление, редактирование, удаление записей о сетевом оборудовании |
-| 🔍 **Поиск и фильтры** | Быстрый поиск по названию, модели, серийному номеру; фильтрация по статусу |
-| 📊 **Статистика** | Визуальные карточки с количеством устройств по статусам и общему числу портов |
-| 📎 **Документы** | Прикрепление сканов, паспортов, актов к каждому коммутатору (изображения, PDF, DOC) |
-| 📤 **Экспорт данных** | Выгрузка базы в JSON или CSV (Excel) для отчётности |
-| 📥 **Импорт данных** | Загрузка ранее экспортированных данных для восстановления или переноса |
-| 💾 **Локальное хранение** | Данные сохраняются в базе на сервере + резервная копия в браузере |
+| 🗄️ Учёт коммутаторов | Добавление, редактирование, удаление записей с полями: название, модель, серийный номер, порты, статус, местоположение и др. |
+| 📎 Документы | Загрузка и скачивание файлов (фото, акты, схемы) с поддержкой **кириллицы в именах** |
+| 📜 История изменений | Автоматическое ведение лога: кто, когда и что изменил в карточке коммутатора |
+| 🔍 Поиск и фильтры | Быстрый поиск по названию, модели, серийному номеру; фильтрация по статусу, вендору, месту установки |
+| 📊 Статистика | Сводка по количеству коммутаторов, портов, распределение по статусам |
+| 📤 Экспорт данных | Выгрузка в `.xlsx` (Excel), `.csv`, `.json` с корректным отображением кириллицы |
+| 📥 Импорт данных | Массовое добавление коммутаторов из JSON-файла |
+| 🔐 Ограничение доступа | Настройка доступа по IP-адресам через Nginx (опционально) |
+| 📱 Адаптивный интерфейс | Корректное отображение на десктопах, планшетах и мобильных устройствах |
 
 ---
 
-## 🖥️ Скриншоты интерфейса
+## 🛠️ Технологический стек
 
-*(Добавьте скриншоты в папку `/public/screenshots` и раскомментируйте ниже)*
+### Фронтенд
+| Технология | Назначение |
+|------------|-----------|
+| React 18 | UI-библиотека |
+| Vite | Сборка и дев-сервер |
+| Tailwind CSS | Стилизация |
+| Lucide React | Иконки |
+| React Router DOM | Навигация |
 
-<!-- ![Главный экран](public/screenshots/main.png) -->
-<!-- ![Форма добавления](public/screenshots/form.png) -->
-<!-- ![Статистика](public/screenshots/stats.png) -->
+### Бэкенд
+| Технология | Назначение |
+|------------|-----------|
+| Node.js 20+ | Среда выполнения |
+| Express 4 | Веб-фреймворк |
+| Joi | Валидация данных |
+| Multer + UUID | Загрузка файлов с безопасными именами |
+| JSON-файл | Простая база данных (без СУБД) |
+
+### Инфраструктура
+| Компонент | Назначение |
+|-----------|-----------|
+| Nginx | Reverse proxy, раздача статики, ограничение по IP |
+| Windows PowerShell | Скрипты развёртывания и управления |
 
 ---
 
 ## 🚀 Быстрый старт
 
-### 📦 Требования
+### Требования
+- Node.js **v18 или выше** ([скачать](https://nodejs.org/))
+- npm **v9 или выше** (идёт в комплекте с Node.js)
+- Nginx для продакшена (опционально)
 
-- Node.js **v18+** (рекомендуется **v22**)
-- npm **v9+**
-- Windows 10/11 или Linux/macOS
+### Установка
 
-### 🔧 Установка
-
-```bash
+```powershell
 # 1. Клонируйте репозиторий
 git clone https://github.com/vladmikheyev/switch-manager.git
 cd switch-manager
@@ -60,320 +78,359 @@ npm install
 cd backend
 npm install
 cd ..
+
+# 4. Настройте переменные окружения (опционально)
+# Создайте файл .env в корне проекта:
+echo "VITE_API_URL=http://localhost:5000" > .env
 ```
 
-### ⚙️ Настройка
+### Запуск в режиме разработки
 
-Создайте файл `.env` в корне проекта (если отсутствует):
-
-```env
-# Порт фронтенда (по умолчанию 3000)
-PORT=3000
-
-# URL бэкенда для API-запросов
-VITE_API_URL=http://localhost:5000
-
-# Разрешённые источники для CORS (бэкенд)
-CORS_ORIGIN=http://localhost:3000,http://127.0.0.1:3000
-```
-
-### ▶️ Запуск
-
-**Вариант А: Два терминала (рекомендуется для разработки)**
+> ⚠️ Запускайте фронтенд и бэкенд в **двух отдельных терминалах**.
 
 ```powershell
-# Терминал 1: Фронтенд
-npm start
-# → http://localhost:3000
-
-# Терминал 2: Бэкенд
+# Терминал 1: Бэкенд
 cd backend
 npm run dev
-# → http://localhost:5000/api/health
+# → Сервер запустится на http://localhost:5000
+
+# Терминал 2: Фронтенд
+npm start
+# → Приложение откроется на http://localhost:3000
 ```
-
-**Вариант Б: Через batch-файл (Windows)**
-
-```powershell
-# Перезапуск nginx и сервисов (если используется прокси)
-.\stop-start-nginx-norm.bat
-```
-
----
-
-## 🗂️ Структура проекта
-
-```
-switch-manager/
-├── 📁 backend/                 # Серверная часть (Node.js + Express)
-│   ├── 📁 config/              # Конфигурация БД
-│   │   └── database.js         # JSON-хранилище с авто-инициализацией
-│   ├── 📁 controllers/         # Обработчики запросов
-│   │   └── switchController.js # CRUD-операции для коммутаторов
-│   ├── 📁 middleware/          # Промежуточное ПО
-│   │   ├── upload.js           # Загрузка файлов (multer)
-│   │   └── errorHandler.js     # Единая обработка ошибок
-│   ├── 📁 models/              # Бизнес-логика
-│   │   └── Switch.js           # Модель данных коммутатора
-│   ├── 📁 routes/              # API-маршруты
-│   │   └── switches.js         # Маршруты + валидация Joi
-│   ├── 📁 data/                # Файловая база данных
-│   │   └── switches.json       # Основные данные (авто-создаётся)
-│   ├── 📁 uploads/             # Загруженные файлы
-│   ├── .env                    # Переменные окружения бэкенда
-│   ├── package.json            # Зависимости бэкенда
-│   └── server.js               # Точка входа Express
-│
-├── 📁 public/                  # Статические файлы фронтенда
-├── 📁 src/                     # Исходный код React-приложения
-│   ├── 📁 components/          # UI-компоненты
-│   │   ├── 📁 Controls/        # Поиск, фильтры, кнопки экспорта
-│   │   ├── 📁 Layout/          # Header, статистика
-│   │   ├── 📁 Modal/           # Формы и модальные окна
-│   │   ├── 📁 Switches/        # Таблица и строки коммутаторов
-│   │   └── 📁 UI/              # Переиспользуемые Button, Input
-│   ├── 📁 hooks/               # Кастомные хуки
-│   │   └── useSwitches.js      # Логика CRUD + синхронизация с API
-│   ├── 📁 services/            # API-клиент
-│   │   └── api.js              # Axios-обёртка с retry/timeout
-│   ├── 📁 utils/               # Утилиты
-│   │   ├── constants.js        # Статусы, цвета, конфиги
-│   │   └── exportHelpers.js    # Экспорт в JSON/CSV
-│   ├── App.js                  # Главный компонент (композиция)
-│   ├── index.js                # Точка входа React
-│   └── index.css               # Глобальные стили + Tailwind
-│
-├── .env                        # Переменные окружения фронтенда
-├── .gitignore                  # Исключения для Git
-├── package.json                # Зависимости фронтенда
-├── tailwind.config.js          # Конфигурация Tailwind CSS
-└── README.md                   # Этот файл
-```
-
----
-
-## 🔌 API Endpoints
-
-| Метод | Эндпоинт | Описание | Тело запроса |
-|-------|----------|----------|-------------|
-| `GET` | `/api/health` | Проверка работоспособности сервера | — |
-| `GET` | `/api/switches` | Получить список коммутаторов | `?status=active&search=текст&limit=20` |
-| `GET` | `/api/switches/:id` | Получить коммутатор по ID | — |
-| `POST` | `/api/switches` | Создать новый коммутатор | `{ name, model, location, ports, ... }` |
-| `PUT` | `/api/switches/:id` | Обновить коммутатор | `{ name?, model?, status?, ... }` |
-| `DELETE` | `/api/switches/:id` | Удалить коммутатор | — |
-| `POST` | `/api/upload/:switchId` | Загрузить файл для коммутатора | `FormData: { file: File }` |
-| `DELETE` | `/api/document/:switchId/:filename` | Удалить документ | — |
-| `GET` | `/api/switches/stats` | Получить статистику | — |
-| `GET` | `/api/switches/search?q=запрос` | Поиск коммутаторов | — |
-| `GET` | `/api/switches/uploads/:filename` | Прямой доступ к файлу | — |
-
-> 📝 **Примечание**: Все ответы возвращаются в формате `{ success: boolean, data?: any, message?: string }`.
 
 ---
 
 ## ⚙️ Конфигурация
 
-### Переменные окружения (`.env`)
+### Переменные окружения (`.env` в корне фронтенда)
 
 | Переменная | Значение по умолчанию | Описание |
 |------------|----------------------|----------|
-| `VITE_API_URL` | `http://localhost:5000` | URL бэкенда для фронтенда |
-| `PORT` | `5000` | Порт сервера бэкенда |
-| `CORS_ORIGIN` | `http://localhost:3000` | Разрешённые источники (через запятую) |
-| `NODE_ENV` | `development` | Режим работы (development/production) |
-| `RATE_LIMIT_MAX_REQUESTS` | `100` | Макс. запросов в окно времени |
-| `RATE_LIMIT_WINDOW_MS` | `900000` | Окно времени для rate limit (15 мин) |
+| `VITE_API_URL` | `http://localhost:5000` | Адрес бэкенда для запросов с фронтенда |
 
-### Настройка Tailwind CSS
+> 💡 После изменения `.env` **пересоберите фронтенд**: `npm run build`
 
-Проект использует **Tailwind CSS v3**. Основные настройки в `tailwind.config.js`:
+### Настройки бэкенда (`backend/config/database.js`)
 
-```js
-module.exports = {
-  content: ["./src/**/*.{js,jsx,ts,tsx}"],
-  theme: {
-    extend: {
-      colors: {
-        primary: '#2563eb',   // Синий — основной акцент
-        success: '#16a34a',   // Зелёный — активный статус
-        warning: '#ca8a04',   // Жёлтый — на складе
-        danger: '#dc2626',    // Красный — ошибка/оффлайн
-      }
+```javascript
+// Путь к файлу базы данных (по умолчанию: backend/data/switches.json)
+const dbFile = path.join(__dirname, '../data/switches.json');
+```
+
+### Конфигурация Nginx (`C:\nginx\conf\nginx.conf`)
+
+Пример минимальной конфигурации для продакшена:
+
+```nginx
+server {
+    listen 8088;
+    server_name localhost;
+
+    # Фронтенд (статика из build/)
+    location / {
+        root C:/Users/yourname/Documents/Swmanager/switch-manager/build;
+        index index.html;
+        try_files $uri $uri/ /index.html;
     }
-  },
-  plugins: []
+
+    # Бэкенд (API)
+    location /api/ {
+        proxy_pass http://127.0.0.1:5000;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+    }
+
+    # Загруженные файлы
+    location /uploads/ {
+        alias C:/Users/yourname/Documents/Swmanager/switch-manager/backend/uploads/;
+        charset utf-8;
+    }
 }
 ```
 
 ---
 
-## 🛠️ Разработка
+## 📁 Структура проекта
 
-### Полезные скрипты
-
-```bash
-# Фронтенд
-npm start          # Запуск в режиме разработки
-npm run build      # Сборка для продакшена (папка /build)
-npm test           # Запуск тестов (Jest)
-npm run eject      # Выход из CRA (необратимо!)
-
-# Бэкенд
-npm run dev        # Запуск с nodemon (авто-перезагрузка)
-npm start          # Запуск в продакшен-режиме
 ```
-
-### Линтинг и форматирование
-
-Проект использует **ESLint** + **Prettier**. Проверка кода:
-
-```bash
-# Фронтенд
-npx eslint src/
-npx prettier --check src/
-
-# Бэкенд
-cd backend
-npx eslint .
+switch-manager/
+├── 📄 package.json          # Зависимости и скрипты фронтенда
+├── 📄 .env                  # Переменные окружения
+├── 📄 nginx.conf.example    # Пример конфига Nginx
+├── 📄 stop-start-App+nginx-FULL.bat  # Скрипт полного запуска
+│
+├── 📁 src/                  # Исходный код фронтенда
+│   ├── 📁 components/       # React-компоненты
+│   │   ├── 📁 Controls/     # Кнопки экспорта/импорта
+│   │   ├── 📁 Modal/        # Формы и модальные окна
+│   │   └── 📁 Switches/     # Таблица и строки коммутаторов
+│   ├── 📁 services/         # API-клиент (api.js)
+│   ├── 📁 utils/            # Утилиты (экспорт, валидация)
+│   └── App.jsx              # Главный компонент
+│
+└── 📁 backend/              # Исходный код бэкенда
+    ├── 📄 server.js         # Точка входа Express
+    ├── 📁 config/           # Конфигурация (база данных)
+    ├── 📁 controllers/      # Обработчики маршрутов
+    ├── 📁 middleware/       # Middleware (загрузка файлов)
+    ├── 📁 models/           # Модель Switch + история
+    ├── 📁 routes/           # Маршруты API
+    ├── 📁 uploads/          # Папка для загруженных файлов
+    └── 📁 data/             # JSON-база данных (switches.json)
 ```
-
-### Добавление новой фичи
-
-1.  Создайте ветку: `git checkout -b feature/new-feature`
-2.  Внесите изменения в соответствующие файлы
-3.  Протестируйте локально (фронтенд + бэкенд)
-4.  Закоммитьте: `git commit -m "feat: описание изменения"`
-5.  Откройте Pull Request
 
 ---
 
-## 🐛 Устранение неполадок
+## 🌐 API Endpoints
 
-| Проблема | Возможное решение |
-|----------|------------------|
-| ❌ `Failed to fetch` при сохранении | Проверьте, запущен ли бэкенд на `:5000`; убедитесь, что `VITE_API_URL` совпадает |
-| ❌ `CORS policy blocked` | Добавьте адрес фронтенда в `CORS_ORIGIN` в `.env` бэкенда |
-| ❌ Файлы не загружаются | Проверьте права на папку `backend/uploads/`; макс. размер файла — 10 MB |
-| ❌ Данные не сохраняются после перезагрузки | Убедитесь, что `backend/data/switches.json` доступен для записи |
-| ❌ Порт 3000/5000 занят | Измените `PORT` в `.env` или завершите процесс: `npx kill-port 3000` |
-| ❌ Ошибка компиляции `Cannot find module` | Удалите `node_modules` и выполните `npm install` заново |
+### Коммутаторы
 
-### Сброс кэша (если ничего не помогает)
+| Метод | Эндпоинт | Описание | Тело запроса |
+|-------|----------|----------|-------------|
+| `GET` | `/api/switches` | Получить список всех коммутаторов | — |
+| `GET` | `/api/switches/:id` | Получить коммутатор по ID | — |
+| `GET` | `/api/switches/:id/history` | Получить историю изменений | — |
+| `POST` | `/api/switches` | Создать новый коммутатор | `{ name, model, location, ... }` |
+| `PUT` | `/api/switches/:id` | Полностью обновить коммутатор | `{ name, model, ... }` |
+| `PATCH` | `/api/switches/:id` | Частично обновить коммутатор | `{ status: "active" }` |
+| `DELETE` | `/api/switches/:id` | Удалить коммутатор | — |
+| `GET` | `/api/switches/search?q=...` | Поиск коммутаторов | — |
+| `GET` | `/api/switches/stats` | Получить статистику | — |
+
+### Файлы
+
+| Метод | Эндпоинт | Описание |
+|-------|----------|----------|
+| `POST` | `/api/switches/upload/:switchId` | Загрузить файл для коммутатора |
+| `DELETE` | `/api/switches/document/:switchId/:filename` | Удалить документ |
+| `GET` | `/api/switches/uploads/:filename` | Скачать файл |
+
+### Системные
+
+| Метод | Эндпоинт | Описание |
+|-------|----------|----------|
+| `GET` | `/api/health` | Проверка работоспособности сервера |
+
+---
+
+## 📦 Экспорт и импорт данных
+
+### Поддерживаемые форматы
+
+| Формат | Расширение | Особенности |
+|--------|-----------|-------------|
+| **Excel** | `.xlsx` | ✅ Кириллица, даты, числа — корректно; использует библиотеку `xlsx` |
+| **CSV** | `.csv` | ✅ UTF-8 BOM + `\r\n` для совместимости с русским Excel |
+| **JSON** | `.json` | ✅ Полная структура данных, подходит для бэкапа и импорта |
+
+### Как экспортировать
+
+1.  Нажмите кнопку **«Экспорт»** в интерфейсе
+2.  Выберите формат: Excel / CSV / JSON
+3.  Файл скачается с именем `switches-export-ГГГГ-ММ-ДД.расширение`
+
+### Как импортировать
+
+1.  Подготовьте JSON-файл с массивом коммутаторов (см. пример ниже)
+2.  Нажмите **«Импорт»** → выберите файл
+3.  Подтвердите добавление
+
+#### 📋 Пример структуры JSON для импорта
+
+```json
+[
+  {
+    "name": "Свитч-Офис",
+    "model": "TP-Link TL-SG1008P",
+    "location": "АБК, каб. 219",
+    "serialNumber": "ABC123456",
+    "ports": 8,
+    "status": "active",
+    "vendor": "TP-Link",
+    "technician": "Иванов И.И.",
+    "purchaseDate": "2024-01-15T00:00:00.000Z",
+    "requestNumber": "SR012345",
+    "comment": "Основной свитч в офисе"
+  }
+]
+```
+
+> 💡 Поля `id`, `createdAt`, `updatedAt` добавляются автоматически.
+
+---
+
+## 🧰 Скрипты управления
+
+### 🚀 Полный запуск (фронтенд + бэкенд + nginx)
 
 ```powershell
-# Фронтенд
-rm -rf node_modules package-lock.json
-npm cache clean --force
-npm install
+# Запустите от имени администратора:
+.\stop-start-App+nginx-FULL.bat
+```
 
+**Что делает скрипт:**
+1.  Останавливает старые процессы (nginx, node)
+2.  Освобождает порты 3000, 5000, 8088
+3.  Запускает бэкенд (`npm run dev`)
+4.  Запускает фронтенд (`npm start`)
+5.  Запускает nginx с проверкой конфигурации
+6.  Проверяет доступность всех сервисов
+7.  Предлагает открыть приложение в браузере
+
+### 🛑 Остановка всех сервисов
+
+```powershell
+# Быстрая остановка:
+taskkill /f /im node.exe && taskkill /f /im nginx.exe
+
+# Или через скрипт (если создадите stop-all.bat):
+.\stop-all.bat
+```
+
+### 📋 Просмотр логов
+
+```powershell
 # Бэкенд
-cd backend
-rm -rf node_modules package-lock.json
-npm install
+Get-Content backend\logs\backend.log -Tail 50 -Wait
+
+# Фронтенд
+Get-Content logs\frontend.log -Tail 50 -Wait
+
+# Nginx
+Get-Content C:\nginx\logs\error.log -Tail 20 -Wait
 ```
 
 ---
 
-## 📦 Деплой
+## 🔧 Устранение неполадок
 
-### Локальная сеть (Windows)
+### ❌ Порт уже занят
 
-1.  Соберите фронтенд: `npm run build`
-2.  Настройте Nginx/IIS для раздачи папки `build/`
-3.  Запустите бэкенд как сервис (PM2 или Windows Service):
-    ```powershell
-    npm install -g pm2
-    cd backend
-    pm2 start server.js --name switch-api
-    pm2 save
-    pm2 startup
-    ```
+```powershell
+# Найти процесс, занимающий порт:
+netstat -ano | findstr :3000
 
-### Docker (универсальный способ)
-
-Создайте `Dockerfile` в корне:
-
-```dockerfile
-# Мульти-стейдж сборка
-FROM node:22-alpine AS frontend
-WORKDIR /app
-COPY package*.json ./
-RUN npm ci
-COPY . .
-RUN npm run build
-
-FROM node:22-alpine AS backend
-WORKDIR /app
-COPY backend/package*.json ./
-RUN npm ci --only=production
-COPY backend/ .
-COPY --from=frontend /app/build ./public
-
-EXPOSE 5000
-CMD ["node", "server.js"]
+# Завершить процесс по PID:
+taskkill /f /pid 12345
 ```
 
-Сборка и запуск:
-```bash
-docker build -t switch-manager .
-docker run -p 5000:5000 -v ./data:/app/data -v ./uploads:/app/uploads switch-manager
+### ❌ Кириллица в экспорте отображается как «кракозябры»
+
+- Для `.xlsx`: убедитесь, что установлена библиотека `xlsx` (`npm list xlsx`)
+- Для `.csv`: файл должен начинаться с BOM (`0xEF 0xBB 0xBF`) и использовать `\r\n`
+- Открывайте CSV через **Данные → Из текстового/CSV-файла** → кодировка **65001: UTF-8**
+
+### ❌ Браузер открывается сам при запуске
+
+React Dev Server по умолчанию открывает браузер. Чтобы отключить:
+
+```powershell
+# В скрипте запуска фронтенда добавьте:
+set BROWSER=none
+npm start
 ```
+
+Или создайте файл `.env` в корне фронтенда:
+```env
+BROWSER=none
+```
+
+### ❌ Ошибка «Module not found» после `git pull`
+
+```powershell
+# Переустановите зависимости:
+rm -rf node_modules package-lock.json
+npm install
+```
+
+### ❌ Nginx не запускается: «bind() to 0.0.0.0:8088 failed»
+
+```powershell
+# Проверьте, кто занимает порт:
+netstat -ano | findstr :8088
+
+# Остановите конфликтующий процесс или смените порт в nginx.conf
+```
+
+---
+
+## 🔐 Безопасность
+
+### Ограничение доступа по IP (Nginx)
+
+```nginx
+server {
+    listen 8088;
+    
+    # Разрешить только указанные IP
+    allow 10.182.63.130;   # Ваш сервер
+    allow 192.168.1.0/24;  # Локальная сеть
+    deny all;              # Остальным — отказ
+    
+    # ... остальная конфигурация
+}
+```
+
+### Защита файлов
+
+- Загруженные файлы сохраняются с именами `uuid.ext` (без оригинального имени)
+- Оригинальное имя хранится в БД и подставляется при скачивании
+- Запрещена загрузка исполняемых файлов (`.exe`, `.bat`, `.js` и др.)
+
+---
+
+## 🔄 Обновление приложения
+
+```powershell
+# 1. Остановите сервисы
+taskkill /f /im node.exe && taskkill /f /im nginx.exe
+
+# 2. Обновите код
+git pull origin main
+
+# 3. Обновите зависимости
+npm install
+cd backend && npm install && cd ..
+
+# 4. Пересоберите фронтенд
+npm run build
+
+# 5. Запустите заново
+.\stop-start-App+nginx-FULL.bat
+```
+
+---
+
+## 📄 Лицензия
+
+MIT © 2024–2026 Vlad Mikheyev
 
 ---
 
 ## 🤝 Вклад в проект
 
 1.  Форкните репозиторий
-2.  Создайте ветку для фичи: `git checkout -b feature/amazing-feature`
-3.  Закоммитьте изменения: `git commit -m 'feat: добавлена новая фича'`
-4.  Запушьте ветку: `git push origin feature/amazing-feature`
-5.  Откройте Pull Request
-
-### 📋 Чеклист перед отправкой кода
-
-- [ ] Код проходит линтинг (`npm run lint`)
-- [ ] Нет `console.log` в продакшен-коде
-- [ ] Добавлены/обновлены комментарии для сложных участков
-- [ ] Протестированы основные сценарии (CRUD, загрузка файлов)
-- [ ] Обновлён `README.md`, если изменился функционал
+2.  Создайте ветку для фичи: `git checkout -b feature/new-feature`
+3.  Внесите изменения и закоммитьте: `git commit -m 'Add: new feature'`
+4.  Отправьте в форк: `git push origin feature/new-feature`
+5.  Создайте Pull Request
 
 ---
 
-## 📄 Лицензия
+## 📞 Поддержка
 
-Проект распространяется под лицензией **MIT**. См. файл [LICENSE](LICENSE) для деталей.
-
-```
-MIT License
-
-Copyright (c) 2025-2026 Михеев Владислав Геннадьевич
-
-Разрешается бесплатное использование, копирование, модификация...
-```
+-   🐛 **Баги**: создайте Issue в репозитории
+-   💡 **Идеи**: обсуждайте в Discussions
+-   📧 **Вопросы**: напишите на `vlad_mikheyev@mail.ru`
 
 ---
 
-## 👤 Автор
-
-**Михеев Владислав Геннадьевич**  
-📧 [vlad_mikheyev@mail.ru]  
-🏢 [ООО "РНК" / отдел СТСиО]
-
----
-
-## 🙏 Благодарности
-
-- [Create React App](https://create-react-app.dev/) — быстрый старт фронтенда
-- [Tailwind CSS](https://tailwindcss.com/) — утилитарные стили
-- [Express](https://expressjs.com/) — минималистичный сервер
-- [Lucide React](https://lucide.dev/) — красивые иконки
-- [Joi](https://joi.dev/) — валидация данных
+> 💡 **Совет**: Регулярно делайте бэкап базы данных:
+> ```powershell
+> Copy-Item backend\data\switches.json "backups\switches-$(Get-Date -Format 'yyyy-MM-dd_HH-mm').json"
+> ```
 
 ---
 
-> 💡 **Совет**: Регулярно делайте бэкап файла `backend/data/switches.json` — это ваша основная база данных!
-
----
-
-*Документация актуальна на май 2026 г. При изменении архитектуры проекта — обновляйте README.* 🔄
+*Документация актуальна на май 2026 г. Версия приложения: 1.0* 🛠️✨
