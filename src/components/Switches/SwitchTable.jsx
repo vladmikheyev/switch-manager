@@ -16,6 +16,7 @@ export const SwitchTable = ({
   onEdit, 
   onDelete, 
   onView,
+  onViewHistory,
   onDownload,
   onDeleteDocument 
 }) => {
@@ -79,7 +80,8 @@ export const SwitchTable = ({
               switchItem={switchItem}
               onEdit={onEdit}
               onDelete={onDelete}
-              onView={onView}
+              /* onView={onView} */
+              onViewHistory={onViewHistory} 
               onDownload={onDownload}
               onDeleteDocument={onDeleteDocument}
             />

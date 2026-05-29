@@ -43,7 +43,8 @@ class Switch {
       id: Date.now(),
       createdAt: now,
       updatedAt: now,
-      documents: [] // Новые коммутаторы создаются без документов
+      documents: [], // Новые коммутаторы создаются без документов
+      history: []    // ✅ Инициализируем историю для нового коммутатора
     };
     
     db.switches.push(newSwitch);
@@ -110,14 +111,9 @@ class Switch {
   }
 
   // ============================================
-  // ✅ Методы для работы с документами (ДОБАВЛЕНО)
+  // Методы для работы с документами
   // ============================================
 
-  /**
-   * Получить все документы коммутатора
-   * @param {string|number} switchId - ID коммутатора
-   * @returns {Array} Массив документов
-   */
   static getDocuments(switchId) {
     const { documents } = readDb();
     if (!Array.isArray(documents)) return [];
@@ -125,44 +121,29 @@ class Switch {
     return documents.filter(d => String(d.switchId) === String(switchId));
   }
 
-  /**
-   * Добавить документ к коммутатору
-   * @param {string|number} switchId - ID коммутатора
-   * @param {Object} fileData - Данные файла от multer
-   * @returns {Object} Созданный документ
-   */
   static addDocument(switchId, fileData) {
     const db = readDb();
     
-    // Инициализируем массив документов если нет
     if (!Array.isArray(db.documents)) {
       db.documents = [];
     }
     
-    // Создаём запись документа
     const newDoc = {
-      id: Date.now(), // Уникальный ID документа
-      switchId: String(switchId), // Связь с коммутатором (строка для надёжности)
-      filename: fileData.filename, // Уникальное имя на диске (uuid.jpg)
-      originalName: fileData.originalname, // Оригинальное имя файла
+      id: Date.now(),
+      switchId: String(switchId),
+      filename: fileData.filename,
+      originalName: fileData.originalname,
       mimetype: fileData.mimetype,
       size: fileData.size,
       uploadedAt: new Date().toISOString()
     };
     
-    // Добавляем в БД
     db.documents.push(newDoc);
     writeDb(db);
     
     return newDoc;
   }
 
-  /**
-   * Удалить документ коммутатора
-   * @param {string|number} switchId - ID коммутатора
-   * @param {string} filename - Имя файла для удаления (uuid.jpg)
-   * @returns {boolean} Был ли документ удалён
-   */
   static deleteDocument(switchId, filename) {
     const db = readDb();
     
@@ -170,13 +151,94 @@ class Switch {
     
     const before = db.documents.length;
     
-    // Фильтруем: удаляем документ с совпадающим switchId и filename
     db.documents = db.documents.filter(d => 
       !(String(d.switchId) === String(switchId) && d.filename === filename)
     );
     
     writeDb(db);
     return db.documents.length < before;
+  }
+
+  // ============================================
+  // ✅ Методы для работы с историей изменений
+  // ============================================
+
+  /**
+   * Добавить запись в историю изменений коммутатора
+   * @param {string|number} switchId - ID коммутатора
+   * @param {string} action - Тип действия: 'create' | 'update' | 'delete'
+   * @param {Object} changes - Объект с изменениями { field: { old, new } }
+   * @param {string} user - Имя пользователя/техника
+   * @returns {Object} Созданная запись истории
+   */
+  static addHistory(switchId, action, changes, user = 'Система') {
+    const db = readDb();
+    const idx = db.switches.findIndex(s => String(s.id) === String(switchId));
+    if (idx === -1) return null;
+    
+    // Инициализируем историю если нет
+    if (!Array.isArray(db.switches[idx].history)) {
+      db.switches[idx].history = [];
+    }
+
+    // Добавляем запись
+    db.switches[idx].history.push({
+      id: Date.now(),
+      timestamp: new Date().toISOString(),
+      action, // 'create' | 'update' | 'delete'
+      user,
+      changes
+    });
+
+    // Храним только последние 100 записей, чтобы JSON не раздувался
+    if (db.switches[idx].history.length > 100) {
+      db.switches[idx].history.shift();
+    }
+    
+    writeDb(db);
+    return db.switches[idx].history[db.switches[idx].history.length - 1];
+  }
+
+  /**
+   * Получить историю коммутатора (новые записи в начале)
+   * @param {string|number} switchId - ID коммутатора
+   * @param {number} limit - Максимальное количество записей
+   * @returns {Array} Массив записей истории
+   */
+  static getHistory(switchId, limit = 50) {
+    const { switches } = readDb();
+    const sw = switches.find(s => String(s.id) === String(switchId));
+    
+    if (!sw || !Array.isArray(sw.history)) return [];
+    
+    // Возвращаем от новых к старым, с ограничением
+    return [...sw.history].reverse().slice(0, limit);
+  }
+
+  /**
+   * Сравнить два объекта и вернуть только изменённые поля
+   * @param {Object} oldObj - Старое состояние
+   * @param {Object} newObj - Новое состояние
+   * @returns {Object} Объект различий { field: { old, new } }
+   */
+  static getChanges(oldObj, newObj) {
+    const changes = {};
+    const fields = [
+      'name', 'model', 'location', 'serialNumber', 'requestNumber',
+      'technician', 'vendor', 'status', 'ports', 'purchaseDate', 'comment'
+    ];
+    
+    for (const f of fields) {
+      const old = oldObj?.[f];
+      const curr = newObj?.[f];
+      
+      // Сравниваем, приводя к строке для надёжности
+      if (String(old ?? '') !== String(curr ?? '')) {
+        changes[f] = { old: old ?? null, new: curr ?? null };
+      }
+    }
+    
+    return changes;
   }
 }
 

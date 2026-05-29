@@ -1,5 +1,11 @@
 // backend/controllers/switchController.js
 const Switch = require("../models/Switch");
+const path = require("path");
+const fs = require("fs");
+
+// ============================================
+// ПОЛУЧЕНИЕ ДАННЫХ
+// ============================================
 
 // GET /api/switches - Получить список коммутаторов
 exports.getSwitches = async (req, res, next) => {
@@ -35,58 +41,28 @@ exports.getSwitch = async (req, res, next) => {
   }
 };
 
-// POST /api/switches - Создать новый коммутатор
-exports.createSwitch = async (req, res, next) => {
+// GET /api/switches/:id/history - ✅ Получить историю изменений коммутатора
+exports.getSwitchHistory = async (req, res, next) => {
   try {
-    const newSwitch = Switch.create(req.body);
+    const { id } = req.params;
+    const limit = parseInt(req.query.limit) || 50;
 
-    res.status(201).json({
-      success: true,
-      message: "Коммутатор успешно создан",
-      data: newSwitch,
-    });
-  } catch (error) {
-    next(error);
-  }
-};
-
-// PUT /api/switches/:id - Обновить коммутатор
-exports.updateSwitch = async (req, res, next) => {
-  try {
-    const existing = Switch.getById(req.params.id);
-    if (!existing) {
+    // Проверяем существование коммутатора
+    const sw = Switch.getById(id);
+    if (!sw) {
       return res.status(404).json({ error: "Коммутатор не найден" });
     }
 
-    const updated = Switch.update(req.params.id, req.body);
-
+    const history = Switch.getHistory(id, limit);
+    
     res.json({
       success: true,
-      message: "Коммутатор успешно обновлён",
-      data: updated,
+      switchId: id,
+      switchName: sw.name,
+      history,
+      count: history.length
     });
   } catch (error) {
-    next(error);
-  }
-};
-
-// DELETE /api/switches/:id - Удалить коммутатор
-exports.deleteSwitch = async (req, res, next) => {
-  try {
-    const switchId = req.params.id;
-    console.log(`🗑️  Запрос на удаление коммутатора ID: ${switchId}`);
-
-    const result = Switch.delete(switchId);
-
-    res.json({
-      success: true,
-      message: result.deleted
-        ? "Коммутатор успешно удалён"
-        : "Коммутатор не найден (уже удалён?)",
-      deleted: result.deleted,
-    });
-  } catch (error) {
-    console.error("❌ Ошибка при удалении:", error);
     next(error);
   }
 };
@@ -123,9 +99,103 @@ exports.searchSwitches = async (req, res, next) => {
   }
 };
 
-// POST /api/upload/:switchId - Загрузить файл
-// backend/controllers/switchController.js (в методе uploadFile)
+// ============================================
+// CRUD ОПЕРАЦИИ (С АВТОМАТИЧЕСКОЙ ЗАПИСЬЮ В ИСТОРИЮ)
+// ============================================
 
+// POST /api/switches - Создать новый коммутатор
+exports.createSwitch = async (req, res, next) => {
+  try {
+    const newSwitch = Switch.create(req.body);
+
+    // ✅ Запись в историю о создании
+    Switch.addHistory(newSwitch.id, 'create', {
+      name: { old: null, new: newSwitch.name },
+      model: { old: null, new: newSwitch.model }
+    }, req.body.technician || 'Система');
+
+    res.status(201).json({
+      success: true,
+      message: "Коммутатор успешно создан",
+      data: newSwitch,
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
+// PUT /api/switches/:id - Обновить коммутатор
+exports.updateSwitch = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    
+    // Получаем старое состояние ДО обновления
+    const oldSwitch = Switch.getById(id);
+    if (!oldSwitch) {
+      return res.status(404).json({ error: "Коммутатор не найден" });
+    }
+
+    // Обновляем коммутатор
+    const updated = Switch.update(id, { 
+      ...req.body, 
+      updatedAt: new Date().toISOString() 
+    });
+
+    // ✅ Вычисляем и записываем изменения в историю
+    const changes = Switch.getChanges(oldSwitch, updated);
+    if (Object.keys(changes).length > 0) {
+      Switch.addHistory(id, 'update', changes, req.body.technician || 'Администратор');
+      console.log(`📝 История: обновлено ${Object.keys(changes).length} полей у коммутатора ${id}`);
+    }
+
+    res.json({
+      success: true,
+      message: "Коммутатор успешно обновлён",
+      data: updated,
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
+// DELETE /api/switches/:id - Удалить коммутатор
+exports.deleteSwitch = async (req, res, next) => {
+  try {
+    const switchId = req.params.id;
+    console.log(`🗑️  Запрос на удаление коммутатора ID: ${switchId}`);
+
+    // Получаем данные коммутатора ПЕРЕД удалением для истории
+    const oldSwitch = Switch.getById(switchId);
+
+    const result = Switch.delete(switchId);
+
+    // ✅ Запись в историю об удалении
+    if (result.deleted && oldSwitch) {
+      Switch.addHistory(switchId, 'delete', {
+        status: { old: oldSwitch.status, new: 'deleted' },
+        location: { old: oldSwitch.location, new: null },
+        name: { old: oldSwitch.name, new: null }
+      }, 'Система');
+    }
+
+    res.json({
+      success: true,
+      message: result.deleted
+        ? "Коммутатор успешно удалён"
+        : "Коммутатор не найден (уже удалён?)",
+      deleted: result.deleted,
+    });
+  } catch (error) {
+    console.error("❌ Ошибка при удалении:", error);
+    next(error);
+  }
+};
+
+// ============================================
+// РАБОТА С ФАЙЛАМИ
+// ============================================
+
+// POST /api/upload/:switchId - Загрузить файл
 exports.uploadFile = async (req, res, next) => {
   try {
     const switchId = req.params.switchId;
@@ -136,16 +206,15 @@ exports.uploadFile = async (req, res, next) => {
 
     const switchItem = Switch.getById(switchId);
     if (!switchItem) {
-      const fs = require('fs');
       const filePath = path.join(process.cwd(), 'uploads', req.file.filename);
       if (fs.existsSync(filePath)) fs.unlinkSync(filePath);
       return res.status(404).json({ error: 'Коммутатор не найден' });
     }
 
-    // ✅ Сохраняем originalname как есть (UTF-8)
+    // Сохраняем документ в БД
     const document = await Switch.addDocument(switchId, {
-      filename: req.file.filename,           // uuid.jpg на диске
-      originalname: req.file.originalname,   // ✅ Оригинальное имя с кириллицей
+      filename: req.file.filename,
+      originalname: req.file.originalname,
       mimetype: req.file.mimetype,
       size: req.file.size
     });
@@ -155,8 +224,8 @@ exports.uploadFile = async (req, res, next) => {
       message: 'Файл успешно загружен',
       document: {
         id: document.id,
-        name: document.originalName,    // ✅ Отправляем оригинальное имя
-        filename: document.filename,    // Имя на диске
+        name: document.originalName,
+        filename: document.filename,
         mimetype: document.mimetype,
         size: document.size,
         uploadedAt: document.uploadedAt
@@ -165,7 +234,6 @@ exports.uploadFile = async (req, res, next) => {
   } catch (error) {
     console.error('❌ Ошибка загрузки файла:', error);
     if (req.file?.path) {
-      const fs = require('fs');
       if (fs.existsSync(req.file.path)) fs.unlinkSync(req.file.path);
     }
     next(error);
@@ -181,8 +249,6 @@ exports.deleteDocument = async (req, res, next) => {
 
     // Удаляем файл с диска если он был удалён из БД
     if (result) {
-      const fs = require("fs");
-      const path = require("path");
       const filePath = path.join(process.cwd(), "uploads", filename);
       if (fs.existsSync(filePath)) {
         fs.unlinkSync(filePath);

@@ -1,23 +1,17 @@
 // src/components/Switches/SwitchRow.jsx
-import { Edit, Trash2, Eye } from "lucide-react";
+import { Edit, Trash2, Eye, Clock } from "lucide-react";  // ✅ Добавили Clock
 import { StatusBadge } from "./StatusBadge";
 import { DocumentList } from "./DocumentList";
 
 /**
  * Компонент строки таблицы коммутаторов
- * @param {Object} props
- * @param {Object} props.switchItem - Данные коммутатора
- * @param {Function} props.onEdit - Обработчик редактирования
- * @param {Function} props.onDelete - Обработчик удаления
- * @param {Function} props.onView - Обработчик просмотра деталей
- * @param {Function} props.onDownload - Обработчик скачивания документа
- * @param {Function} props.onDeleteDocument - Обработчик удаления документа
  */
 export const SwitchRow = ({
   switchItem,
   onEdit,
   onDelete,
   onView,
+  onViewHistory,  // ✅ Добавили проп для истории
   onDownload,
   onDeleteDocument,
 }) => {
@@ -33,11 +27,10 @@ export const SwitchRow = ({
     status,
     vendor,
     purchaseDate,
-    comment, // ✅ Добавили comment
+    comment,
     documents,
   } = switchItem;
 
-  // Форматирование даты
   const formatDate = (dateStr) => {
     if (!dateStr) return "—";
     return new Date(dateStr).toLocaleDateString("ru-RU", {
@@ -61,10 +54,7 @@ export const SwitchRow = ({
       </td>
 
       {/* Место установки */}
-      <td
-        className="px-4 py-3 text-gray-700 whitespace-normal break-words"
-        title={location}
-      >
+      <td className="px-4 py-3 text-gray-700 whitespace-normal break-words max-w-[200px]" title={location}>
         {location || "—"}
       </td>
 
@@ -73,14 +63,22 @@ export const SwitchRow = ({
         {serialNumber || "—"}
       </td>
 
-            {/* № заявки — с обрезкой и многоточием */}
-      <td className="px-4 py-3">
+      {/* № заявки */}
+      <td className="px-4 py-3 max-w-[250px]" title={requestNumber || undefined}>
         {requestNumber ? (
-          <div 
-            className="text-sm text-gray-700 max-w-[200px] truncate cursor-help"
-            title={requestNumber}
-          >
-            {requestNumber}
+          <div className="flex flex-wrap gap-1.5">
+            {String(requestNumber)
+              .split(",")
+              .map((req) => req.trim())
+              .filter((req) => req !== "")
+              .map((req, index) => (
+                <span
+                  key={index}
+                  className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-purple-50 text-purple-700 border border-purple-100 whitespace-nowrap"
+                >
+                  {req}
+                </span>
+              ))}
           </div>
         ) : (
           <span className="text-gray-400 text-xs">—</span>
@@ -104,13 +102,15 @@ export const SwitchRow = ({
         <StatusBadge status={status} size="sm" />
       </td>
 
-      {/* ✅ Комментарий (было: Вендор) */}
+      {/* Вендор */}
+      <td className="px-4 py-3 text-gray-700 whitespace-nowrap">
+        {vendor || "—"}
+      </td>
+
+      {/* Комментарий */}
       <td className="px-4 py-3">
         {comment ? (
-          <div
-            className="text-gray-700 text-sm max-w-[200px] truncate cursor-help"
-            title={comment} // Показываем полный текст при наведении
-          >
+          <div className="text-gray-700 text-sm max-w-[200px] truncate cursor-help" title={comment}>
             {comment}
           </div>
         ) : (
@@ -126,33 +126,52 @@ export const SwitchRow = ({
       {/* Действия */}
       <td className="px-4 py-3 whitespace-nowrap">
         <div className="flex items-center gap-1">
+          
+          {/* ✅ Кнопка: История изменений */}
+          {onViewHistory && (
+            <button
+              onClick={() => onViewHistory(switchItem)}
+              className="p-2 text-gray-500 hover:text-blue-600 hover:bg-blue-50 rounded transition-colors"
+              title="История изменений"
+              aria-label="Показать историю"
+            >
+              <Clock className="w-4 h-4" aria-hidden="true" />
+            </button>
+          )}
+
           {onView && (
             <button
               onClick={() => onView(switchItem)}
               className="p-2 text-gray-500 hover:text-gray-700 hover:bg-gray-100 rounded transition-colors"
               title="Просмотр"
+              aria-label="Просмотреть"
             >
               <Eye className="w-4 h-4" aria-hidden="true" />
             </button>
           )}
+
           {onEdit && (
             <button
               onClick={() => onEdit(switchItem)}
               className="p-2 text-blue-600 hover:bg-blue-100 rounded transition-colors"
               title="Редактировать"
+              aria-label="Редактировать"
             >
               <Edit className="w-4 h-4" aria-hidden="true" />
             </button>
           )}
+
           {onDelete && (
             <button
               onClick={() => onDelete(id)}
               className="p-2 text-red-600 hover:bg-red-100 rounded transition-colors"
               title="Удалить"
+              aria-label="Удалить"
             >
               <Trash2 className="w-4 h-4" aria-hidden="true" />
             </button>
           )}
+
         </div>
       </td>
     </tr>

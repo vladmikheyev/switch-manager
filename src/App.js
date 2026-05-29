@@ -2,7 +2,7 @@
 import { useState, useMemo } from 'react';
 import { useSwitches } from './hooks/useSwitches';
 
-// ✅ Прямые импорты компонентов (без баррел-экспортов)
+// ✅ Прямые импорты компонентов
 import { Header } from './components/Layout/Header';
 import { Stats } from './components/Layout/Stats/Stats';
 import { SearchBar } from './components/Controls/SearchBar';
@@ -10,6 +10,7 @@ import { ExportButtons } from './components/Controls/ExportButtons';
 import { AddSwitchButton } from './components/Controls/AddSwitchButton';
 import { SwitchTable } from './components/Switches/SwitchTable';
 import { SwitchModal } from './components/Modal/SwitchModal';
+import { SwitchHistory } from './components/Modal/SwitchHistory';  // ✅ Импорт истории
 
 import { APP_NAME, APP_VERSION } from './utils/constants';
 
@@ -31,9 +32,10 @@ function App() {
     resetError
   } = useSwitches();
 
-  // Состояние модального окна
+  // Состояние модальных окон
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editingSwitch, setEditingSwitch] = useState(null);
+  const [historySwitch, setHistorySwitch] = useState(null);  // ✅ Состояние для истории
 
   // Состояние фильтров
   const [searchTerm, setSearchTerm] = useState('');
@@ -83,6 +85,11 @@ function App() {
     setIsModalOpen(true);
   };
 
+  // ✅ Обработчик просмотра истории
+  const handleViewHistory = (switchItem) => {
+    setHistorySwitch(switchItem);
+  };
+
   // Обработчик удаления
   const handleDelete = (id) => {
     if (window.confirm('Вы уверены, что хотите удалить этот коммутатор?')) {
@@ -96,10 +103,11 @@ function App() {
     setStatusFilter('');
   };
 
-  // Закрытие модального окна
+  // Закрытие модальных окон
   const handleCloseModal = () => {
     setIsModalOpen(false);
     setEditingSwitch(null);
+    setHistorySwitch(null);  // ✅ Закрываем и историю
   };
 
   // Экран загрузки
@@ -189,6 +197,7 @@ function App() {
               onEdit={handleEdit}
               onDelete={handleDelete}
               onView={(s) => console.log('Просмотр:', s)}
+              onViewHistory={handleViewHistory}  // ✅ Передаём обработчик истории
               onDownload={(doc) => console.log('Скачать:', doc)}
               onDeleteDocument={(doc) => console.log('Удалить документ:', doc)}
             />
@@ -217,6 +226,15 @@ function App() {
           initialData={editingSwitch}
           onSubmit={handleSubmit}
           onClose={handleCloseModal}
+        />
+      )}
+
+      {/* ✅ Модальное окно истории изменений */}
+      {historySwitch && !isModalOpen && (
+        <SwitchHistory 
+          switchId={historySwitch.id}
+          switchName={historySwitch.name}
+          onClose={() => setHistorySwitch(null)}
         />
       )}
 

@@ -13,6 +13,10 @@ class ApiClient {
     this.token = null;
   }
 
+async getSwitchHistory(id, limit = 50) {
+  return this.get(`/switches/${id}/history`, { limit });
+}
+
   /**
    * Установка токена авторизации
    * @param {string} token - JWT токен

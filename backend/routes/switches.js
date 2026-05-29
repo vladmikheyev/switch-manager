@@ -86,6 +86,7 @@ router.get('/:id(\\d+)', switchController.getSwitch);
 router.post('/', validate(switchSchema.create), switchController.createSwitch);
 router.put('/:id(\\d+)', validate(switchSchema.update), switchController.updateSwitch);
 router.delete('/:id(\\d+)', switchController.deleteSwitch);
+router.get('/:id(\\d+)/history', switchController.getSwitchHistory);
 
 // Загрузка и удаление файлов
 router.post('/upload/:switchId(\\d+)', upload.single('file'), switchController.uploadFile);

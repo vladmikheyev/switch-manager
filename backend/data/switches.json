@@ -867,7 +867,7 @@
       "model": "DGS-1005A",
       "location": "Склад (Парфенова Р.Б.)",
       "ports": 5,
-      "status": "active",
+      "status": "maintenance",
       "vendor": "DLINK ",
       "purchaseDate": "2025-10-09T00:00:00.000Z",
       "serialNumber": "U8ED132028231",
@@ -875,9 +875,23 @@
       "technician": "Парфенова Р.Б.",
       "comment": "",
       "documents": [],
-      "updatedAt": "2026-05-25T07:32:04.105Z",
+      "updatedAt": "2026-05-29T10:58:44.984Z",
       "createdAt": "2026-05-25T07:32:04.105Z",
-      "id": 1779694324105
+      "id": 1779694324105,
+      "history": [
+        {
+          "id": 1780052324986,
+          "timestamp": "2026-05-29T10:58:44.986Z",
+          "action": "update",
+          "user": "Парфенова Р.Б.",
+          "changes": {
+            "status": {
+              "old": "active",
+              "new": "maintenance"
+            }
+          }
+        }
+      ]
     },
     {
       "name": "DLINK (свитч)",
@@ -892,9 +906,35 @@
       "technician": "Парфенова Р.Б.",
       "comment": "",
       "documents": [],
-      "updatedAt": "2026-05-25T12:53:16.305Z",
+      "updatedAt": "2026-05-29T10:58:16.698Z",
       "createdAt": "2026-05-25T12:53:16.305Z",
-      "id": 1779713596305
+      "id": 1779713596305,
+      "history": [
+        {
+          "id": 1780049149365,
+          "timestamp": "2026-05-29T10:05:49.365Z",
+          "action": "update",
+          "user": "Парфенова Р.Б.",
+          "changes": {
+            "status": {
+              "old": "maintenance",
+              "new": "active"
+            }
+          }
+        },
+        {
+          "id": 1780052296700,
+          "timestamp": "2026-05-29T10:58:16.700Z",
+          "action": "update",
+          "user": "Парфенова Р.Б.",
+          "changes": {
+            "status": {
+              "old": "active",
+              "new": "maintenance"
+            }
+          }
+        }
+      ]
     },
     {
       "name": "DLINK (свитч)",
@@ -1122,11 +1162,41 @@
       "serialNumber": "QS9G256000549",
       "requestNumber": "---",
       "technician": "Парфенова Р.Б.",
-      "comment": "подходит для АБК ТЭСЦ, 1 эт.",
+      "comment": "подходит для АБК ТЭСЦ, 1 эт. (На складе)",
       "documents": [],
-      "updatedAt": "2026-05-25T13:30:06.167Z",
+      "updatedAt": "2026-05-29T10:55:40.605Z",
       "createdAt": "2026-05-25T13:30:06.167Z",
-      "id": 1779715806167
+      "id": 1779715806167,
+      "history": [
+        {
+          "id": 1780048723886,
+          "timestamp": "2026-05-29T09:58:43.886Z",
+          "action": "update",
+          "user": "Парфенова Р.Б.",
+          "changes": {
+            "status": {
+              "old": "maintenance",
+              "new": "active"
+            }
+          }
+        },
+        {
+          "id": 1780052140607,
+          "timestamp": "2026-05-29T10:55:40.607Z",
+          "action": "update",
+          "user": "Парфенова Р.Б.",
+          "changes": {
+            "status": {
+              "old": "active",
+              "new": "maintenance"
+            },
+            "comment": {
+              "old": "подходит для АБК ТЭСЦ, 1 эт.",
+              "new": "подходит для АБК ТЭСЦ, 1 эт. (На складе)"
+            }
+          }
+        }
+      ]
     },
     {
       "name": "DLINK (свитч)",
