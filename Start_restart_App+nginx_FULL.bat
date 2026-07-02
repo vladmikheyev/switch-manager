@@ -12,7 +12,7 @@ set "LOG_DIR=%PROJECT_ROOT%\logs"
 set "FRONTEND_PORT=3000"
 set "BACKEND_PORT=5000"
 set "NGINX_PORT=8088"
-set "SERVER_IP=10.182.63.130"
+set "SERVER_IP=10.182.63.122"
 
 if not exist "%LOG_DIR%" mkdir "%LOG_DIR%"
 

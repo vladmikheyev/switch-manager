@@ -31,17 +31,17 @@
       "id": 1754469773805,
       "name": "DLINK (свитч)",
       "model": "DES-1008D",
-      "location": "АБК ЦХП, каб. 219 (инж.2к. БУОП Кондакова В.А.)",
+      "location": "АБК ЦХП, каб. 227 (складирован)",
       "serialNumber": "QS42233001802",
-      "requestNumber": "SR01406657",
-      "technician": "Ковалев Д.С.",
+      "requestNumber": "",
+      "technician": "Михеев В.Г.",
       "ports": 8,
-      "status": "active",
+      "status": "maintenance",
       "vendor": "Dlink",
-      "purchaseDate": "2025-06-09",
-      "comment": null,
+      "purchaseDate": "2026-06-26T00:00:00.000Z",
+      "comment": "2026-06-26-проведена перестановка в каб. 219, коммутатор высвободился",
       "createdAt": "2026-05-22T05:20:39.570Z",
-      "updatedAt": "2026-05-22T05:20:39.570Z",
+      "updatedAt": "2026-06-26T09:06:01.268Z",
       "documents": [
         {
           "id": 1779427239670,
@@ -51,6 +51,40 @@
           "mimetype": "image/jpeg",
           "size": 658962,
           "uploadedAt": "2025-08-07T08:49:03.196Z"
+        }
+      ],
+      "history": [
+        {
+          "id": 1782464761270,
+          "timestamp": "2026-06-26T09:06:01.270Z",
+          "action": "update",
+          "user": "Михеев В.Г.",
+          "changes": {
+            "location": {
+              "old": "АБК ЦХП, каб. 219 (инж.2к. БУОП Кондакова В.А.)",
+              "new": "АБК ЦХП, каб. 227 (складирован)"
+            },
+            "requestNumber": {
+              "old": "SR01406657",
+              "new": ""
+            },
+            "technician": {
+              "old": "Ковалев Д.С.",
+              "new": "Михеев В.Г."
+            },
+            "status": {
+              "old": "active",
+              "new": "maintenance"
+            },
+            "purchaseDate": {
+              "old": "2025-06-09",
+              "new": "2026-06-26T00:00:00.000Z"
+            },
+            "comment": {
+              "old": null,
+              "new": "2026-06-26-проведена перестановка в каб. 219, коммутатор высвободился"
+            }
+          }
         }
       ]
     },
@@ -65,10 +99,10 @@
       "ports": 5,
       "status": "active",
       "vendor": "Dlink",
-      "purchaseDate": "2025-06-17T00:00:00.000Z",
+      "purchaseDate": "2026-02-18T00:00:00.000Z",
       "comment": null,
       "createdAt": "2026-05-22T05:20:39.570Z",
-      "updatedAt": "2026-05-25T12:32:46.696Z",
+      "updatedAt": "2026-06-17T05:48:59.730Z",
       "documents": [
         {
           "id": 1779712344479,
@@ -77,6 +111,28 @@
           "mimetype": "image/png",
           "size": 1796197,
           "uploadedAt": "2026-05-25T12:32:24.479Z"
+        },
+        {
+          "id": 1781675315087,
+          "name": "SR01416821.jpg",
+          "filename": "7963cc34-7ddf-4140-98e5-e90157c5b25e.jpg",
+          "mimetype": "image/jpeg",
+          "size": 715968,
+          "uploadedAt": "2026-06-17T05:48:35.087Z"
+        }
+      ],
+      "history": [
+        {
+          "id": 1781675136494,
+          "timestamp": "2026-06-17T05:45:36.494Z",
+          "action": "update",
+          "user": "Михеев В.Г.",
+          "changes": {
+            "purchaseDate": {
+              "old": "2025-06-17T00:00:00.000Z",
+              "new": "2026-02-18T00:00:00.000Z"
+            }
+          }
         }
       ]
     },
@@ -84,17 +140,17 @@
       "id": 1754470216653,
       "name": "DLINK (свитч)",
       "model": "DGS-1005A",
-      "location": "Демонтирован из АБК ЦХП, каб. 117",
+      "location": "Установлен в МЦ-2, каб.2.20, оттуда перемещен в АБК ЭСПЦ, каб.2.17 (Качкаев А.В.)",
       "serialNumber": "U8ED132045023",
-      "requestNumber": "SR01967245",
+      "requestNumber": "2026-06-30_Акт-б-н",
       "technician": "Михеев В.Г.",
       "ports": 5,
-      "status": "maintenance",
+      "status": "active",
       "vendor": "Dlink",
-      "purchaseDate": "2026-05-20T00:00:00.000Z",
+      "purchaseDate": "2026-06-30T00:00:00.000Z",
       "comment": null,
       "createdAt": "2026-05-22T05:20:39.570Z",
-      "updatedAt": "2026-05-22T08:24:43.469Z",
+      "updatedAt": "2026-06-30T08:05:39.516Z",
       "documents": [
         {
           "id": 1779438200899,
@@ -111,6 +167,48 @@
           "mimetype": "image/png",
           "size": 1500091,
           "uploadedAt": "2026-05-22T08:24:19.206Z"
+        },
+        {
+          "id": 1781676782918,
+          "name": "SR01431386.jpg",
+          "filename": "efb89b20-625d-407c-b361-15225596b561.jpg",
+          "mimetype": "image/jpeg",
+          "size": 656188,
+          "uploadedAt": "2026-06-17T06:13:02.918Z"
+        },
+        {
+          "id": 1782806696957,
+          "name": "2026-06-30_ÐÐºÑ-Ð±-Ð½.jpg",
+          "filename": "e4e9e595-36dc-4b1d-b59e-d048c1f28ec6.jpg",
+          "mimetype": "image/jpeg",
+          "size": 929614,
+          "uploadedAt": "2026-06-30T08:04:56.957Z"
+        }
+      ],
+      "history": [
+        {
+          "id": 1782806739518,
+          "timestamp": "2026-06-30T08:05:39.518Z",
+          "action": "update",
+          "user": "Михеев В.Г.",
+          "changes": {
+            "location": {
+              "old": "Демонтирован из АБК ЦХП, каб. 117",
+              "new": "Установлен в МЦ-2, каб.2.20, оттуда перемещен в АБК ЭСПЦ, каб.2.17 (Качкаев А.В.)"
+            },
+            "requestNumber": {
+              "old": "SR01967245",
+              "new": "2026-06-30_Акт-б-н"
+            },
+            "status": {
+              "old": "maintenance",
+              "new": "active"
+            },
+            "purchaseDate": {
+              "old": "2026-05-20T00:00:00.000Z",
+              "new": "2026-06-30T00:00:00.000Z"
+            }
+          }
         }
       ]
     },
@@ -125,19 +223,32 @@
       "ports": 5,
       "status": "active",
       "vendor": "Dlink",
-      "purchaseDate": "2025-07-02",
+      "purchaseDate": "2025-07-02T00:00:00.000Z",
       "comment": null,
       "createdAt": "2026-05-22T05:20:39.570Z",
-      "updatedAt": "2026-05-22T05:20:39.570Z",
+      "updatedAt": "2026-06-18T08:38:29.116Z",
       "documents": [
         {
-          "id": 1779427239970,
-          "switchId": 1754470451975,
-          "filename": "1754557803763-SR01444319.jpg",
-          "originalName": "SR01444319.jpg",
+          "id": 1781771884473,
+          "name": "SR01444319.jpg",
+          "filename": "666fd7f9-d491-424a-beb8-12ff1c0d2293.jpg",
           "mimetype": "image/jpeg",
-          "size": 760384,
-          "uploadedAt": "2025-08-07T09:10:04.113Z"
+          "size": 966235,
+          "uploadedAt": "2026-06-18T08:38:04.473Z"
+        }
+      ],
+      "history": [
+        {
+          "id": 1781771847887,
+          "timestamp": "2026-06-18T08:37:27.887Z",
+          "action": "update",
+          "user": "Ковалев Д.С.",
+          "changes": {
+            "purchaseDate": {
+              "old": "2025-07-02",
+              "new": "2025-07-02T00:00:00.000Z"
+            }
+          }
         }
       ]
     },
@@ -181,7 +292,7 @@
       "purchaseDate": "2026-03-18T00:00:00.000Z",
       "comment": null,
       "createdAt": "2026-05-22T05:20:39.571Z",
-      "updatedAt": "2026-05-22T09:43:05.886Z",
+      "updatedAt": "2026-06-18T08:40:27.935Z",
       "documents": [
         {
           "id": 1779438823174,
@@ -190,6 +301,14 @@
           "mimetype": "application/pdf",
           "size": 753844,
           "uploadedAt": "2026-05-22T08:33:43.174Z"
+        },
+        {
+          "id": 1781772004838,
+          "name": "SR01459599.jpg",
+          "filename": "afbd631b-c7b1-42c5-ad4b-9322e90b8ae3.jpg",
+          "mimetype": "image/jpeg",
+          "size": 718631,
+          "uploadedAt": "2026-06-18T08:40:04.838Z"
         }
       ]
     },
@@ -258,10 +377,10 @@
       "ports": 5,
       "status": "active",
       "vendor": "Dlink",
-      "purchaseDate": "2025-06-18",
+      "purchaseDate": "2025-06-18T00:00:00.000Z",
       "comment": null,
       "createdAt": "2026-05-22T05:20:39.571Z",
-      "updatedAt": "2026-05-22T05:20:39.571Z",
+      "updatedAt": "2026-06-17T06:08:57.217Z",
       "documents": [
         {
           "id": 1779427240471,
@@ -271,6 +390,28 @@
           "mimetype": "image/jpeg",
           "size": 1328554,
           "uploadedAt": "2025-08-07T09:13:58.359Z"
+        },
+        {
+          "id": 1781676515384,
+          "name": "SR01420195.jpg",
+          "filename": "6a0d5086-c0c5-4ef8-b38e-0a6d70242bab.jpg",
+          "mimetype": "image/jpeg",
+          "size": 493918,
+          "uploadedAt": "2026-06-17T06:08:35.384Z"
+        }
+      ],
+      "history": [
+        {
+          "id": 1781676537219,
+          "timestamp": "2026-06-17T06:08:57.219Z",
+          "action": "update",
+          "user": "Михеев В.Г.",
+          "changes": {
+            "purchaseDate": {
+              "old": "2025-06-18",
+              "new": "2025-06-18T00:00:00.000Z"
+            }
+          }
         }
       ]
     },
@@ -747,7 +888,7 @@
       "purchaseDate": "2025-12-29T00:00:00.000Z",
       "comment": null,
       "createdAt": "2026-05-22T05:20:39.571Z",
-      "updatedAt": "2026-05-25T07:23:36.500Z",
+      "updatedAt": "2026-06-18T08:54:28.258Z",
       "documents": [
         {
           "id": 1779693792292,
@@ -756,6 +897,14 @@
           "mimetype": "image/jpeg",
           "size": 924748,
           "uploadedAt": "2026-05-25T07:23:12.292Z"
+        },
+        {
+          "id": 1781772846902,
+          "name": "SR01621553.jpg",
+          "filename": "4245e461-54a9-4225-b919-877a35f828f2.jpg",
+          "mimetype": "image/jpeg",
+          "size": 857394,
+          "uploadedAt": "2026-06-18T08:54:06.902Z"
         }
       ]
     },
@@ -956,28 +1105,62 @@
           "mimetype": "image/png",
           "size": 1664266,
           "uploadedAt": "2026-05-25T12:57:31.079Z"
+        },
+        {
+          "id": 1781772710139,
+          "name": "SR01608753.pdf",
+          "filename": "0de52570-ada0-4631-9d72-79f1aff32a0d.pdf",
+          "mimetype": "application/pdf",
+          "size": 759186,
+          "uploadedAt": "2026-06-18T08:51:50.139Z"
         }
       ],
-      "updatedAt": "2026-05-25T12:58:12.005Z",
+      "updatedAt": "2026-06-18T08:52:11.711Z",
       "createdAt": "2026-05-25T12:55:39.147Z",
       "id": 1779713739147
     },
     {
       "name": "DLINK (свитч)",
       "model": "DGS-1005A",
-      "location": "Склад (каб.227)",
+      "location": "МЦ-2, каб. 2-20",
       "ports": 5,
-      "status": "maintenance",
+      "status": "active",
       "vendor": "DLINK ",
-      "purchaseDate": "2026-04-17T00:00:00.000Z",
+      "purchaseDate": "2026-06-15T00:00:00.000Z",
       "serialNumber": "U8ED132028233",
-      "requestNumber": "",
+      "requestNumber": "SR02008155",
       "technician": "Михеев В.Г.",
       "comment": "",
       "documents": [],
-      "updatedAt": "2026-05-25T13:08:53.477Z",
+      "updatedAt": "2026-06-16T05:03:42.412Z",
       "createdAt": "2026-05-25T13:08:53.477Z",
-      "id": 1779714533477
+      "id": 1779714533477,
+      "history": [
+        {
+          "id": 1781586222414,
+          "timestamp": "2026-06-16T05:03:42.414Z",
+          "action": "update",
+          "user": "Михеев В.Г.",
+          "changes": {
+            "location": {
+              "old": "Склад (каб.227)",
+              "new": "МЦ-2, каб. 2-20"
+            },
+            "requestNumber": {
+              "old": "",
+              "new": "SR02008155"
+            },
+            "status": {
+              "old": "maintenance",
+              "new": "active"
+            },
+            "purchaseDate": {
+              "old": "2026-04-17T00:00:00.000Z",
+              "new": "2026-06-15T00:00:00.000Z"
+            }
+          }
+        }
+      ]
     },
     {
       "name": "DLINK (свитч)",
@@ -1051,19 +1234,45 @@
     {
       "name": "DLINK (свитч)",
       "model": "DGS-1005A",
-      "location": "Склад (Парфенова Р.Б.)",
+      "location": "СВХ, склад Б-1, помещение со стороны АБК ЦХП",
       "ports": 5,
-      "status": "maintenance",
+      "status": "active",
       "vendor": "DLINK ",
-      "purchaseDate": "2026-04-17T00:00:00.000Z",
+      "purchaseDate": "2026-06-15T00:00:00.000Z",
       "serialNumber": "U8ED132028236",
       "requestNumber": "---",
-      "technician": "Парфенова Р.Б.",
+      "technician": "Михеев В.Г.",
       "comment": "",
       "documents": [],
-      "updatedAt": "2026-05-25T13:18:24.745Z",
+      "updatedAt": "2026-06-16T04:57:45.792Z",
       "createdAt": "2026-05-25T13:18:24.745Z",
-      "id": 1779715104745
+      "id": 1779715104745,
+      "history": [
+        {
+          "id": 1781585865794,
+          "timestamp": "2026-06-16T04:57:45.794Z",
+          "action": "update",
+          "user": "Михеев В.Г.",
+          "changes": {
+            "location": {
+              "old": "Склад (Парфенова Р.Б.)",
+              "new": "СВХ, склад Б-1, помещение со стороны АБК ЦХП"
+            },
+            "technician": {
+              "old": "Парфенова Р.Б.",
+              "new": "Михеев В.Г."
+            },
+            "status": {
+              "old": "maintenance",
+              "new": "active"
+            },
+            "purchaseDate": {
+              "old": "2026-04-17T00:00:00.000Z",
+              "new": "2026-06-15T00:00:00.000Z"
+            }
+          }
+        }
+      ]
     },
     {
       "name": "DLINK (свитч)",
@@ -1093,7 +1302,7 @@
     },
     {
       "name": "DLINK (свитч)",
-      "model": "DGS-1005D",
+      "model": "DGS-1008D",
       "location": "АБК МЦ-2, каб. 2.20  ",
       "ports": 8,
       "status": "active",
@@ -1113,9 +1322,23 @@
           "uploadedAt": "2026-05-25T13:24:42.472Z"
         }
       ],
-      "updatedAt": "2026-05-25T13:25:06.267Z",
+      "updatedAt": "2026-06-30T10:43:56.482Z",
       "createdAt": "2026-05-25T13:24:00.611Z",
-      "id": 1779715440611
+      "id": 1779715440611,
+      "history": [
+        {
+          "id": 1782816236483,
+          "timestamp": "2026-06-30T10:43:56.483Z",
+          "action": "update",
+          "user": "Ситьков В.Р.",
+          "changes": {
+            "model": {
+              "old": "DGS-1005D",
+              "new": "DGS-1008D"
+            }
+          }
+        }
+      ]
     },
     {
       "name": "DLINK (свитч)",
@@ -1252,9 +1475,9 @@
     },
     {
       "name": "DLINK (свитч)",
-      "model": "DES-1008D",
-      "location": "АБК МЦ-2, каб. 2.20",
-      "ports": 8,
+      "model": "DGS-1005A",
+      "location": "АБК МЦ-2, каб. 2.20 (Пшеничников А.В.)",
+      "ports": 5,
       "status": "active",
       "vendor": "DLINK ",
       "purchaseDate": "2026-02-12T00:00:00.000Z",
@@ -1272,9 +1495,35 @@
           "uploadedAt": "2026-05-25T13:45:43.111Z"
         }
       ],
-      "updatedAt": "2026-05-25T13:46:05.361Z",
+      "updatedAt": "2026-06-30T11:35:43.143Z",
       "createdAt": "2026-05-25T13:45:05.521Z",
-      "id": 1779716705521
+      "id": 1779716705521,
+      "history": [
+        {
+          "id": 1782816164700,
+          "timestamp": "2026-06-30T10:42:44.700Z",
+          "action": "update",
+          "user": "Мушкин В.А.",
+          "changes": {
+            "model": {
+              "old": "DES-1008D",
+              "new": "DGS-1005A"
+            }
+          }
+        },
+        {
+          "id": 1782819343145,
+          "timestamp": "2026-06-30T11:35:43.145Z",
+          "action": "update",
+          "user": "Мушкин В.А.",
+          "changes": {
+            "location": {
+              "old": "АБК МЦ-2, каб. 2.20",
+              "new": "АБК МЦ-2, каб. 2.20 (Пшеничников А.В.)"
+            }
+          }
+        }
+      ]
     },
     {
       "name": "DLINK (свитч)",
@@ -1327,6 +1576,76 @@
       "updatedAt": "2026-05-25T13:53:46.817Z",
       "createdAt": "2026-05-25T13:52:16.470Z",
       "id": 1779717136470
+    },
+    {
+      "name": "DLINK (свитч)",
+      "model": "DGS-1005A",
+      "location": "неизвестно",
+      "ports": 5,
+      "status": "offline",
+      "vendor": "DLINK ",
+      "purchaseDate": "2026-06-30T00:00:00.000Z",
+      "serialNumber": "UF01124021338",
+      "requestNumber": "",
+      "technician": "",
+      "comment": "",
+      "documents": [],
+      "updatedAt": "2026-06-30T10:47:15.311Z",
+      "createdAt": "2026-06-30T10:47:15.311Z",
+      "id": 1782816435311,
+      "history": [
+        {
+          "id": 1782816435312,
+          "timestamp": "2026-06-30T10:47:15.312Z",
+          "action": "create",
+          "user": "Система",
+          "changes": {
+            "name": {
+              "old": null,
+              "new": "DLINK (свитч)"
+            },
+            "model": {
+              "old": null,
+              "new": "DGS-1005A"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "DLINK (свитч)",
+      "model": "DES-1005C",
+      "location": "АБК МЦ-2, каб. 2.5 (Семикина)",
+      "ports": 5,
+      "status": "active",
+      "vendor": "DLINK ",
+      "purchaseDate": "2026-06-30T00:00:00.000Z",
+      "serialNumber": "QS7G204006884",
+      "requestNumber": "",
+      "technician": "",
+      "comment": "",
+      "documents": [],
+      "updatedAt": "2026-06-30T10:49:18.772Z",
+      "createdAt": "2026-06-30T10:49:18.772Z",
+      "id": 1782816558772,
+      "history": [
+        {
+          "id": 1782816558774,
+          "timestamp": "2026-06-30T10:49:18.774Z",
+          "action": "create",
+          "user": "Система",
+          "changes": {
+            "name": {
+              "old": null,
+              "new": "DLINK (свитч)"
+            },
+            "model": {
+              "old": null,
+              "new": "DES-1005C"
+            }
+          }
+        }
+      ]
     }
   ],
   "documents": [
@@ -1662,6 +1981,78 @@
       "mimetype": "application/pdf",
       "size": 670726,
       "uploadedAt": "2026-05-25T13:53:25.655Z"
+    },
+    {
+      "id": 1781675315087,
+      "switchId": "1754470014089",
+      "filename": "7963cc34-7ddf-4140-98e5-e90157c5b25e.jpg",
+      "originalName": "SR01416821.jpg",
+      "mimetype": "image/jpeg",
+      "size": 715968,
+      "uploadedAt": "2026-06-17T05:48:35.087Z"
+    },
+    {
+      "id": 1781676515384,
+      "switchId": "1754474543581",
+      "filename": "6a0d5086-c0c5-4ef8-b38e-0a6d70242bab.jpg",
+      "originalName": "SR01420195.jpg",
+      "mimetype": "image/jpeg",
+      "size": 493918,
+      "uploadedAt": "2026-06-17T06:08:35.384Z"
+    },
+    {
+      "id": 1781676782918,
+      "switchId": "1754470216653",
+      "filename": "efb89b20-625d-407c-b361-15225596b561.jpg",
+      "originalName": "SR01431386.jpg",
+      "mimetype": "image/jpeg",
+      "size": 656188,
+      "uploadedAt": "2026-06-17T06:13:02.918Z"
+    },
+    {
+      "id": 1781771884473,
+      "switchId": "1754470451975",
+      "filename": "666fd7f9-d491-424a-beb8-12ff1c0d2293.jpg",
+      "originalName": "SR01444319.jpg",
+      "mimetype": "image/jpeg",
+      "size": 966235,
+      "uploadedAt": "2026-06-18T08:38:04.473Z"
+    },
+    {
+      "id": 1781772004838,
+      "switchId": "1754474061216",
+      "filename": "afbd631b-c7b1-42c5-ad4b-9322e90b8ae3.jpg",
+      "originalName": "SR01459599.jpg",
+      "mimetype": "image/jpeg",
+      "size": 718631,
+      "uploadedAt": "2026-06-18T08:40:04.838Z"
+    },
+    {
+      "id": 1781772710139,
+      "switchId": "1779713739147",
+      "filename": "0de52570-ada0-4631-9d72-79f1aff32a0d.pdf",
+      "originalName": "SR01608753.pdf",
+      "mimetype": "application/pdf",
+      "size": 759186,
+      "uploadedAt": "2026-06-18T08:51:50.139Z"
+    },
+    {
+      "id": 1781772846902,
+      "switchId": "1757941713980",
+      "filename": "4245e461-54a9-4225-b919-877a35f828f2.jpg",
+      "originalName": "SR01621553.jpg",
+      "mimetype": "image/jpeg",
+      "size": 857394,
+      "uploadedAt": "2026-06-18T08:54:06.902Z"
+    },
+    {
+      "id": 1782806696957,
+      "switchId": "1754470216653",
+      "filename": "e4e9e595-36dc-4b1d-b59e-d048c1f28ec6.jpg",
+      "originalName": "2026-06-30_ÐÐºÑ-Ð±-Ð½.jpg",
+      "mimetype": "image/jpeg",
+      "size": 929614,
+      "uploadedAt": "2026-06-30T08:04:56.957Z"
     }
   ]
 }
