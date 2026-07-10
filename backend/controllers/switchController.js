@@ -59,7 +59,7 @@ exports.getSwitchHistory = async (req, res, next) => {
       success: true,
       switchId: id,
       switchName: sw.name,
-      history,
+       data: history,
       count: history.length
     });
   } catch (error) {

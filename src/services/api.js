@@ -13,9 +13,11 @@ class ApiClient {
     this.token = null;
   }
 
-async getSwitchHistory(id, limit = 50) {
-  return this.get(`/switches/${id}/history`, { limit });
-}
+ async getSwitchHistory(id, limit = 50) {
+    // Убедитесь, что путь совпадает с маршрутом в бэкенде
+    const response = await this.get(`/api/switches/${id}/history`, { limit });
+    return response; 
+  }
 
   /**
    * Установка токена авторизации
