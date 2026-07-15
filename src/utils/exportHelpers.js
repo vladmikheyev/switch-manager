@@ -46,7 +46,7 @@ export const exportToCSV = (data, filename = 'export', columns = null) => {
       ports: 'Порты',
       status: 'Статус',
       vendor: 'Вендор',
-      purchaseDate: 'Дата покупки',
+      purchaseDate: 'Дата установки/проверки',
       comment: 'Комментарий',
       documents: 'Документы',
       createdAt: 'Создан',
@@ -162,7 +162,7 @@ export const exportToXLSX = (data, filename = 'export', sheetName = 'Данны�
       'Порты': item.ports,
       'Статус': getStatusLabel(item.status),
       'Вендор': item.vendor,
-      'Дата покупки': item.purchaseDate ? new Date(item.purchaseDate).toLocaleDateString('ru-RU') : '',
+      'Дата установки/проверки': item.purchaseDate ? new Date(item.purchaseDate).toLocaleDateString('ru-RU') : '',
       'Комментарий': item.comment || '',
       'Документов': item.documents?.length || 0,
       'Создан': item.createdAt ? new Date(item.createdAt).toLocaleDateString('ru-RU') : '',
@@ -185,7 +185,7 @@ export const exportToXLSX = (data, filename = 'export', sheetName = 'Данны�
       { wch: 8 },   // Порты
       { wch: 12 },  // Статус
       { wch: 15 },  // Вендор
-      { wch: 15 },  // Дата покупки
+      { wch: 15 },  // Дата установки/проверки
       { wch: 40 },  // Комментарий (длинное поле)
       { wch: 15 },  // Создан
       { wch: 15 }   // Обновлён
@@ -279,7 +279,7 @@ export const importFromCSV = async (file) => {
           'Порты': 'ports',
           'Статус': 'status',
           'Вендор': 'vendor',
-          'Дата покупки': 'purchaseDate',
+          'Дата установки/проверки': 'purchaseDate',
           'Комментарий': 'comment'
         };
 

@@ -54,7 +54,8 @@ function App() {
         switchItem.serialNumber,
         switchItem.requestNumber,
         switchItem.technician,
-        switchItem.vendor
+        switchItem.vendor,
+        switchItem.comment
       ].some(field => field?.toLowerCase().includes(term));
 
       // Фильтр по статусу

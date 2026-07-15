@@ -214,7 +214,7 @@ export const SWITCH_FIELDS = [
   { key: 'ports', label: 'Порты', type: 'number', required: true, editable: true },
   { key: 'status', label: 'Статус', type: 'string', required: true, editable: true, enum: Object.keys(SWITCH_STATUS) },
   { key: 'vendor', label: 'Вендор', type: 'string', required: false, editable: true },
-  { key: 'purchaseDate', label: 'Дата покупки', type: 'date', required: false, editable: true },
+  { key: 'purchaseDate', label: 'Дата установки/проверки', type: 'date', required: false, editable: true },
   { key: 'comment', label: 'Комментарий', type: 'string', required: false, editable: true },
   { key: 'documents', label: 'Документы', type: 'array', required: false, editable: true },
   { key: 'createdAt', label: 'Создан', type: 'datetime', required: false, editable: false },
