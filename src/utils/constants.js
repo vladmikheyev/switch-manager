@@ -353,7 +353,7 @@ export const formatDate = (date, format = DATE_FORMAT) => {
 /**
  * Версия приложения
  */
-export const APP_VERSION = '1.0.0';
+export const APP_VERSION = '1.1.0';
 
 /**
  * Название приложения
