@@ -1127,13 +1127,13 @@
     "serialNumber": "SN: б/н",
     "status": "ЗИП",
     "color": "желтая",
-    "location": "Склад МЦ-2",
+    "location": "Склад МЦ-2 (Парфенова Р.Б.)",
     "quantity": 1,
     "technician": "Михеев В.Г.",
     "comment": "Работает в паре с FH-SB3512CDL20",
     "id": 1793265545886,
     "createdAt": "2026-10-29T09:19:05.886Z",
-    "updatedAt": "2026-10-29T09:19:05.886Z",
+    "updatedAt": "2026-10-29T10:24:42.298Z",
     "documents": [],
     "history": [
       {
@@ -1147,6 +1147,18 @@
             "new": "FH-SB5312CDL20"
           }
         }
+      },
+      {
+        "id": 1793269482299,
+        "timestamp": "2026-10-29T10:24:42.299Z",
+        "action": "update",
+        "user": "Михеев В.Г.",
+        "changes": {
+          "location": {
+            "old": "Склад МЦ-2",
+            "new": "Склад МЦ-2 (Парфенова Р.Б.)"
+          }
+        }
       }
     ]
   },
@@ -1158,13 +1170,13 @@
     "serialNumber": "SN: б/н",
     "status": "ЗИП",
     "color": "синяя",
-    "location": "Склад МЦ-2",
+    "location": "Склад МЦ-2 (Парфенова Р.Б.)",
     "quantity": 1,
     "technician": "Михеев В.Г.",
     "comment": "Работает в паре с FH-SB5312CDL20\n",
     "id": 1793265652819,
     "createdAt": "2026-10-29T09:20:52.819Z",
-    "updatedAt": "2026-10-29T09:20:52.819Z",
+    "updatedAt": "2026-10-29T10:24:33.870Z",
     "documents": [],
     "history": [
       {
@@ -1176,6 +1188,282 @@
           "model": {
             "old": null,
             "new": "FH-SB3512CDL20"
+          }
+        }
+      },
+      {
+        "id": 1793269473872,
+        "timestamp": "2026-10-29T10:24:33.872Z",
+        "action": "update",
+        "user": "Михеев В.Г.",
+        "changes": {
+          "location": {
+            "old": "Склад МЦ-2",
+            "new": "Склад МЦ-2 (Парфенова Р.Б.)"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "vendor": "FANG HANG",
+    "model": "FH-SB3512CDS20",
+    "specs": "1,25 GE 20 km, SM, TX/RX 1310/1550 SC, DDM (21CFR(J) CLASS1)",
+    "distance": "20km",
+    "serialNumber": "SN: б/н",
+    "status": "ЗИП",
+    "color": "синяя",
+    "location": "Склад МЦ-2 (Парфенова Р.Б.)",
+    "quantity": 1,
+    "technician": "Михеев В.Г.",
+    "comment": "",
+    "id": 1793269335515,
+    "createdAt": "2026-10-29T10:22:15.515Z",
+    "updatedAt": "2026-10-29T10:32:08.714Z",
+    "documents": [],
+    "history": [
+      {
+        "id": 1793269335516,
+        "timestamp": "2026-10-29T10:22:15.516Z",
+        "action": "create",
+        "user": "Михеев В.Г.",
+        "changes": {
+          "model": {
+            "old": null,
+            "new": "FH-SB3512CDL20"
+          }
+        }
+      },
+      {
+        "id": 1793269928716,
+        "timestamp": "2026-10-29T10:32:08.716Z",
+        "action": "update",
+        "user": "Михеев В.Г.",
+        "changes": {
+          "model": {
+            "old": "FH-SB3512CDL20",
+            "new": "FH-SB3512CDS20"
+          },
+          "specs": {
+            "old": "1,25 GE 20 km, SM, TX/RX 1310/1550 LC, DDM",
+            "new": "1,25 GE 20 km, SM, TX/RX 1310/1550 SC, DDM (21CFR(J) CLASS1)"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "vendor": "FANG HANG",
+    "model": "FH-SB5312CDS20",
+    "specs": "1,25 GE 20 km, SM, TX/RX 1550/1310 SC, DDM (21CFR(J) CLASS1)",
+    "distance": "20km",
+    "serialNumber": "SN: б/н",
+    "status": "ЗИП",
+    "color": "желтая",
+    "location": "Склад МЦ-2 (Парфенова Р.Б.)",
+    "quantity": 1,
+    "technician": "Михеев В.Г.",
+    "comment": "CLASS 1",
+    "id": 1793269449114,
+    "createdAt": "2026-10-29T10:24:09.114Z",
+    "updatedAt": "2026-10-29T10:33:11.170Z",
+    "documents": [],
+    "history": [
+      {
+        "id": 1793269449116,
+        "timestamp": "2026-10-29T10:24:09.116Z",
+        "action": "create",
+        "user": "Михеев В.Г.",
+        "changes": {
+          "model": {
+            "old": null,
+            "new": "FH-SB5312CDL20"
+          }
+        }
+      },
+      {
+        "id": 1793269505384,
+        "timestamp": "2026-10-29T10:25:05.384Z",
+        "action": "update",
+        "user": "Михеев В.Г.",
+        "changes": {
+          "color": {
+            "old": "синяя",
+            "new": "желтая"
+          }
+        }
+      },
+      {
+        "id": 1793269991172,
+        "timestamp": "2026-10-29T10:33:11.172Z",
+        "action": "update",
+        "user": "Михеев В.Г.",
+        "changes": {
+          "model": {
+            "old": "FH-SB5312CDL20",
+            "new": "FH-SB5312CDS20"
+          },
+          "specs": {
+            "old": "1,25 GE 20 km, SM, TX/RX 1550/1310 LC, DDM",
+            "new": "1,25 GE 20 km, SM, TX/RX 1550/1310 SC, DDM (21CFR(J) CLASS1)"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "vendor": "FANG HANG",
+    "model": "FH-SB3512CDL3",
+    "specs": "SFP 1.25 GE 3km, SM, Tx/Rx 1310/1550 LC, DDM (21CFR(J) CLASS 1)",
+    "distance": "3km",
+    "serialNumber": "SN: б/н",
+    "status": "ЗИП",
+    "color": "синяя",
+    "location": "Склад МЦ-2 (Парфенова Р.Б.)",
+    "quantity": 1,
+    "technician": "Михеев В.Г.",
+    "comment": "Работает в паре с FH-SB5312CDL3\n",
+    "id": 1793270347902,
+    "createdAt": "2026-10-29T10:39:07.902Z",
+    "updatedAt": "2026-10-29T10:39:07.902Z",
+    "documents": [],
+    "history": [
+      {
+        "id": 1793270347903,
+        "timestamp": "2026-10-29T10:39:07.903Z",
+        "action": "create",
+        "user": "Михеев В.Г.",
+        "changes": {
+          "model": {
+            "old": null,
+            "new": "FH-SB3512CDL3"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "vendor": "FANG HANG",
+    "model": "FH-SB5312CDL3",
+    "specs": "SFP 1.25 GE 3km, SM, Tx/Rx 1550/1310 LC, DDM (21CFR(J) CLASS 1)",
+    "distance": "3km",
+    "serialNumber": "SN: б/н",
+    "status": "ЗИП",
+    "color": "желтая",
+    "location": "Склад МЦ-2 (Парфенова Р.Б.)",
+    "quantity": 1,
+    "technician": "Михеев В.Г.",
+    "comment": "Работает в паре с FH-SB3512CDL3",
+    "id": 1793270433273,
+    "createdAt": "2026-10-29T10:40:33.273Z",
+    "updatedAt": "2026-10-29T10:40:33.273Z",
+    "documents": [],
+    "history": [
+      {
+        "id": 1793270433275,
+        "timestamp": "2026-10-29T10:40:33.275Z",
+        "action": "create",
+        "user": "Михеев В.Г.",
+        "changes": {
+          "model": {
+            "old": null,
+            "new": "FH-SB5312CDL3"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "vendor": "FANG HANG",
+    "model": "FH-S3112CDL2",
+    "specs": "1.25G GE 2km, MM, 1310 nm, LC, DDM (21CFR(J) CLASS1)",
+    "distance": "2km",
+    "serialNumber": "SN: б/н",
+    "laserClass": "CLASS 1",
+    "color": "",
+    "location": "Склад МЦ-2 (Парфенова Р.Б.)",
+    "quantity": 3,
+    "technician": "Михеев В.Г.",
+    "comment": "(хоть и написано ММ, но одномодовый (SM) - подходят желтые патч-корды); ",
+    "status": "ЗИП",
+    "id": 1793270672271,
+    "createdAt": "2026-10-29T10:44:32.271Z",
+    "updatedAt": "2026-10-29T10:44:32.271Z",
+    "documents": [],
+    "history": [
+      {
+        "id": 1793270672273,
+        "timestamp": "2026-10-29T10:44:32.273Z",
+        "action": "create",
+        "user": "Михеев В.Г.",
+        "changes": {
+          "model": {
+            "old": null,
+            "new": "FH-S3112CDL2"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "vendor": "FANG HANG",
+    "model": "FH-SB5312CDS3",
+    "specs": "1.25G GE 3 km, SM, Tx/Rx 1550/1310 SC, DDM",
+    "distance": "3km",
+    "serialNumber": "SN: б/н",
+    "laserClass": "CLASS 1",
+    "color": "желтая",
+    "location": "Склад МЦ-2 (Парфенова Р.Б.)",
+    "quantity": 3,
+    "technician": "Михеев В.Г.",
+    "comment": "",
+    "status": "ЗИП",
+    "id": 1793270989662,
+    "createdAt": "2026-10-29T10:49:49.662Z",
+    "updatedAt": "2026-10-29T10:49:49.662Z",
+    "documents": [],
+    "history": [
+      {
+        "id": 1793270989664,
+        "timestamp": "2026-10-29T10:49:49.664Z",
+        "action": "create",
+        "user": "Михеев В.Г.",
+        "changes": {
+          "model": {
+            "old": null,
+            "new": "FH-SB5312CDS3"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "vendor": "FANG HANG",
+    "model": "FH-SB3512CDS3",
+    "specs": "1.25G GE 3 km, SM, Tx/Rx 1310/1550 SC, DDM",
+    "distance": "3km",
+    "serialNumber": "SN: б/н",
+    "laserClass": "CLASS 1",
+    "color": "синяя",
+    "location": "Склад МЦ-2 (Парфенова Р.Б.)",
+    "quantity": 3,
+    "technician": "Михеев В.Г.",
+    "comment": "",
+    "status": "ЗИП",
+    "id": 1793271069711,
+    "createdAt": "2026-10-29T10:51:09.711Z",
+    "updatedAt": "2026-10-29T10:51:09.711Z",
+    "documents": [],
+    "history": [
+      {
+        "id": 1793271069713,
+        "timestamp": "2026-10-29T10:51:09.713Z",
+        "action": "create",
+        "user": "Михеев В.Г.",
+        "changes": {
+          "model": {
+            "old": null,
+            "new": "FH-SB3512CDS3"
           }
         }
       }

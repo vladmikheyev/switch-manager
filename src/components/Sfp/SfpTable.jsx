@@ -1,7 +1,7 @@
 // src/components/Sfp/SfpTable.jsx
-import { Edit, Trash2, Clock } from 'lucide-react';
+import { Edit, Trash2, Clock, Copy } from 'lucide-react';
 
-export const SfpTable = ({ items, onEdit, onDelete, onViewHistory }) => {
+export const SfpTable = ({ items, onEdit, onDelete, onViewHistory, onCopy }) => {
   if (!items?.length) {
     return (
       <div className="text-center py-12 text-gray-500">
@@ -25,18 +25,14 @@ export const SfpTable = ({ items, onEdit, onDelete, onViewHistory }) => {
     return 'bg-gray-300';
   };
 
-  // ✅ Функция для красивого отображения статуса
   const getStatusBadge = (status) => {
     if (!status) return <span className="text-gray-400 text-sm">—</span>;
-    
     const styles = {
       'ЗИП': 'bg-blue-100 text-blue-800 border-blue-200',
       'В работе': 'bg-green-100 text-green-800 border-green-200',
       'Заказано': 'bg-yellow-100 text-yellow-800 border-yellow-200'
     };
-    
     const style = styles[status] || 'bg-gray-100 text-gray-800 border-gray-200';
-    
     return (
       <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium border ${style}`}>
         {status}
@@ -49,7 +45,6 @@ export const SfpTable = ({ items, onEdit, onDelete, onViewHistory }) => {
       <table className="w-full min-w-[1200px] table-fixed border-collapse">
         <thead className="bg-gray-50">
           <tr className="border-b border-gray-200">
-            {/* ✅ Заменили 'Класс' на 'Статус' */}
             {['Вендор', 'Модель', 'Характеристики', 'Дальность', 'Сер.номер', 'Статус', 'Цвет', 'Где находится', 'Кол-во', 'Действия'].map((header) => (
               <th key={header} className="px-4 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider truncate">
                 {header}
@@ -65,10 +60,7 @@ export const SfpTable = ({ items, onEdit, onDelete, onViewHistory }) => {
               <td className="px-4 py-3 text-sm truncate" title={item.specs}>{item.specs || '—'}</td>
               <td className="px-4 py-3 text-center">{item.distance || '—'}</td>
               <td className="px-4 py-3 font-mono text-sm">{item.serialNumber || '—'}</td>
-              
-              {/* ✅ Колонка Статус с бейджем */}
               <td className="px-4 py-3">{getStatusBadge(item.status)}</td>
-              
               <td className="px-4 py-3">
                 {item.color ? (
                   <span className="inline-flex items-center gap-1.5">
@@ -80,7 +72,12 @@ export const SfpTable = ({ items, onEdit, onDelete, onViewHistory }) => {
               <td className="px-4 py-3 text-sm truncate" title={item.location}>{item.location || '—'}</td>
               <td className="px-4 py-3 text-center font-semibold">{item.quantity || 0} шт.</td>
               <td className="px-4 py-3">
-                <div className="flex gap-2 justify-end">
+                <div className="flex gap-1.5 justify-end">
+                  {onCopy && (
+                    <button onClick={() => onCopy(item)} className="p-1.5 text-gray-500 hover:text-purple-600 hover:bg-purple-50 rounded" title="Копировать">
+                      <Copy className="w-4 h-4" />
+                    </button>
+                  )}
                   {onViewHistory && (
                     <button onClick={() => onViewHistory(item)} className="p-1.5 text-gray-500 hover:text-blue-600 hover:bg-blue-50 rounded" title="История">
                       <Clock className="w-4 h-4" />

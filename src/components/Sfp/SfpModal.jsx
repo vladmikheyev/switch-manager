@@ -28,6 +28,18 @@ export const SfpModal = ({ initialData, onSubmit, onClose }) => {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
+  // В начале компонента SfpModal, после всех useState:
+  const isEditing = !!initialData?.id;
+  const isCopying = !!initialData && !initialData?.id;
+  const modalTitle = isEditing
+    ? "Редактировать SFP модуль"
+    : isCopying
+      ? "📋 Копирование SFP модуля"
+      : "Добавить SFP модуль";
+
+  // В JSX замените заголовок:
+  <h2 className="text-lg font-semibold text-gray-900">{modalTitle}</h2>;
+
   const handleSubmit = (e) => {
     e.preventDefault();
     onSubmit(formData);
