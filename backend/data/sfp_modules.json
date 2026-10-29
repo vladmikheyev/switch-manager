@@ -856,12 +856,12 @@
     "status": "ЗИП",
     "color": "фиолетовая",
     "location": "ЗИП  в тумбочке",
-    "quantity": 4,
+    "quantity": "3",
     "technician": "Михеев В.Г.",
     "comment": "(одноглазка LC одномод.)",
     "id": 1793263884229,
     "createdAt": "2026-10-29T08:51:24.229Z",
-    "updatedAt": "2026-10-29T09:14:56.318Z",
+    "updatedAt": "2026-10-29T11:18:27.795Z",
     "documents": [],
     "history": [
       {
@@ -885,6 +885,18 @@
           "model": {
             "old": "SNR-SFP-W35-20-LC",
             "new": "SNR-SFP-W35-20-LC (комплект с W53)"
+          }
+        }
+      },
+      {
+        "id": 1793272707797,
+        "timestamp": "2026-10-29T11:18:27.797Z",
+        "action": "update",
+        "user": "Михеев В.Г.",
+        "changes": {
+          "quantity": {
+            "old": 4,
+            "new": "3"
           }
         }
       }
@@ -1097,12 +1109,12 @@
     "status": "ЗИП",
     "color": "синяя",
     "location": "ЗИП  в тумбочке",
-    "quantity": 1,
+    "quantity": "3",
     "technician": "Михеев В.Г.",
     "comment": "(одноглазка LC одномод.)\nкомплект с W35",
     "id": 1793265249143,
     "createdAt": "2026-10-29T09:14:09.143Z",
-    "updatedAt": "2026-10-29T09:14:09.143Z",
+    "updatedAt": "2026-10-29T11:18:37.598Z",
     "documents": [],
     "history": [
       {
@@ -1114,6 +1126,30 @@
           "model": {
             "old": null,
             "new": "SNR-SFP-W53-20-LC (комплект с W35)"
+          }
+        }
+      },
+      {
+        "id": 1793272686367,
+        "timestamp": "2026-10-29T11:18:06.367Z",
+        "action": "update",
+        "user": "Михеев В.Г.",
+        "changes": {
+          "quantity": {
+            "old": 1,
+            "new": "4"
+          }
+        }
+      },
+      {
+        "id": 1793272717600,
+        "timestamp": "2026-10-29T11:18:37.600Z",
+        "action": "update",
+        "user": "Михеев В.Г.",
+        "changes": {
+          "quantity": {
+            "old": "4",
+            "new": "3"
           }
         }
       }

@@ -21,7 +21,8 @@ export const SfpTable = ({ items, onEdit, onDelete, onViewHistory, onCopy }) => 
     if (c.includes('зелен') || c.includes('green')) return 'bg-green-500';
     if (c.includes('оранж') || c.includes('orange')) return 'bg-orange-500';
     if (c.includes('красн') || c.includes('red')) return 'bg-red-500';
-    if (c.includes('бел') || c.includes('white')) return 'bg-white'; 
+    if (c.includes('бел') || c.includes('white')) return 'bg-white';
+    if (c.includes('фиолет') || c.includes('purple') || c.includes('violet') || c.includes('сирен')) return 'bg-purple-500'; 
     return 'bg-gray-300';
   };
 
