@@ -1,6 +1,6 @@
 {
-  "name": "switch-manager",
-  "version": "0.1.0",
+  "name": "switch-sfp-manager",
+  "version": "2.1.0",
   "private": true,
   "dependencies": {
     "@testing-library/dom": "^10.4.1",

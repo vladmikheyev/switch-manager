@@ -44,7 +44,7 @@ app.get('/api/health', (req, res) => {
 app.use('/api/switches', switchRoutes);
 
 app.get('/', (req, res) => {
-  res.json({ name: 'Switch Manager API', version: '1.0.0' });
+  res.json({ name: 'Switch Manager API', version: '1.1.0' });
 });
 
 const sfpRoutes = require('./routes/sfp');

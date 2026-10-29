@@ -353,17 +353,17 @@ export const formatDate = (date, format = DATE_FORMAT) => {
 /**
  * Версия приложения
  */
-export const APP_VERSION = '1.1.0';
+export const APP_VERSION = '2.1.0';
 
 /**
  * Название приложения
  */
-export const APP_NAME = 'Switch Manager';
+export const APP_NAME = 'Switch/SFP Manager';
 
 /**
  * Описание приложения
  */
-export const APP_DESCRIPTION = 'Система управления сетевым оборудованием';
+export const APP_DESCRIPTION = 'Система учета сетевого оборудования';
 
 const constants = {
   SWITCH_STATUS,

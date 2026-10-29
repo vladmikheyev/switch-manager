@@ -10,7 +10,7 @@ import { Network, Settings, LogOut, User } from 'lucide-react';  // ✅ Заме
  */
 export const Header = ({ 
   title = 'Учет коммутаторов', 
-  subtitle = 'Система управления сетевым оборудованием',
+  subtitle = 'Система учета сетевого оборудования',
   onLogout 
 }) => {
   const currentDate = new Date().toLocaleDateString('ru-RU', {

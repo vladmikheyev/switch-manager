@@ -1,6 +1,6 @@
 {
-  "name": "switch-manager-backend",
-  "version": "1.0.0",
+  "name": "switch-sfp-manager-backend",
+  "version": "2.1.0",
   "description": "API server for switch management",
   "main": "server.js",
   "scripts": {
