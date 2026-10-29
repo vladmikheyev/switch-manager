@@ -1,0 +1,298 @@
+[
+  {
+    "vendor": "FANG HANG",
+    "model": "FH-SB5312CDS3",
+    "specs": "1.25G SFP SC 1550/1310nm",
+    "distance": "3km",
+    "serialNumber": "FLU23120705258",
+    "laserClass": "CLASS 1",
+    "color": "желтая",
+    "location": "ЗИП  в тумбочке",
+    "quantity": 1,
+    "technician": "Ковалев Д.С.",
+    "comment": "",
+    "id": 1793255456962,
+    "createdAt": "2026-10-29T06:30:56.962Z",
+    "updatedAt": "2026-10-29T06:30:56.962Z",
+    "documents": [],
+    "history": [
+      {
+        "id": 1793255456964,
+        "timestamp": "2026-10-29T06:30:56.964Z",
+        "action": "create",
+        "user": "Ковалев Д.С.",
+        "changes": {
+          "model": {
+            "old": null,
+            "new": "FH-SB5312CDS3"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "vendor": "FANG HANG",
+    "model": "FH-SB3512CDS3",
+    "specs": "1.25G SFP SC 1310/1550nm",
+    "distance": "3km",
+    "serialNumber": "FLU23120705038",
+    "laserClass": "CLASS 1",
+    "color": "голубая",
+    "location": "ЗИП  в тумбочке",
+    "quantity": 1,
+    "technician": "Михеев В.Г.",
+    "comment": "одноглазка SC одномод.",
+    "id": 1793255660609,
+    "createdAt": "2026-10-29T06:34:20.609Z",
+    "updatedAt": "2026-10-29T06:34:20.609Z",
+    "documents": [],
+    "history": [
+      {
+        "id": 1793255660610,
+        "timestamp": "2026-10-29T06:34:20.610Z",
+        "action": "create",
+        "user": "Михеев В.Г.",
+        "changes": {
+          "model": {
+            "old": null,
+            "new": "FH-SB3512CDS3"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "vendor": "FANG HANG",
+    "model": "FH-SB5312CDL3",
+    "specs": "1.25G SFP LC 1550/1310nm",
+    "distance": "3km",
+    "serialNumber": "FLU23101011456",
+    "laserClass": "CLASS 1",
+    "color": "желтая",
+    "location": "ЗИП  в тумбочке",
+    "quantity": 1,
+    "technician": "Михеев В.Г.",
+    "comment": "одноглазка LC одномод.",
+    "id": 1793255817135,
+    "createdAt": "2026-10-29T06:36:57.135Z",
+    "updatedAt": "2026-10-29T06:38:15.735Z",
+    "documents": [],
+    "history": [
+      {
+        "id": 1793255817136,
+        "timestamp": "2026-10-29T06:36:57.136Z",
+        "action": "create",
+        "user": "Михеев В.Г.",
+        "changes": {
+          "model": {
+            "old": null,
+            "new": "FH-SB5312CDS3"
+          }
+        }
+      },
+      {
+        "id": 1793255848640,
+        "timestamp": "2026-10-29T06:37:28.640Z",
+        "action": "update",
+        "user": "Михеев В.Г.",
+        "changes": {
+          "specs": {
+            "old": "1.25G SFP SC 1550/1310nm",
+            "new": "1.25G SFP LC 1550/1310nm"
+          }
+        }
+      },
+      {
+        "id": 1793255895736,
+        "timestamp": "2026-10-29T06:38:15.736Z",
+        "action": "update",
+        "user": "Михеев В.Г.",
+        "changes": {
+          "model": {
+            "old": "FH-SB5312CDS3",
+            "new": "FH-SB5312CDL3"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "vendor": "FANG HANG",
+    "model": "FH-SB3512CDL3",
+    "specs": "1.25G SFP LC 1310/1550nm",
+    "distance": "3km",
+    "serialNumber": "FLU23081103602",
+    "laserClass": "CLASS 1",
+    "color": "голубая",
+    "location": "ЗИП  в тумбочке",
+    "quantity": 1,
+    "technician": "Михеев В.Г.",
+    "comment": "одноглазка LC одномод.",
+    "id": 1793255997962,
+    "createdAt": "2026-10-29T06:39:57.962Z",
+    "updatedAt": "2026-10-29T06:39:57.962Z",
+    "documents": [],
+    "history": [
+      {
+        "id": 1793255997963,
+        "timestamp": "2026-10-29T06:39:57.963Z",
+        "action": "create",
+        "user": "Михеев В.Г.",
+        "changes": {
+          "model": {
+            "old": null,
+            "new": "FH-SB3512CDL3"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "vendor": "FANG HANG",
+    "model": "FH-DP1T30SS02",
+    "specs": "10G SFP+ Copper Twinax",
+    "distance": "Cable 2M",
+    "serialNumber": "FHD23101006005",
+    "laserClass": "",
+    "color": "черный",
+    "location": "ЗИП  в тумбочке",
+    "quantity": 1,
+    "technician": "Михеев В.Г.",
+    "comment": "FANG HANG - ДАТА-КАБЕЛЬ",
+    "id": 1793256944754,
+    "createdAt": "2026-10-29T06:55:44.754Z",
+    "updatedAt": "2026-10-29T06:56:09.116Z",
+    "documents": [],
+    "history": [
+      {
+        "id": 1793256944755,
+        "timestamp": "2026-10-29T06:55:44.755Z",
+        "action": "create",
+        "user": "Михеев В.Г.",
+        "changes": {
+          "model": {
+            "old": null,
+            "new": "FH-DP1T30SS02 - ДАТА-КАБЕЛЬ"
+          }
+        }
+      },
+      {
+        "id": 1793256969117,
+        "timestamp": "2026-10-29T06:56:09.117Z",
+        "action": "update",
+        "user": "Михеев В.Г.",
+        "changes": {
+          "model": {
+            "old": "FH-DP1T30SS02 - ДАТА-КАБЕЛЬ",
+            "new": "FH-DP1T30SS02"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "vendor": "FANG HANG",
+    "model": "FH-DP1T30SS01",
+    "specs": "10G SFP+ Copper Twinax",
+    "distance": "Cable 1M",
+    "serialNumber": "FHD23101001751; FHD23101001748",
+    "laserClass": "",
+    "color": "черный",
+    "location": "1 шт. (ЗИП) в тумбочке /  второй установлен в серверном шкафу на Металлургов 6В",
+    "quantity": 2,
+    "technician": "Михеев В.Г.",
+    "comment": "в консоле определяется как:\nDESCR: \"SFP-10Gbase-CX1\"\nPID: SFP-H10GB-CU1M\nVID: V03",
+    "id": 1793257635227,
+    "createdAt": "2026-10-29T07:07:15.227Z",
+    "updatedAt": "2026-10-29T07:50:29.617Z",
+    "documents": [],
+    "history": [
+      {
+        "id": 1793257635228,
+        "timestamp": "2026-10-29T07:07:15.228Z",
+        "action": "create",
+        "user": "Михеев В.Г.",
+        "changes": {
+          "model": {
+            "old": null,
+            "new": "FH-DP1T30SS01"
+          }
+        }
+      },
+      {
+        "id": 1793260229618,
+        "timestamp": "2026-10-29T07:50:29.618Z",
+        "action": "update",
+        "user": "Михеев В.Г.",
+        "changes": {
+          "color": {
+            "old": "",
+            "new": "черный"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "vendor": "FANG HANG",
+    "model": "FH-S3112CDL2",
+    "specs": "1.25G SFP LC 1310nm MM",
+    "distance": "2km",
+    "serialNumber": "FLU24062702909; FLU24062702910; FLU24062702913; FLU24062702901; FLU24062702911; FLU24062702912; FLU24062702903; FLU24062702904; FLU24062702902; FLU24062702914; FLU24062702908; FLU24062702906; FLU24062702905; FLU24062702907",
+    "laserClass": "CLASS 1",
+    "color": "",
+    "location": "1 шт. (ЗИП) в тумбочке /  второй установлен в серверном шкафу на Металлургов 6В",
+    "quantity": 14,
+    "technician": "Михеев В.Г.",
+    "comment": "(хоть и написано ММ, но одномодовый (SM) - подходят желтые патч-корды); Установлены в шкафу ШК-3.1-2.1 АБК ЭСПЦ; двуглазка LC одномод.",
+    "id": 1793259488963,
+    "createdAt": "2026-10-29T07:38:08.963Z",
+    "updatedAt": "2026-10-29T07:38:08.963Z",
+    "documents": [],
+    "history": [
+      {
+        "id": 1793259488964,
+        "timestamp": "2026-10-29T07:38:08.964Z",
+        "action": "create",
+        "user": "Михеев В.Г.",
+        "changes": {
+          "model": {
+            "old": null,
+            "new": "FH-S3112CDL2"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "vendor": "FANG HANG",
+    "model": "FH-SP311TCDL20",
+    "specs": "SFP+ 10G SM 1310nm",
+    "distance": "20km",
+    "serialNumber": "FE25802890; FE25802889",
+    "laserClass": "CLASS 1",
+    "color": "",
+    "location": "нам обратно не вернули",
+    "quantity": 2,
+    "technician": "Михеев В.Г.",
+    "comment": "Предполагалось к установке в шкафу ШК-3.1-2.1 АБК ЭСПЦ, но не пошли, были заменены на Cisco SFP+ (Cisco-SFP-10G-LR)",
+    "id": 1793260172443,
+    "createdAt": "2026-10-29T07:49:32.443Z",
+    "updatedAt": "2026-10-29T07:49:32.443Z",
+    "documents": [],
+    "history": [
+      {
+        "id": 1793260172445,
+        "timestamp": "2026-10-29T07:49:32.445Z",
+        "action": "create",
+        "user": "Михеев В.Г.",
+        "changes": {
+          "model": {
+            "old": null,
+            "new": "FH-SP311TCDL20"
+          }
+        }
+      }
+    ]
+  }
+]

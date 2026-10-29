@@ -47,6 +47,11 @@ app.get('/', (req, res) => {
   res.json({ name: 'Switch Manager API', version: '1.0.0' });
 });
 
+const sfpRoutes = require('./routes/sfp');
+// ...
+app.use('/api/switches', switchRoutes);
+app.use('/api/sfp', sfpRoutes); // ✅ Новый маршрут
+
 // ✅ Обработчики ошибок
 app.use(notFoundHandler);
 app.use(errorHandler);

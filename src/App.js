@@ -10,7 +10,10 @@ import { ExportButtons } from './components/Controls/ExportButtons';
 import { AddSwitchButton } from './components/Controls/AddSwitchButton';
 import { SwitchTable } from './components/Switches/SwitchTable';
 import { SwitchModal } from './components/Modal/SwitchModal';
-import { SwitchHistory } from './components/Modal/SwitchHistory';  // ✅ Импорт истории
+import { SwitchHistory } from './components/Modal/SwitchHistory';
+
+// ✅ Импорт нового компонента для SFP (создайте этот файл по инструкции ниже)
+import { SfpView } from './components/Sfp/SfpView';
 
 import { APP_NAME, APP_VERSION } from './utils/constants';
 
@@ -19,7 +22,15 @@ import { APP_NAME, APP_VERSION } from './utils/constants';
  * @returns {JSX.Element} Приложение
  */
 function App() {
-  // Хук управления данными коммутаторов
+   console.log("🚀🚀🚀 НОВЫЙ APP.JS УСПЕШНО ЗАГРУЖЕН! 🚀🚀🚀"); 
+  // ==========================================
+  // 1. СОСТОЯНИЕ ВКЛАДОК
+  // ==========================================
+  const [activeTab, setActiveTab] = useState('switches'); // 'switches' | 'sfp' | 'cables' (в будущем)
+
+  // ==========================================
+  // 2. ЛОГИКА КОММУТАТОРОВ (без изменений)
+  // ==========================================
   const {
     switches,
     isLoading,
@@ -32,21 +43,21 @@ function App() {
     resetError
   } = useSwitches();
 
-  // Состояние модальных окон
+  // Состояние модальных окон коммутаторов
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editingSwitch, setEditingSwitch] = useState(null);
-  const [historySwitch, setHistorySwitch] = useState(null);  // ✅ Состояние для истории
+  const [historySwitch, setHistorySwitch] = useState(null);
 
   // Состояние фильтров
   const [searchTerm, setSearchTerm] = useState('');
   const [statusFilter, setStatusFilter] = useState('');
 
-  // Фильтрация коммутаторов (мемоизация для производительности)
+  // Фильтрация коммутаторов (мемоизация)
   const filteredSwitches = useMemo(() => {
     return switches.filter(switchItem => {
       const term = searchTerm.toLowerCase().trim();
       
-      // Поиск по всем текстовым полям
+      // Поиск по всем текстовым полям (включая comment)
       const matchesSearch = !term || [
         switchItem.name,
         switchItem.model,
@@ -55,7 +66,7 @@ function App() {
         switchItem.requestNumber,
         switchItem.technician,
         switchItem.vendor,
-        switchItem.comment
+        switchItem.comment // ✅ Поиск по комментариям добавлен
       ].some(field => field?.toLowerCase().includes(term));
 
       // Фильтр по статусу
@@ -65,7 +76,7 @@ function App() {
     });
   }, [switches, searchTerm, statusFilter]);
 
-  // Обработчик отправки формы
+  // Обработчики коммутаторов
   const handleSubmit = async (data) => {
     try {
       if (editingSwitch) {
@@ -80,38 +91,35 @@ function App() {
     }
   };
 
-  // Обработчик редактирования
   const handleEdit = (switchItem) => {
     setEditingSwitch(switchItem);
     setIsModalOpen(true);
   };
 
-  // ✅ Обработчик просмотра истории
   const handleViewHistory = (switchItem) => {
     setHistorySwitch(switchItem);
   };
 
-  // Обработчик удаления
   const handleDelete = (id) => {
     if (window.confirm('Вы уверены, что хотите удалить этот коммутатор?')) {
       deleteSwitch(id);
     }
   };
 
-  // Очистка всех фильтров
   const handleClearFilters = () => {
     setSearchTerm('');
     setStatusFilter('');
   };
 
-  // Закрытие модальных окон
   const handleCloseModal = () => {
     setIsModalOpen(false);
     setEditingSwitch(null);
-    setHistorySwitch(null);  // ✅ Закрываем и историю
+    setHistorySwitch(null);
   };
 
-  // Экран загрузки
+  // ==========================================
+  // 3. ЭКРАНЫ ЗАГРУЗКИ И ОШИБКИ
+  // ==========================================
   if (isLoading) {
     return (
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
@@ -123,7 +131,6 @@ function App() {
     );
   }
 
-  // Экран ошибки
   if (error) {
     return (
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
@@ -146,8 +153,13 @@ function App() {
     );
   }
 
+  // ==========================================
+  // 4. ОСНОВНОЙ РЕНДЕР
+  // ==========================================
+    console.log("✅ НОВЫЙ APP.JS ЗАГРУЖЕН, activeTab:", activeTab);
+
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gray-50 flex flex-col">
       
       {/* Шапка приложения */}
       <Header 
@@ -155,72 +167,110 @@ function App() {
         subtitle={`v${APP_VERSION} • Система управления сетевым оборудованием`}
       />
 
-      {/* Основной контент */}
-      <main className="max-w-[95vw] w-full mx-auto px-4 py-6 space-y-6">
+      {/* ✅ Навигация по вкладкам */}
+      <nav className="bg-white border-b shadow-sm sticky top-0 z-20">
+        <div className="max-w-[95vw] w-full mx-auto px-4">
+          <div className="flex gap-6">
+            <button
+              onClick={() => setActiveTab('switches')}
+              className={`py-3 px-2 text-sm font-medium border-b-2 transition-colors ${
+                activeTab === 'switches'
+                  ? 'border-blue-600 text-blue-600'
+                  : 'border-transparent text-gray-500 hover:text-gray-700'
+              }`}
+            >
+              🔌 Коммутаторы
+            </button>
+            <button
+              onClick={() => setActiveTab('sfp')}
+              className={`py-3 px-2 text-sm font-medium border-b-2 transition-colors ${
+                activeTab === 'sfp'
+                  ? 'border-blue-600 text-blue-600'
+                  : 'border-transparent text-gray-500 hover:text-gray-700'
+              }`}
+            >
+              📡 SFP модули
+            </button>
+            {/* В будущем здесь появится вкладка "📦 Кабели" */}
+          </div>
+        </div>
+      </nav>
+
+      {/* Основной контент (условный рендеринг) */}
+      <main className="max-w-[95vw] w-full mx-auto px-4 py-6 space-y-6 flex-1">
         
-        {/* Статистика */}
-        <Stats switches={switches} />
+        {activeTab === 'switches' ? (
+          /* ==========================================
+             БЛОК КОММУТАТОРОВ
+             ========================================== */
+          <>
+            {/* Статистика */}
+            <Stats switches={switches} />
 
-        {/* Панель управления */}
-        <div className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
-          
-          {/* Верхняя панель с поиском и кнопками */}
-          <div className="p-4 border-b border-gray-200">
-            <div className="flex flex-col lg:flex-row gap-4 justify-between items-start lg:items-center">
+            {/* Панель управления */}
+            <div className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
               
-              {/* Поиск и фильтры */}
-              <SearchBar
-                value={searchTerm}
-                onChange={setSearchTerm}
-                statusFilter={statusFilter}
-                onStatusChange={setStatusFilter}
-                onClear={handleClearFilters}
-              />
+              {/* Верхняя панель с поиском и кнопками */}
+              <div className="p-4 border-b border-gray-200">
+                <div className="flex flex-col lg:flex-row gap-4 justify-between items-start lg:items-center">
+                  <SearchBar
+                    value={searchTerm}
+                    onChange={setSearchTerm}
+                    statusFilter={statusFilter}
+                    onStatusChange={setStatusFilter}
+                    onClear={handleClearFilters}
+                  />
 
-              {/* Кнопки экспорта и добавления */}
-              <div className="flex flex-wrap gap-2">
-                <ExportButtons
-                  onExport={exportSwitches}
-                  onImport={importSwitches}
-                />
-                <AddSwitchButton
-                  onClick={() => setIsModalOpen(true)}
+                  <div className="flex flex-wrap gap-2">
+                    <ExportButtons
+                      onExport={exportSwitches}
+                      onImport={importSwitches}
+                    />
+                    <AddSwitchButton
+                      onClick={() => setIsModalOpen(true)}
+                    />
+                  </div>
+                </div>
+              </div>
+
+              {/* Таблица коммутаторов */}
+              <div className="overflow-x-auto">
+                <SwitchTable
+                  switches={filteredSwitches}
+                  onEdit={handleEdit}
+                  onDelete={handleDelete}
+                  onView={(s) => console.log('Просмотр:', s)}
+                  onViewHistory={handleViewHistory}
+                  onDownload={(doc) => console.log('Скачать:', doc)}
+                  onDeleteDocument={(doc) => console.log('Удалить документ:', doc)}
                 />
               </div>
 
+              {/* Подвал таблицы */}
+              {filteredSwitches.length > 0 && (
+                <div className="px-4 py-3 bg-gray-50 border-t border-gray-200 text-sm text-gray-600">
+                  Показано {filteredSwitches.length} из {switches.length} коммутаторов
+                </div>
+              )}
             </div>
-          </div>
-
-          {/* Таблица коммутаторов */}
-          <div className="overflow-x-auto">
-            <SwitchTable
-              switches={filteredSwitches}
-              onEdit={handleEdit}
-              onDelete={handleDelete}
-              onView={(s) => console.log('Просмотр:', s)}
-              onViewHistory={handleViewHistory}  // ✅ Передаём обработчик истории
-              onDownload={(doc) => console.log('Скачать:', doc)}
-              onDeleteDocument={(doc) => console.log('Удалить документ:', doc)}
-            />
-          </div>
-
-          {/* Подвал таблицы с итогами */}
-          {filteredSwitches.length > 0 && (
-            <div className="px-4 py-3 bg-gray-50 border-t border-gray-200 text-sm text-gray-600">
-              Показано {filteredSwitches.length} из {switches.length} коммутаторов
-            </div>
-          )}
-
-        </div>
-
-        {/* Подвал страницы */}
-        <footer className="text-center text-sm text-gray-500 py-4">
-          {APP_NAME} v{APP_VERSION} • © {new Date().getFullYear()}
-        </footer>
+          </>
+        ) : activeTab === 'sfp' ? (
+          /* ==========================================
+             БЛОК SFP МОДУЛЕЙ
+             ========================================== */
+          <SfpView />
+        ) : null}
 
       </main>
 
-      {/* Модальное окно добавления/редактирования */}
+      {/* Подвал страницы */}
+      <footer className="text-center text-sm text-gray-500 py-4 mt-auto">
+        {APP_NAME} v{APP_VERSION} • © {new Date().getFullYear()}
+      </footer>
+
+      {/* ==========================================
+         МОДАЛЬНЫЕ ОКНА (только для коммутаторов)
+         ========================================== */}
       {isModalOpen && (
         <SwitchModal
           isOpen={isModalOpen}
@@ -230,7 +280,6 @@ function App() {
         />
       )}
 
-      {/* ✅ Модальное окно истории изменений */}
       {historySwitch && !isModalOpen && (
         <SwitchHistory 
           switchId={historySwitch.id}

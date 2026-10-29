@@ -1,22 +1,62 @@
 // src/services/api.js
-import { API_CONFIG, ERROR_MESSAGES, FILE_UPLOAD_CONFIG } from '../utils/constants';
+import {
+  API_CONFIG,
+  ERROR_MESSAGES,
+  FILE_UPLOAD_CONFIG,
+} from "../utils/constants";
 
 /**
  * Класс для управления API запросами
  */
 class ApiClient {
   constructor() {
-    this.baseURL = import.meta.env?.VITE_API_URL || 'http://localhost:5000';
-    console.log('🔗 Backend URL:', this.baseURL);
+    this.baseURL = import.meta.env?.VITE_API_URL || "http://localhost:5000";
+    console.log("🔗 Backend URL:", this.baseURL);
     this.timeout = 30000;
     this.retries = 1;
     this.token = null;
   }
+  // В конец класса ApiClient
+  async getSfpList() {
+    return this.get("/sfp");
+  }
+  async createSfp(data) {
+    return this.post("/sfp", data);
+  }
+  async updateSfp(id, data) {
+    return this.put(`/sfp/${id}`, data);
+  }
+  async deleteSfp(id) {
+    return this.delete(`/sfp/${id}`);
+  }
 
- async getSwitchHistory(id, limit = 50) {
+  async getSwitchHistory(id, limit = 50) {
     // Убедитесь, что путь совпадает с маршрутом в бэкенде
     const response = await this.get(`/api/switches/${id}/history`, { limit });
-    return response; 
+    return response;
+  }
+
+  // ==========================================
+  // SFP МОДУЛИ
+  // ==========================================
+  async getSfpList() {
+    return this.get("/api/sfp");
+  }
+
+  async createSfp(data) {
+    return this.post("/api/sfp", data);
+  }
+
+  async updateSfp(id, data) {
+    return this.put(`/api/sfp/${id}`, data);
+  }
+
+  async deleteSfp(id) {
+    return this.delete(`/api/sfp/${id}`);
+  }
+
+  async getSfpHistory(id, limit = 50) {
+    return this.get(`/api/sfp/${id}/history`, { limit });
   }
 
   /**
@@ -41,12 +81,12 @@ class ApiClient {
    */
   getHeaders(customHeaders = {}) {
     const headers = {
-      'Content-Type': 'application/json',
-      ...customHeaders
+      "Content-Type": "application/json",
+      ...customHeaders,
     };
 
     if (this.token) {
-      headers['Authorization'] = `Bearer ${this.token}`;
+      headers["Authorization"] = `Bearer ${this.token}`;
     }
 
     return headers;
@@ -99,7 +139,7 @@ class ApiClient {
     try {
       const response = await fetch(url, {
         ...options,
-        signal: controller.signal
+        signal: controller.signal,
       });
       return response;
     } finally {
@@ -120,9 +160,12 @@ class ApiClient {
       return response;
     } catch (error) {
       // Таймаут или ошибка сети - пробуем ещё раз
-      if (retryCount < this.retries && (error.name === 'AbortError' || error.message.includes('network'))) {
+      if (
+        retryCount < this.retries &&
+        (error.name === "AbortError" || error.message.includes("network"))
+      ) {
         const delay = Math.pow(2, retryCount) * 1000; // Экспоненциальная задержка
-        await new Promise(resolve => setTimeout(resolve, delay));
+        await new Promise((resolve) => setTimeout(resolve, delay));
         return this.fetchWithRetry(url, options, retryCount + 1);
       }
       throw error;
@@ -137,7 +180,7 @@ class ApiClient {
    */
   async get(endpoint, params = {}) {
     const url = new URL(`${this.baseURL}${endpoint}`);
-    
+
     // Добавление query параметров
     Object.entries(params).forEach(([key, value]) => {
       if (value !== undefined && value !== null) {
@@ -146,8 +189,8 @@ class ApiClient {
     });
 
     const response = await this.fetchWithRetry(url.toString(), {
-      method: 'GET',
-      headers: this.getHeaders()
+      method: "GET",
+      headers: this.getHeaders(),
     });
 
     return this.handleResponse(response);
@@ -161,9 +204,9 @@ class ApiClient {
    */
   async post(endpoint, data = {}) {
     const response = await this.fetchWithRetry(`${this.baseURL}${endpoint}`, {
-      method: 'POST',
+      method: "POST",
       headers: this.getHeaders(),
-      body: JSON.stringify(data)
+      body: JSON.stringify(data),
     });
 
     return this.handleResponse(response);
@@ -177,9 +220,9 @@ class ApiClient {
    */
   async put(endpoint, data = {}) {
     const response = await this.fetchWithRetry(`${this.baseURL}${endpoint}`, {
-      method: 'PUT',
+      method: "PUT",
       headers: this.getHeaders(),
-      body: JSON.stringify(data)
+      body: JSON.stringify(data),
     });
 
     return this.handleResponse(response);
@@ -193,9 +236,9 @@ class ApiClient {
    */
   async patch(endpoint, data = {}) {
     const response = await this.fetchWithRetry(`${this.baseURL}${endpoint}`, {
-      method: 'PATCH',
+      method: "PATCH",
       headers: this.getHeaders(),
-      body: JSON.stringify(data)
+      body: JSON.stringify(data),
     });
 
     return this.handleResponse(response);
@@ -208,8 +251,8 @@ class ApiClient {
    */
   async delete(endpoint) {
     const response = await this.fetchWithRetry(`${this.baseURL}${endpoint}`, {
-      method: 'DELETE',
-      headers: this.getHeaders()
+      method: "DELETE",
+      headers: this.getHeaders(),
     });
 
     return this.handleResponse(response);
@@ -225,8 +268,8 @@ class ApiClient {
    */
   async uploadFileRaw(endpoint, file, additionalData = {}, onProgress = null) {
     const formData = new FormData();
-    formData.append('file', file);
-    
+    formData.append("file", file);
+
     // Добавление дополнительных полей
     Object.entries(additionalData).forEach(([key, value]) => {
       formData.append(key, value);
@@ -235,27 +278,27 @@ class ApiClient {
     // Проверка размера файла
     if (file.size > FILE_UPLOAD_CONFIG.MAX_SIZE) {
       const error = new Error(ERROR_MESSAGES.FILE_TOO_LARGE);
-      error.code = 'FILE_TOO_LARGE';
+      error.code = "FILE_TOO_LARGE";
       throw error;
     }
 
     // Проверка типа файла
     if (!FILE_UPLOAD_CONFIG.ALLOWED_MIME_TYPES.includes(file.type)) {
       const error = new Error(ERROR_MESSAGES.INVALID_FILE_TYPE);
-      error.code = 'INVALID_FILE_TYPE';
+      error.code = "INVALID_FILE_TYPE";
       throw error;
     }
 
     try {
       const response = await this.fetchWithRetry(`${this.baseURL}${endpoint}`, {
-        method: 'POST',
-        body: formData
+        method: "POST",
+        body: formData,
         // Заголовки Content-Type устанавливаются автоматически для FormData
       });
 
       return this.handleResponse(response);
     } catch (error) {
-      console.error('Ошибка загрузки файла:', error);
+      console.error("Ошибка загрузки файла:", error);
       throw error;
     }
   }
@@ -266,10 +309,10 @@ class ApiClient {
    * @param {string} filename - Имя файла для сохранения
    * @returns {Promise<Blob>} Blob объект файла
    */
-  async downloadFile(endpoint, filename = 'download') {
+  async downloadFile(endpoint, filename = "download") {
     const response = await this.fetchWithRetry(`${this.baseURL}${endpoint}`, {
-      method: 'GET',
-      headers: this.getHeaders()
+      method: "GET",
+      headers: this.getHeaders(),
     });
 
     if (!response.ok) {
@@ -346,7 +389,10 @@ class ApiClient {
    * @returns {Promise<Object>} Данные загруженного файла
    */
   async uploadFile(switchId, file) {
-    return this.uploadFileRaw(`${API_CONFIG.ENDPOINTS.UPLOAD}/${switchId}`, file);
+    return this.uploadFileRaw(
+      `${API_CONFIG.ENDPOINTS.UPLOAD}/${switchId}`,
+      file,
+    );
   }
 
   /**
@@ -356,7 +402,9 @@ class ApiClient {
    * @returns {Promise<Object>} Результат удаления
    */
   async deleteDocument(switchId, filename) {
-    return this.delete(`${API_CONFIG.ENDPOINTS.DOCUMENT}/${switchId}/${filename}`);
+    return this.delete(
+      `${API_CONFIG.ENDPOINTS.DOCUMENT}/${switchId}/${filename}`,
+    );
   }
 
   /**
@@ -401,7 +449,10 @@ class ApiClient {
    * @returns {Promise<Array>} Результаты поиска
    */
   async searchSwitches(query, filters = {}) {
-    return this.get(`${API_CONFIG.ENDPOINTS.SWITCHES}/search`, { q: query, ...filters });
+    return this.get(`${API_CONFIG.ENDPOINTS.SWITCHES}/search`, {
+      q: query,
+      ...filters,
+    });
   }
 
   /**
@@ -418,8 +469,11 @@ class ApiClient {
    * @param {Object} filters - Фильтры для экспорта
    * @returns {Promise<Blob>} Файл экспорта
    */
-  async exportSwitches(format = 'json', filters = {}) {
-    return this.downloadFile(`${API_CONFIG.ENDPOINTS.SWITCHES}/export?format=${format}`, `switches-export.${format}`);
+  async exportSwitches(format = "json", filters = {}) {
+    return this.downloadFile(
+      `${API_CONFIG.ENDPOINTS.SWITCHES}/export?format=${format}`,
+      `switches-export.${format}`,
+    );
   }
 
   /**
@@ -449,19 +503,19 @@ export const api = new ApiClient();
  */
 export const createApiClient = (config = {}) => {
   const client = new ApiClient();
-  
+
   if (config.baseURL) {
     client.baseURL = config.baseURL;
   }
-  
+
   if (config.token) {
     client.setToken(config.token);
   }
-  
+
   if (config.timeout) {
     client.timeout = config.timeout;
   }
-  
+
   return client;
 };
 
