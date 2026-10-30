@@ -206,6 +206,24 @@ export const SfpModal = ({ initialData, onSubmit, onClose }) => {
             />
           </div>
 
+          {/* 📎 Загрузка PDF спецификации */}
+          <div className="col-span-1 md:col-span-2 border-t border-gray-200 pt-4 mt-2">
+            <label className="block text-sm font-medium text-gray-700 mb-1">📄 Техническая спецификация (PDF)</label>
+            <div className="flex items-center gap-3">
+              <input 
+                type="file" 
+                accept=".pdf" 
+                onChange={(e) => setFormData(prev => ({ ...prev, _fileToUpload: e.target.files[0] }))}
+                className="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100"
+              />
+              {initialData?.documents?.length > 0 && (
+                <span className="text-xs text-green-600 flex items-center gap-1">
+                  ✅ Файл уже прикреплён: {initialData.documents[0].originalName}
+                </span>
+              )}
+            </div>
+          </div>
+
           {/* Кнопки */}
           <div className="flex justify-end gap-3 pt-4 border-t border-gray-200">
             <button

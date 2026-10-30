@@ -36,6 +36,33 @@ class ApiClient {
     return response;
   }
 
+     // 📎 Документы SFP (используем чистый fetch для корректной отправки FormData)
+  async uploadSfpDocument(id, file) {
+    const formData = new FormData();
+    formData.append('file', file);
+
+    // Используем прямой fetch, чтобы избежать JSON.stringify и неправильных заголовков
+    const response = await fetch(`http://localhost:5000/api/sfp/upload/${id}`, {
+      method: 'POST',
+      body: formData // Браузер автоматически установит правильный Content-Type с boundary
+    });
+
+    if (!response.ok) {
+      const errorData = await response.json().catch(() => ({}));
+      throw new Error(errorData.error || 'Ошибка загрузки файла на сервер');
+    }
+
+    return response.json();
+  }
+
+  async deleteSfpDocument(id, filename) {
+    return this.delete(`/api/sfp/document/${id}/${filename}`);
+  }
+
+  getSfpDocumentUrl(filename) {
+    return `http://localhost:5000/uploads/${filename}`;
+  }
+
   // ==========================================
   // SFP МОДУЛИ
   // ==========================================

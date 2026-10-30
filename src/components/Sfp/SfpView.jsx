@@ -36,17 +36,19 @@ export const SfpView = () => {
   const filteredItems = useMemo(() => {
     let result = items;
     if (statusFilter !== 'all') result = result.filter(item => item.status === statusFilter);
+    
     const term = searchTerm.toLowerCase().trim();
     if (term) {
       result = result.filter(item => 
-        [item.vendor, item.model, item.specs, item.serialNumber, item.location, item.color, item.comment]
-          .some(field => field?.toLowerCase().includes(term))
+        // ✅ Добавлены: distance, status, quantity. Безопасное приведение к строке
+        [item.vendor, item.model, item.specs, item.distance, item.serialNumber, item.status, item.color, item.location, item.quantity, item.comment]
+          .some(field => String(field ?? '').toLowerCase().includes(term))
       );
     }
     return result;
   }, [items, statusFilter, searchTerm]);
 
-  // ✅ Подсчёт физического количества (сумма поля quantity)
+  // ✅ Подсчёт физического количества
   const visibleQuantity = useMemo(() => 
     filteredItems.reduce((sum, item) => sum + (parseInt(item.quantity) || 0), 0),
     [filteredItems]
@@ -85,12 +87,32 @@ export const SfpView = () => {
     URL.revokeObjectURL(url);
   };
 
-  const handleSave = async (data) => {
+    const handleSave = async (data) => {
     try {
-      if (editingItem?.id) await api.updateSfp(editingItem.id, data);
-      else await api.createSfp(data);
-      setIsModalOpen(false); setEditingItem(null); loadData();
-    } catch (e) { console.error(e); alert('Ошибка сохранения'); }
+      let savedId = editingItem?.id;
+
+      if (savedId) {
+        // Обновление существующего
+        await api.updateSfp(savedId, data);
+      } else {
+        // Создание нового
+        const res = await api.createSfp(data);
+        // Получаем ID из ответа сервера (структура может быть разной)
+        savedId = res?.data?.id || res?.data?.data?.id;
+      }
+
+      // ✅ Загружаем PDF, если файл выбран
+      if (data._fileToUpload && savedId) {
+        await api.uploadSfpDocument(savedId, data._fileToUpload);
+      }
+
+      setIsModalOpen(false);
+      setEditingItem(null);
+      loadData();
+    } catch (e) {
+      console.error(e);
+      alert('Ошибка сохранения: ' + (e.response?.data?.error || e.message));
+    }
   };
 
   const handleEdit = (item) => { setEditingItem(item); setIsModalOpen(true); };
@@ -111,8 +133,6 @@ export const SfpView = () => {
       
       {/* ✅ КОМПАКТНЫЙ ХЕДЕР */}
       <div className="p-3 border-b border-gray-200 flex flex-wrap items-center justify-between gap-3">
-        
-        {/* Заголовок + Умный счётчик штук */}
         <div className="flex items-center gap-3 shrink-0">
           <h2 className="text-lg font-semibold text-gray-900">📡 Учёт SFP модулей</h2>
           <span className={`px-2.5 py-1 text-xs font-semibold rounded-md border transition-colors ${
@@ -127,11 +147,10 @@ export const SfpView = () => {
           </span>
         </div>
 
-        {/* Контролы справа */}
         <div className="flex items-center gap-2 flex-1 justify-end min-w-0">
           <div className="relative w-48 lg:w-64 shrink-0">
             <Search className="absolute left-2.5 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
-            <input type="text" placeholder="Поиск по вендору, модели, S/N..." value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} className="w-full pl-9 pr-3 py-1.5 border border-gray-300 rounded-md text-sm focus:ring-2 focus:ring-blue-500 outline-none bg-white" />
+            <input type="text" placeholder="Поиск по вендору, модели, дальности, S/N..." value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} className="w-full pl-9 pr-3 py-1.5 border border-gray-300 rounded-md text-sm focus:ring-2 focus:ring-blue-500 outline-none bg-white" />
           </div>
           <select value={statusFilter} onChange={(e) => setStatusFilter(e.target.value)} className="px-3 py-1.5 border border-gray-300 rounded-md text-sm focus:ring-2 focus:ring-blue-500 bg-white outline-none whitespace-nowrap">
             <option value="all">📋 Все</option>

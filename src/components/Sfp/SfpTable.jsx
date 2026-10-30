@@ -1,5 +1,5 @@
 // src/components/Sfp/SfpTable.jsx
-import { Edit, Trash2, Clock, Copy } from 'lucide-react';
+import { Edit, Trash2, Clock, Copy, FileText } from 'lucide-react';
 
 export const SfpTable = ({ items, onEdit, onDelete, onViewHistory, onCopy }) => {
   if (!items?.length) {
@@ -22,7 +22,7 @@ export const SfpTable = ({ items, onEdit, onDelete, onViewHistory, onCopy }) => 
     if (c.includes('оранж') || c.includes('orange')) return 'bg-orange-500';
     if (c.includes('красн') || c.includes('red')) return 'bg-red-500';
     if (c.includes('бел') || c.includes('white')) return 'bg-white';
-    if (c.includes('фиолет') || c.includes('purple') || c.includes('violet') || c.includes('сирен')) return 'bg-purple-500'; 
+    if (c.includes('фиолет') || c.includes('purple') || c.includes('violet') || c.includes('сирен')) return 'bg-purple-500';
     return 'bg-gray-300';
   };
 
@@ -46,7 +46,7 @@ export const SfpTable = ({ items, onEdit, onDelete, onViewHistory, onCopy }) => 
       <table className="w-full min-w-[1200px] table-fixed border-collapse">
         <thead className="bg-gray-50">
           <tr className="border-b border-gray-200">
-            {['Вендор', 'Модель', 'Характеристики', 'Дальность', 'Сер.номер', 'Статус', 'Цвет', 'Где находится', 'Кол-во', 'Действия'].map((header) => (
+            {['Вендор', 'Модель', 'Характеристики', 'Дальность', 'Сер.номер', 'Статус', 'Цвет', 'Где находится', 'Кол-во', 'Спецификация', 'Действия'].map((header) => (
               <th key={header} className="px-4 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider truncate">
                 {header}
               </th>
@@ -72,6 +72,24 @@ export const SfpTable = ({ items, onEdit, onDelete, onViewHistory, onCopy }) => 
               </td>
               <td className="px-4 py-3 text-sm truncate" title={item.location}>{item.location || '—'}</td>
               <td className="px-4 py-3 text-center font-semibold">{item.quantity || 0} шт.</td>
+              
+              {/* ✅ Колонка Спецификация (PDF) */}
+              <td className="px-4 py-3 text-center">
+                {item.documents?.length > 0 ? (
+                  <a
+                    href={`http://localhost:5000/uploads/${item.documents[0].filename}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1 px-2 py-1 bg-red-50 text-red-600 rounded hover:bg-red-100 transition text-xs font-medium border border-red-100"
+                    title="Открыть PDF спецификацию"
+                  >
+                    <FileText className="w-3.5 h-3.5" /> PDF
+                  </a>
+                ) : (
+                  <span className="text-gray-300 text-xs">—</span>
+                )}
+              </td>
+
               <td className="px-4 py-3">
                 <div className="flex gap-1.5 justify-end">
                   {onCopy && (

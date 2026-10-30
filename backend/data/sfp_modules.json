@@ -551,7 +551,7 @@
     "vendor": "OPTRONIC",
     "model": "SFP-T",
     "specs": "1000BASE-T Industrial 100m RJ-45",
-    "distance": "100m (Copper - Медная SFP)",
+    "distance": "100m",
     "serialNumber": "FPCIB2406270001",
     "laserClass": "CLASS 1",
     "color": "",
@@ -561,7 +561,7 @@
     "comment": "взяли у Секвеста передали Бердышеву",
     "id": 1793261078017,
     "createdAt": "2026-10-29T08:04:38.017Z",
-    "updatedAt": "2026-10-29T08:45:10.383Z",
+    "updatedAt": "2026-10-30T05:06:08.582Z",
     "documents": [],
     "history": [
       {
@@ -617,6 +617,18 @@
           "status": {
             "old": null,
             "new": "В работе"
+          }
+        }
+      },
+      {
+        "id": 1793336768585,
+        "timestamp": "2026-10-30T05:06:08.585Z",
+        "action": "update",
+        "user": "Михеев В.Г.",
+        "changes": {
+          "distance": {
+            "old": "100m (Copper - Медная SFP)",
+            "new": "100m"
           }
         }
       }
@@ -849,7 +861,7 @@
   },
   {
     "vendor": "SNR",
-    "model": "SNR-SFP-W35-20-LC (комплект с W53)",
+    "model": "SNR-SFP-W53-20-LC (комплект с W35)",
     "specs": "1000BASE-X, 20km, Tx 1550nm, DDM",
     "distance": "20km",
     "serialNumber": "SS5P000038; SS5P000067; SS5P000068; SS5P000032",
@@ -861,7 +873,7 @@
     "comment": "(одноглазка LC одномод.)",
     "id": 1793263884229,
     "createdAt": "2026-10-29T08:51:24.229Z",
-    "updatedAt": "2026-10-29T11:18:27.795Z",
+    "updatedAt": "2026-10-29T13:21:44.440Z",
     "documents": [],
     "history": [
       {
@@ -899,6 +911,18 @@
             "new": "3"
           }
         }
+      },
+      {
+        "id": 1793280104442,
+        "timestamp": "2026-10-29T13:21:44.442Z",
+        "action": "update",
+        "user": "Михеев В.Г.",
+        "changes": {
+          "model": {
+            "old": "SNR-SFP-W35-20-LC (комплект с W53)",
+            "new": "SNR-SFP-W53-20-LC (комплект с W35)"
+          }
+        }
       }
     ]
   },
@@ -909,14 +933,14 @@
     "distance": "Cable 1M",
     "serialNumber": "FHD23101001748",
     "status": "В работе",
-    "color": "",
+    "color": "черный",
     "location": "в серверном шкафу на Металлургов 6В",
     "quantity": 1,
     "technician": "Михеев В.Г.",
     "comment": "FANG HANG - ДАТА-КАБЕЛЬ",
     "id": 1793264184379,
     "createdAt": "2026-10-29T08:56:24.379Z",
-    "updatedAt": "2026-10-29T08:56:24.379Z",
+    "updatedAt": "2026-10-30T05:38:59.315Z",
     "documents": [],
     "history": [
       {
@@ -930,6 +954,18 @@
             "new": "FH-DP1T30SS01"
           }
         }
+      },
+      {
+        "id": 1793338739321,
+        "timestamp": "2026-10-30T05:38:59.321Z",
+        "action": "update",
+        "user": "Михеев В.Г.",
+        "changes": {
+          "color": {
+            "old": "",
+            "new": "черный"
+          }
+        }
       }
     ]
   },
@@ -940,14 +976,14 @@
     "distance": "Cable 1M",
     "serialNumber": "FHD23101001753",
     "status": "В работе",
-    "color": "",
+    "color": "черный",
     "location": "ЗПП 1 этаж Серверная",
     "quantity": 1,
     "technician": "Михеев В.Г.",
     "comment": "FANG HANG - ДАТА-КАБЕЛЬ 1м\nв консоле определяется как:\nDESCR: \"SFP-10Gbase-CX1\"\nPID: SFP-H10GB-CU1M\nVID: V03\t",
     "id": 1793264426045,
     "createdAt": "2026-10-29T09:00:26.045Z",
-    "updatedAt": "2026-10-29T09:00:26.045Z",
+    "updatedAt": "2026-10-30T05:39:08.135Z",
     "documents": [],
     "history": [
       {
@@ -959,6 +995,18 @@
           "model": {
             "old": null,
             "new": "FH-DP1T30SS01"
+          }
+        }
+      },
+      {
+        "id": 1793338748137,
+        "timestamp": "2026-10-30T05:39:08.137Z",
+        "action": "update",
+        "user": "Михеев В.Г.",
+        "changes": {
+          "color": {
+            "old": "",
+            "new": "черный"
           }
         }
       }
@@ -1102,7 +1150,7 @@
   },
   {
     "vendor": "SNR",
-    "model": "SNR-SFP-W53-20-LC (комплект с W35)",
+    "model": "SNR-SFP-W35-20-LC (комплект с W53)",
     "specs": "1000BASE-X, 20km, Tx 1310nm, DDM",
     "distance": "20km",
     "serialNumber": "SS1Q010163; SS1Q010161; SS1Q010173; SS1Q010162",
@@ -1114,7 +1162,7 @@
     "comment": "(одноглазка LC одномод.)\nкомплект с W35",
     "id": 1793265249143,
     "createdAt": "2026-10-29T09:14:09.143Z",
-    "updatedAt": "2026-10-29T11:18:37.598Z",
+    "updatedAt": "2026-10-29T13:22:32.732Z",
     "documents": [],
     "history": [
       {
@@ -1150,6 +1198,18 @@
           "quantity": {
             "old": "4",
             "new": "3"
+          }
+        }
+      },
+      {
+        "id": 1793280152735,
+        "timestamp": "2026-10-29T13:22:32.735Z",
+        "action": "update",
+        "user": "Михеев В.Г.",
+        "changes": {
+          "model": {
+            "old": "SNR-SFP-W53-20-LC (комплект с W35)",
+            "new": "SNR-SFP-W35-20-LC (комплект с W53)"
           }
         }
       }
@@ -1581,8 +1641,17 @@
     "comment": "",
     "id": 1793276402342,
     "createdAt": "2026-10-29T12:20:02.342Z",
-    "updatedAt": "2026-10-29T12:20:02.342Z",
-    "documents": [],
+    "updatedAt": "2026-10-30T12:22:40.583Z",
+    "documents": [
+      {
+        "id": 1793362960648,
+        "filename": "1793362960607-583436026.pdf",
+        "originalName": "SNR-QSFP28-SWDM4.cleaned.pdf",
+        "mimetype": "application/pdf",
+        "size": 351522,
+        "uploadedAt": "2026-10-30T12:22:40.648Z"
+      }
+    ],
     "history": [
       {
         "id": 1793276402344,
@@ -1596,7 +1665,8 @@
           }
         }
       }
-    ]
+    ],
+    "_fileToUpload": {}
   },
   {
     "vendor": "SNR",
@@ -1784,14 +1854,14 @@
     "distance": "20km",
     "serialNumber": "",
     "status": "В работе",
-    "color": "",
+    "color": "фиолетовая",
     "location": "ЦХП; ЦОД ООО РНК",
     "quantity": 62,
     "technician": "Михеев В.Г.",
     "comment": "",
     "id": 1793277335441,
     "createdAt": "2026-10-29T12:35:35.441Z",
-    "updatedAt": "2026-10-29T12:35:35.441Z",
+    "updatedAt": "2026-10-29T13:22:48.031Z",
     "documents": [],
     "history": [
       {
@@ -1803,6 +1873,18 @@
           "model": {
             "old": null,
             "new": "SNR-SFP-W53-20-LC"
+          }
+        }
+      },
+      {
+        "id": 1793280168033,
+        "timestamp": "2026-10-29T13:22:48.033Z",
+        "action": "update",
+        "user": "Михеев В.Г.",
+        "changes": {
+          "color": {
+            "old": "",
+            "new": "фиолетовая"
           }
         }
       }
@@ -1843,7 +1925,7 @@
     "vendor": "SNR",
     "model": "SNR-SFP-T",
     "specs": "Модуль SFP с интерфейсом RJ45, до 100м",
-    "distance": "100м",
+    "distance": "100m",
     "serialNumber": "",
     "status": "В работе",
     "color": "",
@@ -1853,7 +1935,7 @@
     "comment": "",
     "id": 1793277571904,
     "createdAt": "2026-10-29T12:39:31.904Z",
-    "updatedAt": "2026-10-29T12:39:31.904Z",
+    "updatedAt": "2026-10-30T05:04:00.891Z",
     "documents": [],
     "history": [
       {
@@ -1865,6 +1947,636 @@
           "model": {
             "old": null,
             "new": "SNR-SFP-T"
+          }
+        }
+      },
+      {
+        "id": 1793336640893,
+        "timestamp": "2026-10-30T05:04:00.893Z",
+        "action": "update",
+        "user": "Михеев В.Г.",
+        "changes": {
+          "distance": {
+            "old": "100м",
+            "new": "100m"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "vendor": "SNR",
+    "model": "SNR-SFP+LR-20",
+    "specs": "Модуль SFP+ оптический, дальность до 20км (11dB), 10 Гбит/c, Tx=1310 нм, LC, SM, DDM",
+    "distance": "до 20 км",
+    "serialNumber": "",
+    "status": "В работе",
+    "color": "",
+    "location": "ЦХП; шкафы доступа",
+    "quantity": 8,
+    "technician": "Михеев В.Г.",
+    "comment": "",
+    "id": 1793279709950,
+    "createdAt": "2026-10-29T13:15:09.950Z",
+    "updatedAt": "2026-10-29T13:15:09.950Z",
+    "documents": [],
+    "history": [
+      {
+        "id": 1793279709952,
+        "timestamp": "2026-10-29T13:15:09.952Z",
+        "action": "create",
+        "user": "Михеев В.Г.",
+        "changes": {
+          "model": {
+            "old": null,
+            "new": "SNR-SFP+LR-20"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "vendor": "QTECH",
+    "model": "QSC-SFP+-CAB-A1",
+    "specs": "Активная кабельная сборка SFP+, 1м, 10Гбит/c",
+    "distance": "Cable 1M",
+    "serialNumber": "",
+    "status": "В работе",
+    "color": "",
+    "location": "ЦХП; шкафы доступа",
+    "quantity": 1,
+    "technician": "Михеев В.Г.",
+    "comment": "",
+    "id": 1793279765561,
+    "createdAt": "2026-10-29T13:16:05.561Z",
+    "updatedAt": "2026-10-29T13:16:05.561Z",
+    "documents": [],
+    "history": [
+      {
+        "id": 1793279765563,
+        "timestamp": "2026-10-29T13:16:05.563Z",
+        "action": "create",
+        "user": "Михеев В.Г.",
+        "changes": {
+          "model": {
+            "old": null,
+            "new": "QSC-SFP+-CAB-A1"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "vendor": "SNR",
+    "model": "SNR-SFP-W35-20-LC (комплект с W53)",
+    "specs": "1000BASE-X, 20km, Tx 1310нм, DDM",
+    "distance": "20km",
+    "serialNumber": "",
+    "status": "В работе",
+    "color": "синяя",
+    "location": "ЦХП; шкафы доступа",
+    "quantity": 113,
+    "technician": "Михеев В.Г.",
+    "comment": "(одноглазка LC одномод.)",
+    "id": 1793280002997,
+    "createdAt": "2026-10-29T13:20:02.997Z",
+    "updatedAt": "2026-10-29T13:23:10.734Z",
+    "documents": [],
+    "history": [
+      {
+        "id": 1793280003000,
+        "timestamp": "2026-10-29T13:20:03.000Z",
+        "action": "create",
+        "user": "Михеев В.Г.",
+        "changes": {
+          "model": {
+            "old": null,
+            "new": "SNR-SFP-W35-20-LC (комплект с W53)"
+          }
+        }
+      },
+      {
+        "id": 1793280190736,
+        "timestamp": "2026-10-29T13:23:10.736Z",
+        "action": "update",
+        "user": "Михеев В.Г.",
+        "changes": {
+          "color": {
+            "old": "фиолетовая",
+            "new": "синяя"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "vendor": "SNR",
+    "model": "SNR-SFP-W53-20-LC",
+    "specs": "Модуль SFP WDM, дальность до 20км LC (14dB), 1550нм",
+    "distance": "20km",
+    "serialNumber": "",
+    "status": "В работе",
+    "color": "фиолетовая",
+    "location": "ЦХП; шкафы доступа",
+    "quantity": 5,
+    "technician": "Михеев В.Г.",
+    "comment": "",
+    "id": 1793280261234,
+    "createdAt": "2026-10-29T13:24:21.234Z",
+    "updatedAt": "2026-10-29T13:24:21.234Z",
+    "documents": [],
+    "history": [
+      {
+        "id": 1793280261236,
+        "timestamp": "2026-10-29T13:24:21.236Z",
+        "action": "create",
+        "user": "Михеев В.Г.",
+        "changes": {
+          "model": {
+            "old": null,
+            "new": "SNR-SFP-W53-20-LC"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "vendor": "SNR",
+    "model": "SNR-SFP-T",
+    "specs": "Модуль SFP с интерфейсом RJ45, до 100м",
+    "distance": "100м",
+    "serialNumber": "",
+    "status": "В работе",
+    "color": "",
+    "location": "ЦХП; шкафы доступа",
+    "quantity": 132,
+    "technician": "Михеев В.Г.",
+    "comment": "",
+    "id": 1793280299199,
+    "createdAt": "2026-10-29T13:24:59.199Z",
+    "updatedAt": "2026-10-29T13:24:59.199Z",
+    "documents": [],
+    "history": [
+      {
+        "id": 1793280299202,
+        "timestamp": "2026-10-29T13:24:59.202Z",
+        "action": "create",
+        "user": "Михеев В.Г.",
+        "changes": {
+          "model": {
+            "old": null,
+            "new": "SNR-SFP-T"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "vendor": "QTECH",
+    "model": "QSC-100G-CAB-P1",
+    "specs": "100G QSFP28, 1м",
+    "distance": "1m, Пассивная кабельная сборка ",
+    "serialNumber": "",
+    "status": "ЗИП",
+    "color": "",
+    "location": "ЦХП; ЗИП",
+    "quantity": 1,
+    "technician": "Михеев В.Г.",
+    "comment": "МП176374-05-01-00-СКС",
+    "id": 1793280394796,
+    "createdAt": "2026-10-29T13:26:34.796Z",
+    "updatedAt": "2026-10-29T13:26:34.796Z",
+    "documents": [],
+    "history": [
+      {
+        "id": 1793280394798,
+        "timestamp": "2026-10-29T13:26:34.798Z",
+        "action": "create",
+        "user": "Михеев В.Г.",
+        "changes": {
+          "model": {
+            "old": null,
+            "new": "QSC-100G-CAB-P1"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "vendor": "SNR",
+    "model": "SNR-QSFP28-LR4",
+    "specs": "QSFP28 100GBASE-LR4, разъем LC дальность до 10км",
+    "distance": "10km",
+    "serialNumber": "",
+    "status": "ЗИП",
+    "color": "",
+    "location": "ЦХП; ЗИП",
+    "quantity": 1,
+    "technician": "Михеев В.Г.",
+    "comment": "",
+    "id": 1793280415539,
+    "createdAt": "2026-10-29T13:26:55.539Z",
+    "updatedAt": "2026-10-30T05:02:16.883Z",
+    "documents": [],
+    "history": [
+      {
+        "id": 1793280415541,
+        "timestamp": "2026-10-29T13:26:55.541Z",
+        "action": "create",
+        "user": "Михеев В.Г.",
+        "changes": {
+          "model": {
+            "old": null,
+            "new": "SNR-QSFP28-LR4"
+          }
+        }
+      },
+      {
+        "id": 1793336536885,
+        "timestamp": "2026-10-30T05:02:16.885Z",
+        "action": "update",
+        "user": "Михеев В.Г.",
+        "changes": {
+          "location": {
+            "old": "ЦХП; ЦОД ООО РНК",
+            "new": "ЦХП; ЗИП"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "vendor": "SNR",
+    "model": "SNR-QSFP28-SWDM4",
+    "specs": "QSFP28 100GBASE SWDM4, разъем LC, дальность до 150м",
+    "distance": "150m",
+    "serialNumber": "",
+    "status": "ЗИП",
+    "color": "",
+    "location": "ЦХП; ЗИП",
+    "quantity": 1,
+    "technician": "Михеев В.Г.",
+    "comment": "Модуль QSFP28-SWDM4 оптический, 100G, 850нм, дальность до 150м",
+    "id": 1793280441529,
+    "createdAt": "2026-10-29T13:27:21.529Z",
+    "updatedAt": "2026-10-30T08:59:06.560Z",
+    "documents": [],
+    "history": [
+      {
+        "id": 1793280441532,
+        "timestamp": "2026-10-29T13:27:21.532Z",
+        "action": "create",
+        "user": "Михеев В.Г.",
+        "changes": {
+          "model": {
+            "old": null,
+            "new": "SNR-QSFP28-SWDM4"
+          }
+        }
+      },
+      {
+        "id": 1793336547005,
+        "timestamp": "2026-10-30T05:02:27.005Z",
+        "action": "update",
+        "user": "Михеев В.Г.",
+        "changes": {
+          "location": {
+            "old": "ЦХП; ЦОД ООО РНК",
+            "new": "ЦХП; ЗИП"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "vendor": "SNR",
+    "model": "SNR-SFP28-SR",
+    "specs": "Модуль SFP28, 25GBASE-SR, разъем LC, дальность до 100м",
+    "distance": "100m",
+    "serialNumber": "",
+    "status": "ЗИП",
+    "color": "",
+    "location": "ЦХП; ЗИП",
+    "quantity": 2,
+    "technician": "Михеев В.Г.",
+    "comment": "",
+    "id": 1793280464091,
+    "createdAt": "2026-10-29T13:27:44.091Z",
+    "updatedAt": "2026-10-30T05:02:36.305Z",
+    "documents": [],
+    "history": [
+      {
+        "id": 1793280464093,
+        "timestamp": "2026-10-29T13:27:44.093Z",
+        "action": "create",
+        "user": "Михеев В.Г.",
+        "changes": {
+          "model": {
+            "old": null,
+            "new": "SNR-SFP28-SR"
+          }
+        }
+      },
+      {
+        "id": 1793336556308,
+        "timestamp": "2026-10-30T05:02:36.308Z",
+        "action": "update",
+        "user": "Михеев В.Г.",
+        "changes": {
+          "location": {
+            "old": "ЦХП; ЦОД ООО РНК",
+            "new": "ЦХП; ЗИП"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "vendor": "SNR",
+    "model": "SNR-SFP+SR",
+    "specs": "Модуль SFP+ оптический, дальность до 300м (5dB), 850нм",
+    "distance": "до 300m",
+    "serialNumber": "",
+    "status": "ЗИП",
+    "color": "",
+    "location": "ЦХП; ЗИП",
+    "quantity": 2,
+    "technician": "Михеев В.Г.",
+    "comment": "",
+    "id": 1793280483465,
+    "createdAt": "2026-10-29T13:28:03.465Z",
+    "updatedAt": "2026-10-30T05:02:45.744Z",
+    "documents": [],
+    "history": [
+      {
+        "id": 1793280483467,
+        "timestamp": "2026-10-29T13:28:03.467Z",
+        "action": "create",
+        "user": "Михеев В.Г.",
+        "changes": {
+          "model": {
+            "old": null,
+            "new": "SNR-SFP+SR"
+          }
+        }
+      },
+      {
+        "id": 1793336565747,
+        "timestamp": "2026-10-30T05:02:45.747Z",
+        "action": "update",
+        "user": "Михеев В.Г.",
+        "changes": {
+          "location": {
+            "old": "ЦХП; ЦОД ООО РНК",
+            "new": "ЦХП; ЗИП"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "vendor": "SNR",
+    "model": "SNR-SFP+LR-20",
+    "specs": "Модуль SFP+ оптический, дальность до 20км (11dB), 10 Гбит/c, Tx=1310 нм, LC, SM, DDM",
+    "distance": "до 20 км",
+    "serialNumber": "",
+    "status": "ЗИП",
+    "color": "",
+    "location": "ЦХП; ЗИП",
+    "quantity": 2,
+    "technician": "Михеев В.Г.",
+    "comment": "",
+    "id": 1793280520688,
+    "createdAt": "2026-10-29T13:28:40.688Z",
+    "updatedAt": "2026-10-29T13:28:40.688Z",
+    "documents": [],
+    "history": [
+      {
+        "id": 1793280520691,
+        "timestamp": "2026-10-29T13:28:40.691Z",
+        "action": "create",
+        "user": "Михеев В.Г.",
+        "changes": {
+          "model": {
+            "old": null,
+            "new": "SNR-SFP+LR-20"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "vendor": "QTECH",
+    "model": "QSC-SFP+-CAB-A1",
+    "specs": "Активная кабельная сборка SFP+, 1м, 10Гбит/c",
+    "distance": "Cable 1M",
+    "serialNumber": "",
+    "status": "ЗИП",
+    "color": "",
+    "location": "ЦХП; ЗИП",
+    "quantity": 1,
+    "technician": "Михеев В.Г.",
+    "comment": "",
+    "id": 1793280551306,
+    "createdAt": "2026-10-29T13:29:11.306Z",
+    "updatedAt": "2026-10-29T13:29:11.306Z",
+    "documents": [],
+    "history": [
+      {
+        "id": 1793280551308,
+        "timestamp": "2026-10-29T13:29:11.308Z",
+        "action": "create",
+        "user": "Михеев В.Г.",
+        "changes": {
+          "model": {
+            "old": null,
+            "new": "QSC-SFP+-CAB-A1"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "vendor": "Eltex",
+    "model": "FH-DP2T30SS01",
+    "specs": "Direct Attach Twinax Cable, Passive, SFP28, 1m,30awg",
+    "distance": "Cable 1M",
+    "serialNumber": "",
+    "status": "ЗИП",
+    "color": "",
+    "location": "ЦХП; ЗИП",
+    "quantity": 1,
+    "technician": "Михеев В.Г.",
+    "comment": "",
+    "id": 1793280576669,
+    "createdAt": "2026-10-29T13:29:36.669Z",
+    "updatedAt": "2026-10-29T13:29:36.669Z",
+    "documents": [],
+    "history": [
+      {
+        "id": 1793280576671,
+        "timestamp": "2026-10-29T13:29:36.671Z",
+        "action": "create",
+        "user": "Михеев В.Г.",
+        "changes": {
+          "model": {
+            "old": null,
+            "new": "FH-DP2T30SS01"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "vendor": "SNR",
+    "model": "SNR-SFP-W53-20-LC",
+    "specs": "Модуль SFP WDM, дальность до 20км LC (14dB), 1550нм",
+    "distance": "20km",
+    "serialNumber": "",
+    "status": "ЗИП",
+    "color": "фиолетовая",
+    "location": "ЦХП; ЗИП",
+    "quantity": 3,
+    "technician": "Михеев В.Г.",
+    "comment": "",
+    "id": 1793280610928,
+    "createdAt": "2026-10-29T13:30:10.928Z",
+    "updatedAt": "2026-10-29T13:30:10.928Z",
+    "documents": [],
+    "history": [
+      {
+        "id": 1793280610931,
+        "timestamp": "2026-10-29T13:30:10.931Z",
+        "action": "create",
+        "user": "Михеев В.Г.",
+        "changes": {
+          "model": {
+            "old": null,
+            "new": "SNR-SFP-W53-20-LC"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "vendor": "SNR",
+    "model": "SNR-SFP-W35-20-LC (комплект с W53)",
+    "specs": "1000BASE-X, 20km, Tx 1310нм, DDM",
+    "distance": "20km",
+    "serialNumber": "",
+    "status": "ЗИП",
+    "color": "синяя",
+    "location": "ЦХП; ЗИП",
+    "quantity": 4,
+    "technician": "Михеев В.Г.",
+    "comment": "(одноглазка LC одномод.)",
+    "id": 1793280641192,
+    "createdAt": "2026-10-29T13:30:41.192Z",
+    "updatedAt": "2026-10-29T13:30:41.192Z",
+    "documents": [],
+    "history": [
+      {
+        "id": 1793280641194,
+        "timestamp": "2026-10-29T13:30:41.194Z",
+        "action": "create",
+        "user": "Михеев В.Г.",
+        "changes": {
+          "model": {
+            "old": null,
+            "new": "SNR-SFP-W35-20-LC (комплект с W53)"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "vendor": "SNR",
+    "model": "SNR-SFP-T",
+    "specs": "Модуль SFP с интерфейсом RJ45, до 100м",
+    "distance": "100м",
+    "serialNumber": "",
+    "status": "ЗИП",
+    "color": "",
+    "location": "ЦХП; ЗИП",
+    "quantity": 3,
+    "technician": "Михеев В.Г.",
+    "comment": "",
+    "id": 1793280671554,
+    "createdAt": "2026-10-29T13:31:11.554Z",
+    "updatedAt": "2026-10-29T13:31:11.554Z",
+    "documents": [],
+    "history": [
+      {
+        "id": 1793280671556,
+        "timestamp": "2026-10-29T13:31:11.556Z",
+        "action": "create",
+        "user": "Михеев В.Г.",
+        "changes": {
+          "model": {
+            "old": null,
+            "new": "SNR-SFP-T"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "vendor": "SNR",
+    "model": "SNR-SFP28-SR",
+    "specs": "Модуль SFP28, 25GBASE-SR, разъем LC, дальность до 100м",
+    "distance": "100m",
+    "serialNumber": "",
+    "status": "В работе",
+    "color": "",
+    "location": "ЦХП; ЦОД ООО РНК; Дополнительное оборудование для серверов КСПД",
+    "quantity": 16,
+    "technician": "Михеев В.Г.",
+    "comment": "",
+    "id": 1793280749782,
+    "createdAt": "2026-10-29T13:32:29.782Z",
+    "updatedAt": "2026-10-29T13:32:29.782Z",
+    "documents": [],
+    "history": [
+      {
+        "id": 1793280749784,
+        "timestamp": "2026-10-29T13:32:29.784Z",
+        "action": "create",
+        "user": "Михеев В.Г.",
+        "changes": {
+          "model": {
+            "old": null,
+            "new": "SNR-SFP28-SR"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "vendor": "SNR",
+    "model": "SNR-SFP28-SR",
+    "specs": "Модуль SFP28, 25GBASE-SR, разъем LC, дальность до 100м",
+    "distance": "100m",
+    "serialNumber": "",
+    "status": "В работе",
+    "color": "",
+    "location": "ЦХП; ЦОД ООО РНК; Дополнительное оборудование для серверов АСУТП",
+    "quantity": 6,
+    "technician": "Михеев В.Г.",
+    "comment": "",
+    "id": 1793280840905,
+    "createdAt": "2026-10-29T13:34:00.905Z",
+    "updatedAt": "2026-10-29T13:34:00.905Z",
+    "documents": [],
+    "history": [
+      {
+        "id": 1793280840907,
+        "timestamp": "2026-10-29T13:34:00.907Z",
+        "action": "create",
+        "user": "Михеев В.Г.",
+        "changes": {
+          "model": {
+            "old": null,
+            "new": "SNR-SFP28-SR"
           }
         }
       }

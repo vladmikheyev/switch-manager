@@ -4,7 +4,7 @@ const express = require('express');
 const router = express.Router();
 const Joi = require('joi');
 const switchController = require('../controllers/switchController');
-const { upload } = require('../middleware/upload');
+const upload = require('../middleware/upload'); // ✅ Правильно, без фигурных скобок
 
 // ============================================
 // Схемы валидации Joi
