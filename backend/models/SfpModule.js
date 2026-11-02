@@ -100,7 +100,7 @@ class SfpModule {
 
   static getChanges(oldObj, newObj) {
     const changes = {};
-    const fields = ['vendor','model','specs','distance','serialNumber','status','color','location','quantity'];
+    const fields = ['vendor','model','specs','distance','serialNumber','mediaType','status','color','location','quantity'];
     fields.forEach(f => {
       if (String(oldObj[f] ?? '') !== String(newObj[f] ?? '')) {
         changes[f] = { old: oldObj[f] ?? null, new: newObj[f] ?? null };

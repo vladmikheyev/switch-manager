@@ -26,6 +26,20 @@ export const SfpTable = ({ items, onEdit, onDelete, onViewHistory, onCopy }) => 
     return 'bg-gray-300';
   };
 
+  const getMediaTypeBadge = (type) => {
+    if (!type) return <span className="text-gray-400 text-sm">—</span>;
+    const styles = {
+      'SMF': 'bg-blue-100 text-blue-800 border-blue-200',
+      'MMF': 'bg-cyan-100 text-cyan-800 border-cyan-200',
+      'Copper': 'bg-yellow-100 text-yellow-800 border-yellow-200',
+      'Twinax CU': 'bg-gray-100 text-gray-800 border-gray-200',
+      'Twinax ACU': 'bg-gray-200 text-gray-900 border-gray-300',
+      'AOC': 'bg-purple-100 text-purple-800 border-purple-200'
+    };
+    const style = styles[type] || 'bg-gray-50 text-gray-600 border-gray-200';
+    return <span className={`inline-flex items-center px-2 py-0.5 rounded text-xs font-medium border ${style}`}>{type}</span>;
+  };
+
   const getStatusBadge = (status) => {
     if (!status) return <span className="text-gray-400 text-sm">—</span>;
     const styles = {
@@ -34,11 +48,7 @@ export const SfpTable = ({ items, onEdit, onDelete, onViewHistory, onCopy }) => 
       'Заказано': 'bg-yellow-100 text-yellow-800 border-yellow-200'
     };
     const style = styles[status] || 'bg-gray-100 text-gray-800 border-gray-200';
-    return (
-      <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium border ${style}`}>
-        {status}
-      </span>
-    );
+    return <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium border ${style}`}>{status}</span>;
   };
 
   return (
@@ -46,10 +56,8 @@ export const SfpTable = ({ items, onEdit, onDelete, onViewHistory, onCopy }) => 
       <table className="w-full min-w-[1200px] table-fixed border-collapse">
         <thead className="bg-gray-50">
           <tr className="border-b border-gray-200">
-            {['Вендор', 'Модель', 'Характеристики', 'Дальность', 'Сер.номер', 'Статус', 'Цвет', 'Где находится', 'Кол-во', 'Спецификация', 'Действия'].map((header) => (
-              <th key={header} className="px-4 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider truncate">
-                {header}
-              </th>
+            {['Вендор', 'Модель', 'Характеристики', 'Дальность', 'Сер.номер', 'Тип', 'Статус', 'Цвет', 'Где находится', 'Кол-во', 'Спецификация', 'Действия'].map((h) => (
+              <th key={h} className="px-4 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider truncate">{h}</th>
             ))}
           </tr>
         </thead>
@@ -57,11 +65,16 @@ export const SfpTable = ({ items, onEdit, onDelete, onViewHistory, onCopy }) => 
           {items.map((item) => (
             <tr key={item.id} className="hover:bg-gray-50 transition-colors">
               <td className="px-4 py-3 truncate">{item.vendor || '—'}</td>
-              <td className="px-4 py-3 font-medium truncate">{item.model || '—'}</td>
+              
+              {/* ✅ ИСПРАВЛЕНО: убран truncate, добавлен перенос слов */}
+              <td className="px-4 py-3 font-medium whitespace-normal break-words">{item.model || '—'}</td>
+              
               <td className="px-4 py-3 text-sm truncate" title={item.specs}>{item.specs || '—'}</td>
               <td className="px-4 py-3 text-center">{item.distance || '—'}</td>
               <td className="px-4 py-3 font-mono text-sm">{item.serialNumber || '—'}</td>
+              <td className="px-4 py-3">{getMediaTypeBadge(item.mediaType)}</td>
               <td className="px-4 py-3">{getStatusBadge(item.status)}</td>
+              
               <td className="px-4 py-3">
                 {item.color ? (
                   <span className="inline-flex items-center gap-1.5">
@@ -73,45 +86,20 @@ export const SfpTable = ({ items, onEdit, onDelete, onViewHistory, onCopy }) => 
               <td className="px-4 py-3 text-sm truncate" title={item.location}>{item.location || '—'}</td>
               <td className="px-4 py-3 text-center font-semibold">{item.quantity || 0} шт.</td>
               
-              {/* ✅ Колонка Спецификация (PDF) */}
               <td className="px-4 py-3 text-center">
                 {item.documents?.length > 0 ? (
-                  <a
-                    href={`http://localhost:5000/uploads/${item.documents[0].filename}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1 px-2 py-1 bg-red-50 text-red-600 rounded hover:bg-red-100 transition text-xs font-medium border border-red-100"
-                    title="Открыть PDF спецификацию"
-                  >
+                  <a href={`http://localhost:5000/uploads/${item.documents[0].filename}`} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 px-2 py-1 bg-red-50 text-red-600 rounded hover:bg-red-100 transition text-xs font-medium border border-red-100" title="PDF">
                     <FileText className="w-3.5 h-3.5" /> PDF
                   </a>
-                ) : (
-                  <span className="text-gray-300 text-xs">—</span>
-                )}
+                ) : <span className="text-gray-300 text-xs">—</span>}
               </td>
 
               <td className="px-4 py-3">
                 <div className="flex gap-1.5 justify-end">
-                  {onCopy && (
-                    <button onClick={() => onCopy(item)} className="p-1.5 text-gray-500 hover:text-purple-600 hover:bg-purple-50 rounded" title="Копировать">
-                      <Copy className="w-4 h-4" />
-                    </button>
-                  )}
-                  {onViewHistory && (
-                    <button onClick={() => onViewHistory(item)} className="p-1.5 text-gray-500 hover:text-blue-600 hover:bg-blue-50 rounded" title="История">
-                      <Clock className="w-4 h-4" />
-                    </button>
-                  )}
-                  {onEdit && (
-                    <button onClick={() => onEdit(item)} className="p-1.5 text-blue-600 hover:bg-blue-100 rounded" title="Редактировать">
-                      <Edit className="w-4 h-4" />
-                    </button>
-                  )}
-                  {onDelete && (
-                    <button onClick={() => onDelete(item.id)} className="p-1.5 text-red-600 hover:bg-red-100 rounded" title="Удалить">
-                      <Trash2 className="w-4 h-4" />
-                    </button>
-                  )}
+                  {onCopy && <button onClick={() => onCopy(item)} className="p-1.5 text-gray-500 hover:text-purple-600 hover:bg-purple-50 rounded" title="Копировать"><Copy className="w-4 h-4" /></button>}
+                  {onViewHistory && <button onClick={() => onViewHistory(item)} className="p-1.5 text-gray-500 hover:text-blue-600 hover:bg-blue-50 rounded" title="История"><Clock className="w-4 h-4" /></button>}
+                  {onEdit && <button onClick={() => onEdit(item)} className="p-1.5 text-blue-600 hover:bg-blue-100 rounded" title="Редактировать"><Edit className="w-4 h-4" /></button>}
+                  {onDelete && <button onClick={() => onDelete(item.id)} className="p-1.5 text-red-600 hover:bg-red-100 rounded" title="Удалить"><Trash2 className="w-4 h-4" /></button>}
                 </div>
               </td>
             </tr>

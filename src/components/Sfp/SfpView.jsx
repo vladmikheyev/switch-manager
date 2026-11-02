@@ -16,6 +16,7 @@ export const SfpView = () => {
   const [historyItem, setHistoryItem] = useState(null);
   
   const [statusFilter, setStatusFilter] = useState('all');
+  const [mediaTypeFilter, setMediaTypeFilter] = useState('all'); // ✅ Новый фильтр
   const [searchTerm, setSearchTerm] = useState('');
 
   const loadData = async () => {
@@ -36,19 +37,18 @@ export const SfpView = () => {
   const filteredItems = useMemo(() => {
     let result = items;
     if (statusFilter !== 'all') result = result.filter(item => item.status === statusFilter);
+    if (mediaTypeFilter !== 'all') result = result.filter(item => item.mediaType === mediaTypeFilter); // ✅ Фильтр по типу среды
     
     const term = searchTerm.toLowerCase().trim();
     if (term) {
       result = result.filter(item => 
-        // ✅ Добавлены: distance, status, quantity. Безопасное приведение к строке
-        [item.vendor, item.model, item.specs, item.distance, item.serialNumber, item.status, item.color, item.location, item.quantity, item.comment]
+        [item.vendor, item.model, item.specs, item.distance, item.serialNumber, item.status, item.mediaType, item.color, item.location, item.quantity, item.comment]
           .some(field => String(field ?? '').toLowerCase().includes(term))
       );
     }
     return result;
-  }, [items, statusFilter, searchTerm]);
+  }, [items, statusFilter, mediaTypeFilter, searchTerm]);
 
-  // ✅ Подсчёт физического количества
   const visibleQuantity = useMemo(() => 
     filteredItems.reduce((sum, item) => sum + (parseInt(item.quantity) || 0), 0),
     [filteredItems]
@@ -59,13 +59,13 @@ export const SfpView = () => {
     [items]
   );
 
-  // ✅ ЭКСПОРТ В EXCEL
   const exportToExcel = () => {
     if (filteredItems.length === 0) return alert('Нет данных для выгрузки');
     const dateStr = new Date().toISOString().slice(0, 10);
     const flatData = filteredItems.map(item => ({
       'Вендор': item.vendor || '', 'Модель': item.model || '', 'Характеристики': item.specs || '',
-      'Дальность': item.distance || '', 'Серийный номер': item.serialNumber || '', 'Статус': item.status || '',
+      'Дальность': item.distance || '', 'Серийный номер': item.serialNumber || '', 
+      'Тип среды': item.mediaType || '', 'Статус': item.status || '',
       'Цвет': item.color || '', 'Где находится': item.location || '', 'Количество (шт)': item.quantity || 0, 'Комментарий': item.comment || ''
     }));
     const ws = XLSX.utils.json_to_sheet(flatData);
@@ -74,45 +74,25 @@ export const SfpView = () => {
     XLSX.writeFile(wb, `sfp-export-${dateStr}.xlsx`);
   };
 
-  // ✅ ЭКСПОРТ В JSON
   const exportToJson = () => {
     if (filteredItems.length === 0) return alert('Нет данных для выгрузки');
     const dateStr = new Date().toISOString().slice(0, 10);
     const blob = new Blob([JSON.stringify(filteredItems, null, 2)], { type: 'application/json' });
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
-    a.href = url;
-    a.download = `sfp-export-${dateStr}.json`;
+    a.href = url; a.download = `sfp-export-${dateStr}.json`;
     document.body.appendChild(a); a.click(); document.body.removeChild(a);
     URL.revokeObjectURL(url);
   };
 
-    const handleSave = async (data) => {
+  const handleSave = async (data) => {
     try {
       let savedId = editingItem?.id;
-
-      if (savedId) {
-        // Обновление существующего
-        await api.updateSfp(savedId, data);
-      } else {
-        // Создание нового
-        const res = await api.createSfp(data);
-        // Получаем ID из ответа сервера (структура может быть разной)
-        savedId = res?.data?.id || res?.data?.data?.id;
-      }
-
-      // ✅ Загружаем PDF, если файл выбран
-      if (data._fileToUpload && savedId) {
-        await api.uploadSfpDocument(savedId, data._fileToUpload);
-      }
-
-      setIsModalOpen(false);
-      setEditingItem(null);
-      loadData();
-    } catch (e) {
-      console.error(e);
-      alert('Ошибка сохранения: ' + (e.response?.data?.error || e.message));
-    }
+      if (savedId) await api.updateSfp(savedId, data);
+      else { const res = await api.createSfp(data); savedId = res?.data?.id || res?.data?.data?.id; }
+      if (data._fileToUpload && savedId) await api.uploadSfpDocument(savedId, data._fileToUpload);
+      setIsModalOpen(false); setEditingItem(null); loadData();
+    } catch (e) { console.error(e); alert('Ошибка сохранения: ' + (e.message || 'Неизвестно')); }
   };
 
   const handleEdit = (item) => { setEditingItem(item); setIsModalOpen(true); };
@@ -128,45 +108,49 @@ export const SfpView = () => {
 
   if (isLoading) return <div className="text-center py-12 text-gray-500">⏳ Загрузка...</div>;
 
+  const isFiltered = searchTerm || statusFilter !== 'all' || mediaTypeFilter !== 'all';
+
   return (
     <div className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
-      
-      {/* ✅ КОМПАКТНЫЙ ХЕДЕР */}
       <div className="p-3 border-b border-gray-200 flex flex-wrap items-center justify-between gap-3">
         <div className="flex items-center gap-3 shrink-0">
           <h2 className="text-lg font-semibold text-gray-900">📡 Учёт SFP модулей</h2>
-          <span className={`px-2.5 py-1 text-xs font-semibold rounded-md border transition-colors ${
-            (searchTerm || statusFilter !== 'all') 
-              ? 'bg-blue-50 text-blue-700 border-blue-200' 
-              : 'bg-gray-100 text-gray-700 border-gray-200'
-          }`}>
-            {visibleQuantity} шт.
-            {(searchTerm || statusFilter !== 'all') && (
-              <span className="text-blue-400 ml-1">/ {totalQuantity}</span>
-            )}
+          <span className={`px-2.5 py-1 text-xs font-semibold rounded-md border transition-colors ${isFiltered ? 'bg-blue-50 text-blue-700 border-blue-200' : 'bg-gray-100 text-gray-700 border-gray-200'}`}>
+            {visibleQuantity} шт.{isFiltered && <span className="text-blue-400 ml-1">/ {totalQuantity}</span>}
           </span>
         </div>
 
         <div className="flex items-center gap-2 flex-1 justify-end min-w-0">
-          <div className="relative w-48 lg:w-64 shrink-0">
+          <div className="relative w-40 lg:w-56 shrink-0">
             <Search className="absolute left-2.5 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
-            <input type="text" placeholder="Поиск по вендору, модели, дальности, S/N..." value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} className="w-full pl-9 pr-3 py-1.5 border border-gray-300 rounded-md text-sm focus:ring-2 focus:ring-blue-500 outline-none bg-white" />
+            <input type="text" placeholder="Поиск..." value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} className="w-full pl-9 pr-3 py-1.5 border border-gray-300 rounded-md text-sm focus:ring-2 focus:ring-blue-500 outline-none bg-white" />
           </div>
-          <select value={statusFilter} onChange={(e) => setStatusFilter(e.target.value)} className="px-3 py-1.5 border border-gray-300 rounded-md text-sm focus:ring-2 focus:ring-blue-500 bg-white outline-none whitespace-nowrap">
-            <option value="all">📋 Все</option>
+          <select value={statusFilter} onChange={(e) => setStatusFilter(e.target.value)} className="px-2 py-1.5 border border-gray-300 rounded-md text-sm focus:ring-2 focus:ring-blue-500 bg-white outline-none whitespace-nowrap">
+            <option value="all">📋 Статус</option>
             <option value="ЗИП">📦 ЗИП</option>
             <option value="В работе">⚙️ В работе</option>
             <option value="Заказано">🚚 Заказано</option>
           </select>
-          {(searchTerm || statusFilter !== 'all') && (
-            <button onClick={() => { setSearchTerm(''); setStatusFilter('all'); }} className="p-1.5 text-gray-500 hover:text-red-600 hover:bg-red-50 rounded-md transition-colors shrink-0" title="Сбросить фильтры">
+          {/* ✅ Новый фильтр по типу среды */}
+          <select value={mediaTypeFilter} onChange={(e) => setMediaTypeFilter(e.target.value)} className="px-2 py-1.5 border border-gray-300 rounded-md text-sm focus:ring-2 focus:ring-blue-500 bg-white outline-none whitespace-nowrap">
+            <option value="all">🌐 Тип среды</option>
+            <option value="SMF">SMF (Single-Mode)</option>
+            <option value="MMF">MMF (Multi-Mode)</option>
+            <option value="Copper">Copper (RJ-45)</option>
+            <option value="Twinax CU">Twinax Passive (CU)</option>
+            <option value="Twinax ACU">Twinax Active (ACU)</option>
+            <option value="AOC">AOC (Active Optical)</option>
+          </select>
+          
+          {isFiltered && (
+            <button onClick={() => { setSearchTerm(''); setStatusFilter('all'); setMediaTypeFilter('all'); }} className="p-1.5 text-gray-500 hover:text-red-600 hover:bg-red-50 rounded-md transition-colors shrink-0" title="Сбросить все фильтры">
               <RotateCcw className="w-4 h-4" />
             </button>
           )}
-          <button onClick={exportToExcel} className="flex items-center gap-1 px-2.5 py-1.5 bg-green-600 text-white text-xs font-medium rounded hover:bg-green-700 transition shrink-0" title="Выгрузить в Excel">
+          <button onClick={exportToExcel} className="flex items-center gap-1 px-2.5 py-1.5 bg-green-600 text-white text-xs font-medium rounded hover:bg-green-700 transition shrink-0" title="Excel">
             <FileSpreadsheet className="w-3.5 h-3.5" /> Excel
           </button>
-          <button onClick={exportToJson} className="flex items-center gap-1 px-2.5 py-1.5 bg-gray-600 text-white text-xs font-medium rounded hover:bg-gray-700 transition shrink-0" title="Выгрузить в JSON">
+          <button onClick={exportToJson} className="flex items-center gap-1 px-2.5 py-1.5 bg-gray-600 text-white text-xs font-medium rounded hover:bg-gray-700 transition shrink-0" title="JSON">
             <FileJson className="w-3.5 h-3.5" /> JSON
           </button>
           <button onClick={() => { setEditingItem(null); setIsModalOpen(true); }} className="flex items-center gap-1.5 px-3 py-1.5 bg-blue-600 text-white text-sm font-medium rounded-md hover:bg-blue-700 transition-colors whitespace-nowrap shrink-0">

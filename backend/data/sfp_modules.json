@@ -13,8 +13,17 @@
     "comment": "",
     "id": 1793255456962,
     "createdAt": "2026-10-29T06:30:56.962Z",
-    "updatedAt": "2026-10-29T08:52:10.344Z",
-    "documents": [],
+    "updatedAt": "2026-11-02T06:46:32.122Z",
+    "documents": [
+      {
+        "id": 1793597159648,
+        "filename": "1793597159588-320678825.pdf",
+        "originalName": "FH-SB5312CDS3.cleaned.pdf",
+        "mimetype": "application/pdf",
+        "size": 646873,
+        "uploadedAt": "2026-11-02T05:25:59.648Z"
+      }
+    ],
     "history": [
       {
         "id": 1793255456964,
@@ -51,9 +60,23 @@
             "new": "ЗИП"
           }
         }
+      },
+      {
+        "id": 1793601992124,
+        "timestamp": "2026-11-02T06:46:32.124Z",
+        "action": "update",
+        "user": "Михеев В.Г.",
+        "changes": {
+          "mediaType": {
+            "old": null,
+            "new": "SMF"
+          }
+        }
       }
     ],
-    "status": "ЗИП"
+    "status": "ЗИП",
+    "_fileToUpload": null,
+    "mediaType": "SMF"
   },
   {
     "vendor": "FANG HANG",
@@ -69,8 +92,25 @@
     "comment": "одноглазка SC одномод.",
     "id": 1793255660609,
     "createdAt": "2026-10-29T06:34:20.609Z",
-    "updatedAt": "2026-10-29T08:52:17.889Z",
-    "documents": [],
+    "updatedAt": "2026-11-02T06:59:41.929Z",
+    "documents": [
+      {
+        "id": 1793597216300,
+        "filename": "1793597216233-560544675.pdf",
+        "originalName": "FH-SB3512CDS3.cleaned.pdf",
+        "mimetype": "application/pdf",
+        "size": 655167,
+        "uploadedAt": "2026-11-02T05:26:56.300Z"
+      },
+      {
+        "id": 1793597216838,
+        "filename": "1793597216761-245463026.pdf",
+        "originalName": "FH-SB3512CDS3.cleaned.pdf",
+        "mimetype": "application/pdf",
+        "size": 655167,
+        "uploadedAt": "2026-11-02T05:26:56.838Z"
+      }
+    ],
     "history": [
       {
         "id": 1793255660610,
@@ -107,9 +147,23 @@
             "new": "ЗИП"
           }
         }
+      },
+      {
+        "id": 1793602781931,
+        "timestamp": "2026-11-02T06:59:41.931Z",
+        "action": "update",
+        "user": "Михеев В.Г.",
+        "changes": {
+          "mediaType": {
+            "old": null,
+            "new": "SMF"
+          }
+        }
       }
     ],
-    "status": "ЗИП"
+    "status": "ЗИП",
+    "_fileToUpload": null,
+    "mediaType": "SMF"
   },
   {
     "vendor": "FANG HANG",
@@ -125,8 +179,17 @@
     "comment": "одноглазка LC одномод.",
     "id": 1793255817135,
     "createdAt": "2026-10-29T06:36:57.135Z",
-    "updatedAt": "2026-10-29T08:52:24.197Z",
-    "documents": [],
+    "updatedAt": "2026-11-02T06:59:53.578Z",
+    "documents": [
+      {
+        "id": 1793598937945,
+        "filename": "1793598937888-79220317.pdf",
+        "originalName": "FH-SB5312CDL3.cleaned.pdf",
+        "mimetype": "application/pdf",
+        "size": 599442,
+        "uploadedAt": "2026-11-02T05:55:37.945Z"
+      }
+    ],
     "history": [
       {
         "id": 1793255817136,
@@ -187,9 +250,23 @@
             "new": "ЗИП"
           }
         }
+      },
+      {
+        "id": 1793602793580,
+        "timestamp": "2026-11-02T06:59:53.580Z",
+        "action": "update",
+        "user": "Михеев В.Г.",
+        "changes": {
+          "mediaType": {
+            "old": null,
+            "new": "SMF"
+          }
+        }
       }
     ],
-    "status": "ЗИП"
+    "status": "ЗИП",
+    "_fileToUpload": null,
+    "mediaType": "SMF"
   },
   {
     "vendor": "FANG HANG",
@@ -205,8 +282,25 @@
     "comment": "одноглазка LC одномод.",
     "id": 1793255997962,
     "createdAt": "2026-10-29T06:39:57.962Z",
-    "updatedAt": "2026-10-29T08:52:29.585Z",
-    "documents": [],
+    "updatedAt": "2026-11-02T07:00:02.460Z",
+    "documents": [
+      {
+        "id": 1793599008637,
+        "filename": "1793599008578-882474179.pdf",
+        "originalName": "FH-SB3512CDL3.cleaned.pdf",
+        "mimetype": "application/pdf",
+        "size": 626687,
+        "uploadedAt": "2026-11-02T05:56:48.637Z"
+      },
+      {
+        "id": 1793599009372,
+        "filename": "1793599009317-757460823.pdf",
+        "originalName": "FH-SB3512CDL3.cleaned.pdf",
+        "mimetype": "application/pdf",
+        "size": 626687,
+        "uploadedAt": "2026-11-02T05:56:49.372Z"
+      }
+    ],
     "history": [
       {
         "id": 1793255997963,
@@ -243,9 +337,23 @@
             "new": "ЗИП"
           }
         }
+      },
+      {
+        "id": 1793602802462,
+        "timestamp": "2026-11-02T07:00:02.462Z",
+        "action": "update",
+        "user": "Михеев В.Г.",
+        "changes": {
+          "mediaType": {
+            "old": null,
+            "new": "SMF"
+          }
+        }
       }
     ],
-    "status": "ЗИП"
+    "status": "ЗИП",
+    "_fileToUpload": null,
+    "mediaType": "SMF"
   },
   {
     "vendor": "FANG HANG",
@@ -261,7 +369,7 @@
     "comment": "FANG HANG - ДАТА-КАБЕЛЬ",
     "id": 1793256944754,
     "createdAt": "2026-10-29T06:55:44.754Z",
-    "updatedAt": "2026-10-29T08:52:34.447Z",
+    "updatedAt": "2026-11-02T07:40:12.394Z",
     "documents": [],
     "history": [
       {
@@ -311,9 +419,23 @@
             "new": "ЗИП"
           }
         }
+      },
+      {
+        "id": 1793605212396,
+        "timestamp": "2026-11-02T07:40:12.396Z",
+        "action": "update",
+        "user": "Михеев В.Г.",
+        "changes": {
+          "mediaType": {
+            "old": null,
+            "new": "Twinax CU"
+          }
+        }
       }
     ],
-    "status": "ЗИП"
+    "status": "ЗИП",
+    "mediaType": "Twinax CU",
+    "_fileToUpload": null
   },
   {
     "vendor": "FANG HANG",
@@ -329,7 +451,7 @@
     "comment": "в консоле определяется как:\nDESCR: \"SFP-10Gbase-CX1\"\nPID: SFP-H10GB-CU1M\nVID: V03\n/  второй установлен в серверном шкафу на Металлургов 6В",
     "id": 1793257635227,
     "createdAt": "2026-10-29T07:07:15.227Z",
-    "updatedAt": "2026-10-29T08:57:18.623Z",
+    "updatedAt": "2026-11-02T07:40:33.935Z",
     "documents": [],
     "history": [
       {
@@ -399,9 +521,23 @@
             "new": "1"
           }
         }
+      },
+      {
+        "id": 1793605233937,
+        "timestamp": "2026-11-02T07:40:33.937Z",
+        "action": "update",
+        "user": "Михеев В.Г.",
+        "changes": {
+          "mediaType": {
+            "old": null,
+            "new": "Twinax CU"
+          }
+        }
       }
     ],
-    "status": "ЗИП"
+    "status": "ЗИП",
+    "mediaType": "Twinax CU",
+    "_fileToUpload": null
   },
   {
     "vendor": "FANG HANG",
@@ -417,8 +553,17 @@
     "comment": "(хоть и написано ММ, но одномодовый (SM) - подходят желтые патч-корды); Установлены в шкафу ШК-3.1-2.1 АБК ЭСПЦ; двуглазка LC одномод.",
     "id": 1793259488963,
     "createdAt": "2026-10-29T07:38:08.963Z",
-    "updatedAt": "2026-10-29T08:44:37.392Z",
-    "documents": [],
+    "updatedAt": "2026-11-02T07:40:56.912Z",
+    "documents": [
+      {
+        "id": 1793599409357,
+        "filename": "1793599409299-762868029.pdf",
+        "originalName": "FH-S3112CDL2.cleaned.pdf",
+        "mimetype": "application/pdf",
+        "size": 731985,
+        "uploadedAt": "2026-11-02T06:03:29.357Z"
+      }
+    ],
     "history": [
       {
         "id": 1793259488964,
@@ -455,9 +600,23 @@
             "new": "В работе"
           }
         }
+      },
+      {
+        "id": 1793605256914,
+        "timestamp": "2026-11-02T07:40:56.914Z",
+        "action": "update",
+        "user": "Михеев В.Г.",
+        "changes": {
+          "mediaType": {
+            "old": null,
+            "new": "SMF"
+          }
+        }
       }
     ],
-    "status": "В работе"
+    "status": "В работе",
+    "_fileToUpload": null,
+    "mediaType": "SMF"
   },
   {
     "vendor": "FANG HANG",
@@ -473,8 +632,25 @@
     "comment": "Предполагалось к установке в шкафу ШК-3.1-2.1 АБК ЭСПЦ, но не пошли, были заменены на Cisco SFP+ (Cisco-SFP-10G-LR)",
     "id": 1793260172443,
     "createdAt": "2026-10-29T07:49:32.443Z",
-    "updatedAt": "2026-10-29T08:44:52.352Z",
-    "documents": [],
+    "updatedAt": "2026-11-02T07:42:05.200Z",
+    "documents": [
+      {
+        "id": 1793599794113,
+        "filename": "1793599794049-35045974.pdf",
+        "originalName": "FH-SP311TCDL10.cleaned.pdf",
+        "mimetype": "application/pdf",
+        "size": 659114,
+        "uploadedAt": "2026-11-02T06:09:54.113Z"
+      },
+      {
+        "id": 1793599794847,
+        "filename": "1793599794794-516758206.pdf",
+        "originalName": "FH-SP311TCDL10.cleaned.pdf",
+        "mimetype": "application/pdf",
+        "size": 659114,
+        "uploadedAt": "2026-11-02T06:09:54.847Z"
+      }
+    ],
     "history": [
       {
         "id": 1793260172445,
@@ -499,9 +675,23 @@
             "new": "В работе"
           }
         }
+      },
+      {
+        "id": 1793605325202,
+        "timestamp": "2026-11-02T07:42:05.202Z",
+        "action": "update",
+        "user": "Михеев В.Г.",
+        "changes": {
+          "mediaType": {
+            "old": null,
+            "new": "SMF"
+          }
+        }
       }
     ],
-    "status": "В работе"
+    "status": "В работе",
+    "_fileToUpload": null,
+    "mediaType": "SMF"
   },
   {
     "vendor": "CISCO",
@@ -517,8 +707,17 @@
     "comment": "MADE IN MALAYSIA\nУстановлены вместо предполагавшихся Fang-Hang FH-SP311TCDL2",
     "id": 1793260935732,
     "createdAt": "2026-10-29T08:02:15.732Z",
-    "updatedAt": "2026-10-29T08:45:00.010Z",
-    "documents": [],
+    "updatedAt": "2026-11-02T07:08:08.635Z",
+    "documents": [
+      {
+        "id": 1793600658410,
+        "filename": "1793600658366-507622822.pdf",
+        "originalName": "Ð¡Ð¿ÐµÑÐ¸ÑÐ¸ÐºÐ°ÑÐ¸Ñ Cisco SFP-10G-SR SFP .cleaned.pdf",
+        "mimetype": "application/pdf",
+        "size": 648241,
+        "uploadedAt": "2026-11-02T06:24:18.410Z"
+      }
+    ],
     "history": [
       {
         "id": 1793260935733,
@@ -543,9 +742,23 @@
             "new": "В работе"
           }
         }
+      },
+      {
+        "id": 1793603288637,
+        "timestamp": "2026-11-02T07:08:08.637Z",
+        "action": "update",
+        "user": "Михеев В.Г.",
+        "changes": {
+          "mediaType": {
+            "old": null,
+            "new": "SMF"
+          }
+        }
       }
     ],
-    "status": "В работе"
+    "status": "В работе",
+    "_fileToUpload": null,
+    "mediaType": "SMF"
   },
   {
     "vendor": "OPTRONIC",
@@ -561,7 +774,7 @@
     "comment": "взяли у Секвеста передали Бердышеву",
     "id": 1793261078017,
     "createdAt": "2026-10-29T08:04:38.017Z",
-    "updatedAt": "2026-10-30T05:06:08.582Z",
+    "updatedAt": "2026-11-02T07:43:23.414Z",
     "documents": [],
     "history": [
       {
@@ -631,9 +844,23 @@
             "new": "100m"
           }
         }
+      },
+      {
+        "id": 1793605403416,
+        "timestamp": "2026-11-02T07:43:23.416Z",
+        "action": "update",
+        "user": "Михеев В.Г.",
+        "changes": {
+          "mediaType": {
+            "old": null,
+            "new": "Copper"
+          }
+        }
       }
     ],
-    "status": "В работе"
+    "status": "В работе",
+    "mediaType": "Copper",
+    "_fileToUpload": null
   },
   {
     "vendor": "FANG HANG",
@@ -649,7 +876,7 @@
     "comment": "FH-SB3512CDS3 (одноглазка SC одномод.)",
     "id": 1793261234666,
     "createdAt": "2026-10-29T08:07:14.666Z",
-    "updatedAt": "2026-10-29T08:45:18.952Z",
+    "updatedAt": "2026-11-02T07:09:38.379Z",
     "documents": [],
     "history": [
       {
@@ -675,9 +902,23 @@
             "new": "В работе"
           }
         }
+      },
+      {
+        "id": 1793603378381,
+        "timestamp": "2026-11-02T07:09:38.381Z",
+        "action": "update",
+        "user": "Михеев В.Г.",
+        "changes": {
+          "mediaType": {
+            "old": null,
+            "new": "SMF"
+          }
+        }
       }
     ],
-    "status": "В работе"
+    "status": "В работе",
+    "mediaType": "SMF",
+    "_fileToUpload": null
   },
   {
     "vendor": "FANG HANG",
@@ -693,7 +934,7 @@
     "comment": "FH-SB3512CDS3 (одноглазка SC одномод.)",
     "id": 1793261297456,
     "createdAt": "2026-10-29T08:08:17.456Z",
-    "updatedAt": "2026-10-29T08:45:55.255Z",
+    "updatedAt": "2026-11-02T07:09:53.458Z",
     "documents": [],
     "history": [
       {
@@ -723,9 +964,23 @@
             "new": "ТЭСЦ 1 этаж"
           }
         }
+      },
+      {
+        "id": 1793603393461,
+        "timestamp": "2026-11-02T07:09:53.461Z",
+        "action": "update",
+        "user": "Михеев В.Г.",
+        "changes": {
+          "mediaType": {
+            "old": null,
+            "new": "SMF"
+          }
+        }
       }
     ],
-    "status": "В работе"
+    "status": "В работе",
+    "mediaType": "SMF",
+    "_fileToUpload": null
   },
   {
     "vendor": "FANG HANG",
@@ -741,8 +996,17 @@
     "comment": "FH-SB3512CDS3 (одноглазка SC одномод.)",
     "id": 1793261382267,
     "createdAt": "2026-10-29T08:09:42.267Z",
-    "updatedAt": "2026-10-29T08:46:29.545Z",
-    "documents": [],
+    "updatedAt": "2026-11-02T07:11:41.333Z",
+    "documents": [
+      {
+        "id": 1793603501417,
+        "filename": "1793603501354-532231598.pdf",
+        "originalName": "FH-SB5312CDS3.cleaned.pdf",
+        "mimetype": "application/pdf",
+        "size": 646873,
+        "uploadedAt": "2026-11-02T07:11:41.417Z"
+      }
+    ],
     "history": [
       {
         "id": 1793261382268,
@@ -767,9 +1031,23 @@
             "new": "В работе"
           }
         }
+      },
+      {
+        "id": 1793603501335,
+        "timestamp": "2026-11-02T07:11:41.335Z",
+        "action": "update",
+        "user": "Михеев В.Г.",
+        "changes": {
+          "mediaType": {
+            "old": null,
+            "new": "SMF"
+          }
+        }
       }
     ],
-    "status": "В работе"
+    "status": "В работе",
+    "mediaType": "SMF",
+    "_fileToUpload": {}
   },
   {
     "vendor": "FANG HANG",
@@ -1057,8 +1335,25 @@
     "comment": "FH-SB3512CDS3 (одноглазка SC одномод.)\n21CFR(J) CLASS1\nPID: GLC-BX-D (комплект с SB35)",
     "id": 1793264659343,
     "createdAt": "2026-10-29T09:04:19.343Z",
-    "updatedAt": "2026-10-29T09:04:19.343Z",
-    "documents": [],
+    "updatedAt": "2026-11-02T07:12:10.185Z",
+    "documents": [
+      {
+        "id": 1793603530283,
+        "filename": "1793603530216-468908491.pdf",
+        "originalName": "FH-SB5312CDS3.cleaned.pdf",
+        "mimetype": "application/pdf",
+        "size": 646873,
+        "uploadedAt": "2026-11-02T07:12:10.283Z"
+      },
+      {
+        "id": 1793603530736,
+        "filename": "1793603530686-677575912.pdf",
+        "originalName": "FH-SB5312CDS3.cleaned.pdf",
+        "mimetype": "application/pdf",
+        "size": 646873,
+        "uploadedAt": "2026-11-02T07:12:10.736Z"
+      }
+    ],
     "history": [
       {
         "id": 1793264659344,
@@ -1071,8 +1366,22 @@
             "new": "FH-SB5312CDS3"
           }
         }
+      },
+      {
+        "id": 1793603530188,
+        "timestamp": "2026-11-02T07:12:10.188Z",
+        "action": "update",
+        "user": "Михеев В.Г.",
+        "changes": {
+          "mediaType": {
+            "old": null,
+            "new": "SMF"
+          }
+        }
       }
-    ]
+    ],
+    "mediaType": "SMF",
+    "_fileToUpload": {}
   },
   {
     "vendor": "FANG HANG",
@@ -1131,8 +1440,25 @@
     "comment": "FH-SB5312CDS3 (одноглазка SC одномод.)\n21CFR(J) CLASS1\nPID: GLC-BX-D (комплект с SB35)",
     "id": 1793265050657,
     "createdAt": "2026-10-29T09:10:50.657Z",
-    "updatedAt": "2026-10-29T09:10:50.657Z",
-    "documents": [],
+    "updatedAt": "2026-11-02T07:12:54.588Z",
+    "documents": [
+      {
+        "id": 1793603574672,
+        "filename": "1793603574611-908814138.pdf",
+        "originalName": "FH-SB5312CDS3.cleaned.pdf",
+        "mimetype": "application/pdf",
+        "size": 646873,
+        "uploadedAt": "2026-11-02T07:12:54.672Z"
+      },
+      {
+        "id": 1793603575140,
+        "filename": "1793603575088-211350028.pdf",
+        "originalName": "FH-SB5312CDS3.cleaned.pdf",
+        "mimetype": "application/pdf",
+        "size": 646873,
+        "uploadedAt": "2026-11-02T07:12:55.140Z"
+      }
+    ],
     "history": [
       {
         "id": 1793265050659,
@@ -1145,8 +1471,22 @@
             "new": "FH-SB5312CDS3"
           }
         }
+      },
+      {
+        "id": 1793603574590,
+        "timestamp": "2026-11-02T07:12:54.590Z",
+        "action": "update",
+        "user": "Михеев В.Г.",
+        "changes": {
+          "mediaType": {
+            "old": null,
+            "new": "SMF"
+          }
+        }
       }
-    ]
+    ],
+    "mediaType": "SMF",
+    "_fileToUpload": {}
   },
   {
     "vendor": "SNR",
@@ -1516,8 +1856,25 @@
     "status": "ЗИП",
     "id": 1793270989662,
     "createdAt": "2026-10-29T10:49:49.662Z",
-    "updatedAt": "2026-10-29T10:49:49.662Z",
-    "documents": [],
+    "updatedAt": "2026-11-02T07:13:15.163Z",
+    "documents": [
+      {
+        "id": 1793603595251,
+        "filename": "1793603595187-386215490.pdf",
+        "originalName": "FH-SB5312CDS3.cleaned.pdf",
+        "mimetype": "application/pdf",
+        "size": 646873,
+        "uploadedAt": "2026-11-02T07:13:15.251Z"
+      },
+      {
+        "id": 1793603595700,
+        "filename": "1793603595653-755653375.pdf",
+        "originalName": "FH-SB5312CDS3.cleaned.pdf",
+        "mimetype": "application/pdf",
+        "size": 646873,
+        "uploadedAt": "2026-11-02T07:13:15.700Z"
+      }
+    ],
     "history": [
       {
         "id": 1793270989664,
@@ -1530,8 +1887,22 @@
             "new": "FH-SB5312CDS3"
           }
         }
+      },
+      {
+        "id": 1793603595166,
+        "timestamp": "2026-11-02T07:13:15.166Z",
+        "action": "update",
+        "user": "Михеев В.Г.",
+        "changes": {
+          "mediaType": {
+            "old": null,
+            "new": "SMF"
+          }
+        }
       }
-    ]
+    ],
+    "mediaType": "SMF",
+    "_fileToUpload": {}
   },
   {
     "vendor": "FANG HANG",
@@ -1928,15 +2299,24 @@
     "distance": "100m",
     "serialNumber": "",
     "status": "В работе",
-    "color": "",
+    "color": "желтая",
     "location": "ЦХП; ЦОД ООО РНК",
     "quantity": 22,
     "technician": "Михеев В.Г.",
     "comment": "",
     "id": 1793277571904,
     "createdAt": "2026-10-29T12:39:31.904Z",
-    "updatedAt": "2026-10-30T05:04:00.891Z",
-    "documents": [],
+    "updatedAt": "2026-11-02T07:49:24.843Z",
+    "documents": [
+      {
+        "id": 1793605639197,
+        "filename": "1793605639141-870577068.pdf",
+        "originalName": "SNR-SFP-T.pdf",
+        "mimetype": "application/pdf",
+        "size": 331699,
+        "uploadedAt": "2026-11-02T07:47:19.197Z"
+      }
+    ],
     "history": [
       {
         "id": 1793277571906,
@@ -1961,8 +2341,34 @@
             "new": "100m"
           }
         }
+      },
+      {
+        "id": 1793605639121,
+        "timestamp": "2026-11-02T07:47:19.121Z",
+        "action": "update",
+        "user": "Михеев В.Г.",
+        "changes": {
+          "mediaType": {
+            "old": null,
+            "new": "Copper"
+          }
+        }
+      },
+      {
+        "id": 1793605764846,
+        "timestamp": "2026-11-02T07:49:24.846Z",
+        "action": "update",
+        "user": "Михеев В.Г.",
+        "changes": {
+          "color": {
+            "old": "",
+            "new": "желтая"
+          }
+        }
       }
-    ]
+    ],
+    "mediaType": "Copper",
+    "_fileToUpload": null
   },
   {
     "vendor": "SNR",
@@ -2107,15 +2513,32 @@
     "distance": "100м",
     "serialNumber": "",
     "status": "В работе",
-    "color": "",
+    "color": "желтая",
     "location": "ЦХП; шкафы доступа",
     "quantity": 132,
     "technician": "Михеев В.Г.",
     "comment": "",
     "id": 1793280299199,
     "createdAt": "2026-10-29T13:24:59.199Z",
-    "updatedAt": "2026-10-29T13:24:59.199Z",
-    "documents": [],
+    "updatedAt": "2026-11-02T07:49:32.679Z",
+    "documents": [
+      {
+        "id": 1793605659320,
+        "filename": "1793605659249-855699734.pdf",
+        "originalName": "SNR-SFP-T.pdf",
+        "mimetype": "application/pdf",
+        "size": 331699,
+        "uploadedAt": "2026-11-02T07:47:39.320Z"
+      },
+      {
+        "id": 1793605659756,
+        "filename": "1793605659708-580408316.pdf",
+        "originalName": "SNR-SFP-T.pdf",
+        "mimetype": "application/pdf",
+        "size": 331699,
+        "uploadedAt": "2026-11-02T07:47:39.756Z"
+      }
+    ],
     "history": [
       {
         "id": 1793280299202,
@@ -2128,8 +2551,34 @@
             "new": "SNR-SFP-T"
           }
         }
+      },
+      {
+        "id": 1793605659227,
+        "timestamp": "2026-11-02T07:47:39.227Z",
+        "action": "update",
+        "user": "Михеев В.Г.",
+        "changes": {
+          "mediaType": {
+            "old": null,
+            "new": "Copper"
+          }
+        }
+      },
+      {
+        "id": 1793605772682,
+        "timestamp": "2026-11-02T07:49:32.682Z",
+        "action": "update",
+        "user": "Михеев В.Г.",
+        "changes": {
+          "color": {
+            "old": "",
+            "new": "желтая"
+          }
+        }
       }
-    ]
+    ],
+    "mediaType": "Copper",
+    "_fileToUpload": null
   },
   {
     "vendor": "QTECH",
@@ -2496,15 +2945,24 @@
     "distance": "100м",
     "serialNumber": "",
     "status": "ЗИП",
-    "color": "",
+    "color": "желтая",
     "location": "ЦХП; ЗИП",
     "quantity": 3,
     "technician": "Михеев В.Г.",
     "comment": "",
     "id": 1793280671554,
     "createdAt": "2026-10-29T13:31:11.554Z",
-    "updatedAt": "2026-10-29T13:31:11.554Z",
-    "documents": [],
+    "updatedAt": "2026-11-02T07:49:40.926Z",
+    "documents": [
+      {
+        "id": 1793605677882,
+        "filename": "1793605677823-324401783.pdf",
+        "originalName": "SNR-SFP-T.pdf",
+        "mimetype": "application/pdf",
+        "size": 331699,
+        "uploadedAt": "2026-11-02T07:47:57.882Z"
+      }
+    ],
     "history": [
       {
         "id": 1793280671556,
@@ -2517,8 +2975,34 @@
             "new": "SNR-SFP-T"
           }
         }
+      },
+      {
+        "id": 1793605677800,
+        "timestamp": "2026-11-02T07:47:57.800Z",
+        "action": "update",
+        "user": "Михеев В.Г.",
+        "changes": {
+          "mediaType": {
+            "old": null,
+            "new": "Copper"
+          }
+        }
+      },
+      {
+        "id": 1793605780929,
+        "timestamp": "2026-11-02T07:49:40.929Z",
+        "action": "update",
+        "user": "Михеев В.Г.",
+        "changes": {
+          "color": {
+            "old": "",
+            "new": "желтая"
+          }
+        }
       }
-    ]
+    ],
+    "mediaType": "Copper",
+    "_fileToUpload": null
   },
   {
     "vendor": "SNR",
@@ -2534,7 +3018,7 @@
     "comment": "",
     "id": 1793280749782,
     "createdAt": "2026-10-29T13:32:29.782Z",
-    "updatedAt": "2026-10-29T13:32:29.782Z",
+    "updatedAt": "2026-10-30T12:35:42.179Z",
     "documents": [],
     "history": [
       {
@@ -2549,7 +3033,8 @@
           }
         }
       }
-    ]
+    ],
+    "_fileToUpload": {}
   },
   {
     "vendor": "SNR",
