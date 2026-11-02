@@ -275,14 +275,14 @@
     "distance": "3km",
     "serialNumber": "FLU23081103602",
     "laserClass": "CLASS 1",
-    "color": "голубая",
+    "color": "синяя",
     "location": "ЗИП  в тумбочке",
     "quantity": 1,
     "technician": "Михеев В.Г.",
     "comment": "одноглазка LC одномод.",
     "id": 1793255997962,
     "createdAt": "2026-10-29T06:39:57.962Z",
-    "updatedAt": "2026-11-02T07:00:02.460Z",
+    "updatedAt": "2026-11-02T09:07:06.345Z",
     "documents": [
       {
         "id": 1793599008637,
@@ -349,6 +349,18 @@
             "new": "SMF"
           }
         }
+      },
+      {
+        "id": 1793610426348,
+        "timestamp": "2026-11-02T09:07:06.348Z",
+        "action": "update",
+        "user": "Михеев В.Г.",
+        "changes": {
+          "color": {
+            "old": "голубая",
+            "new": "синяя"
+          }
+        }
       }
     ],
     "status": "ЗИП",
@@ -369,8 +381,17 @@
     "comment": "FANG HANG - ДАТА-КАБЕЛЬ",
     "id": 1793256944754,
     "createdAt": "2026-10-29T06:55:44.754Z",
-    "updatedAt": "2026-11-02T07:40:12.394Z",
-    "documents": [],
+    "updatedAt": "2026-11-02T08:32:24.584Z",
+    "documents": [
+      {
+        "id": 1793608344640,
+        "filename": "1793608344602-627624984.pdf",
+        "originalName": "FH_DP1T30SS0x.cleaned.pdf",
+        "mimetype": "application/pdf",
+        "size": 273415,
+        "uploadedAt": "2026-11-02T08:32:24.640Z"
+      }
+    ],
     "history": [
       {
         "id": 1793256944755,
@@ -435,7 +456,7 @@
     ],
     "status": "ЗИП",
     "mediaType": "Twinax CU",
-    "_fileToUpload": null
+    "_fileToUpload": {}
   },
   {
     "vendor": "FANG HANG",
@@ -451,8 +472,17 @@
     "comment": "в консоле определяется как:\nDESCR: \"SFP-10Gbase-CX1\"\nPID: SFP-H10GB-CU1M\nVID: V03\n/  второй установлен в серверном шкафу на Металлургов 6В",
     "id": 1793257635227,
     "createdAt": "2026-10-29T07:07:15.227Z",
-    "updatedAt": "2026-11-02T07:40:33.935Z",
-    "documents": [],
+    "updatedAt": "2026-11-02T08:32:38.008Z",
+    "documents": [
+      {
+        "id": 1793608358070,
+        "filename": "1793608358030-507171054.pdf",
+        "originalName": "FH_DP1T30SS0x.cleaned.pdf",
+        "mimetype": "application/pdf",
+        "size": 273415,
+        "uploadedAt": "2026-11-02T08:32:38.070Z"
+      }
+    ],
     "history": [
       {
         "id": 1793257635228,
@@ -537,7 +567,7 @@
     ],
     "status": "ЗИП",
     "mediaType": "Twinax CU",
-    "_fileToUpload": null
+    "_fileToUpload": {}
   },
   {
     "vendor": "FANG HANG",
@@ -876,8 +906,17 @@
     "comment": "FH-SB3512CDS3 (одноглазка SC одномод.)",
     "id": 1793261234666,
     "createdAt": "2026-10-29T08:07:14.666Z",
-    "updatedAt": "2026-11-02T07:09:38.379Z",
-    "documents": [],
+    "updatedAt": "2026-11-02T08:21:31.715Z",
+    "documents": [
+      {
+        "id": 1793607691810,
+        "filename": "1793607691735-151595531.pdf",
+        "originalName": "FH-SB3512CDS3.cleaned.pdf",
+        "mimetype": "application/pdf",
+        "size": 655167,
+        "uploadedAt": "2026-11-02T08:21:31.810Z"
+      }
+    ],
     "history": [
       {
         "id": 1793261234668,
@@ -918,7 +957,7 @@
     ],
     "status": "В работе",
     "mediaType": "SMF",
-    "_fileToUpload": null
+    "_fileToUpload": {}
   },
   {
     "vendor": "FANG HANG",
@@ -934,8 +973,25 @@
     "comment": "FH-SB3512CDS3 (одноглазка SC одномод.)",
     "id": 1793261297456,
     "createdAt": "2026-10-29T08:08:17.456Z",
-    "updatedAt": "2026-11-02T07:09:53.458Z",
-    "documents": [],
+    "updatedAt": "2026-11-02T08:26:11.085Z",
+    "documents": [
+      {
+        "id": 1793607971169,
+        "filename": "1793607971108-888094436.pdf",
+        "originalName": "FH-SB3512CDS3.cleaned.pdf",
+        "mimetype": "application/pdf",
+        "size": 655167,
+        "uploadedAt": "2026-11-02T08:26:11.169Z"
+      },
+      {
+        "id": 1793607971627,
+        "filename": "1793607971579-982203680.pdf",
+        "originalName": "FH-SB3512CDS3.cleaned.pdf",
+        "mimetype": "application/pdf",
+        "size": 655167,
+        "uploadedAt": "2026-11-02T08:26:11.627Z"
+      }
+    ],
     "history": [
       {
         "id": 1793261297457,
@@ -980,7 +1036,7 @@
     ],
     "status": "В работе",
     "mediaType": "SMF",
-    "_fileToUpload": null
+    "_fileToUpload": {}
   },
   {
     "vendor": "FANG HANG",
@@ -1063,8 +1119,17 @@
     "comment": "FANG HANG - ДАТА-КАБЕЛЬ 1м",
     "id": 1793261643268,
     "createdAt": "2026-10-29T08:14:03.268Z",
-    "updatedAt": "2026-10-29T08:46:38.950Z",
-    "documents": [],
+    "updatedAt": "2026-11-02T08:32:51.282Z",
+    "documents": [
+      {
+        "id": 1793608371339,
+        "filename": "1793608371300-294072499.pdf",
+        "originalName": "FH_DP1T30SS0x.cleaned.pdf",
+        "mimetype": "application/pdf",
+        "size": 273415,
+        "uploadedAt": "2026-11-02T08:32:51.339Z"
+      }
+    ],
     "history": [
       {
         "id": 1793261643269,
@@ -1089,9 +1154,23 @@
             "new": "В работе"
           }
         }
+      },
+      {
+        "id": 1793608188441,
+        "timestamp": "2026-11-02T08:29:48.441Z",
+        "action": "update",
+        "user": "Михеев В.Г.",
+        "changes": {
+          "mediaType": {
+            "old": null,
+            "new": "Twinax CU"
+          }
+        }
       }
     ],
-    "status": "В работе"
+    "status": "В работе",
+    "mediaType": "Twinax CU",
+    "_fileToUpload": {}
   },
   {
     "vendor": "FANG HANG",
@@ -1100,15 +1179,24 @@
     "distance": "20km",
     "serialNumber": "FLU23092305969",
     "laserClass": "CLASS 1",
-    "color": "голубая",
+    "color": "синяя",
     "location": "ЗПП 1 этаж Серверная",
     "quantity": 1,
     "technician": "Михеев В.Г.",
     "comment": "FH-SB3512CDS20 (одноглазка SC одномод.)",
     "id": 1793261754718,
     "createdAt": "2026-10-29T08:15:54.718Z",
-    "updatedAt": "2026-10-29T08:46:48.563Z",
-    "documents": [],
+    "updatedAt": "2026-11-02T08:36:30.850Z",
+    "documents": [
+      {
+        "id": 1793608590918,
+        "filename": "1793608590871-578724677.pdf",
+        "originalName": "FH_SB3512CDS20.cleaned.pdf",
+        "mimetype": "application/pdf",
+        "size": 540912,
+        "uploadedAt": "2026-11-02T08:36:30.918Z"
+      }
+    ],
     "history": [
       {
         "id": 1793261754719,
@@ -1133,13 +1221,31 @@
             "new": "В работе"
           }
         }
+      },
+      {
+        "id": 1793608590852,
+        "timestamp": "2026-11-02T08:36:30.852Z",
+        "action": "update",
+        "user": "Михеев В.Г.",
+        "changes": {
+          "mediaType": {
+            "old": null,
+            "new": "SMF"
+          },
+          "color": {
+            "old": "голубая",
+            "new": "синяя"
+          }
+        }
       }
     ],
-    "status": "В работе"
+    "status": "В работе",
+    "mediaType": "SMF",
+    "_fileToUpload": {}
   },
   {
     "vendor": "SNR",
-    "model": "SNR-SFP-W53-20-LC (комплект с W35)",
+    "model": "SNR-SFP-W53-20-LC",
     "specs": "1000BASE-X, 20km, Tx 1550nm, DDM",
     "distance": "20km",
     "serialNumber": "SS5P000038; SS5P000067; SS5P000068; SS5P000032",
@@ -1151,8 +1257,25 @@
     "comment": "(одноглазка LC одномод.)",
     "id": 1793263884229,
     "createdAt": "2026-10-29T08:51:24.229Z",
-    "updatedAt": "2026-10-29T13:21:44.440Z",
-    "documents": [],
+    "updatedAt": "2026-11-02T08:40:15.890Z",
+    "documents": [
+      {
+        "id": 1793608815998,
+        "filename": "1793608815911-795669130.pdf",
+        "originalName": "SNR-SFP-W35_53-20.pdf",
+        "mimetype": "application/pdf",
+        "size": 523847,
+        "uploadedAt": "2026-11-02T08:40:15.998Z"
+      },
+      {
+        "id": 1793608816520,
+        "filename": "1793608816435-798279432.pdf",
+        "originalName": "SNR-SFP-W35_53-20.pdf",
+        "mimetype": "application/pdf",
+        "size": 523847,
+        "uploadedAt": "2026-11-02T08:40:16.520Z"
+      }
+    ],
     "history": [
       {
         "id": 1793263884230,
@@ -1201,8 +1324,26 @@
             "new": "SNR-SFP-W53-20-LC (комплект с W35)"
           }
         }
+      },
+      {
+        "id": 1793608815892,
+        "timestamp": "2026-11-02T08:40:15.892Z",
+        "action": "update",
+        "user": "Михеев В.Г.",
+        "changes": {
+          "model": {
+            "old": "SNR-SFP-W53-20-LC (комплект с W35)",
+            "new": "SNR-SFP-W53-20-LC"
+          },
+          "mediaType": {
+            "old": null,
+            "new": "SMF"
+          }
+        }
       }
-    ]
+    ],
+    "mediaType": "SMF",
+    "_fileToUpload": {}
   },
   {
     "vendor": "FANG HANG",
@@ -1218,8 +1359,17 @@
     "comment": "FANG HANG - ДАТА-КАБЕЛЬ",
     "id": 1793264184379,
     "createdAt": "2026-10-29T08:56:24.379Z",
-    "updatedAt": "2026-10-30T05:38:59.315Z",
-    "documents": [],
+    "updatedAt": "2026-11-02T08:33:04.143Z",
+    "documents": [
+      {
+        "id": 1793608384222,
+        "filename": "1793608384180-140933080.pdf",
+        "originalName": "FH_DP1T30SS0x.cleaned.pdf",
+        "mimetype": "application/pdf",
+        "size": 273415,
+        "uploadedAt": "2026-11-02T08:33:04.222Z"
+      }
+    ],
     "history": [
       {
         "id": 1793264184380,
@@ -1244,8 +1394,22 @@
             "new": "черный"
           }
         }
+      },
+      {
+        "id": 1793608227934,
+        "timestamp": "2026-11-02T08:30:27.934Z",
+        "action": "update",
+        "user": "Михеев В.Г.",
+        "changes": {
+          "mediaType": {
+            "old": null,
+            "new": "Twinax CU"
+          }
+        }
       }
-    ]
+    ],
+    "mediaType": "Twinax CU",
+    "_fileToUpload": {}
   },
   {
     "vendor": "FANG HANG",
@@ -1261,8 +1425,17 @@
     "comment": "FANG HANG - ДАТА-КАБЕЛЬ 1м\nв консоле определяется как:\nDESCR: \"SFP-10Gbase-CX1\"\nPID: SFP-H10GB-CU1M\nVID: V03\t",
     "id": 1793264426045,
     "createdAt": "2026-10-29T09:00:26.045Z",
-    "updatedAt": "2026-10-30T05:39:08.135Z",
-    "documents": [],
+    "updatedAt": "2026-11-02T08:33:17.134Z",
+    "documents": [
+      {
+        "id": 1793608397203,
+        "filename": "1793608397160-442420243.pdf",
+        "originalName": "FH_DP1T30SS0x.cleaned.pdf",
+        "mimetype": "application/pdf",
+        "size": 273415,
+        "uploadedAt": "2026-11-02T08:33:17.203Z"
+      }
+    ],
     "history": [
       {
         "id": 1793264426047,
@@ -1287,8 +1460,22 @@
             "new": "черный"
           }
         }
+      },
+      {
+        "id": 1793608239933,
+        "timestamp": "2026-11-02T08:30:39.933Z",
+        "action": "update",
+        "user": "Михеев В.Г.",
+        "changes": {
+          "mediaType": {
+            "old": null,
+            "new": "Twinax CU"
+          }
+        }
       }
-    ]
+    ],
+    "mediaType": "Twinax CU",
+    "_fileToUpload": {}
   },
   {
     "vendor": "FANG HANG",
@@ -1304,8 +1491,17 @@
     "comment": "FH-SB3512CDS3 (одноглазка SC одномод.)\n21CFR(J) CLASS1\nPID: GLC-BX-U (комплект с SB53)",
     "id": 1793264538261,
     "createdAt": "2026-10-29T09:02:18.261Z",
-    "updatedAt": "2026-10-29T09:02:18.261Z",
-    "documents": [],
+    "updatedAt": "2026-11-02T08:25:25.232Z",
+    "documents": [
+      {
+        "id": 1793607925312,
+        "filename": "1793607925252-559902051.pdf",
+        "originalName": "FH-SB3512CDS3.cleaned.pdf",
+        "mimetype": "application/pdf",
+        "size": 655167,
+        "uploadedAt": "2026-11-02T08:25:25.312Z"
+      }
+    ],
     "history": [
       {
         "id": 1793264538262,
@@ -1318,8 +1514,22 @@
             "new": "FH-SB3512CDS3"
           }
         }
+      },
+      {
+        "id": 1793607925234,
+        "timestamp": "2026-11-02T08:25:25.234Z",
+        "action": "update",
+        "user": "Михеев В.Г.",
+        "changes": {
+          "mediaType": {
+            "old": null,
+            "new": "SMF"
+          }
+        }
       }
-    ]
+    ],
+    "mediaType": "SMF",
+    "_fileToUpload": {}
   },
   {
     "vendor": "FANG HANG",
@@ -1397,8 +1607,25 @@
     "comment": "FH-SB3512CDS3 (одноглазка SC одномод.)\n21CFR(J) CLASS1\nPID: GLC-BX-U (комплект с SB53)",
     "id": 1793264893707,
     "createdAt": "2026-10-29T09:08:13.707Z",
-    "updatedAt": "2026-10-29T09:26:21.979Z",
-    "documents": [],
+    "updatedAt": "2026-11-02T08:25:42.208Z",
+    "documents": [
+      {
+        "id": 1793607942296,
+        "filename": "1793607942234-187600227.pdf",
+        "originalName": "FH-SB3512CDS3.cleaned.pdf",
+        "mimetype": "application/pdf",
+        "size": 655167,
+        "uploadedAt": "2026-11-02T08:25:42.296Z"
+      },
+      {
+        "id": 1793607942754,
+        "filename": "1793607942706-259899306.pdf",
+        "originalName": "FH-SB3512CDS3.cleaned.pdf",
+        "mimetype": "application/pdf",
+        "size": 655167,
+        "uploadedAt": "2026-11-02T08:25:42.754Z"
+      }
+    ],
     "history": [
       {
         "id": 1793264893708,
@@ -1423,8 +1650,22 @@
             "new": "В работе"
           }
         }
+      },
+      {
+        "id": 1793607942212,
+        "timestamp": "2026-11-02T08:25:42.212Z",
+        "action": "update",
+        "user": "Михеев В.Г.",
+        "changes": {
+          "mediaType": {
+            "old": null,
+            "new": "SMF"
+          }
+        }
       }
-    ]
+    ],
+    "mediaType": "SMF",
+    "_fileToUpload": {}
   },
   {
     "vendor": "FANG HANG",
@@ -1490,7 +1731,7 @@
   },
   {
     "vendor": "SNR",
-    "model": "SNR-SFP-W35-20-LC (комплект с W53)",
+    "model": "SNR-SFP-W35-20-LC",
     "specs": "1000BASE-X, 20km, Tx 1310nm, DDM",
     "distance": "20km",
     "serialNumber": "SS1Q010163; SS1Q010161; SS1Q010173; SS1Q010162",
@@ -1502,8 +1743,25 @@
     "comment": "(одноглазка LC одномод.)\nкомплект с W35",
     "id": 1793265249143,
     "createdAt": "2026-10-29T09:14:09.143Z",
-    "updatedAt": "2026-10-29T13:22:32.732Z",
-    "documents": [],
+    "updatedAt": "2026-11-02T08:40:40.931Z",
+    "documents": [
+      {
+        "id": 1793608841036,
+        "filename": "1793608840952-549072530.pdf",
+        "originalName": "SNR-SFP-W35_53-20.pdf",
+        "mimetype": "application/pdf",
+        "size": 523847,
+        "uploadedAt": "2026-11-02T08:40:41.036Z"
+      },
+      {
+        "id": 1793608841551,
+        "filename": "1793608841480-170823400.pdf",
+        "originalName": "SNR-SFP-W35_53-20.pdf",
+        "mimetype": "application/pdf",
+        "size": 523847,
+        "uploadedAt": "2026-11-02T08:40:41.551Z"
+      }
+    ],
     "history": [
       {
         "id": 1793265249144,
@@ -1552,8 +1810,26 @@
             "new": "SNR-SFP-W35-20-LC (комплект с W53)"
           }
         }
+      },
+      {
+        "id": 1793608840933,
+        "timestamp": "2026-11-02T08:40:40.933Z",
+        "action": "update",
+        "user": "Михеев В.Г.",
+        "changes": {
+          "model": {
+            "old": "SNR-SFP-W35-20-LC (комплект с W53)",
+            "new": "SNR-SFP-W35-20-LC"
+          },
+          "mediaType": {
+            "old": null,
+            "new": "SMF"
+          }
+        }
       }
-    ]
+    ],
+    "mediaType": "SMF",
+    "_fileToUpload": {}
   },
   {
     "vendor": "FANG HANG",
@@ -1569,8 +1845,17 @@
     "comment": "Работает в паре с FH-SB3512CDL20",
     "id": 1793265545886,
     "createdAt": "2026-10-29T09:19:05.886Z",
-    "updatedAt": "2026-10-29T10:24:42.298Z",
-    "documents": [],
+    "updatedAt": "2026-11-02T08:53:20.686Z",
+    "documents": [
+      {
+        "id": 1793609600758,
+        "filename": "1793609600710-390622179.pdf",
+        "originalName": "FH_SB3512CDL20.pdf",
+        "mimetype": "application/pdf",
+        "size": 526518,
+        "uploadedAt": "2026-11-02T08:53:20.758Z"
+      }
+    ],
     "history": [
       {
         "id": 1793265545888,
@@ -1595,8 +1880,22 @@
             "new": "Склад МЦ-2 (Парфенова Р.Б.)"
           }
         }
+      },
+      {
+        "id": 1793609600689,
+        "timestamp": "2026-11-02T08:53:20.689Z",
+        "action": "update",
+        "user": "Михеев В.Г.",
+        "changes": {
+          "mediaType": {
+            "old": null,
+            "new": "SMF"
+          }
+        }
       }
-    ]
+    ],
+    "mediaType": "SMF",
+    "_fileToUpload": {}
   },
   {
     "vendor": "FANG HANG",
@@ -1612,7 +1911,7 @@
     "comment": "Работает в паре с FH-SB5312CDL20\n",
     "id": 1793265652819,
     "createdAt": "2026-10-29T09:20:52.819Z",
-    "updatedAt": "2026-10-29T10:24:33.870Z",
+    "updatedAt": "2026-11-02T08:53:32.763Z",
     "documents": [],
     "history": [
       {
@@ -1638,8 +1937,22 @@
             "new": "Склад МЦ-2 (Парфенова Р.Б.)"
           }
         }
+      },
+      {
+        "id": 1793609612768,
+        "timestamp": "2026-11-02T08:53:32.768Z",
+        "action": "update",
+        "user": "Михеев В.Г.",
+        "changes": {
+          "mediaType": {
+            "old": null,
+            "new": "SMF"
+          }
+        }
       }
-    ]
+    ],
+    "mediaType": "SMF",
+    "_fileToUpload": null
   },
   {
     "vendor": "FANG HANG",
@@ -1655,8 +1968,17 @@
     "comment": "",
     "id": 1793269335515,
     "createdAt": "2026-10-29T10:22:15.515Z",
-    "updatedAt": "2026-10-29T10:32:08.714Z",
-    "documents": [],
+    "updatedAt": "2026-11-02T08:36:48.001Z",
+    "documents": [
+      {
+        "id": 1793608608074,
+        "filename": "1793608608025-221481580.pdf",
+        "originalName": "FH_SB3512CDS20.cleaned.pdf",
+        "mimetype": "application/pdf",
+        "size": 540912,
+        "uploadedAt": "2026-11-02T08:36:48.074Z"
+      }
+    ],
     "history": [
       {
         "id": 1793269335516,
@@ -1685,8 +2007,22 @@
             "new": "1,25 GE 20 km, SM, TX/RX 1310/1550 SC, DDM (21CFR(J) CLASS1)"
           }
         }
+      },
+      {
+        "id": 1793608608003,
+        "timestamp": "2026-11-02T08:36:48.003Z",
+        "action": "update",
+        "user": "Михеев В.Г.",
+        "changes": {
+          "mediaType": {
+            "old": null,
+            "new": "SMF"
+          }
+        }
       }
-    ]
+    ],
+    "mediaType": "SMF",
+    "_fileToUpload": {}
   },
   {
     "vendor": "FANG HANG",
@@ -1702,8 +2038,17 @@
     "comment": "CLASS 1",
     "id": 1793269449114,
     "createdAt": "2026-10-29T10:24:09.114Z",
-    "updatedAt": "2026-10-29T10:33:11.170Z",
-    "documents": [],
+    "updatedAt": "2026-11-02T08:57:24.297Z",
+    "documents": [
+      {
+        "id": 1793609844368,
+        "filename": "1793609844320-746411143.pdf",
+        "originalName": "FH_SB5312CDS20.cleaned.pdf",
+        "mimetype": "application/pdf",
+        "size": 411211,
+        "uploadedAt": "2026-11-02T08:57:24.368Z"
+      }
+    ],
     "history": [
       {
         "id": 1793269449116,
@@ -1744,8 +2089,22 @@
             "new": "1,25 GE 20 km, SM, TX/RX 1550/1310 SC, DDM (21CFR(J) CLASS1)"
           }
         }
+      },
+      {
+        "id": 1793609844300,
+        "timestamp": "2026-11-02T08:57:24.300Z",
+        "action": "update",
+        "user": "Михеев В.Г.",
+        "changes": {
+          "mediaType": {
+            "old": null,
+            "new": "SMF"
+          }
+        }
       }
-    ]
+    ],
+    "mediaType": "SMF",
+    "_fileToUpload": {}
   },
   {
     "vendor": "FANG HANG",
@@ -1761,8 +2120,17 @@
     "comment": "Работает в паре с FH-SB5312CDL3\n",
     "id": 1793270347902,
     "createdAt": "2026-10-29T10:39:07.902Z",
-    "updatedAt": "2026-10-29T10:39:07.902Z",
-    "documents": [],
+    "updatedAt": "2026-11-02T08:59:30.968Z",
+    "documents": [
+      {
+        "id": 1793609971046,
+        "filename": "1793609970989-148672027.pdf",
+        "originalName": "FH-SB3512CDL3.cleaned.pdf",
+        "mimetype": "application/pdf",
+        "size": 626687,
+        "uploadedAt": "2026-11-02T08:59:31.046Z"
+      }
+    ],
     "history": [
       {
         "id": 1793270347903,
@@ -1775,8 +2143,22 @@
             "new": "FH-SB3512CDL3"
           }
         }
+      },
+      {
+        "id": 1793609970970,
+        "timestamp": "2026-11-02T08:59:30.970Z",
+        "action": "update",
+        "user": "Михеев В.Г.",
+        "changes": {
+          "mediaType": {
+            "old": null,
+            "new": "SMF"
+          }
+        }
       }
-    ]
+    ],
+    "mediaType": "SMF",
+    "_fileToUpload": {}
   },
   {
     "vendor": "FANG HANG",
@@ -1792,7 +2174,7 @@
     "comment": "Работает в паре с FH-SB3512CDL3",
     "id": 1793270433273,
     "createdAt": "2026-10-29T10:40:33.273Z",
-    "updatedAt": "2026-10-29T10:40:33.273Z",
+    "updatedAt": "2026-11-02T09:00:40.872Z",
     "documents": [],
     "history": [
       {
@@ -1806,8 +2188,22 @@
             "new": "FH-SB5312CDL3"
           }
         }
+      },
+      {
+        "id": 1793610040875,
+        "timestamp": "2026-11-02T09:00:40.875Z",
+        "action": "update",
+        "user": "Михеев В.Г.",
+        "changes": {
+          "mediaType": {
+            "old": null,
+            "new": "SMF"
+          }
+        }
       }
-    ]
+    ],
+    "mediaType": "SMF",
+    "_fileToUpload": null
   },
   {
     "vendor": "FANG HANG",
@@ -1824,7 +2220,7 @@
     "status": "ЗИП",
     "id": 1793270672271,
     "createdAt": "2026-10-29T10:44:32.271Z",
-    "updatedAt": "2026-10-29T10:44:32.271Z",
+    "updatedAt": "2026-11-02T09:18:01.024Z",
     "documents": [],
     "history": [
       {
@@ -1838,8 +2234,22 @@
             "new": "FH-S3112CDL2"
           }
         }
+      },
+      {
+        "id": 1793611081027,
+        "timestamp": "2026-11-02T09:18:01.027Z",
+        "action": "update",
+        "user": "Михеев В.Г.",
+        "changes": {
+          "mediaType": {
+            "old": null,
+            "new": "SMF"
+          }
+        }
       }
-    ]
+    ],
+    "mediaType": "SMF",
+    "_fileToUpload": null
   },
   {
     "vendor": "FANG HANG",
@@ -1919,8 +2329,25 @@
     "status": "ЗИП",
     "id": 1793271069711,
     "createdAt": "2026-10-29T10:51:09.711Z",
-    "updatedAt": "2026-10-29T10:51:09.711Z",
-    "documents": [],
+    "updatedAt": "2026-11-02T08:28:18.108Z",
+    "documents": [
+      {
+        "id": 1793608098207,
+        "filename": "1793608098137-401972909.pdf",
+        "originalName": "FH-SB3512CDS3.cleaned.pdf",
+        "mimetype": "application/pdf",
+        "size": 655167,
+        "uploadedAt": "2026-11-02T08:28:18.207Z"
+      },
+      {
+        "id": 1793608098655,
+        "filename": "1793608098607-203554113.pdf",
+        "originalName": "FH-SB3512CDS3.cleaned.pdf",
+        "mimetype": "application/pdf",
+        "size": 655167,
+        "uploadedAt": "2026-11-02T08:28:18.655Z"
+      }
+    ],
     "history": [
       {
         "id": 1793271069713,
@@ -1933,8 +2360,22 @@
             "new": "FH-SB3512CDS3"
           }
         }
+      },
+      {
+        "id": 1793608098111,
+        "timestamp": "2026-11-02T08:28:18.111Z",
+        "action": "update",
+        "user": "Михеев В.Г.",
+        "changes": {
+          "mediaType": {
+            "old": null,
+            "new": "SMF"
+          }
+        }
       }
-    ]
+    ],
+    "mediaType": "SMF",
+    "_fileToUpload": {}
   },
   {
     "vendor": "QTECH",
@@ -1943,15 +2384,24 @@
     "distance": "1m, Пассивная кабельная сборка ",
     "serialNumber": "",
     "status": "В работе",
-    "color": "",
+    "color": "голубая",
     "location": "ЦХП; ЦОД ООО РНК",
     "quantity": 12,
     "technician": "Михеев В.Г.",
     "comment": "МП176374-05-01-00-СКС",
     "id": 1793276054501,
     "createdAt": "2026-10-29T12:14:14.501Z",
-    "updatedAt": "2026-10-29T12:14:14.501Z",
-    "documents": [],
+    "updatedAt": "2026-11-02T09:51:41.561Z",
+    "documents": [
+      {
+        "id": 1793611041596,
+        "filename": "1793611041555-274427592.pdf",
+        "originalName": "QSC-100G-CAB-Px_datasheet.cleaned.pdf",
+        "mimetype": "application/pdf",
+        "size": 662836,
+        "uploadedAt": "2026-11-02T09:17:21.596Z"
+      }
+    ],
     "history": [
       {
         "id": 1793276054503,
@@ -1964,8 +2414,34 @@
             "new": "QSC-100G-CAB-P1"
           }
         }
+      },
+      {
+        "id": 1793611041535,
+        "timestamp": "2026-11-02T09:17:21.535Z",
+        "action": "update",
+        "user": "Михеев В.Г.",
+        "changes": {
+          "mediaType": {
+            "old": null,
+            "new": "Twinax CU"
+          }
+        }
+      },
+      {
+        "id": 1793613101564,
+        "timestamp": "2026-11-02T09:51:41.564Z",
+        "action": "update",
+        "user": "Михеев В.Г.",
+        "changes": {
+          "color": {
+            "old": "",
+            "new": "голубая"
+          }
+        }
       }
-    ]
+    ],
+    "mediaType": "Twinax CU",
+    "_fileToUpload": null
   },
   {
     "vendor": "SNR",
@@ -1974,15 +2450,24 @@
     "distance": "10km",
     "serialNumber": "",
     "status": "В работе",
-    "color": "",
+    "color": "голубая",
     "location": "ЦХП; ЦОД ООО РНК",
     "quantity": 20,
     "technician": "Михеев В.Г.",
     "comment": "",
     "id": 1793276293074,
     "createdAt": "2026-10-29T12:18:13.074Z",
-    "updatedAt": "2026-10-29T12:18:13.074Z",
-    "documents": [],
+    "updatedAt": "2026-11-02T09:28:49.962Z",
+    "documents": [
+      {
+        "id": 1793611730024,
+        "filename": "1793611729983-958372652.pdf",
+        "originalName": "SNR-QSFP28-LR4.cleaned.pdf",
+        "mimetype": "application/pdf",
+        "size": 521553,
+        "uploadedAt": "2026-11-02T09:28:50.024Z"
+      }
+    ],
     "history": [
       {
         "id": 1793276293076,
@@ -1995,8 +2480,26 @@
             "new": "SNR-QSFP28-LR4"
           }
         }
+      },
+      {
+        "id": 1793611729965,
+        "timestamp": "2026-11-02T09:28:49.965Z",
+        "action": "update",
+        "user": "Михеев В.Г.",
+        "changes": {
+          "mediaType": {
+            "old": null,
+            "new": "SMF"
+          },
+          "color": {
+            "old": "",
+            "new": "голубая"
+          }
+        }
       }
-    ]
+    ],
+    "mediaType": "SMF",
+    "_fileToUpload": {}
   },
   {
     "vendor": "SNR",
@@ -2005,14 +2508,14 @@
     "distance": "150m",
     "serialNumber": "",
     "status": "В работе",
-    "color": "",
+    "color": "серая",
     "location": "ЦХП; ЦОД ООО РНК",
     "quantity": 16,
     "technician": "Михеев В.Г.",
     "comment": "",
     "id": 1793276402342,
     "createdAt": "2026-10-29T12:20:02.342Z",
-    "updatedAt": "2026-10-30T12:22:40.583Z",
+    "updatedAt": "2026-11-02T09:33:16.592Z",
     "documents": [
       {
         "id": 1793362960648,
@@ -2035,9 +2538,34 @@
             "new": "SNR-QSFP28-SWDM4"
           }
         }
+      },
+      {
+        "id": 1793611948157,
+        "timestamp": "2026-11-02T09:32:28.157Z",
+        "action": "update",
+        "user": "Михеев В.Г.",
+        "changes": {
+          "mediaType": {
+            "old": null,
+            "new": "MMF"
+          }
+        }
+      },
+      {
+        "id": 1793611996595,
+        "timestamp": "2026-11-02T09:33:16.595Z",
+        "action": "update",
+        "user": "Михеев В.Г.",
+        "changes": {
+          "color": {
+            "old": "",
+            "new": "серая"
+          }
+        }
       }
     ],
-    "_fileToUpload": {}
+    "_fileToUpload": null,
+    "mediaType": "MMF"
   },
   {
     "vendor": "SNR",
@@ -2046,14 +2574,14 @@
     "distance": "100m",
     "serialNumber": "",
     "status": "В работе",
-    "color": "",
+    "color": "черный",
     "location": "ЦХП; ЦОД ООО РНК",
     "quantity": 54,
     "technician": "Михеев В.Г.",
     "comment": "",
     "id": 1793276586615,
     "createdAt": "2026-10-29T12:23:06.615Z",
-    "updatedAt": "2026-10-29T12:23:06.615Z",
+    "updatedAt": "2026-11-02T09:40:34.399Z",
     "documents": [],
     "history": [
       {
@@ -2067,8 +2595,26 @@
             "new": "SNR-SFP28-SR"
           }
         }
+      },
+      {
+        "id": 1793612434402,
+        "timestamp": "2026-11-02T09:40:34.402Z",
+        "action": "update",
+        "user": "Михеев В.Г.",
+        "changes": {
+          "mediaType": {
+            "old": null,
+            "new": "MMF"
+          },
+          "color": {
+            "old": "",
+            "new": "черный"
+          }
+        }
       }
-    ]
+    ],
+    "mediaType": "MMF",
+    "_fileToUpload": null
   },
   {
     "vendor": "SNR",
@@ -2084,8 +2630,17 @@
     "comment": "",
     "id": 1793276683034,
     "createdAt": "2026-10-29T12:24:43.034Z",
-    "updatedAt": "2026-10-29T12:25:19.303Z",
-    "documents": [],
+    "updatedAt": "2026-11-02T09:46:56.414Z",
+    "documents": [
+      {
+        "id": 1793612816496,
+        "filename": "1793612816487-975411219.pdf",
+        "originalName": "SNR-SFP+SR.pdf",
+        "mimetype": "application/pdf",
+        "size": 214313,
+        "uploadedAt": "2026-11-02T09:46:56.496Z"
+      }
+    ],
     "history": [
       {
         "id": 1793276683036,
@@ -2110,8 +2665,22 @@
             "new": "В работе"
           }
         }
+      },
+      {
+        "id": 1793612816417,
+        "timestamp": "2026-11-02T09:46:56.417Z",
+        "action": "update",
+        "user": "Михеев В.Г.",
+        "changes": {
+          "mediaType": {
+            "old": null,
+            "new": "MMF"
+          }
+        }
       }
-    ]
+    ],
+    "mediaType": "MMF",
+    "_fileToUpload": {}
   },
   {
     "vendor": "SNR",
@@ -2120,14 +2689,14 @@
     "distance": "до 20 км",
     "serialNumber": "",
     "status": "В работе",
-    "color": "",
+    "color": "синяя",
     "location": "ЦХП; ЦОД ООО РНК",
     "quantity": 46,
     "technician": "Михеев В.Г.",
     "comment": "",
     "id": 1793276868255,
     "createdAt": "2026-10-29T12:27:48.255Z",
-    "updatedAt": "2026-10-29T12:27:48.255Z",
+    "updatedAt": "2026-11-02T09:49:20.925Z",
     "documents": [],
     "history": [
       {
@@ -2141,8 +2710,26 @@
             "new": "SNR-SFP+LR-20"
           }
         }
+      },
+      {
+        "id": 1793612960928,
+        "timestamp": "2026-11-02T09:49:20.928Z",
+        "action": "update",
+        "user": "Михеев В.Г.",
+        "changes": {
+          "mediaType": {
+            "old": null,
+            "new": "SMF"
+          },
+          "color": {
+            "old": "",
+            "new": "синяя"
+          }
+        }
       }
-    ]
+    ],
+    "mediaType": "SMF",
+    "_fileToUpload": null
   },
   {
     "vendor": "QTECH",
@@ -2151,15 +2738,24 @@
     "distance": "Cable 1M",
     "serialNumber": "",
     "status": "В работе",
-    "color": "",
+    "color": "оранжевая",
     "location": "ЦХП; ЦОД ООО РНК",
     "quantity": 1,
     "technician": "Михеев В.Г.",
     "comment": "",
     "id": 1793277000158,
     "createdAt": "2026-10-29T12:30:00.158Z",
-    "updatedAt": "2026-10-29T12:30:00.158Z",
-    "documents": [],
+    "updatedAt": "2026-11-02T09:23:36.306Z",
+    "documents": [
+      {
+        "id": 1793611365682,
+        "filename": "1793611365642-208918240.pdf",
+        "originalName": "QSC-SFP+-CAB-Ax_datasheet.cleaned.pdf",
+        "mimetype": "application/pdf",
+        "size": 501735,
+        "uploadedAt": "2026-11-02T09:22:45.682Z"
+      }
+    ],
     "history": [
       {
         "id": 1793277000160,
@@ -2172,8 +2768,34 @@
             "new": "QSC-SFP+-CAB-A1"
           }
         }
+      },
+      {
+        "id": 1793611365624,
+        "timestamp": "2026-11-02T09:22:45.624Z",
+        "action": "update",
+        "user": "Михеев В.Г.",
+        "changes": {
+          "mediaType": {
+            "old": null,
+            "new": "AOC"
+          }
+        }
+      },
+      {
+        "id": 1793611416309,
+        "timestamp": "2026-11-02T09:23:36.309Z",
+        "action": "update",
+        "user": "Михеев В.Г.",
+        "changes": {
+          "color": {
+            "old": "",
+            "new": "оранжевая"
+          }
+        }
       }
-    ]
+    ],
+    "mediaType": "AOC",
+    "_fileToUpload": null
   },
   {
     "vendor": "Eltex",
@@ -2182,15 +2804,24 @@
     "distance": "Cable 1M",
     "serialNumber": "",
     "status": "В работе",
-    "color": "",
+    "color": "черный",
     "location": "ЦХП; ЦОД ООО РНК",
     "quantity": 2,
     "technician": "Михеев В.Г.",
     "comment": "",
     "id": 1793277108628,
     "createdAt": "2026-10-29T12:31:48.628Z",
-    "updatedAt": "2026-10-29T12:32:03.604Z",
-    "documents": [],
+    "updatedAt": "2026-11-02T09:44:01.522Z",
+    "documents": [
+      {
+        "id": 1793612591985,
+        "filename": "1793612591929-303103315.pdf",
+        "originalName": "fh_dp2txxssyy.cleaned.pdf",
+        "mimetype": "application/pdf",
+        "size": 729581,
+        "uploadedAt": "2026-11-02T09:43:11.985Z"
+      }
+    ],
     "history": [
       {
         "id": 1793277108630,
@@ -2215,8 +2846,34 @@
             "new": "В работе"
           }
         }
+      },
+      {
+        "id": 1793612591908,
+        "timestamp": "2026-11-02T09:43:11.908Z",
+        "action": "update",
+        "user": "Михеев В.Г.",
+        "changes": {
+          "mediaType": {
+            "old": null,
+            "new": "Twinax CU"
+          }
+        }
+      },
+      {
+        "id": 1793612641526,
+        "timestamp": "2026-11-02T09:44:01.526Z",
+        "action": "update",
+        "user": "Михеев В.Г.",
+        "changes": {
+          "color": {
+            "old": "",
+            "new": "черный"
+          }
+        }
       }
-    ]
+    ],
+    "mediaType": "Twinax CU",
+    "_fileToUpload": null
   },
   {
     "vendor": "SNR",
@@ -2232,8 +2889,25 @@
     "comment": "",
     "id": 1793277335441,
     "createdAt": "2026-10-29T12:35:35.441Z",
-    "updatedAt": "2026-10-29T13:22:48.031Z",
-    "documents": [],
+    "updatedAt": "2026-11-02T08:41:00.650Z",
+    "documents": [
+      {
+        "id": 1793608860755,
+        "filename": "1793608860671-375602173.pdf",
+        "originalName": "SNR-SFP-W35_53-20.pdf",
+        "mimetype": "application/pdf",
+        "size": 523847,
+        "uploadedAt": "2026-11-02T08:41:00.755Z"
+      },
+      {
+        "id": 1793608861274,
+        "filename": "1793608861201-57965729.pdf",
+        "originalName": "SNR-SFP-W35_53-20.pdf",
+        "mimetype": "application/pdf",
+        "size": 523847,
+        "uploadedAt": "2026-11-02T08:41:01.274Z"
+      }
+    ],
     "history": [
       {
         "id": 1793277335443,
@@ -2258,8 +2932,22 @@
             "new": "фиолетовая"
           }
         }
+      },
+      {
+        "id": 1793608860652,
+        "timestamp": "2026-11-02T08:41:00.652Z",
+        "action": "update",
+        "user": "Михеев В.Г.",
+        "changes": {
+          "mediaType": {
+            "old": null,
+            "new": "SMF"
+          }
+        }
       }
-    ]
+    ],
+    "mediaType": "SMF",
+    "_fileToUpload": {}
   },
   {
     "vendor": "SNR",
@@ -2377,14 +3065,14 @@
     "distance": "до 20 км",
     "serialNumber": "",
     "status": "В работе",
-    "color": "",
+    "color": "синяя",
     "location": "ЦХП; шкафы доступа",
     "quantity": 8,
     "technician": "Михеев В.Г.",
     "comment": "",
     "id": 1793279709950,
     "createdAt": "2026-10-29T13:15:09.950Z",
-    "updatedAt": "2026-10-29T13:15:09.950Z",
+    "updatedAt": "2026-11-02T09:49:30.051Z",
     "documents": [],
     "history": [
       {
@@ -2398,8 +3086,26 @@
             "new": "SNR-SFP+LR-20"
           }
         }
+      },
+      {
+        "id": 1793612970055,
+        "timestamp": "2026-11-02T09:49:30.055Z",
+        "action": "update",
+        "user": "Михеев В.Г.",
+        "changes": {
+          "mediaType": {
+            "old": null,
+            "new": "SMF"
+          },
+          "color": {
+            "old": "",
+            "new": "синяя"
+          }
+        }
       }
-    ]
+    ],
+    "mediaType": "SMF",
+    "_fileToUpload": null
   },
   {
     "vendor": "QTECH",
@@ -2408,15 +3114,24 @@
     "distance": "Cable 1M",
     "serialNumber": "",
     "status": "В работе",
-    "color": "",
+    "color": "оранжевая",
     "location": "ЦХП; шкафы доступа",
     "quantity": 1,
     "technician": "Михеев В.Г.",
     "comment": "",
     "id": 1793279765561,
     "createdAt": "2026-10-29T13:16:05.561Z",
-    "updatedAt": "2026-10-29T13:16:05.561Z",
-    "documents": [],
+    "updatedAt": "2026-11-02T09:23:26.562Z",
+    "documents": [
+      {
+        "id": 1793611406619,
+        "filename": "1793611406583-321650565.pdf",
+        "originalName": "QSC-SFP+-CAB-Ax_datasheet.cleaned.pdf",
+        "mimetype": "application/pdf",
+        "size": 501735,
+        "uploadedAt": "2026-11-02T09:23:26.619Z"
+      }
+    ],
     "history": [
       {
         "id": 1793279765563,
@@ -2429,12 +3144,30 @@
             "new": "QSC-SFP+-CAB-A1"
           }
         }
+      },
+      {
+        "id": 1793611406565,
+        "timestamp": "2026-11-02T09:23:26.565Z",
+        "action": "update",
+        "user": "Михеев В.Г.",
+        "changes": {
+          "mediaType": {
+            "old": null,
+            "new": "AOC"
+          },
+          "color": {
+            "old": "",
+            "new": "оранжевая"
+          }
+        }
       }
-    ]
+    ],
+    "mediaType": "AOC",
+    "_fileToUpload": {}
   },
   {
     "vendor": "SNR",
-    "model": "SNR-SFP-W35-20-LC (комплект с W53)",
+    "model": "SNR-SFP-W35-20-LC",
     "specs": "1000BASE-X, 20km, Tx 1310нм, DDM",
     "distance": "20km",
     "serialNumber": "",
@@ -2446,8 +3179,25 @@
     "comment": "(одноглазка LC одномод.)",
     "id": 1793280002997,
     "createdAt": "2026-10-29T13:20:02.997Z",
-    "updatedAt": "2026-10-29T13:23:10.734Z",
-    "documents": [],
+    "updatedAt": "2026-11-02T08:41:27.502Z",
+    "documents": [
+      {
+        "id": 1793608887617,
+        "filename": "1793608887523-572731232.pdf",
+        "originalName": "SNR-SFP-W35_53-20.pdf",
+        "mimetype": "application/pdf",
+        "size": 523847,
+        "uploadedAt": "2026-11-02T08:41:27.617Z"
+      },
+      {
+        "id": 1793608888139,
+        "filename": "1793608888055-873469498.pdf",
+        "originalName": "SNR-SFP-W35_53-20.pdf",
+        "mimetype": "application/pdf",
+        "size": 523847,
+        "uploadedAt": "2026-11-02T08:41:28.139Z"
+      }
+    ],
     "history": [
       {
         "id": 1793280003000,
@@ -2472,8 +3222,26 @@
             "new": "синяя"
           }
         }
+      },
+      {
+        "id": 1793608887505,
+        "timestamp": "2026-11-02T08:41:27.505Z",
+        "action": "update",
+        "user": "Михеев В.Г.",
+        "changes": {
+          "model": {
+            "old": "SNR-SFP-W35-20-LC (комплект с W53)",
+            "new": "SNR-SFP-W35-20-LC"
+          },
+          "mediaType": {
+            "old": null,
+            "new": "SMF"
+          }
+        }
       }
-    ]
+    ],
+    "mediaType": "SMF",
+    "_fileToUpload": {}
   },
   {
     "vendor": "SNR",
@@ -2489,8 +3257,25 @@
     "comment": "",
     "id": 1793280261234,
     "createdAt": "2026-10-29T13:24:21.234Z",
-    "updatedAt": "2026-10-29T13:24:21.234Z",
-    "documents": [],
+    "updatedAt": "2026-11-02T08:41:47.359Z",
+    "documents": [
+      {
+        "id": 1793608907482,
+        "filename": "1793608907384-752444217.pdf",
+        "originalName": "SNR-SFP-W35_53-20.pdf",
+        "mimetype": "application/pdf",
+        "size": 523847,
+        "uploadedAt": "2026-11-02T08:41:47.482Z"
+      },
+      {
+        "id": 1793608907997,
+        "filename": "1793608907924-28260901.pdf",
+        "originalName": "SNR-SFP-W35_53-20.pdf",
+        "mimetype": "application/pdf",
+        "size": 523847,
+        "uploadedAt": "2026-11-02T08:41:47.997Z"
+      }
+    ],
     "history": [
       {
         "id": 1793280261236,
@@ -2503,8 +3288,22 @@
             "new": "SNR-SFP-W53-20-LC"
           }
         }
+      },
+      {
+        "id": 1793608907362,
+        "timestamp": "2026-11-02T08:41:47.362Z",
+        "action": "update",
+        "user": "Михеев В.Г.",
+        "changes": {
+          "mediaType": {
+            "old": null,
+            "new": "SMF"
+          }
+        }
       }
-    ]
+    ],
+    "mediaType": "SMF",
+    "_fileToUpload": {}
   },
   {
     "vendor": "SNR",
@@ -2587,15 +3386,24 @@
     "distance": "1m, Пассивная кабельная сборка ",
     "serialNumber": "",
     "status": "ЗИП",
-    "color": "",
+    "color": "голубая",
     "location": "ЦХП; ЗИП",
     "quantity": 1,
     "technician": "Михеев В.Г.",
     "comment": "МП176374-05-01-00-СКС",
     "id": 1793280394796,
     "createdAt": "2026-10-29T13:26:34.796Z",
-    "updatedAt": "2026-10-29T13:26:34.796Z",
-    "documents": [],
+    "updatedAt": "2026-11-02T09:51:48.731Z",
+    "documents": [
+      {
+        "id": 1793611058390,
+        "filename": "1793611058351-426359369.pdf",
+        "originalName": "QSC-100G-CAB-Px_datasheet.cleaned.pdf",
+        "mimetype": "application/pdf",
+        "size": 662836,
+        "uploadedAt": "2026-11-02T09:17:38.390Z"
+      }
+    ],
     "history": [
       {
         "id": 1793280394798,
@@ -2608,8 +3416,34 @@
             "new": "QSC-100G-CAB-P1"
           }
         }
+      },
+      {
+        "id": 1793611058331,
+        "timestamp": "2026-11-02T09:17:38.331Z",
+        "action": "update",
+        "user": "Михеев В.Г.",
+        "changes": {
+          "mediaType": {
+            "old": null,
+            "new": "Twinax CU"
+          }
+        }
+      },
+      {
+        "id": 1793613108747,
+        "timestamp": "2026-11-02T09:51:48.747Z",
+        "action": "update",
+        "user": "Михеев В.Г.",
+        "changes": {
+          "color": {
+            "old": "",
+            "new": "голубая"
+          }
+        }
       }
-    ]
+    ],
+    "mediaType": "Twinax CU",
+    "_fileToUpload": null
   },
   {
     "vendor": "SNR",
@@ -2618,15 +3452,24 @@
     "distance": "10km",
     "serialNumber": "",
     "status": "ЗИП",
-    "color": "",
+    "color": "голубая",
     "location": "ЦХП; ЗИП",
     "quantity": 1,
     "technician": "Михеев В.Г.",
     "comment": "",
     "id": 1793280415539,
     "createdAt": "2026-10-29T13:26:55.539Z",
-    "updatedAt": "2026-10-30T05:02:16.883Z",
-    "documents": [],
+    "updatedAt": "2026-11-02T09:29:23.831Z",
+    "documents": [
+      {
+        "id": 1793611763899,
+        "filename": "1793611763855-245949288.pdf",
+        "originalName": "SNR-QSFP28-LR4.cleaned.pdf",
+        "mimetype": "application/pdf",
+        "size": 521553,
+        "uploadedAt": "2026-11-02T09:29:23.899Z"
+      }
+    ],
     "history": [
       {
         "id": 1793280415541,
@@ -2651,8 +3494,26 @@
             "new": "ЦХП; ЗИП"
           }
         }
+      },
+      {
+        "id": 1793611763835,
+        "timestamp": "2026-11-02T09:29:23.835Z",
+        "action": "update",
+        "user": "Михеев В.Г.",
+        "changes": {
+          "mediaType": {
+            "old": null,
+            "new": "SMF"
+          },
+          "color": {
+            "old": "",
+            "new": "голубая"
+          }
+        }
       }
-    ]
+    ],
+    "mediaType": "SMF",
+    "_fileToUpload": {}
   },
   {
     "vendor": "SNR",
@@ -2661,15 +3522,24 @@
     "distance": "150m",
     "serialNumber": "",
     "status": "ЗИП",
-    "color": "",
+    "color": "серая",
     "location": "ЦХП; ЗИП",
     "quantity": 1,
     "technician": "Михеев В.Г.",
     "comment": "Модуль QSFP28-SWDM4 оптический, 100G, 850нм, дальность до 150м",
     "id": 1793280441529,
     "createdAt": "2026-10-29T13:27:21.529Z",
-    "updatedAt": "2026-10-30T08:59:06.560Z",
-    "documents": [],
+    "updatedAt": "2026-11-02T09:35:52.504Z",
+    "documents": [
+      {
+        "id": 1793611977714,
+        "filename": "1793611977676-707085892.pdf",
+        "originalName": "SNR-QSFP28-SWDM4.cleaned.pdf",
+        "mimetype": "application/pdf",
+        "size": 351522,
+        "uploadedAt": "2026-11-02T09:32:57.714Z"
+      }
+    ],
     "history": [
       {
         "id": 1793280441532,
@@ -2694,8 +3564,34 @@
             "new": "ЦХП; ЗИП"
           }
         }
+      },
+      {
+        "id": 1793611977656,
+        "timestamp": "2026-11-02T09:32:57.656Z",
+        "action": "update",
+        "user": "Михеев В.Г.",
+        "changes": {
+          "mediaType": {
+            "old": null,
+            "new": "MMF"
+          }
+        }
+      },
+      {
+        "id": 1793612152508,
+        "timestamp": "2026-11-02T09:35:52.508Z",
+        "action": "update",
+        "user": "Михеев В.Г.",
+        "changes": {
+          "color": {
+            "old": "",
+            "new": "серая"
+          }
+        }
       }
-    ]
+    ],
+    "mediaType": "MMF",
+    "_fileToUpload": null
   },
   {
     "vendor": "SNR",
@@ -2704,14 +3600,14 @@
     "distance": "100m",
     "serialNumber": "",
     "status": "ЗИП",
-    "color": "",
+    "color": "черный",
     "location": "ЦХП; ЗИП",
     "quantity": 2,
     "technician": "Михеев В.Г.",
     "comment": "",
     "id": 1793280464091,
     "createdAt": "2026-10-29T13:27:44.091Z",
-    "updatedAt": "2026-10-30T05:02:36.305Z",
+    "updatedAt": "2026-11-02T09:40:59.163Z",
     "documents": [],
     "history": [
       {
@@ -2737,8 +3633,26 @@
             "new": "ЦХП; ЗИП"
           }
         }
+      },
+      {
+        "id": 1793612459166,
+        "timestamp": "2026-11-02T09:40:59.166Z",
+        "action": "update",
+        "user": "Михеев В.Г.",
+        "changes": {
+          "mediaType": {
+            "old": null,
+            "new": "MMF"
+          },
+          "color": {
+            "old": "",
+            "new": "черный"
+          }
+        }
       }
-    ]
+    ],
+    "mediaType": "MMF",
+    "_fileToUpload": null
   },
   {
     "vendor": "SNR",
@@ -2754,8 +3668,25 @@
     "comment": "",
     "id": 1793280483465,
     "createdAt": "2026-10-29T13:28:03.465Z",
-    "updatedAt": "2026-10-30T05:02:45.744Z",
-    "documents": [],
+    "updatedAt": "2026-11-02T09:47:40.903Z",
+    "documents": [
+      {
+        "id": 1793612860994,
+        "filename": "1793612860988-9536695.pdf",
+        "originalName": "SNR-SFP+SR.pdf",
+        "mimetype": "application/pdf",
+        "size": 214313,
+        "uploadedAt": "2026-11-02T09:47:40.994Z"
+      },
+      {
+        "id": 1793612861460,
+        "filename": "1793612861414-74786481.pdf",
+        "originalName": "SNR-SFP+SR.pdf",
+        "mimetype": "application/pdf",
+        "size": 214313,
+        "uploadedAt": "2026-11-02T09:47:41.460Z"
+      }
+    ],
     "history": [
       {
         "id": 1793280483467,
@@ -2780,8 +3711,22 @@
             "new": "ЦХП; ЗИП"
           }
         }
+      },
+      {
+        "id": 1793612860906,
+        "timestamp": "2026-11-02T09:47:40.906Z",
+        "action": "update",
+        "user": "Михеев В.Г.",
+        "changes": {
+          "mediaType": {
+            "old": null,
+            "new": "MMF"
+          }
+        }
       }
-    ]
+    ],
+    "mediaType": "MMF",
+    "_fileToUpload": {}
   },
   {
     "vendor": "SNR",
@@ -2790,14 +3735,14 @@
     "distance": "до 20 км",
     "serialNumber": "",
     "status": "ЗИП",
-    "color": "",
+    "color": "синяя",
     "location": "ЦХП; ЗИП",
     "quantity": 2,
     "technician": "Михеев В.Г.",
     "comment": "",
     "id": 1793280520688,
     "createdAt": "2026-10-29T13:28:40.688Z",
-    "updatedAt": "2026-10-29T13:28:40.688Z",
+    "updatedAt": "2026-11-02T09:49:42.795Z",
     "documents": [],
     "history": [
       {
@@ -2811,8 +3756,26 @@
             "new": "SNR-SFP+LR-20"
           }
         }
+      },
+      {
+        "id": 1793612982798,
+        "timestamp": "2026-11-02T09:49:42.798Z",
+        "action": "update",
+        "user": "Михеев В.Г.",
+        "changes": {
+          "mediaType": {
+            "old": null,
+            "new": "SMF"
+          },
+          "color": {
+            "old": "",
+            "new": "синяя"
+          }
+        }
       }
-    ]
+    ],
+    "mediaType": "SMF",
+    "_fileToUpload": null
   },
   {
     "vendor": "QTECH",
@@ -2821,15 +3784,24 @@
     "distance": "Cable 1M",
     "serialNumber": "",
     "status": "ЗИП",
-    "color": "",
+    "color": "оранжевая",
     "location": "ЦХП; ЗИП",
     "quantity": 1,
     "technician": "Михеев В.Г.",
     "comment": "",
     "id": 1793280551306,
     "createdAt": "2026-10-29T13:29:11.306Z",
-    "updatedAt": "2026-10-29T13:29:11.306Z",
-    "documents": [],
+    "updatedAt": "2026-11-02T09:24:00.464Z",
+    "documents": [
+      {
+        "id": 1793611440537,
+        "filename": "1793611440493-95121646.pdf",
+        "originalName": "QSC-SFP+-CAB-Ax_datasheet.cleaned.pdf",
+        "mimetype": "application/pdf",
+        "size": 501735,
+        "uploadedAt": "2026-11-02T09:24:00.537Z"
+      }
+    ],
     "history": [
       {
         "id": 1793280551308,
@@ -2842,8 +3814,26 @@
             "new": "QSC-SFP+-CAB-A1"
           }
         }
+      },
+      {
+        "id": 1793611440473,
+        "timestamp": "2026-11-02T09:24:00.473Z",
+        "action": "update",
+        "user": "Михеев В.Г.",
+        "changes": {
+          "mediaType": {
+            "old": null,
+            "new": "AOC"
+          },
+          "color": {
+            "old": "",
+            "new": "оранжевая"
+          }
+        }
       }
-    ]
+    ],
+    "mediaType": "AOC",
+    "_fileToUpload": {}
   },
   {
     "vendor": "Eltex",
@@ -2852,15 +3842,24 @@
     "distance": "Cable 1M",
     "serialNumber": "",
     "status": "ЗИП",
-    "color": "",
+    "color": "черный",
     "location": "ЦХП; ЗИП",
     "quantity": 1,
     "technician": "Михеев В.Г.",
     "comment": "",
     "id": 1793280576669,
     "createdAt": "2026-10-29T13:29:36.669Z",
-    "updatedAt": "2026-10-29T13:29:36.669Z",
-    "documents": [],
+    "updatedAt": "2026-11-02T09:44:18.017Z",
+    "documents": [
+      {
+        "id": 1793612658091,
+        "filename": "1793612658038-391496810.pdf",
+        "originalName": "fh_dp2txxssyy.cleaned.pdf",
+        "mimetype": "application/pdf",
+        "size": 729581,
+        "uploadedAt": "2026-11-02T09:44:18.091Z"
+      }
+    ],
     "history": [
       {
         "id": 1793280576671,
@@ -2873,8 +3872,26 @@
             "new": "FH-DP2T30SS01"
           }
         }
+      },
+      {
+        "id": 1793612658020,
+        "timestamp": "2026-11-02T09:44:18.020Z",
+        "action": "update",
+        "user": "Михеев В.Г.",
+        "changes": {
+          "mediaType": {
+            "old": null,
+            "new": "Twinax CU"
+          },
+          "color": {
+            "old": "",
+            "new": "черный"
+          }
+        }
       }
-    ]
+    ],
+    "mediaType": "Twinax CU",
+    "_fileToUpload": {}
   },
   {
     "vendor": "SNR",
@@ -2890,8 +3907,25 @@
     "comment": "",
     "id": 1793280610928,
     "createdAt": "2026-10-29T13:30:10.928Z",
-    "updatedAt": "2026-10-29T13:30:10.928Z",
-    "documents": [],
+    "updatedAt": "2026-11-02T08:42:05.103Z",
+    "documents": [
+      {
+        "id": 1793608925208,
+        "filename": "1793608925123-655069450.pdf",
+        "originalName": "SNR-SFP-W35_53-20.pdf",
+        "mimetype": "application/pdf",
+        "size": 523847,
+        "uploadedAt": "2026-11-02T08:42:05.208Z"
+      },
+      {
+        "id": 1793608925710,
+        "filename": "1793608925638-600659756.pdf",
+        "originalName": "SNR-SFP-W35_53-20.pdf",
+        "mimetype": "application/pdf",
+        "size": 523847,
+        "uploadedAt": "2026-11-02T08:42:05.710Z"
+      }
+    ],
     "history": [
       {
         "id": 1793280610931,
@@ -2904,12 +3938,26 @@
             "new": "SNR-SFP-W53-20-LC"
           }
         }
+      },
+      {
+        "id": 1793608925106,
+        "timestamp": "2026-11-02T08:42:05.106Z",
+        "action": "update",
+        "user": "Михеев В.Г.",
+        "changes": {
+          "mediaType": {
+            "old": null,
+            "new": "SMF"
+          }
+        }
       }
-    ]
+    ],
+    "mediaType": "SMF",
+    "_fileToUpload": {}
   },
   {
     "vendor": "SNR",
-    "model": "SNR-SFP-W35-20-LC (комплект с W53)",
+    "model": "SNR-SFP-W35-20-LC",
     "specs": "1000BASE-X, 20km, Tx 1310нм, DDM",
     "distance": "20km",
     "serialNumber": "",
@@ -2921,8 +3969,25 @@
     "comment": "(одноглазка LC одномод.)",
     "id": 1793280641192,
     "createdAt": "2026-10-29T13:30:41.192Z",
-    "updatedAt": "2026-10-29T13:30:41.192Z",
-    "documents": [],
+    "updatedAt": "2026-11-02T08:42:29.538Z",
+    "documents": [
+      {
+        "id": 1793608949645,
+        "filename": "1793608949559-254454047.pdf",
+        "originalName": "SNR-SFP-W35_53-20.pdf",
+        "mimetype": "application/pdf",
+        "size": 523847,
+        "uploadedAt": "2026-11-02T08:42:29.645Z"
+      },
+      {
+        "id": 1793608950144,
+        "filename": "1793608950072-408662214.pdf",
+        "originalName": "SNR-SFP-W35_53-20.pdf",
+        "mimetype": "application/pdf",
+        "size": 523847,
+        "uploadedAt": "2026-11-02T08:42:30.144Z"
+      }
+    ],
     "history": [
       {
         "id": 1793280641194,
@@ -2935,8 +4000,26 @@
             "new": "SNR-SFP-W35-20-LC (комплект с W53)"
           }
         }
+      },
+      {
+        "id": 1793608949541,
+        "timestamp": "2026-11-02T08:42:29.541Z",
+        "action": "update",
+        "user": "Михеев В.Г.",
+        "changes": {
+          "model": {
+            "old": "SNR-SFP-W35-20-LC (комплект с W53)",
+            "new": "SNR-SFP-W35-20-LC"
+          },
+          "mediaType": {
+            "old": null,
+            "new": "SMF"
+          }
+        }
       }
-    ]
+    ],
+    "mediaType": "SMF",
+    "_fileToUpload": {}
   },
   {
     "vendor": "SNR",
@@ -3011,14 +4094,14 @@
     "distance": "100m",
     "serialNumber": "",
     "status": "В работе",
-    "color": "",
+    "color": "черный",
     "location": "ЦХП; ЦОД ООО РНК; Дополнительное оборудование для серверов КСПД",
     "quantity": 16,
     "technician": "Михеев В.Г.",
     "comment": "",
     "id": 1793280749782,
     "createdAt": "2026-10-29T13:32:29.782Z",
-    "updatedAt": "2026-10-30T12:35:42.179Z",
+    "updatedAt": "2026-11-02T09:41:14.835Z",
     "documents": [],
     "history": [
       {
@@ -3032,9 +4115,26 @@
             "new": "SNR-SFP28-SR"
           }
         }
+      },
+      {
+        "id": 1793612474838,
+        "timestamp": "2026-11-02T09:41:14.838Z",
+        "action": "update",
+        "user": "Михеев В.Г.",
+        "changes": {
+          "mediaType": {
+            "old": null,
+            "new": "MMF"
+          },
+          "color": {
+            "old": "",
+            "new": "черный"
+          }
+        }
       }
     ],
-    "_fileToUpload": {}
+    "_fileToUpload": null,
+    "mediaType": "MMF"
   },
   {
     "vendor": "SNR",
@@ -3043,14 +4143,14 @@
     "distance": "100m",
     "serialNumber": "",
     "status": "В работе",
-    "color": "",
+    "color": "черный",
     "location": "ЦХП; ЦОД ООО РНК; Дополнительное оборудование для серверов АСУТП",
     "quantity": 6,
     "technician": "Михеев В.Г.",
     "comment": "",
     "id": 1793280840905,
     "createdAt": "2026-10-29T13:34:00.905Z",
-    "updatedAt": "2026-10-29T13:34:00.905Z",
+    "updatedAt": "2026-11-02T09:41:25.795Z",
     "documents": [],
     "history": [
       {
@@ -3064,7 +4164,25 @@
             "new": "SNR-SFP28-SR"
           }
         }
+      },
+      {
+        "id": 1793612485798,
+        "timestamp": "2026-11-02T09:41:25.798Z",
+        "action": "update",
+        "user": "Михеев В.Г.",
+        "changes": {
+          "mediaType": {
+            "old": null,
+            "new": "MMF"
+          },
+          "color": {
+            "old": "",
+            "new": "черный"
+          }
+        }
       }
-    ]
+    ],
+    "mediaType": "MMF",
+    "_fileToUpload": null
   }
 ]
